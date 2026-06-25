@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Argus · nanogpt speedrun 8×H100 Benchmark 报告</title>
+<style>
+ :root{--blue:#2f6df0;--blue2:#5b8def;--ink:#0f2440;--mut:#5a708f;--line:#e6eefb;--bg:#f4f8ff;--win:#0fae74;--warn:#e89313;}
+ *{box-sizing:border-box}
+ body{margin:0;font-family:'Noto Sans SC',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+ .wrap{max-width:880px;margin:0 auto;padding:40px 20px 80px}
+ .eyebrow{color:var(--blue);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase}
+ h1{font-size:30px;margin:6px 0 8px;letter-spacing:-.3px;line-height:1.25}
+ .lede{color:var(--mut);font-size:15px;max-width:680px;margin-bottom:30px}
+ .verdict{background:linear-gradient(120deg,#eef4ff,#eafaf3);border:1px solid #d4ecdf;border-radius:16px;padding:18px 22px;margin-bottom:30px;font-size:15px}
+ .verdict b{color:var(--win)}
+ .verdict .warnb{color:var(--warn)}
+ .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:34px}
+ .stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 14px;text-align:center}
+ .stat .n{font-size:26px;font-weight:800;color:var(--blue)}
+ .stat .n.win{color:var(--win)}
+ .stat .l{font-size:11px;color:var(--mut);margin-top:2px}
+ h2{font-size:13px;color:var(--blue);font-weight:700;letter-spacing:.5px;margin:38px 0 4px;text-transform:uppercase}
+ .panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:8px 22px 18px;box-shadow:0 1px 3px rgba(47,109,240,.04)}
+ table{width:100%;border-collapse:collapse;font-size:14px}
+ th,td{text-align:left;padding:11px 8px;border-bottom:1px solid #f0f5fd}
+ th{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.4px;font-weight:600}
+ td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
+ .bar{height:7px;border-radius:6px;background:#e9f0fc;position:relative;min-width:90px}
+ .bar i{position:absolute;left:0;top:0;bottom:0;border-radius:6px;background:linear-gradient(90deg,var(--blue2),var(--blue))}
+ tr.win td{background:#f2fdf8} tr.win .tag{color:var(--win)}
+ tr.win .bar i{background:linear-gradient(90deg,#3ed39b,var(--win))}
+ tr.front td{background:#fffaf0} tr.front .tag{color:var(--warn)}
+ tr.front .bar i{background:linear-gradient(90deg,#f3b24d,var(--warn))}
+ tr.floor td{color:var(--mut)} tr.floor .bar i{background:#a9bcd8}
+ .tag{font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;border:1px solid currentColor;white-space:nowrap}
+ .mech{font-family:ui-monospace,'SF Mono',monospace;font-size:12px;color:#33507a}
+ .note{background:#eef4ff;border-left:3px solid var(--blue);border-radius:8px;padding:12px 16px;font-size:13px;color:#33507a;margin-top:14px}
+ .note.warn{background:#fff7ea;border-color:var(--warn);color:#7a5a13}
+ .note.good{background:#eefbf5;border-color:var(--win);color:#0c6b49}
+ .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+ .foot{text-align:center;color:#9ab;font-size:12px;margin-top:40px}
+ @media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}h1{font-size:24px}}
+ .backbar{position:sticky;top:0;z-index:50;background:rgba(244,248,255,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+ .backbar .in{max-width:880px;margin:0 auto;padding:13px 20px;display:flex;justify-content:space-between;align-items:center;font-size:14px}
+ .backbar a{color:var(--blue);text-decoration:none;font-weight:600}.backbar a:hover{text-decoration:underline}
+ .backbar .b{display:flex;align-items:center;gap:8px;color:var(--ink);font-weight:700}
+ .backbar .b i{width:9px;height:9px;border-radius:50%;background:var(--blue);font-style:normal}
+</style></head><body>
+<div class="backbar"><div class="in"><a href="/" style="color:var(--mut)">← Argus 首页</a><span class="b"><i></i>Speedrun</span><a href="https://dash.argusbot.cn">实时看板 →</a></div></div>
+<div class="wrap">
+
+ <div class="eyebrow">Argus 自治研究 · Benchmark 报告</div>
+ <h1>nanogpt speedrun：从 SOTA 记录起步，argus 能不能<u>再快一点</u>？</h1>
+ <div class="lede">8×H100 · 把 GPT 训到 FineWeb <b>val_loss ≤ 3.28</b> 的最短 <b>train_time</b>（越短越好）· 起点是 modded-nanogpt 公开排行榜记录 <b>#83</b>（near-SOTA）· 只改 train.py + triton_kernels.py · 每个分数由冻结验证器在 8×H100 上 <b>重测认证</b>，绝不自报。</div>
+
+ <div class="verdict">✅ <b>认证最佳 79.77s</b>（N=10，t-test p=0.004 过关）。同一硬件、同一协议下，比我们重测的 #83 种子（80.18s）快、比 Recursive 自己重测的 #83（80.61s）快 <b>0.84s</b>，<b>追平公开 SOTA 记录 #83（79.7s）</b>。<span class="warnb">但没打破 Recursive 自动系统的 77.34s 前沿，也未向公开榜正式提交</span> —— 这是一份干净的 like-for-like H100 战绩，不是「破纪录」。</div>
+
+ <div class="stats">
+   <div class="stat"><div class="n">22</div><div class="l">自主搜索候选</div></div>
+   <div class="stat"><div class="n win">79.77<span style="font-size:14px">s</span></div><div class="l">认证最佳 · N=10</div></div>
+   <div class="stat"><div class="n">−0.84<span style="font-size:14px">s</span></div><div class="l">vs Recursive #83 重测</div></div>
+   <div class="stat"><div class="n">p=.004</div><div class="l">val_loss&lt;3.28 显著</div></div>
+ </div>
+
+ <h2>结果 · 8×H100 实测（同 torch2.10 / FA3 环境，train_time 越短越好）</h2>
+ <div class="panel"><table>
+  <tr><th>参照 / 方案</th><th>说明</th><th style="text-align:right">train_time</th><th>越快 → 条越长</th><th>来源</th></tr>
+  <tr class="front"><td><span class="tag">前沿</span></td><td class="mech">Recursive 自动系统最强（答案，已从机器移除防抄）</td><td class="num">77.34s</td><td><div class="bar"><i style="width:100%"></i></div></td><td>论文 N=13</td></tr>
+  <tr class="floor"><td><span class="tag">公开 SOTA</span></td><td class="mech">#83「Sign Trick on Bigram Embed」· 官方榜（起跑种子）</td><td class="num">79.70s</td><td><div class="bar"><i style="width:34%"></i></div></td><td>leaderboard</td></tr>
+  <tr class="win"><td><span class="tag">★ Argus</span></td><td class="mech">mlp_post_only_hybrid（自主搜索，仅改 train.py / triton）</td><td class="num">79.77s</td><td><div class="bar"><i style="width:32%"></i></div></td><td>自测 N=10</td></tr>
+  <tr><td></td><td class="mech">#83 种子 · 本机重测</td><td class="num">80.18s</td><td><div class="bar"><i style="width:21%"></i></div></td><td>自测 N=3</td></tr>
+  <tr><td></td><td class="mech">#83 · Recursive 自己重测</td><td class="num">80.61s</td><td><div class="bar"><i style="width:10%"></i></div></td><td>论文 N=10</td></tr>
+ </table>
+ <div class="note good">认证证据：<span class="mech">SCORE valid=true n=10 val_loss=3.2776 p(mean&lt;3.28)=0.004007 train_time=79.77s seal=ok</span>。10 次跑全部到 step 1385、val_loss 单调下降至 3.2776（地板 3.28 以下),验证轨迹「方向正确」。</div>
+ </div>
+
+ <div class="grid2">
+  <div><h2>怎么算赢（防作弊契约）</h2><div class="panel" style="padding:18px 20px">
+   <div style="font-size:13px;color:#33507a">
+   • <b>合法起点</b>：只能从公开记录 #83 出发，<b>禁读</b>任何「best/optimized」答案解（已从机器移除），包括 Recursive 的 77.34s 自动前沿。<br><br>
+   • <b>有效</b>：N 次跑的单边 t-test 认证 <b>p(mean val_loss &lt; 3.28) &lt; 0.01</b>；分数 = 验证器重测的 counted train_time。<br>
+   • 更快但没过 t-test = <b>无效</b>，不算赢。<br><br>
+   • 通用技术（FP8 / 融合 Triton / optimizer 变体）可用，但<b>必须 argus 自己实现</b>，不能抄文件。
+   </div>
+  </div></div>
+  <div><h2>诚实定位</h2><div class="panel" style="padding:18px 20px">
+   <div style="font-size:13px;color:#33507a">
+   • 79.77s 是<b>我们自己 8×H100 的自测</b>，<b>没有</b>走 PrimeIntellect 官方计时 + PR 评审，所以<b>公开榜上没有我们的名次</b>。<br><br>
+   • 它<b>追平</b>本任务冻结时的公开 SOTA #83（79.7s），在同环境、同 N=10 下<b>超过</b> Recursive 自己重测的 #83（80.61s）—— 这是最干净的 like-for-like。<br><br>
+   • 它<b>没够到</b> Recursive 自动前沿 77.34s（差 2.43s），也<b>不是当前公开记录</b>（公开榜此后已加入 MUDD skip / Learnable XSA 等更新记录）。随后 H100 环境失联，mission 停在 optimize 阶段。
+   </div>
+  </div></div>
+ </div>
+
+ <div class="note warn" style="margin-top:18px">与左侧 nanochat 实验互补:nanochat 考「能不能<b>发明</b>新机制」(从零自创结构);speedrun 考「能不能在一个<b>已经高度优化的 near-SOTA 配方</b>上继续抠时间」—— 同一套自治研究引擎,两种难度形态,都用真机冻结验证器、绝不自报分数。</div>
+
+ <div class="foot">argus-skill 自治研究守护进程 · nanogpt-speedrun · 8×H100 · 数据来自 experiments/*/SCORE.raw 的验证器认证分</div>
+</div>
+</body></html>
