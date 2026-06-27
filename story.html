@@ -1,502 +1,250 @@
 <!DOCTYPE html><html lang="zh-CN"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Argus — 为「需要创新的长程任务」而生的自治智能引擎</title>
-<meta name="description" content="Argus 是一套领域无关的自治研究/优化引擎：给它一个有诚实指标的目标和这台机器的规则，它就 7×24 完全自主地把指标推到极限——选题、发明、跑实验、真机度量、沉淀。专为「需要创新 + 长程 + 可验证」的密集智能任务而生。">
+<title>Argus — 把人类最贵的脑力劳动搬上机器</title>
+<meta name="description" content="Argus 是第一台能自己把「发明—验证」循环转起来的机器：对着一个骗不了的指标，连续数天自主地猜想、试验、度量、再猜想。为「需要创新 + 长程 + 可验证」的密集智能任务而生。">
 <link rel="icon" type="image/png" href="assets/argus-mark.png">
-<meta property="og:title" content="Argus — 为「需要创新的长程任务」而生的自治智能引擎">
-<meta property="og:description" content="它发明，不只是调参。一个核，驱动 kernel 优化 / 训练提速 / 量化因子 / 自动科研——同一套原则。">
+<meta property="og:title" content="Argus — 把人类最贵的脑力劳动搬上机器">
+<meta property="og:description" content="脚本做不了（要发明），聊天机器人也做不了（要连续几天不忘地试）。Argus 把「发明—验证」循环搬上机器。">
 <meta property="og:image" content="assets/argus-og.png">
-<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
  :root{
   --bg:#FAF9F6;--ink:#1B1813;--mut:#6E665A;--faint:#9A9082;
-  --accent:#BF5A3E;--accent2:#A24A32;--line:#E9E4DA;--card:#FFFFFF;--warm:#F2EEE5;--ink2:#26221C;
+  --accent:#BF5A3E;--accent2:#A24A32;--line:#E9E4DA;--card:#FFFFFF;--warm:#F2EEE5;
   --serif:'Fraunces',Georgia,serif;--sans:'Plus Jakarta Sans',sans-serif;--mono:'JetBrains Mono',monospace;
  }
  *{box-sizing:border-box;margin:0;padding:0}
  html{scroll-behavior:smooth}
- body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased;font-size:16px}
- .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+ body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;-webkit-font-smoothing:antialiased;font-size:16.5px}
+ .wrap{max-width:880px;margin:0 auto;padding:0 26px}
  a{color:inherit;text-decoration:none}
  .mono{font-family:var(--mono)}
- .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
- h2{font-family:var(--serif);font-weight:500;font-size:clamp(28px,4vw,44px);line-height:1.08;letter-spacing:-.015em}
- h3{font-family:var(--serif);font-weight:500}
+ .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+ h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.6vw,38px);line-height:1.12;letter-spacing:-.015em}
  p{color:var(--mut)}
+ b,strong{color:var(--ink);font-weight:600}
  /* nav */
- nav{position:sticky;top:0;z-index:60;background:rgba(250,249,246,.82);backdrop-filter:saturate(150%) blur(12px);border-bottom:1px solid var(--line)}
- nav .row{display:flex;align-items:center;justify-content:space-between;height:66px}
- .brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:18px;letter-spacing:-.01em}
- .brand .logo{width:26px;height:26px;border-radius:7px;display:grid;place-items:center;background:var(--ink);color:#fff;font-family:var(--mono);font-size:14px}
- .nav-links{display:flex;gap:30px;font-size:14.5px;color:var(--mut)}
- .nav-links a:hover{color:var(--ink)}
- .nav-cta{font-size:14px;padding:9px 18px;background:var(--ink);color:var(--bg);border-radius:100px;transition:.15s}
- .nav-cta:hover{background:var(--accent)}
- @media(max-width:880px){.nav-links{display:none}}
+ nav{border-bottom:1px solid var(--line)}
+ nav .row{display:flex;align-items:center;justify-content:space-between;height:62px}
+ .brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:18px}
+ .brand .logo{width:25px;height:25px;border-radius:7px;background:var(--ink);color:#fff;display:grid;place-items:center;font-family:var(--mono);font-size:13px}
+ .nav-r{font-size:14.5px;color:var(--mut);display:flex;gap:24px}
+ .nav-r a:hover{color:var(--ink)}
  /* hero */
- .hero{padding:84px 0 30px;text-align:center}
- .eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--mut);background:var(--warm);border:1px solid var(--line);padding:6px 14px;border-radius:100px;margin-bottom:30px}
- .eyebrow .live{width:7px;height:7px;border-radius:50%;background:#1Fae74;box-shadow:0 0 0 3px rgba(31,174,116,.18)}
- h1{font-family:var(--serif);font-weight:500;font-size:clamp(38px,6.2vw,72px);line-height:1.04;letter-spacing:-.02em;margin:0 auto 26px;max-width:920px}
+ .hero{padding:76px 0 18px;text-align:center}
+ .hero .wrap{max-width:760px}
+ h1{font-family:var(--serif);font-weight:500;font-size:clamp(32px,5.4vw,54px);line-height:1.08;letter-spacing:-.02em;margin-bottom:24px}
  h1 em{font-style:italic;color:var(--accent)}
- .lede{font-size:clamp(16.5px,2vw,20px);color:var(--mut);max-width:660px;margin:0 auto 36px}
- .lede b{color:var(--ink);font-weight:600}
- .cta-row{display:flex;gap:13px;flex-wrap:wrap;align-items:center;justify-content:center}
- .btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:15px;padding:13px 26px;border-radius:100px;transition:.16s}
- .btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:var(--accent2)}
- .btn-ghost{border:1px solid var(--line);color:var(--ink)}.btn-ghost:hover{border-color:var(--ink)}
- /* one-line philosophy */
- .creed{max-width:760px;margin:46px auto 0;padding:26px 30px;background:var(--ink);color:#EDE8DE;border-radius:16px;text-align:center}
- .creed .q{font-family:var(--serif);font-size:clamp(20px,3vw,28px);color:#FBF8F2;line-height:1.3}
- .creed .s{color:#A89F90;font-size:14.5px;margin-top:12px}
- /* trust strip */
- .trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--warm);margin-top:64px}
- .trust .in{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:34px 0}
- @media(max-width:760px){.trust .in{grid-template-columns:repeat(2,1fr);gap:26px 12px}}
- .trust .s{text-align:center}
- .trust .s .n{font-family:var(--serif);font-size:30px;font-weight:500;letter-spacing:-.02em}
- .trust .s .l{font-family:var(--mono);font-size:11.5px;color:var(--mut);margin-top:4px;letter-spacing:.02em;line-height:1.5}
+ .lede{font-size:clamp(16px,1.9vw,18.5px)}
+ .lede b{color:var(--ink)}
  /* sections */
- section{padding:88px 0}
- .sec-head{max-width:720px;margin-bottom:48px}
- .sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
- .sec-head p{font-size:17px;margin-top:16px}
- .dark{background:var(--ink);color:#EDE8DE}
- .dark h2{color:#FBF8F2}.dark p{color:#A89F90}.dark .kicker{color:#e08763}
- /* what — three pillars */
- .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
- @media(max-width:820px){.pillars{grid-template-columns:1fr}}
- .pillar{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px}
- .pillar .ic{font-family:var(--mono);font-size:13px;color:var(--accent);margin-bottom:14px;letter-spacing:.04em}
- .pillar h3{font-size:21px;margin-bottom:10px}
- .pillar p{font-size:14.5px;line-height:1.6}
- .pillar .no{margin-top:14px;font-size:13px;color:var(--faint);border-top:1px dashed var(--line);padding-top:12px}
- .pillar .no b{color:var(--mut)}
- /* litmus */
- .litmus{margin-top:38px;background:var(--warm);border:1px solid var(--line);border-radius:16px;padding:30px 32px}
- .litmus h3{font-size:18px;margin-bottom:18px}
- .litmus ol{list-style:none;counter-reset:l;display:grid;gap:14px}
- .litmus li{counter-increment:l;display:flex;gap:14px;align-items:flex-start;font-size:15px;color:var(--ink)}
- .litmus li::before{content:counter(l);flex:0 0 26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;font-family:var(--mono);font-size:13px;display:grid;place-items:center;margin-top:1px}
- .litmus .out{margin-top:18px;font-size:14px;color:var(--mut)}
- .litmus .out b{color:var(--ink)}
- /* scenario cards */
- .scn{display:grid;grid-template-columns:1fr 1fr;gap:22px}
- @media(max-width:820px){.scn{grid-template-columns:1fr}}
- .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;transition:.16s;display:flex;flex-direction:column}
- .card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 18px 40px -24px rgba(191,90,62,.3)}
- .card .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
- .card h3{font-size:21px;line-height:1.2;margin-bottom:14px}
- .card .kv{font-size:14px;margin-bottom:11px;line-height:1.55}
- .card .kv b{color:var(--ink);font-weight:600}
- .card .who{margin-top:auto;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--mut)}
- .card .who b{color:var(--ink)}
- .card .chip{display:inline-block;margin-top:12px;font-family:var(--mono);font-size:11px;background:var(--warm);border:1px solid var(--line);color:var(--mut);padding:5px 10px;border-radius:7px}
- .extra{margin-top:24px;background:var(--warm);border:1px dashed var(--line);border-radius:16px;padding:24px 28px;font-size:15px;color:var(--mut)}
- .extra b{color:var(--ink)}
- /* how — guardrails + pipeline */
- .guards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px}
- @media(max-width:820px){.guards{grid-template-columns:1fr}}
- .guard{background:#26221C;border:1px solid #34302a;border-radius:14px;padding:24px}
- .guard .d{font-size:22px;margin-bottom:10px}
- .guard h3{color:#FBF8F2;font-size:18px;margin-bottom:8px}
- .guard p{color:#A89F90;font-size:13.5px;line-height:1.6}
- .pipe-steps{display:flex;flex-wrap:wrap;margin-top:34px;border:1px solid #34302a;border-radius:14px;overflow:hidden}
- .pipe-steps .st{flex:1 1 12%;min-width:120px;padding:18px 16px;border-right:1px solid #34302a}
- .pipe-steps .st:last-child{border-right:none}
- .pipe-steps .st .i{font-family:var(--mono);font-size:11px;color:#e08763;margin-bottom:8px}
- .pipe-steps .st b{font-size:13.5px;display:block;color:#FBF8F2;margin-bottom:3px}
- .pipe-steps .st span{font-size:11.5px;color:#9b9384}
- .roles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
- @media(max-width:760px){.roles{grid-template-columns:1fr}}
- .role{background:#26221C;border:1px solid #34302a;border-radius:12px;padding:18px 20px}
- .role .b{font-family:var(--mono);font-size:11px;color:#e08763;margin-bottom:7px}
- .role b{color:#FBF8F2;display:block;font-size:15px;margin-bottom:4px}
- .role span{font-size:12.5px;color:#9b9384;line-height:1.5}
- /* why-us list */
- .reasons{display:grid;grid-template-columns:1fr 1fr;gap:22px}
- @media(max-width:820px){.reasons{grid-template-columns:1fr}}
- .reason{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px}
- .reason .n{font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:12px}
- .reason h3{font-size:19px;margin-bottom:10px}
- .reason p{font-size:14.5px;line-height:1.6}
- .reason .ev{margin-top:14px;font-family:var(--mono);font-size:11.5px;color:var(--mut);background:var(--warm);border-radius:7px;padding:8px 11px;line-height:1.55}
- /* why-now timeline */
- .now{display:grid;grid-template-columns:1fr 1fr;gap:20px}
- @media(max-width:760px){.now{grid-template-columns:1fr}}
- .nowc{display:flex;gap:16px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px}
- .nowc .ic{flex:0 0 40px;height:40px;border-radius:10px;background:var(--warm);border:1px solid var(--line);display:grid;place-items:center;font-size:19px}
- .nowc b{display:block;font-size:16px;color:var(--ink);margin-bottom:5px}
- .nowc p{font-size:13.5px;line-height:1.55}
- /* personas / how users use */
- .persona{display:grid;grid-template-columns:200px 1fr;gap:28px;padding:28px 0;border-top:1px solid var(--line)}
- @media(max-width:760px){.persona{grid-template-columns:1fr;gap:10px}}
- .persona .who h3{font-size:20px;margin-bottom:6px}
- .persona .who .role-t{font-family:var(--mono);font-size:11.5px;color:var(--accent);letter-spacing:.04em}
- .persona .flow{display:grid;gap:10px}
- .persona .step{display:flex;gap:12px;font-size:14.5px}
- .persona .step .k{flex:0 0 76px;font-family:var(--mono);font-size:11.5px;color:var(--faint);padding-top:2px}
- .persona .step .v{color:var(--ink)}.persona .step .v b{color:var(--ink)}
- .persona .step .v span{color:var(--mut)}
- /* pricing */
- .tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
- @media(max-width:980px){.tiers{grid-template-columns:repeat(2,1fr)}}
- @media(max-width:540px){.tiers{grid-template-columns:1fr}}
- .tier{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;display:flex;flex-direction:column}
- .tier.feat{border-color:var(--accent);box-shadow:0 18px 40px -24px rgba(191,90,62,.3)}
- .tier .badge{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
- .tier h3{font-size:19px;margin-bottom:6px}
- .tier .price{font-family:var(--mono);font-size:13px;color:var(--mut);margin-bottom:14px}
- .tier p{font-size:13.5px;line-height:1.55;margin-bottom:12px}
- .tier .who2{margin-top:auto;font-size:12.5px;color:var(--faint);border-top:1px solid var(--line);padding-top:12px}
- .tier .who2 b{color:var(--mut)}
- /* cta band */
- .ctaband{background:var(--accent);color:#fff;border-radius:24px;padding:64px 48px;text-align:center;margin-top:20px}
- .ctaband h2{color:#fff;margin-bottom:14px}
- .ctaband p{color:#ffe6dc;font-size:17px;max-width:540px;margin:0 auto 28px}
- .ctaband .btn-white{background:#fff;color:var(--accent2)}.ctaband .btn-white:hover{background:#fff1ec}
- .ctaband .btn-out{border:1px solid rgba(255,255,255,.5);color:#fff}.ctaband .btn-out:hover{border-color:#fff}
- /* footer */
- footer{border-top:1px solid var(--line);padding:42px 0;margin-top:10px}
- footer .row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:13.5px;color:var(--mut)}
- footer .links{display:flex;gap:22px}
+ section{padding:60px 0}
+ .div{border-top:1px solid var(--line)}
+ .lead2{font-size:18px;margin-top:18px}
+ /* task definition */
+ .loop{background:var(--ink);color:#F1ECE2;border-radius:16px;padding:30px 34px;margin:30px 0;text-align:center}
+ .loop .seq{font-family:var(--serif);font-size:clamp(18px,2.6vw,24px);color:#fff;line-height:1.4}
+ .loop .seq em{font-style:normal;color:#e8a07f}
+ .loop .note{color:#A89F90;font-size:14.5px;margin-top:14px}
+ .three{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+ @media(max-width:720px){.three{grid-template-columns:1fr}}
+ .three .it{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:20px 22px}
+ .three .it .t{font-family:var(--serif);font-size:19px;margin-bottom:7px}
+ .three .it .t small{font-family:var(--mono);font-size:11px;color:var(--accent);display:block;letter-spacing:.05em;margin-bottom:4px;text-transform:uppercase}
+ .three .it p{font-size:14px;line-height:1.6}
+ .litmus{margin-top:22px;font-size:15px;color:var(--mut)}
+ .litmus b{color:var(--ink)}
+ /* four columns: what/why/how/whyus */
+ .cols{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card)}
+ @media(max-width:860px){.cols{grid-template-columns:1fr 1fr}}
+ @media(max-width:520px){.cols{grid-template-columns:1fr}}
+ .col{padding:26px 24px;border-right:1px solid var(--line)}
+ .col:last-child{border-right:none}
+ @media(max-width:860px){.col:nth-child(2){border-right:none}.col:nth-child(1),.col:nth-child(2){border-bottom:1px solid var(--line)}}
+ @media(max-width:520px){.col{border-right:none;border-bottom:1px solid var(--line)}.col:last-child{border-bottom:none}}
+ .col .lab{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:var(--accent);text-transform:uppercase;margin-bottom:6px}
+ .col h3{font-family:var(--serif);font-weight:500;font-size:21px;margin-bottom:12px;line-height:1.15}
+ .col p{font-size:14px;line-height:1.62}
+ .col p+p{margin-top:10px}
+ /* scenarios */
+ .scn{display:grid;gap:0;margin-top:24px;border-top:1px solid var(--line)}
+ .row2{display:grid;grid-template-columns:150px 1fr;gap:24px;padding:22px 0;border-bottom:1px solid var(--line)}
+ @media(max-width:640px){.row2{grid-template-columns:1fr;gap:6px}}
+ .row2 .h{font-family:var(--serif);font-size:18px;color:var(--ink)}
+ .row2 .h small{display:block;font-family:var(--mono);font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:.05em;margin-top:5px}
+ .row2 .b{font-size:14.5px;color:var(--mut)}
+ .row2 .b b{color:var(--ink)}
+ .who-line{margin-top:24px;font-size:15px;color:var(--mut);background:var(--warm);border:1px solid var(--line);border-radius:13px;padding:20px 24px}
+ .who-line b{color:var(--ink)}
+ /* qa */
+ .qa{margin-top:18px}
+ .qa .q{padding:22px 0;border-bottom:1px solid var(--line)}
+ .qa .q:last-child{border-bottom:none}
+ .qa .q .qt{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin-bottom:9px;display:flex;gap:10px;align-items:baseline}
+ .qa .q .qt .n{font-family:var(--mono);font-size:13px;color:var(--accent);flex:0 0 auto}
+ .qa .q .at{font-size:15px;color:var(--mut);line-height:1.66}
+ .qa .q .at b{color:var(--ink)}
+ .qa .q .edge{margin-top:8px;font-size:13.5px;color:var(--faint)}
+ .qa .q .edge b{color:var(--mut)}
+ /* closing */
+ .close{background:var(--accent);color:#fff;border-radius:18px;padding:46px 40px;text-align:center;margin:20px 0 0}
+ .close .s{font-family:var(--serif);font-size:clamp(19px,2.6vw,26px);line-height:1.4;max-width:620px;margin:0 auto 26px}
+ .close .s b{color:#fff;font-weight:600}
+ .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+ .btn{display:inline-flex;align-items:center;font-weight:600;font-size:15px;padding:12px 24px;border-radius:100px;transition:.15s}
+ .btn-white{background:#fff;color:var(--accent2)}.btn-white:hover{background:#fff1ec}
+ .btn-out{border:1px solid rgba(255,255,255,.55);color:#fff}.btn-out:hover{border-color:#fff}
+ footer{border-top:1px solid var(--line);padding:34px 0;margin-top:56px;font-size:13.5px;color:var(--faint)}
+ footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
  footer a:hover{color:var(--ink)}
- .anote{font-size:12.5px;color:var(--faint);text-align:center;margin-top:18px}
 </style>
 </head>
 <body>
 
 <nav><div class="wrap"><div class="row">
   <a class="brand" href="/"><span class="logo">A</span> Argus</a>
-  <div class="nav-links">
-    <a href="#what">是什么</a>
-    <a href="#tasks">面向的任务</a>
-    <a href="#cases">应用场景</a>
-    <a href="#how">怎么做到</a>
-    <a href="#whyus">为什么是我们</a>
-    <a href="#users">谁在用</a>
-    <a href="#business">盈利模式</a>
+  <div class="nav-r">
+    <a href="#task">解决的任务</a>
+    <a href="#story">What / Why / How</a>
+    <a href="#qa">常见疑问</a>
+    <a href="/">返回首页</a>
   </div>
-  <a class="nav-cta" href="#contact">预约 Demo</a>
 </div></div></nav>
 
 <!-- HERO -->
 <header class="hero"><div class="wrap">
-  <div class="eyebrow"><span class="live"></span> 7×24 自治运行 · 同一套引擎驱动 5 个真实基准</div>
-  <h1>给它一个<em>有诚实指标的目标</em>，<br>它连续数天自己<em>发明</em>答案</h1>
-  <p class="lede">Argus 是一套<b>领域无关的自治研究 / 优化引擎</b>。你只给两样东西——「做什么」和「这台机器的规则」——它就 7×24 完全自主地把指标从基线推到极限：选题、调研、设计实验、在<b>真实指标</b>上真机度量、分析、改代码、沉淀能力。<b>没有人在回路里逐步审批。</b></p>
-  <div class="cta-row">
-    <a class="btn btn-primary" href="#cases">看它在解什么任务 →</a>
-    <a class="btn btn-ghost" href="#how">它凭什么不退化</a>
-  </div>
-
-  <div class="creed">
-    <div class="q">"harness 没有 agent 聪明。"</div>
-    <div class="s">智能判断（idea 平不平庸、做完没、该不该等这个 run）永远归 agent；承载程序只做领域无关的笨管道。任何用规则替 agent 二次判断的逻辑，我们都删掉——否则 harness 就成了天花板。</div>
-  </div>
+  <div class="kicker">Argus · 我们解决的任务</div>
+  <h1>把人类最贵的那种脑力劳动，<br><em>搬上机器</em></h1>
+  <p class="lede">全世界最贵的那批人——量化研究员、性能工程师、芯片设计师、安全研究员——每天干的是同一件事：对着一个骗不了的指标，<b>"猜一个 → 试一下 → 看真相 → 再猜一个"</b>，几百上千轮。脚本做不了（要发明），聊天机器人也做不了（要连续几天不忘地试）。<b>Argus 是第一台能自己把这个「发明—验证」循环转起来的机器。</b></p>
 </div></header>
 
-<div class="trust"><div class="wrap"><div class="in">
-  <div class="s"><div class="n">5</div><div class="l">真实基准垂域<br>kernel · 训练 · 因子 · 论文</div></div>
-  <div class="s"><div class="n">7×24</div><div class="l">自治长跑<br>断 SSH / 回收 GPU 不掉线</div></div>
-  <div class="s"><div class="n">SOL 1.0</div><div class="l">逼近硬件光速极限<br>vs torch.compile≈0.547</div></div>
-  <div class="s"><div class="n">越跑越会</div><div class="l">每个任务沉淀可复用 skill<br>失败也沉淀</div></div>
-</div></div></div>
+<!-- TASK DEFINITION -->
+<section id="task" class="div"><div class="wrap">
+  <div class="kicker">我们要解决的任务</div>
+  <h2>不是"创新"，也不是"长程"，<br>是这两件事焊死在一起的那个循环</h2>
+  <p class="lead2">"创新"单拎出来不值钱——大模型一次能脑暴 50 个点子，点子是最便宜的东西。"长程"单拎出来也不稀奇——跑一条固定流水线，脚本就能熬几天。真正值钱、也最难自动化的，是这俩合体的东西：</p>
 
-<!-- WHAT / TASK CLASS -->
-<section id="what"><div class="wrap">
-  <div class="sec-head">
-    <div class="kicker">What · 我们做什么</div>
-    <h2>不是「自动写论文的工具」，<br>是一台为难题而生的发明引擎</h2>
-    <p>Argus 的本事不在「会写论文」，而在<b style="color:var(--ink)">把一个高密度智能任务一刻不停地执行数天：不空转、不打滑、不卡死，而且答案是它自己探索 / 发明出来的，不是查来的。</b>论文只是任务链最长、最能压测整套机制的那一种，不是产品身份。</p>
+  <div class="loop">
+    <div class="seq">对着一个骗不了的指标，<br><em>猜一个 → 试一下 → 看真相 → 据此再猜一个</em><br>几百上千轮</div>
+    <div class="note">每一轮的新点子，都得吃透前面所有失败才提得出来。这就是科研、是工程师 debug、是不确定性下的搜索——也是 Argus 唯一关心的事。</div>
   </div>
 
-  <div class="pillars">
-    <div class="pillar">
-      <div class="ic">特性 01</div>
-      <h3>需要创新</h3>
-      <p>答案不在任何地方现成摆着，必须在一个巨大的解空间里<b style="color:var(--ink)">搜索、试错、发明</b>——不是一条已知流程能套出来的活。</p>
-      <div class="no"><b>反例：</b>查个事实、跑个已知脚本——那是工具的活，不需要发明。</div>
-    </div>
-    <div class="pillar">
-      <div class="ic">特性 02</div>
-      <h3>长程</h3>
-      <p>一次做不完。要数小时到数天、成百上千轮「假设 → 实验 → 度量 → 改」的密集迭代才有结果。</p>
-      <div class="no"><b>反例：</b>一问一答、改一个 bug——普通 agent 就够，长跑机器是杀鸡用牛刀。</div>
-    </div>
-    <div class="pillar">
-      <div class="ic">使能条件</div>
-      <h3>可验证</h3>
-      <p>有一个<b style="color:var(--ink)">不能造假的诚实指标</b>说「更好了 / 成了」——一个数、一个 benchmark、一个评审裁决。这是它能自主跑、产出能被信任的前提。</p>
-      <div class="no"><b>为什么关键：</b>没有诚实裁判，就得有人盯着，自主性归零；有了它，买家能自己复验。</div>
-    </div>
+  <div class="three">
+    <div class="it"><div class="t"><small>特性 01</small>需要创新</div><p>答案不在任何书里、谷歌不到，必须在巨大的解空间里搜索、试错、发明出来。</p></div>
+    <div class="it"><div class="t"><small>特性 02</small>长程</div><p>一次做不完。要数小时到数天、成百上千轮密集迭代才有结果。</p></div>
+    <div class="it"><div class="t"><small>使能条件</small>可验证</div><p>有个不能造假的硬指标说"成了 / 更好了"——它能自主跑、产出能被信任的前提。</p></div>
   </div>
 
-  <div class="litmus">
-    <h3>一个随手能用的判定器</h3>
-    <ol>
-      <li>有没有一个<b>不能造假</b>的硬指标说「更好了 / 成了」？</li>
-      <li>是不是<b>一次做不完</b>、要连续迭代数小时到数天？</li>
-      <li>答案要<b>探索 / 发明</b>出来，而不是查得到、套得出？</li>
-    </ol>
-    <div class="out"><b>三个都 yes → 这是 Argus 的菜。</b> 指标靠「品味」→ 不是；一次能做完 → 不是；照流程抄就行 → 不是。</div>
+  <p class="litmus">一个随手能用的判定器：①有没有一个<b>骗不了</b>的硬指标？②是不是<b>一次做不完</b>、要连续好几天？③答案是<b>得发明出来</b>、不是查得到？——<b>三个都 yes，就是 Argus 的菜。</b></p>
+</div></section>
+
+<!-- FOUR COLUMNS -->
+<section id="story" class="div"><div class="wrap">
+  <div class="kicker">What · Why · How · Why us</div>
+  <h2>一句话讲清四件事</h2>
+  <div class="cols" style="margin-top:30px">
+    <div class="col">
+      <div class="lab">What · 是什么</div>
+      <h3>一台发明引擎</h3>
+      <p>给它一个有诚实指标的目标 + 这台机器的规则，它就 7×24 完全自主地把指标推到极限：选题、发明、跑实验、真机度量、改、再发明。</p>
+      <p>没有人在回路里逐步审批。</p>
+    </div>
+    <div class="col">
+      <div class="lab">Why · 为什么是这类任务</div>
+      <h3>最贵、最难自动化的劳动</h3>
+      <p>"发明—验证"循环是顶尖研究员、工程师每天在做的事，也是脚本和聊天机器人都接不住的那一段。</p>
+      <p>创新和长程在这里拆不开：会发明不会验=空想，会熬不会发明=执行别人的剧本。</p>
+    </div>
+    <div class="col">
+      <div class="lab">How · 怎么做到</div>
+      <h3>让它数天不退化</h3>
+      <p>信条：<b>harness 没有 agent 聪明</b>——判断归 agent，承载只做笨管道。</p>
+      <p>三道结构护栏堵死长跑死法：<b>不空转</b>（自看护+并行领活）、<b>不打滑</b>（小工作记忆+会话换班）、<b>不卡死</b>（语义看门狗）。越跑越会。</p>
+    </div>
+    <div class="col">
+      <div class="lab">Why us · 为什么是我们</div>
+      <h3>已跑到自我复利</h3>
+      <p>它在<b>自主改自己的源码并提交</b>；扛得住生产（systemd 7×24、断网/回收 GPU 不垮）。</p>
+      <p>用一个<b>开源、可部署、可审计</b>的引擎，去对标顶级实验室不公开的黑箱。</p>
+    </div>
   </div>
 </div></section>
 
-<!-- WHY THESE TASKS -->
-<section id="tasks" class="dark"><div class="wrap">
-  <div class="sec-head">
-    <div class="kicker">Why · 为什么偏偏面向这类任务</div>
-    <h2>因为这块交集，又小、又值钱、又没人服务好</h2>
-    <p>「需要创新 + 长程 + 可验证」的任务，恰好卡在三方都失灵的地方——这正是 Argus 的护栏天生擅长、而别的方案天生跑不住的形状。</p>
-  </div>
-  <div class="guards">
-    <div class="guard"><div class="d">🧑‍🔬</div><h3>人做：又贵又慢</h3><p>要连续数天密集迭代、上千次试错。顶尖研究员的时间太贵，也熬不住这种重复密度。</p></div>
-    <div class="guard"><div class="d">🤖</div><h3>通用 agent：跑不住</h3><p>长跑必死于三件事——空转、失忆打滑、卡死活锁；还会 reward hacking 自欺，把假结果当真。</p></div>
-    <div class="guard"><div class="d">✅</div><h3>但它自带裁判</h3><p>有诚实指标 → 可以完全自主跑、且<b style="color:#FBF8F2">输出可被独立验证</b>。这是别的难题没有、而这类任务独有的礼物。</p></div>
-  </div>
-  <p style="margin-top:30px;font-size:15px;max-width:680px">于是它落进一个真空：<b style="color:#FBF8F2">人服务不起、通用 agent 服务不了、但又因为可验证而能被一台机器可信地服务。</b>Argus 就是为填这个真空造的。</p>
-</div></section>
-
-<!-- APPLICATION SCENARIOS -->
-<section id="cases"><div class="wrap">
-  <div class="sec-head center">
-    <div class="kicker">应用场景 · 同一套原则，多种难题</div>
-    <h2>一个核，五种真实任务</h2>
-    <p>它们不是「都跟研究有关」，而是在「创新 + 长程 + 可验证」上长得一模一样——所以能用<b style="color:var(--ink)">同一个引擎</b>驱动，对着各自的真实强基线。</p>
-  </div>
+<!-- SCENARIOS -->
+<section class="div"><div class="wrap">
+  <div class="kicker">具体例子 · 同一个形状，不同行业</div>
+  <h2>谁会用它？</h2>
+  <p class="lead2">下面这些行业八竿子打不着，但他们花大钱买的是<b>同一种劳动</b>——对着各自的硬指标 grind 发明循环。区别只是指标不同。</p>
 
   <div class="scn">
-    <div class="card">
-      <div class="tag">GPU / 基础设施</div>
-      <h3>CUDA Kernel 优化</h3>
-      <div class="kv"><b>任务：</b>把一个算子逼近硬件「光速」(SOL) 极限——没有现成最优解，要在 tiling / 调度 / 指令组合里发明。</div>
-      <div class="kv"><b>Argus 怎么起作用：</b>自主迭代「改写 → 真机 profile → 度量」，主动随机化评测输入堵掉「硬编码输入统计量」式作弊，把有效优化沉淀成 skill。</div>
-      <div class="who"><b>给谁用：</b>AI 基础设施 / 训练团队、算力厂、芯片公司——榨干每一张卡。</div>
-      <span class="chip">基准：vs torch.compile ≈ 0.547 SOL</span>
+    <div class="row2">
+      <div class="h">性能工程<small>砍云账单</small></div>
+      <div class="b">"让它快 30%、便宜 30%"——没有手册。profile → 猜瓶颈 → 改一版 → 一测反而更慢 → 重猜……两百轮试出来。<b>给谁：</b>任何有大笔算力账单的公司。省下的钱 CFO 一眼能懂，正好对应"打不过你的基线就不收费"。</div>
     </div>
-
-    <div class="card">
-      <div class="tag">前沿模型实验室</div>
-      <h3>训练提速 / 训练配方发明</h3>
-      <div class="kv"><b>任务：</b>固定硬件上把达标墙钟时间压到最短，或固定预算下把 loss 压到最低——本质是不断<b>发明新的训练 trick</b>。</div>
-      <div class="kv"><b>Argus 怎么起作用：</b>自主跑全部条件、复现强基线、强制用真实算子（不许假 shim），沉淀「什么真的有效」的干净轨迹。</div>
-      <div class="who"><b>给谁用：</b>做 pretraining / post-training 的实验室、模型训练团队。</div>
-      <span class="chip">基准：8×H100 达标 77.3s · nanochat val_bpb</span>
+    <div class="row2">
+      <div class="h">安全研究<small>挖 0-day</small></div>
+      <div class="b">漏洞谷歌不到。对"藏在哪"形成假设 → 构造畸形输入 → 跑（没崩）→ 精修 → 再跑，成千上万次。验证残忍地干净：要么弹 shell 要么没有。<b>给谁：</b>安全公司、大厂红队、合约审计。</div>
     </div>
-
-    <div class="card">
-      <div class="tag">量化 / 资管 · 最强变现</div>
-      <h3>量化因子挖掘 & 策略研发</h3>
-      <div class="kv"><b>任务：</b>从市场数据里发明出有效、样本外稳健的 alpha 因子并组合——因子构造是创造，不是套模板。</div>
-      <div class="kv"><b>Argus 怎么起作用：</b>自主挖掘 + 回测，内建<b>泄漏探针 / 样本外 / 可复现审计链</b>堵住前视与过拟合自欺，产出 reviewer 认证的因子报告；你的私有数据天然抗同质化。</div>
-      <div class="who"><b>给谁用：</b>量化基金、券商自营、资管——一座 7×24 不知疲倦的因子工厂。</div>
-      <span class="chip">引擎：已接真实 A 股 qlib 回测</span>
+    <div class="row2">
+      <div class="h">硬科学发现<small>分子 / 芯片</small></div>
+      <div class="b">设计一个分子丢进打分器看结合亲和力；改一版 RTL 跑几小时综合看 PPA。每轮验证又贵又慢、却要做几百轮——最该让机器 7×24 并行去搜。<b>给谁：</b>药企、材料 / 电池、半导体。奖金最大的一类。</div>
     </div>
-
-    <div class="card">
-      <div class="tag">研究机构 / 企业 R&D</div>
-      <h3>自动科研 → 过审论文</h3>
-      <div class="kv"><b>任务：</b>从 idea 到能扛过同行评审的论文 / 技术报告——最长、最考验整套机制的任务链。</div>
-      <div class="kv"><b>Argus 怎么起作用：</b>8 阶段全流程，每阶段一个对抗式 reviewer 把关，强制 idea 否决日志反平庸、每条 claim 溯源到证据、堵 pilot / 合成数据冒充。</div>
-      <div class="who"><b>给谁用：</b>研究机构、企业研究院、要系统化产出的团队。</div>
-      <span class="chip">量表：按 EMNLP / AAAI 真实评审</span>
+    <div class="row2">
+      <div class="h">量化研究<small>已验证</small></div>
+      <div class="b">发明一个因子 → 回测 → 发现它在某年崩了 → 搞懂为什么 → 发明补丁。钱是那个稀缺的"既会发明又会动手"的人挣的。<b>给谁：</b>量化基金、券商自营、资管——一座不知疲倦的因子工厂。</div>
     </div>
   </div>
 
-  <div class="extra">
-    <b>而且它是可扩展的。</b>任何「有诚实硬指标 + 要连续探索数天 + 答案得发明出来」的问题，接成一个新垂域≈<b>在注册表加一行</b>——编译器 pass 调优、算法 / 数据结构优化、有打分器的材料 / 分子设计、系统参数与协议调优、有胜率的博弈策略……都是同一台引擎的下一个垂域。
-  </div>
+  <div class="who-line"><b>统一答案：</b>今天但凡要靠雇一小撮极贵的人、对着一个硬指标连续好几天去 grind 一个发现循环的——都是我们的用户。Argus 把这种最贵、最熬人、最不该让人肉熬的劳动，变成一台能并行、能复利、不会作弊的机器。</div>
 </div></section>
 
-<!-- HOW -->
-<section id="how" class="dark"><div class="wrap">
-  <div class="sec-head">
-    <div class="kicker">How · 怎么做到的</div>
-    <h2>跑通一次谁都会，<br>难的是连续数天不退化</h2>
-    <p>长跑的自治 agent 会死在三件事上。我们把它们<b style="color:#FBF8F2">从结构上</b>堵死——有默认值、有 200+ 测试兜底，不是 prompt 哄劝。</p>
-  </div>
-
-  <div class="guards">
-    <div class="guard"><div class="d">🟢</div><h3>不空转</h3><p>长实验配独立监督进程自看护，agent 不守着它、转去拉别的活；待办空了自动补；一群并行 agent 从任务板领活。</p></div>
-    <div class="guard"><div class="d">🟡</div><h3>不打滑</h3><p>会话被反复有损压缩会「失忆—重读」原地空想（正常轮 ~200 万 token，失忆环涨到 500–700 万）→ 用硬上限小工作记忆 + 会话定期换班根治。</p></div>
-    <div class="guard"><div class="d">🔴</div><h3>不卡死</h3><p>语义进度看门狗（看「项目有没有真前进」而非「进程挂没挂」），停滞自动升级交回 Planner 重拆，卡死 worker 硬超时杀掉改派。</p></div>
-  </div>
-
-  <p style="margin-top:42px;font-size:15px;color:#A89F90">三个会思考的模型协作，谁也不替谁做判断：</p>
-  <div class="roles">
-    <div class="role"><div class="b">L4 · 规划</div><b>Planner</b><span>backlog 空了排新任务；还差认证时把「完成」改派成认证任务。</span></div>
-    <div class="role"><div class="b">L1 · 工程</div><b>Engineer</b><span>单轮执行：搜文献、写代码、跑实验、写作；和 reviewer 共享工作目录。</span></div>
-    <div class="role"><div class="b">L2 · 审稿</div><b>Reviewer</b><span>对照 stage 清单裁决 done / continue / blocked。<b style="color:#FBF8F2">它是「做完没」的唯一事实来源。</b></span></div>
-  </div>
-
-  <p style="margin-top:42px;font-size:15px;color:#A89F90">而它怎么啃下需要专业 know-how 的 OOD 难题？靠<b style="color:#FBF8F2">自进化</b>，不靠「换个更大模型」：</p>
-  <div class="pipe-steps">
-    <div class="st"><div class="i">缺能力</div><b>当场长一个</b><span>没现成 skill 就在线蒸馏，联网看「从业者怎么解」+ 本机实测，写成实操手册</span></div>
-    <div class="st"><div class="i">每个任务后</div><b>自动更新</b><span>成功→强化 · 没命中→蒸馏 · 有教训→修订 · 连败→退役</span></div>
-    <div class="st"><div class="i">失败也</div><b>沉淀</b><span>被否决的方向留下可复用 skill / benchmark / 审计，喂给下一次</span></div>
-    <div class="st"><div class="i">结果</div><b>越跑越会</b><span>第 N 次碰同类难题，手里已攥着前 N−1 次攒下的 know-how</span></div>
-  </div>
-</div></section>
-
-<!-- WHY US -->
-<section id="whyus"><div class="wrap">
-  <div class="sec-head">
-    <div class="kicker">Why us · 为什么是我们</div>
-    <h2>我们不是在演示这个系统，<br>是在用它改它自己</h2>
-    <p>一个能 7×24 自治长跑、还能反过来淬炼并写回自身能力的系统，证明的不是「我们会写 agent」，而是「我们已经把它跑到了能自我复利的临界点」——这种东西攒出来，需要在真机上长跑很多个昼夜。</p>
-  </div>
-  <div class="reasons">
-    <div class="reason">
-      <div class="n">01</div>
-      <h3>它在自主修改自己的源码</h3>
-      <p>每次任务成功结束，系统把 agent 淬炼出的新能力分类、<b style="color:var(--ink)">写回源码并自动 git commit</b>。跑任务 → 长出新能力 → 写回出厂 → 下次启动再带回来，是个闭合的自进化环。</p>
-      <div class="ev">证据：manager 收拾钩子 + git log 里一串自治产出的 commit</div>
+<!-- QA -->
+<section id="qa" class="div"><div class="wrap">
+  <div class="kicker">常见疑问 · 我们诚实地答</div>
+  <h2>你大概会问这些</h2>
+  <div class="qa">
+    <div class="q">
+      <div class="qt"><span class="n">Q1</span>怎么判断产出质量好坏？能保证高质量吗？</div>
+      <div class="at">不靠自我宣称。质量来自三件叠加：①一个<b>买家能自己复验</b>的外部硬指标（因子的样本外收益、kernel 的 SOL，买家自证）；②一个对照真实评审量表、<b>对抗式审查</b>的 reviewer，它是"做完没"的唯一事实来源；③一层<b>防作弊审计</b>堵死"看着好其实假"。</div>
+      <div class="edge"><b>边界：</b>论文这类靠"评审品味"的产出，质量有天花板——所以我们头牌卖的是买家能复验的那类，论文当能力压测，不当门面。</div>
     </div>
-    <div class="reason">
-      <div class="n">02</div>
-      <h3>它扛得住生产规模</h3>
-      <p>systemd 7×24 部署（crash / 重启自动恢复、停机排空到任务边界不硬杀）、GPU keep-alive 防云主机回收空卡、并行 teammate 舰队从共享任务板领活。断 SSH、回收 GPU、进程卡死都摧不垮它。</p>
-      <div class="ev">证据：deploy/ 的 systemd unit + 实测在跑的多进程舰队</div>
+    <div class="q">
+      <div class="qt"><span class="n">Q2</span>是不是把现成的检索 / 清洗工具简单整合？</div>
+      <div class="at">不是。那些单点能力本就是 commodity，我们直接当工具用——但它们不是产品。产品是<b>在诚实指标上连续数天不退化、不作弊、不卡死地把循环驱动到底</b>。一堆最强单点工具拼起来给不了你这个。就像自动驾驶不是"摄像头+雷达+电机的拼装"——整合、判断、长时间可靠运行本身才是产品。</div>
     </div>
-    <div class="reason">
-      <div class="n">03</div>
-      <h3>对标顶级实验室的公开数字</h3>
-      <p>同一类基准（kernel SOL、训练墙钟、nanochat），我们用一个<b style="color:var(--ink)">开源、可部署、领域无关</b>的引擎去对标——而不是一个买不起也打不开的黑箱。</p>
-      <div class="ev">证据：5 个 verticals/ 真实存在，各跑各的真实基线</div>
+    <div class="q">
+      <div class="qt"><span class="n">Q3</span>不同人用会不会产出雷同？个性化 / 查重怎么办？</div>
+      <div class="at">指标域<b>该雷同</b>——都把 kernel 逼到极限，收敛到最优是正确不是抄袭。研究域才有风险，而我们专门反平庸：强制写 <b>idea 否决日志</b>、reviewer 必须核"是否毙掉了一个已有的平庸想法"，加上每次都锚定<b>你自己的目标 + 私有数据</b>，输入不同结果由构造就不同。</div>
+      <div class="edge"><b>边界：</b>输入完全相同→输出会相似（那是正确性）。真要卖论文，补一个原创性 / 查重闸门是合理的，这点我们不硬撑。</div>
     </div>
-    <div class="reason">
-      <div class="n">04</div>
-      <h3>诚信是结构，不是口号</h3>
-      <p>只用真实公开 benchmark、主动堵 reward hacking、基线同硬件同脚手架复现、全程可复现审计链、绝不报喜报早。这让我们的产出<b style="color:var(--ink)">可被独立验证地诚实</b>。</p>
-      <div class="ev">证据：随机化评测输入 / 泄漏探针 / 全规模证据门</div>
+    <div class="q">
+      <div class="qt"><span class="n">Q4</span>过程数据是自产自销，有信息增量吗？</div>
+      <div class="at">羊毛<b>不是出在羊身上，是出在现实身上</b>。每条轨迹都是"假设撞上真实"的记录——"改了这个 kernel，真机上 SOL 从 0.54 涨到 0.58"。增量来自那次<b>真实实验</b>，模型只是做实验并诚实记账的仪器。这正是预训练里最稀缺的东西：OOD 难题上带真奖励的"想法→实验→结果"验证链，尤其是几乎不公开的<b>负结果</b>。</div>
+      <div class="edge"><b>边界：</b>增量大小 = 问题有多难 × 奖励有多干净。作弊数据是负资产——这就是为什么防作弊不是洁癖，是把数据从垃圾变成资产的前提。</div>
+    </div>
+    <div class="q">
+      <div class="qt"><span class="n">Q5</span>它真能"像人一样思考"吗？文献→idea→研究？</div>
+      <div class="at">我们不声称"像人思考"（那是招黑的拟人话术）。该讲的更硬：它<b>显式地走真实研究流程，并在每一步卡一个对抗式验证 + 一个诚实指标当 ground truth</b>。8 个阶段就是学者的工作流——读文献、毙平庸 idea、设计实验、复现强基线、claim 溯源、过审——只是被显式化、被逐阶段 gate，比一个会累的研究生更不偷懒。</div>
+      <div class="edge"><b>边界：</b>"形成惊艳 idea / 品味"是真正的前沿弱项（谁都没解）。所以我们卖<b>执行 + 验证</b>，在指标域品味根本不需要——指标就是品味。</div>
     </div>
   </div>
 </div></section>
 
-<!-- WHY NOW -->
-<section id="whynow" class="dark"><div class="wrap">
-  <div class="sec-head">
-    <div class="kicker">Why now · 为什么是现在</div>
-    <h2>瓶颈刚刚换了位置</h2>
-    <p>基座模型在 2025–2026 跨过了「能自主连续做多步」的门槛。于是真正的瓶颈，从「模型能不能做对一步」转移到了「<b style="color:#FBF8F2">系统能不能数天不退化地一直做下去</b>」——正是我们解的那件事。</p>
-  </div>
-  <div class="now">
-    <div class="nowc"><div class="ic">🧠</div><div><b>模型够强了，但单靠模型不够</b><p>一步的智能已经到位；连续数千步不退化、不作弊，是系统工程问题，不是「再大一号模型」能解的。</p></div></div>
-    <div class="nowc"><div class="ic">💰</div><div><b>这个品类刚被重金验证</b><p>估值数十亿美金的实验室正用真金白银证明「自治跑可验证长程任务」是真品类、真值钱——市场已被教育。</p></div></div>
-    <div class="nowc"><div class="ic">🧪</div><div><b>可验证轨迹成了最稀缺资产</b><p>带 ground-truth 奖励的研究轨迹，是训练 / RL 下一代模型最缺的燃料，人人在抢。Argus 把它当副产品产出。</p></div></div>
-    <div class="nowc"><div class="ic">⚡</div><div><b>算力太贵，ROI 从未如此高</b><p>当一张卡一小时都是钱，「榨干每张卡 / 不让自治 agent 空转」的回报，比任何时候都直接。</p></div></div>
-  </div>
-</div></section>
-
-<!-- USERS / HOW THEY USE -->
-<section id="users"><div class="wrap">
-  <div class="sec-head">
-    <div class="kicker">Who & How · 谁在用、怎么用</div>
-    <h2>同一台引擎，<br>四类人各取所需</h2>
-    <p>用法都一样朴素：给一个有诚实指标的 <span class="mono">objective</span> + 一份这台机器的 <span class="mono">special prompt</span>（GPU / 路径 / 调度规则），剩下的它自己来。差别只在喂什么目标、跑在谁的数据上。</p>
-  </div>
-
-  <div class="persona">
-    <div class="who"><h3>前沿实验室 / 基础设施团队</h3><div class="role-t">PRIVATE DEPLOY</div></div>
-    <div class="flow">
-      <div class="step"><div class="k">部署</div><div class="v">装在自己的 GPU 集群里，数据与权重<b>不出门</b></div></div>
-      <div class="step"><div class="k">目标</div><div class="v">「把这个算子推到 SOL」/「把这条训练压到 X 秒」<span>——指一个 benchmark</span></div></div>
-      <div class="step"><div class="k">收获</div><div class="v">更快的 kernel / 训练配方 <b>+ 一批干净的可验证训练轨迹</b>（自家资产）</div></div>
-    </div>
-  </div>
-
-  <div class="persona">
-    <div class="who"><h3>量化基金 / 自营</h3><div class="role-t">FACTOR FACTORY</div></div>
-    <div class="flow">
-      <div class="step"><div class="k">部署</div><div class="v">隔离环境接入<b>私有行情 / 因子库</b>，喂自己的非目标约束</div></div>
-      <div class="step"><div class="k">目标</div><div class="v">「挖样本外稳健、与现有组合低相关的 alpha」</div></div>
-      <div class="step"><div class="k">收获</div><div class="v">reviewer 认证的因子报告 + <b>泄漏 / 样本外审计链</b>——可直接进研究流水线，自己复验收益</div></div>
-    </div>
-  </div>
-
-  <div class="persona">
-    <div class="who"><h3>研究机构 / 企业研究院</h3><div class="role-t">RESEARCH OUTPUT</div></div>
-    <div class="flow">
-      <div class="step"><div class="k">部署</div><div class="v">私有部署，配自己的作者身份与目标会议格式</div></div>
-      <div class="step"><div class="k">目标</div><div class="v">「在 X 方向上产出能过审的工作」<span>——长期持续</span></div></div>
-      <div class="step"><div class="k">收获</div><div class="v">从 idea 到论文 / 技术报告的全流程产出，每步可审计、claim 可溯源</div></div>
-    </div>
-  </div>
-
-  <div class="persona">
-    <div class="who"><h3>个人研究者 / 开发者</h3><div class="role-t">OPEN SOURCE</div></div>
-    <div class="flow">
-      <div class="step"><div class="k">部署</div><div class="v"><b>MIT 开源版</b>，在自己机器上一条命令起步</div></div>
-      <div class="step"><div class="k">目标</div><div class="v">一个有界小目标：优化一段代码、复现一个 benchmark</div></div>
-      <div class="step"><div class="k">收获</div><div class="v">免费上手、建立信任，需要规模 / 团队 / 私有部署时再升级到企业版</div></div>
-    </div>
-  </div>
-</div></section>
-
-<!-- BUSINESS MODEL -->
-<section id="business" class="dark"><div class="wrap">
-  <div class="sec-head">
-    <div class="kicker">Business · 盈利模式</div>
-    <h2>开源做漏斗，<br>越靠近「可验证的成果」越值钱</h2>
-    <p>定价逻辑直接长在产品本质上：因为产出<b style="color:#FBF8F2">可被独立验证</b>，我们敢把价钱绑在结果上——这是黑箱方案给不出的对齐。</p>
-  </div>
-  <div class="tiers">
-    <div class="tier">
-      <div class="badge">漏斗</div>
-      <h3>开源核心</h3>
-      <div class="price">MIT · 免费</div>
-      <p>完整引擎开源，建立信任与社区、做开发者入口。看得见、改得动、跑在自己机器上。</p>
-      <div class="who2"><b>对象：</b>个人研究者、开发者、想先验证的团队</div>
-    </div>
-    <div class="tier">
-      <div class="badge">订阅</div>
-      <h3>企业版 / 私有部署</h3>
-      <div class="price">按席位 / 年订阅</div>
-      <p>团队舰队管理、私有部署、权限与审计、SLA 与支持。数据不出门，跑在客户自己的集群上。</p>
-      <div class="who2"><b>对象：</b>实验室、企业研究院、基础设施团队</div>
-    </div>
-    <div class="tier feat">
-      <div class="badge">成果分成 · 最对齐</div>
-      <h3>Outcome-based</h3>
-      <div class="price">按结果计费</div>
-      <p>利用「可验证」本质：量化场景<b style="color:#FBF8F2">按因子 / 策略收益分成</b>；优化场景按「省下的算力 / 达标的加速」分成——<b style="color:#FBF8F2">打不过你的基线就不收费。</b></p>
-      <div class="who2"><b>对象：</b>量化基金、对算力 ROI 敏感的团队</div>
-    </div>
-    <div class="tier">
-      <div class="badge">长期 optionality</div>
-      <h3>数据资产</h3>
-      <div class="price">授权 / 合作</div>
-      <p>经客户授权的、带 ground-truth 奖励的<b style="color:#FBF8F2">干净验证轨迹</b>——这正是训练 / RL 下一代模型最缺的燃料。诚信护栏保证它是资产而非污染。</p>
-      <div class="who2"><b>对象：</b>模型实验室、数据合作方</div>
-    </div>
-  </div>
-  <p style="margin-top:26px;font-size:13.5px;color:#857c6e">越往右，价值越高、越对齐，也越依赖「可验证」这一前提——这也是为什么我们坚持只做有诚实指标的任务。</p>
-</div></section>
-
-<!-- CTA -->
-<section id="contact"><div class="wrap">
-  <div class="ctaband">
-    <h2>有一个「创新 + 长程 + 可验证」的难题？</h2>
-    <p>把目标和这台机器的规则给它，剩下的它自己来。我们一起把第一个 design partner 跑出来。</p>
-    <div class="cta-row">
-      <a class="btn btn-white" href="mailto:hello@argus.cn">预约一次 Demo</a>
+<!-- CLOSE -->
+<section class="div"><div class="wrap">
+  <div class="close">
+    <div class="s">我们卖的不是论文、不是因子——是<b>把人类最贵的那种脑力劳动自动化</b>：一台能自己转起"发明—验证"循环的机器，7×24、并行、不作弊、越跑越会。</div>
+    <div class="btns">
+      <a class="btn btn-white" href="mailto:hello@argusbot.cn">聊一个具体难题</a>
       <a class="btn btn-out" href="https://github.com/lbx154/argus-skill">在 GitHub 上看代码</a>
     </div>
   </div>
-  <p class="anote">基准数字（torch.compile≈0.547 SOL、8×H100 77.3s、nanochat val_bpb、A 股 qlib 回测）均指向 <span class="mono">argus_skill/verticals/</span> 下真实存在的垂域与公开基线，可逐项核验。</p>
 </div></section>
 
 <footer><div class="wrap"><div class="row">
   <div>© 2026 Argus · Autonomous Research Generation &amp; Understanding System</div>
-  <div class="links">
-    <a href="#what">是什么</a>
-    <a href="#cases">应用场景</a>
-    <a href="#business">盈利模式</a>
-    <a href="https://github.com/lbx154/argus-skill">GitHub</a>
-  </div>
+  <div><a href="/">返回首页</a></div>
 </div></div></footer>
 
 </body></html>
