@@ -165,29 +165,13 @@
 <link href="assets/site.css" rel="stylesheet">
 </head><body class="page-research">
 
-<nav><div class="wrap row">
-  <div class="brand"><img class="logo" src="assets/argus-mark-gold.png" alt="Argus">Argus</div>
-  <div class="nav-links">
-    <a href="/" data-en="Home" data-ja="ホーム" data-ko="홈" data-fr="Accueil" data-de="Home" data-es="Inicio">首页</a><a href="results.html" data-en="Results" data-ja="結果" data-ko="결과" data-fr="Résultats" data-de="Ergebnisse" data-es="Resultados">成绩</a><a href="#research" data-en="Research" data-ja="研究" data-ko="연구" data-fr="Recherche" data-de="Forschung" data-es="Investigación">研究</a><a href="how.html" data-en="How it works" data-ja="仕組み" data-ko="작동 방식" data-fr="Fonctionnement" data-de="Funktionsweise" data-es="Cómo funciona">原理</a><a href="use-cases.html" data-en="Use cases" data-ja="ユースケース" data-ko="사용 사례" data-fr="Cas d’usage" data-de="Anwendungsfälle" data-es="Casos de uso">场景</a>
+<div class="site-header"><div class="site-header-inner">
+  <a class="site-brand" href="/"><img src="assets/argus-mark-gold.png" alt="">Argus</a>
+  <div class="site-links">
+    <a href="/">系统</a><a href="results.html">成绩</a><a aria-current="page" href="research.html">研究</a><a href="how.html">原理</a><a href="use-cases.html">场景</a>
   </div>
-  <div class="nav-r">
-    <a class="si" href="start.html" data-en="Get started" data-ja="始める" data-ko="시작하기" data-fr="Commencer" data-de="Loslegen" data-es="Comenzar">开始使用</a>
-    <a class="si" href="https://dash.argusbot.cn" data-en="Live dashboard" data-ja="ライブダッシュボード" data-ko="실시간 대시보드" data-fr="Tableau de bord en direct" data-de="Live-Dashboard" data-es="Panel en vivo">实时看板</a>
-    <div class="lang-select" id="langSelect">
-    <button class="lang-btn" id="langBtn"><span id="langFlag">🇨🇳</span> <span id="langLabel">中文</span> <span style="opacity:.5">▾</span></button>
-    <div class="lang-menu" id="langMenu">
-      <button data-lang="cn"><span>🇨🇳</span> 简体中文</button>
-      <button data-lang="en"><span>🇺🇸</span> English</button>
-      <button data-lang="ja"><span>🇯🇵</span> 日本語</button>
-      <button data-lang="ko"><span>🇰🇷</span> 한국어</button>
-      <button data-lang="fr"><span>🇫🇷</span> Français</button>
-      <button data-lang="de"><span>🇩🇪</span> Deutsch</button>
-      <button data-lang="es"><span>🇪🇸</span> Español</button>
-    </div>
-  </div>
-    <a class="nav-cta" href="start.html" data-en="Get started" data-ja="始める" data-ko="시작하기" data-fr="Commencer" data-de="Loslegen" data-es="Comenzar">开始使用</a>
-  </div>
-</div></nav>
+  <a class="site-cta" href="start.html">开始使用</a>
+</div></div>
 
 <header class="hero wrap" hidden>
   <div>
@@ -390,6 +374,7 @@
   var els=document.querySelectorAll("[data-en]");
   var sel=document.getElementById("langSelect"),btn=document.getElementById("langBtn"),menu=document.getElementById("langMenu");
   var flag=document.getElementById("langFlag"),label=document.getElementById("langLabel");
+  if(!sel||!btn||!menu||!flag||!label) return;
   function apply(lang){
     els.forEach(function(el){
       if(el.dataset.cn===undefined) el.dataset.cn=el.innerHTML;

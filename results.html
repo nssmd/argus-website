@@ -10,22 +10,15 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
 <link href="assets/blog.css" rel="stylesheet"/>
+<link href="assets/site.css" rel="stylesheet"/>
 </head><body class="page-results">
 <div aria-hidden="true" class="reading-progress"><span id="readingProgress"></span></div>
-<div class="nav"><div class="in">
-<a class="b" href="/"><img alt="" src="assets/argus-mark-gold.png"/>Argus <span class="brand-section" data-zh="成绩">Results</span></a>
-<nav aria-label="Primary" class="nav-links">
-<a data-zh="首页" href="/">Home</a>
-<a aria-current="page" data-zh="成绩" href="results.html">Results</a>
-<a data-zh="研究" href="research.html">Research</a>
-<a data-zh="工作原理" href="how.html">How it works</a>
-<a data-zh="应用场景" href="use-cases.html">Use cases</a>
-<a data-zh="开始使用" href="start.html">Get started</a>
-</nav>
-<div class="nav-actions">
-<button aria-label="Switch language" class="blog-lang" id="blogLang" type="button">中</button>
-<a class="dashboard-link" data-zh="实时看板 ↗" href="https://dash.argusbot.cn">Live dashboard ↗</a>
-</div>
+<div class="site-header"><div class="site-header-inner">
+  <a class="site-brand" href="/"><img src="assets/argus-mark-gold.png" alt="">Argus</a>
+  <div class="site-links">
+    <a href="/">系统</a><a aria-current="page" href="results.html">成绩</a><a href="research.html">研究</a><a href="how.html">原理</a><a href="use-cases.html">场景</a>
+  </div>
+  <a class="site-cta" href="start.html">开始使用</a>
 </div></div>
 <header class="article-hero">
 <div class="hero-copy">
@@ -132,15 +125,17 @@
       el.innerHTML = (lang==='zh') ? el.dataset.zh : el.dataset.enOrig;
     });
     document.documentElement.lang=(lang==='zh')?'zh-CN':'en';
-    btn.textContent=(lang==='zh')?'EN':'中';
-    btn.setAttribute('aria-label',(lang==='zh')?'Switch to English':'切换到中文');
+    if(btn){
+      btn.textContent=(lang==='zh')?'EN':'中';
+      btn.setAttribute('aria-label',(lang==='zh')?'Switch to English':'切换到中文');
+    }
     try{localStorage.setItem('blog-lang',lang);}catch(e){}
     buildToc();
   }
-  btn.addEventListener('click',function(){
-    var cur; try{cur=localStorage.getItem('blog-lang');}catch(e){}
-    apply(cur==='zh'?'en':'zh');
-  });
+  if(btn) btn.addEventListener('click',function(){
+      var cur; try{cur=localStorage.getItem('blog-lang');}catch(e){}
+      apply(cur==='zh'?'en':'zh');
+    });
   window.addEventListener('scroll',updateProgress,{passive:true});
   window.addEventListener('resize',updateProgress);
   var init=(navigator.language||'').toLowerCase().indexOf('zh')===0?'zh':'en';
