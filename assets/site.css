@@ -115,7 +115,7 @@ h2 .num {
 
 .site-header-inner {
   width: min(1200px, calc(100% - 48px));
-  min-height: 56px;
+  min-height: 52px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -135,10 +135,10 @@ h2 .num {
 }
 
 .site-brand img {
-  width: 23px;
-  height: 23px;
-  border-radius: 6px;
-  box-shadow: 0 0 0 1px rgba(201, 149, 45, 0.26);
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  box-shadow: none;
 }
 
 .site-links {
@@ -163,19 +163,11 @@ h2 .num {
 
 .site-links a:hover,
 .site-links a[aria-current="page"] {
-  color: var(--blue);
+  color: var(--ink);
 }
 
 .site-links a[aria-current="page"]::after {
-  position: absolute;
-  right: 50%;
-  bottom: -1px;
-  width: 18px;
-  height: 2px;
-  border-radius: 2px 2px 0 0;
-  background: var(--gold);
-  content: "";
-  transform: translateX(50%);
+  content: none;
 }
 
 .site-cta {
@@ -183,13 +175,13 @@ h2 .num {
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  min-height: 32px;
-  padding: 0 15px;
-  border: 1px solid #0a2448;
-  border-radius: 7px;
-  background: #0b2348;
-  box-shadow: 0 10px 22px -18px rgba(8, 27, 54, 0.72);
-  color: #fff;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--blue);
   font-size: 12px;
   font-weight: 700;
   text-decoration: none;
@@ -197,14 +189,18 @@ h2 .num {
 }
 
 .site-cta:hover {
-  border-color: var(--blue);
-  background: var(--blue);
-  color: #fff;
+  background: transparent;
+  color: var(--gold-dark);
 }
 
 .site-cta[aria-current="page"] {
-  border-color: var(--gold);
-  box-shadow: inset 0 -2px 0 var(--gold);
+  color: var(--ink);
+  box-shadow: none;
+}
+
+.site-cta::after {
+  margin-left: 6px;
+  content: "→";
 }
 
 nav,
@@ -913,8 +909,8 @@ footer {
   }
 
   .site-cta {
-    min-height: 33px;
-    padding-inline: 12px;
+    min-height: 0;
+    padding-inline: 0;
   }
 
   .site-links {
