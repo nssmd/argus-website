@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>Argus — Global #6 on NVIDIA SOL-ExecBench</title>
-<meta content="Argus reached global #6 on NVIDIA SOL-ExecBench, beat human SOTA on both H100 and B200 nanochat, ran an 8×H100 speedrun in 79.77 seconds, and produced 36 research PDFs." name="description"/>
+<title>Results · Argus</title>
+<meta content="Argus results across NVIDIA SOL-ExecBench, H100 and B200 nanochat, 8×H100 speedrun, AARRI-Bench, Arbor, and end-to-end research." name="description"/>
 <link href="assets/argus-mark-gold.png" rel="icon" type="image/png"/>
-<meta content="Argus — Global #6 on NVIDIA SOL-ExecBench" property="og:title"/>
+<meta content="Argus Results · Six Scoreboards" property="og:title"/>
 <meta content="Two B200 kernels at #1. Human SOTA beaten on H100 and B200. 8×H100 speedrun: 79.77s. AARRI: 63/82. Arbor: 28.0. 36 research PDFs." property="og:description"/>
 <meta content="https://argusbot.cn/assets/argus-og-blue-gold.png" property="og:image"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
 <link href="assets/blog.css" rel="stylesheet"/>
-</head><body class="page-blog">
+</head><body class="page-results">
 <div aria-hidden="true" class="reading-progress"><span id="readingProgress"></span></div>
 <div class="nav"><div class="in">
-<a class="b" href="/"><img alt="" src="assets/argus-mark-gold.png"/>Argus <span class="brand-section" data-zh="研究博客">Research blog</span></a>
+<a class="b" href="/"><img alt="" src="assets/argus-mark-gold.png"/>Argus <span class="brand-section" data-zh="成绩">Results</span></a>
 <nav aria-label="Primary" class="nav-links">
 <a data-zh="首页" href="/">Home</a>
-<a aria-current="page" data-zh="博客" href="blog.html">Blog</a>
-<a data-zh="基准测试" href="benchmark.html">Benchmarks</a>
+<a aria-current="page" data-zh="成绩" href="results.html">Results</a>
+<a data-zh="研究" href="research.html">Research</a>
 <a data-zh="工作原理" href="how.html">How it works</a>
+<a data-zh="应用场景" href="use-cases.html">Use cases</a>
+<a data-zh="开始使用" href="start.html">Get started</a>
 </nav>
 <div class="nav-actions">
 <button aria-label="Switch language" class="blog-lang" id="blogLang" type="button">中</button>
@@ -27,18 +29,17 @@
 </div></div>
 <header class="article-hero">
 <div class="hero-copy">
-<div class="eyebrow" data-zh="Argus 正式发布 · 2026 年 7 月">Introducing Argus · July 2026</div>
-<h1 data-zh="NVIDIA B200 全球第六。它永不下班。">Global #6 on NVIDIA B200. And it never clocks out.</h1>
-<p class="sub" data-zh="你睡觉的时候,Argus 还在 profile kernel、毙掉烂 idea、跑实验,再带着结果回来。这是一套真正会持续工作的 7×24 自主科研系统。">While you sleep, Argus keeps profiling kernels, killing weak ideas, running experiments, and coming back with results. This is a research system that actually keeps working.</p>
+<div class="eyebrow" data-zh="Argus · 成绩">Argus · Results</div>
+<h1 data-zh="一套系统，六个赛场。">One system. Six scoreboards.</h1>
+<p class="sub" data-zh="从 NVIDIA B200 kernel 到训练速度、研究实习生能力和论文交付，所有核心结果集中在这一页。">From NVIDIA B200 kernels to training speed, research-intern work, and paper delivery — every headline result lives here.</p>
 <div class="hero-footer">
 <div class="meta"><span class="byline" data-zh="Argus Research 团队">Argus Research</span><span data-zh="2026 年 7 月 · 3 分钟阅读 · NVIDIA B200 + H100">July 2026 · 3 min read · NVIDIA B200 + H100</span></div>
 <div class="hero-actions">
 <a class="pdfbtn" data-zh="观看 Argus 实时工作 ↗" href="https://dash.argusbot.cn" rel="noopener" target="_blank">Watch Argus work live ↗</a>
-<a class="benchmark-btn" data-zh="查看数据" href="benchmark.html">View the data</a>
+<a class="benchmark-btn" data-zh="查看论文" href="research.html">View research</a>
 </div>
 </div>
 </div>
-<div class="hero-media"><img alt="Argus autonomous research system architecture" src="assets/hero-visual-blue.png"/></div>
 </header>
 <main class="reading-layout">
 <article class="article-body" id="articleBody">
@@ -52,9 +53,9 @@
 <table>
 <tr><th data-zh="赛场">Arena</th><th data-zh="Argus 成绩">Argus result</th><th data-zh="对比 / 结果">Comparison / outcome</th></tr>
 <tr><td><b>NVIDIA SOL-ExecBench</b><br><span style="font-size:11px;color:#0FAE74">B200</span></td><td data-zh="全球综合 &lt;b&gt;#6&lt;/b&gt; · 两个 kernel &lt;b&gt;#1&lt;/b&gt; · 7 个 top-3">Global <b>#6</b> overall · two kernels at <b>#1</b> · 7 top-three finishes</td><td data-zh="两个算子正面超过 Recursive">Two head-to-head wins over Recursive</td></tr>
-<tr><td><a href="nanochat-b200.html"><b>nanochat · B200</b></a><br><span style="font-size:11px;color:#0FAE74">5 min · 1×B200</span></td><td data-zh="426 次自治尝试 · &lt;b&gt;0.9636 BPB&lt;/b&gt;">426 autonomous attempts · <b>0.9636 BPB</b></td><td data-zh="超过 human SOTA &lt;b&gt;0.9646&lt;/b&gt;">beats human SOTA <b>0.9646</b></td></tr>
-<tr><td><a href="benchmark.html"><b>nanochat · H100</b></a><br><span style="font-size:11px;color:#0FAE74">5 min · 1×H100</span></td><td data-zh="37 个新机制 · &lt;b&gt;0.9855 BPB&lt;/b&gt;">37 original mechanisms · <b>0.9855 BPB</b></td><td data-zh="超过 human SOTA &lt;b&gt;0.9879&lt;/b&gt;">beats human SOTA <b>0.9879</b></td></tr>
-<tr><td><a href="speedrun.html"><b>nanoGPT speedrun</b></a><br><span style="font-size:11px;color:#0FAE74">8×H100 · N=10</span></td><td data-zh="达到 val_loss≤3.28:&lt;b&gt;79.77 秒&lt;/b&gt;">Reached val_loss≤3.28 in <b>79.77 seconds</b></td><td data-zh="human #83 同机重测:&lt;b&gt;80.18 秒&lt;/b&gt;">human #83, same-device rerun: <b>80.18 seconds</b></td></tr>
+<tr><td><b>nanochat · B200</b><br><span style="font-size:11px;color:#0FAE74">5 min · 1×B200</span></td><td data-zh="426 次自治尝试 · &lt;b&gt;0.9636 BPB&lt;/b&gt;">426 autonomous attempts · <b>0.9636 BPB</b></td><td data-zh="超过 human SOTA &lt;b&gt;0.9646&lt;/b&gt;">beats human SOTA <b>0.9646</b></td></tr>
+<tr><td><b>nanochat · H100</b><br><span style="font-size:11px;color:#0FAE74">5 min · 1×H100</span></td><td data-zh="37 个新机制 · &lt;b&gt;0.9855 BPB&lt;/b&gt;">37 original mechanisms · <b>0.9855 BPB</b></td><td data-zh="超过 human SOTA &lt;b&gt;0.9879&lt;/b&gt;">beats human SOTA <b>0.9879</b></td></tr>
+<tr><td><b>nanoGPT speedrun</b><br><span style="font-size:11px;color:#0FAE74">8×H100 · N=10</span></td><td data-zh="达到 val_loss≤3.28:&lt;b&gt;79.77 秒&lt;/b&gt;">Reached val_loss≤3.28 in <b>79.77 seconds</b></td><td data-zh="human #83 同机重测:&lt;b&gt;80.18 秒&lt;/b&gt;">human #83, same-device rerun: <b>80.18 seconds</b></td></tr>
 <tr><td><b>AARRI-Bench</b></td><td data-zh="&lt;b&gt;63/82(76.8%)&lt;/b&gt; · 严格 judge 64/82(78.0%)"><b>63/82 (76.8%)</b> · strict judge 64/82 (78.0%)</td><td data-zh="论文报告最佳 68.3%">Paper-reported best: 68.3%</td></tr>
 <tr><td><b>Arbor · RUC NLPIR</b></td><td data-zh="Math-Reasoning Data &lt;b&gt;28.0&lt;/b&gt; · 配套评测 23.96">Math-Reasoning Data <b>28.0</b> · companion eval 23.96</td><td data-zh="Arbor 20.83 · Claude Code 8.33 · Codex 6.25">Arbor 20.83 · Claude Code 8.33 · Codex 6.25</td></tr>
 <tr><td data-zh="&lt;b&gt;端到端研究&lt;/b&gt;"><b>End-to-end research</b></td><td data-zh="六个方向 · &lt;b&gt;36 份研究 PDF&lt;/b&gt;">Six directions · <b>36 research PDFs</b></td><td data-zh="从选题一路跑到论文交付">From topic selection to paper delivery</td></tr>
@@ -71,7 +72,7 @@
 <nav class="toc-list" id="desktopToc"></nav>
 <div class="toc-links">
 <a data-zh="观看实时研究 ↗" href="https://dash.argusbot.cn" rel="noopener" target="_blank">Watch live research ↗</a>
-<a data-zh="查看完整基准测试 ↗" href="benchmark.html">Full benchmark report ↗</a>
+<a data-zh="浏览研究合集 ↗" href="research.html">Research collection ↗</a>
 </div>
 </aside>
 </main>

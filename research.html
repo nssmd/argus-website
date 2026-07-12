@@ -1,10 +1,10 @@
 <!DOCTYPE html><html lang="zh-CN"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Argus — 永不下班的 AI 研究员</title>
-<meta name="description" content="Argus 是一套 7×24 自治研究系统：NVIDIA SOL-ExecBench 全球第六，两个 B200 kernel 全榜第一，H100 与 B200 均超过 human SOTA。">
+<title>Research · Argus</title>
+<meta name="description" content="Argus 自主研究成果集：六个研究方向，36 份精选论文 PDF。">
 <link rel="icon" type="image/png" href="assets/argus-mark-gold.png">
-<meta property="og:title" content="Argus — 永不下班的 AI 研究员">
-<meta property="og:description" content="NVIDIA 全球第六 · 两个 B200 #1 · H100/B200 超过 human SOTA · 36 份研究 PDF。">
+<meta property="og:title" content="Argus Research · 36 Papers">
+<meta property="og:description" content="六个研究方向，36 份精选论文 PDF。">
 <meta property="og:image" content="https://argusbot.cn/assets/argus-og-blue-gold.png">
 <meta property="og:url" content="https://argusbot.cn"><meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -163,12 +163,12 @@
  .lang-menu button span{font-size:16px}
 </style>
 <link href="assets/site.css" rel="stylesheet">
-</head><body class="page-home">
+</head><body class="page-research">
 
 <nav><div class="wrap row">
   <div class="brand"><img class="logo" src="assets/argus-mark-gold.png" alt="Argus">Argus</div>
   <div class="nav-links">
-    <a href="#what" data-en="System" data-ja="システム" data-ko="시스템" data-fr="Système" data-de="System" data-es="Sistema">系统</a><a href="results.html" data-en="Results" data-ja="結果" data-ko="결과" data-fr="Résultats" data-de="Ergebnisse" data-es="Resultados">成绩</a><a href="research.html" data-en="Research" data-ja="研究" data-ko="연구" data-fr="Recherche" data-de="Forschung" data-es="Investigación">研究</a><a href="how.html" data-en="How it works" data-ja="仕組み" data-ko="작동 방식" data-fr="Fonctionnement" data-de="Funktionsweise" data-es="Cómo funciona">原理</a><a href="use-cases.html" data-en="Use cases" data-ja="ユースケース" data-ko="사용 사례" data-fr="Cas d’usage" data-de="Anwendungsfälle" data-es="Casos de uso">场景</a>
+    <a href="/" data-en="Home" data-ja="ホーム" data-ko="홈" data-fr="Accueil" data-de="Home" data-es="Inicio">首页</a><a href="results.html" data-en="Results" data-ja="結果" data-ko="결과" data-fr="Résultats" data-de="Ergebnisse" data-es="Resultados">成绩</a><a href="#research" data-en="Research" data-ja="研究" data-ko="연구" data-fr="Recherche" data-de="Forschung" data-es="Investigación">研究</a><a href="how.html" data-en="How it works" data-ja="仕組み" data-ko="작동 방식" data-fr="Fonctionnement" data-de="Funktionsweise" data-es="Cómo funciona">原理</a><a href="use-cases.html" data-en="Use cases" data-ja="ユースケース" data-ko="사용 사례" data-fr="Cas d’usage" data-de="Anwendungsfälle" data-es="Casos de uso">场景</a>
   </div>
   <div class="nav-r">
     <a class="si" href="start.html" data-en="Get started" data-ja="始める" data-ko="시작하기" data-fr="Commencer" data-de="Loslegen" data-es="Comenzar">开始使用</a>
@@ -189,7 +189,7 @@
   </div>
 </div></nav>
 
-<header class="hero wrap">
+<header class="hero wrap" hidden>
   <div>
     <span class="eyebrow"><span class="live"></span><span data-en="Autonomous 7×24 · global #6 on NVIDIA B200" data-ja="自律稼働 7×24 ・ 3つのデーモン" data-ko="7×24 자율 실행 · 세 개의 데몬" data-fr="Fonctionnement autonome 7×24 · trois démons" data-de="Autonomer Betrieb rund um die Uhr 7×24 · drei Daemons" data-es="Funcionando de forma autónoma 7×24 · tres demonios">7×24 自治运行 · NVIDIA B200 全球第六</span></span>
     <h1 data-en="The AI researcher<br>that <em>never clocks out.</em>" data-ja="自律型AI研究者。<br>それは単なる調整ではなく、<em>発明</em>する。" data-ko="자율적인 AI 연구자.<br>그것은 단순히 조정하는 것이 아니라 <em>발명합니다</em>." data-fr="Un chercheur IA autonome.<br>Il <em>invente</em>, il ne se contente pas d’ajuster." data-de="Ein autonomer KI-Forscher.<br>Er <em>erfindet</em>, nicht nur optimiert er." data-es="Un investigador de IA autónomo.<br><em>Inventa</em>, no solo ajusta.">永不下班的<br><em>AI 研究员。</em></h1>
@@ -215,9 +215,9 @@
   </div>
 </header>
 
-<div class="wrap" style="padding-bottom:8px"><img src="assets/hero-visual-blue.png" alt="Argus research pipeline" style="width:100%;border:1px solid var(--line);border-radius:18px;display:block;background:var(--card)"></div>
+<div class="wrap" hidden style="padding-bottom:8px"><img src="assets/hero-visual-blue.png" alt="Argus research pipeline" style="width:100%;border:1px solid var(--line);border-radius:18px;display:block;background:var(--card)"></div>
 
-<div class="trust"><div class="wrap in">
+<div class="trust" hidden><div class="wrap in">
   <div class="s"><div class="n">170k</div><div class="l" data-en="lines of Python" data-ja="Pythonの行数" data-ko="Python 코드 줄 수" data-fr="lignes de Python" data-de="Zeilen Python" data-es="líneas de Python">行 Python</div></div>
   <div class="s"><div class="n">2.6k+</div><div class="l" data-en="tests" data-ja="テスト" data-ko="테스트" data-fr="tests" data-de="Tests" data-es="pruebas">测试</div></div>
   <div class="s"><div class="n">4</div><div class="l" data-en="resident roles" data-ja="常駐ロール" data-ko="상주 역할" data-fr="rôles résidents" data-de="ständige Rollen" data-es="roles residentes">常驻角色</div></div>
@@ -225,7 +225,7 @@
   <div class="s"><div class="n">36</div><div class="l" data-en="research PDFs" data-ja="研究PDF" data-ko="연구 PDF" data-fr="PDF de recherche" data-de="Forschungs-PDFs" data-es="PDF de investigación">研究 PDF</div></div>
 </div></div>
 
-<section id="what"><div class="wrap">
+<section id="what" hidden><div class="wrap">
   <div class="feature" style="display:block;max-width:760px">
     <div>
       <div class="kicker" data-en="System · four resident roles" data-ja="システム ・ 3役エージェント" data-ko="시스템 · 세 역할 에이전트" data-fr="Système · agent à trois rôles" data-de="System · Agent mit drei Rollen" data-es="Sistema · agente de tres roles">系统 · 四个常驻角色</div>
@@ -236,7 +236,7 @@
   </div>
 </div></section>
 
-<section id="research" hidden><div class="wrap">
+<section id="research"><div class="wrap">
   <div style="max-width:760px;margin-bottom:48px">
     <div class="kicker" data-en="Research · 36-paper collection" data-ja="研究 ・ 36本の論文コレクション" data-ko="연구 · 36편 논문 컬렉션" data-fr="Recherche · collection de 36 articles" data-de="Forschung · Sammlung mit 36 Papers" data-es="Investigación · colección de 36 artículos">研究 · 36 篇论文合集</div>
     <h2 data-en="36 papers across six research directions." data-ja="6つの研究領域、36本の論文。" data-ko="6개 연구 방향, 36편의 논문." data-fr="36 articles dans six axes de recherche." data-de="36 Papers in sechs Forschungsrichtungen." data-es="36 artículos en seis líneas de investigación.">36 篇论文，六条研究线。</h2>
@@ -324,21 +324,21 @@
   </div>
 </div></section>
 
-<section id="domains"><div class="wrap">
+<section id="domains" hidden><div class="wrap">
   <div style="max-width:600px;margin-bottom:40px">
     <div class="kicker" data-en="Research domains" data-ja="研究領域" data-ko="연구 도메인" data-fr="Domaines de recherche" data-de="Forschungsdomänen" data-es="Dominios de investigación">研究领域</div>
     <h2 data-en="One system, many battlegrounds." data-ja="1つのシステム、多くの戦場。" data-ko="하나의 시스템, 많은 전장." data-fr="Un système, de nombreux champs de bataille." data-de="Ein System, viele Schlachtfelder." data-es="Un sistema, muchos campos de batalla.">一套系统，多个战场。</h2>
     <p style="color:var(--mut);font-size:16.5px;margin-top:14px" data-en="The same four-role runtime can enter a new domain by swapping its vertical: research, training, kernels, finance, and beyond." data-ja="同じ愚直なハーネスと3つの役割。垂直プラグインを差し替えれば領域も切り替わる。勝ちの定義は各領域ごとに別々で、決して相互汚染しない。" data-ko="같은 단순한 하네스와 세 역할; 도메인을 바꾸려면 수직 플러그인만 바꾸면 됩니다. 승리는 각각에 대해 별도로 정의되며, 서로 오염되지 않습니다." data-fr="Le même harnais simple et les trois mêmes rôles ; remplacez un plugin vertical pour changer de domaine. La victoire est définie séparément pour chacun, sans jamais se contaminer entre eux." data-de="Dasselbe dumme Harness und dieselben drei Rollen; tauschen Sie ein vertikales Plugin aus, um die Domäne zu wechseln. Der Sieg wird für jede separat definiert, niemals gegenseitig verunreinigt." data-es="El mismo arnés simple y tres roles; cambia un plugin vertical para cambiar el dominio. La victoria se define por separado para cada uno, nunca se contamina entre ellos.">同一套四角色 runtime，换一个 vertical 就能进入新领域：论文、训练、kernel、金融，以及更多。</p>
   </div>
   <div class="domains">
-    <a class="dcard" href="research.html"><img src="assets/icon-research.png" alt=""><h3 data-en="Paper research" data-ja="論文研究" data-ko="논문 연구" data-fr="Recherche d’articles" data-de="Paper-Forschung" data-es="Investigación de artículos">论文研究</h3><p data-en="Design the benchmark, run the eval, write the LaTeX, ship the PDF. The curated collection contains 36 PDFs across six research directions." data-ja="ベンチマークを設計し、評価を実行し、LaTeXを書き、PDFを公開する。現在のコレクションは6つの研究領域にわたる36本のPDFを収録。" data-ko="벤치마크를 설계하고, 평가를 실행하고, LaTeX를 작성해 PDF를 공개합니다. 현재 컬렉션에는 6개 연구 방향의 PDF 36편이 있습니다." data-fr="Concevoir le benchmark, exécuter l’évaluation, rédiger le LaTeX et publier le PDF. La collection actuelle réunit 36 PDF dans six axes de recherche." data-de="Benchmark entwerfen, Evaluation ausführen, LaTeX schreiben und das PDF veröffentlichen. Die aktuelle Sammlung umfasst 36 PDFs in sechs Forschungsrichtungen." data-es="Diseña el benchmark, ejecuta la evaluación, escribe el LaTeX y publica el PDF. La colección actual contiene 36 PDF en seis líneas de investigación.">自己设计 benchmark、跑评测、写 LaTeX、出 PDF。精选合集收录六个研究方向的 36 份 PDF。</p><div class="st">research · 36 PDFs →</div></a>
+    <a class="dcard" href="#research"><img src="assets/icon-research.png" alt=""><h3 data-en="Paper research" data-ja="論文研究" data-ko="논문 연구" data-fr="Recherche d’articles" data-de="Paper-Forschung" data-es="Investigación de artículos">论文研究</h3><p data-en="Design the benchmark, run the eval, write the LaTeX, ship the PDF. The curated collection contains 36 PDFs across six research directions." data-ja="ベンチマークを設計し、評価を実行し、LaTeXを書き、PDFを公開する。現在のコレクションは6つの研究領域にわたる36本のPDFを収録。" data-ko="벤치마크를 설계하고, 평가를 실행하고, LaTeX를 작성해 PDF를 공개합니다. 현재 컬렉션에는 6개 연구 방향의 PDF 36편이 있습니다." data-fr="Concevoir le benchmark, exécuter l’évaluation, rédiger le LaTeX et publier le PDF. La collection actuelle réunit 36 PDF dans six axes de recherche." data-de="Benchmark entwerfen, Evaluation ausführen, LaTeX schreiben und das PDF veröffentlichen. Die aktuelle Sammlung umfasst 36 PDFs in sechs Forschungsrichtungen." data-es="Diseña el benchmark, ejecuta la evaluación, escribe el LaTeX y publica el PDF. La colección actual contiene 36 PDF en seis líneas de investigación.">自己设计 benchmark、跑评测、写 LaTeX、出 PDF。精选合集收录六个研究方向的 36 份 PDF。</p><div class="st">research · 36 PDFs →</div></a>
     <div class="dcard"><img src="assets/icon-nanochat.png" alt=""><h3>nanochat · 5min</h3><p data-en="Single-GPU 5-minute pretraining, lower val BPB. Two hardware, two angles: H100 tests invention, B200 shows the search trajectory." data-ja="単一GPUで5分の事前学習、より低いval BPB。2つのハードウェア、2つの視点：H100は発明を、B200は探索の軌跡を示す。" data-ko="단일 GPU 5분 프리트레이닝, 더 낮은 val BPB. 두 하드웨어, 두 관점: H100은 발명을, B200은 탐색 궤적을 보여줍니다." data-fr="Préentraînement de 5 minutes sur un seul GPU, val BPB plus bas. Deux matériels, deux angles : le H100 teste l’invention, le B200 montre la trajectoire de recherche." data-de="5-minütiges Pretraining auf einer einzelnen GPU, niedrigeres val BPB. Zwei Hardware, zwei Blickwinkel: H100 prüft das Erfinden, B200 zeigt die Suchtrajektorie." data-es="Preentrenamiento de 5 minutos en una sola GPU, menor val BPB. Dos hardware, dos ángulos: H100 prueba la invención, B200 muestra la trayectoria de búsqueda.">单卡 5 分钟预训练，val BPB 比低。两块硬件两个视角：H100 考发明，B200 看搜索轨迹。</p>
       <div class="subcards">
-        <a href="results.html"><b>H100</b><span data-en="invention · 0.9855" data-ja="発明 · 0.9855" data-ko="발명 · 0.9855" data-fr="invention · 0.9855" data-de="Erfindung · 0.9855" data-es="invención · 0.9855">发明 · 0.9855 →</span></a>
-        <a href="results.html"><b>B200</b><span data-en="trajectory · 0.9636" data-ja="軌跡 · 0.9636" data-ko="궤적 · 0.9636" data-fr="trajectoire · 0.9636" data-de="Trajektorie · 0.9636" data-es="trayectoria · 0.9636">搜索轨迹 · 0.9636 →</span></a>
+        <a href="results.html"><b>H100</b><span data-en="invention · 0.9855">发明 · 0.9855 →</span></a>
+        <a href="results.html"><b>B200</b><span data-en="trajectory · 0.9636">搜索轨迹 · 0.9636 →</span></a>
       </div></div>
-    <a class="dcard" href="results.html"><img src="assets/icon-speedrun.png" alt=""><h3 data-en="Training speedrun" data-ja="学習スピードラン" data-ko="훈련 스피드런" data-fr="Speedrun d’entraînement" data-de="Trainings-Speedrun" data-es="Speedrun de entrenamiento">训练加速</h3><p data-en="Train a model to a target loss, race the wall clock. From the public #83 record, 79.77s is the fastest reproducible on our device." data-ja="モデルを目標損失まで学習させ、実時間を競う。公開記録#83から出発し、79.77秒でSOTAに並ぶ。" data-ko="목표 loss까지 모델을 훈련하고 실제 시간을 경쟁합니다. 공개 기록 #83에서 79.77초에 도달합니다." data-fr="Entraîner un modèle jusqu’à une loss cible, en course contre le temps mur : 79,77 s." data-de="Ein Modell auf Ziel-Loss trainieren, gegen die Uhr: 79,77 s." data-es="Entrena hasta la pérdida objetivo y compite contra el reloj: 79,77 s.">把模型训到目标 loss，比谁快。8×H100 跑出 79.77s。</p><div class="st">speedrun · 79.77s →</div></a>
-    <a class="dcard" href="results.html"><img src="assets/icon-kernel.png" alt=""><h3 data-en="Kernel optimization" data-ja="カーネル最適化" data-ko="커널 최적화" data-fr="Optimisation de kernel" data-de="Kernel-Optimierung" data-es="Optimización de kernels">内核优化</h3><p data-en="On NVIDIA SOL-ExecBench B200, Argus reached global #6 with two #1 kernels." data-ja="NVIDIA SOL-ExecBench B200で世界6位、2つのカーネルが1位。" data-ko="NVIDIA SOL-ExecBench B200에서 세계 6위, 두 커널 1위." data-fr="Sur NVIDIA SOL-ExecBench B200 : 6e mondial, deux kernels n°1." data-de="NVIDIA SOL-ExecBench B200: weltweit Platz 6, zwei Kernels auf Platz 1." data-es="NVIDIA SOL-ExecBench B200: puesto 6 mundial, dos kernels n.º 1.">NVIDIA SOL-ExecBench B200 全球第六，两个 kernel 全榜第一。</p><div class="st">kernel · global #6 →</div></a>
+    <a class="dcard" href="results.html"><img src="assets/icon-speedrun.png" alt=""><h3>训练加速</h3><p>8×H100 speedrun 达到 79.77s。</p><div class="st">speedrun · 79.77s →</div></a>
+    <a class="dcard" href="results.html"><img src="assets/icon-kernel.png" alt=""><h3>内核优化</h3><p>NVIDIA SOL-ExecBench B200 全球第六，两个 kernel 第一。</p><div class="st">kernel · global #6 →</div></a>
   </div>
 </div></section>
 
@@ -355,14 +355,14 @@
   </div>
 </div></section>
 
-<section><div class="wrap">
+<section hidden><div class="wrap">
   <div class="ctaband">
     <div class="kicker" style="color:#ffd9cc" data-en="Live" data-ja="ライブ" data-ko="라이브" data-fr="En direct" data-de="Live" data-es="En vivo">实时</div>
     <h2 data-en="See what Argus is doing right now." data-ja="Argusが今まさに何をしているかを見る。" data-ko="Argus가 지금 무엇을 하고 있는지 확인하세요." data-fr="Voyez ce qu’Argus fait en ce moment." data-de="Sehen Sie, was Argus gerade tut." data-es="Vea lo que Argus está haciendo ahora mismo.">看 Argus 此刻在做什么。</h2>
     <p data-en="The dashboard shows every role, active mission, artifact, and handoff as the research moves." data-ja="ダッシュボードには、研究の進行に伴う各ロール、ミッション、成果物、引き継ぎが表示されます。" data-ko="대시보드는 연구가 진행되는 동안 각 역할, 활성 미션, 산출물 및 인계를 보여줍니다." data-fr="Le tableau de bord affiche chaque rôle, mission active, artefact et transfert au fil de la recherche." data-de="Das Dashboard zeigt jede Rolle, aktive Mission, Artefakte und Übergaben während der Forschung." data-es="El panel muestra cada rol, misión activa, artefacto y relevo mientras avanza la investigación.">实时看板展示每个角色、正在执行的 mission、产物与交接。</p>
     <div class="cta-row" style="justify-content:center">
       <a class="btn btn-white" href="https://dash.argusbot.cn" data-en="Open the live dashboard →" data-ja="ライブダッシュボードを開く →" data-ko="실시간 대시보드 열기 →" data-fr="Ouvrir le tableau de bord en direct →" data-de="Das Live-Dashboard öffnen →" data-es="Abrir el panel en vivo →">打开实时看板 →</a>
-      <a class="btn btn-out" href="results.html" data-en="Open the results" data-ja="結果を見る" data-ko="결과 보기" data-fr="Voir les résultats" data-de="Ergebnisse öffnen" data-es="Ver resultados">打开成绩墙</a>
+      <a class="btn btn-out" href="results.html" data-en="Open the results">打开成绩墙</a>
     </div>
   </div>
 </div></section>
@@ -374,11 +374,11 @@
       <div class="quote" data-en="&ldquo;Research keeps moving after the lights go out.&rdquo;" data-ja="&amp;ldquo;灯りが消えた後も研究は進み続ける。&amp;rdquo;" data-ko="&amp;ldquo;불이 꺼진 뒤에도 연구는 계속된다.&amp;rdquo;" data-fr="&amp;ldquo;La recherche continue après l’extinction des lumières.&amp;rdquo;" data-de="&amp;ldquo;Die Forschung läuft weiter, wenn das Licht ausgeht.&amp;rdquo;" data-es="&amp;ldquo;La investigación continúa cuando se apagan las luces.&amp;rdquo;">"灯熄了，研究继续。"</div>
     </div>
     <div class="fcol"><h5 data-en="Product" data-ja="プロダクト" data-ko="제품" data-fr="Produit" data-de="Produkt" data-es="Producto">产品</h5>
-      <a href="results.html" data-en="Results" data-ja="結果" data-ko="결과" data-fr="Résultats" data-de="Ergebnisse" data-es="Resultados">成绩墙</a><a href="research.html" data-en="Research" data-ja="研究" data-ko="연구" data-fr="Recherche" data-de="Forschung" data-es="Investigación">论文合集</a><a href="how.html" data-en="How it works" data-ja="仕組み" data-ko="작동 방식" data-fr="Fonctionnement" data-de="Funktionsweise" data-es="Cómo funciona">原理</a><a href="use-cases.html" data-en="Use cases" data-ja="ユースケース" data-ko="사용 사례" data-fr="Cas d’usage" data-de="Anwendungsfälle" data-es="Casos de uso">客户场景</a></div>
+      <a href="results.html">成绩墙</a><a href="/">首页</a><a href="how.html">原理</a><a href="use-cases.html">客户场景</a></div>
     <div class="fcol"><h5 data-en="Research" data-ja="研究" data-ko="연구" data-fr="Recherche" data-de="Forschung" data-es="Investigación">研究</h5>
-      <a href="research.html" data-en="All 36 papers" data-ja="全36本の論文" data-ko="논문 36편 전체" data-fr="Les 36 articles" data-de="Alle 36 Papers" data-es="Los 36 artículos">全部 36 篇论文</a><a href="research.html#papers-cognitive">Cognitive Bias</a><a href="research.html#papers-multimodal">Multimodal</a><a href="research.html#papers-agents">Agent Methods</a><a href="research.html#papers-efficiency">Efficiency</a><a href="research.html#papers-world">World Models</a><a href="research.html#papers-trace">State Trace</a></div>
+      <a href="#research" data-en="All 36 papers" data-ja="全36本の論文" data-ko="논문 36편 전체" data-fr="Les 36 articles" data-de="Alle 36 Papers" data-es="Los 36 artículos">全部 36 篇论文</a><a href="#papers-cognitive">Cognitive Bias</a><a href="#papers-multimodal">Multimodal</a><a href="#papers-agents">Agent Methods</a><a href="#papers-efficiency">Efficiency</a><a href="#papers-world">World Models</a><a href="#papers-trace">State Trace</a></div>
     <div class="fcol"><h5 data-en="Domains" data-ja="領域" data-ko="도메인" data-fr="Domaines" data-de="Domänen" data-es="Dominios">领域</h5>
-      <a href="research.html">research</a><a href="results.html">nanochat · 5min</a><a href="results.html">speedrun</a><a href="results.html">kernelbench</a></div>
+      <a href="#research">research</a><a href="results.html">nanochat · 5min</a><a href="results.html">speedrun</a><a href="results.html">kernelbench</a></div>
   </div>
   <div class="fbar"><span>argusbot.cn · Argus</span><span data-en="7×24 · autonomous research · results that ship" data-ja="7×24 ・ 自律 ・ 誠実さは外部に" data-ko="7×24 · 자율 · 정직성은 외부에" data-fr="7×24 · autonome · honnêteté extérieure" data-de="7×24 · autonom · Ehrlichkeit von außen" data-es="7×24 · autónomo · honestidad fuera">7×24 · 自主科研 · 持续交付</span></div>
 </div></footer>

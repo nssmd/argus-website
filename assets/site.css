@@ -478,6 +478,25 @@ tr.win .tag {
   padding-top: 96px;
 }
 
+.page-home #research {
+  display: none !important;
+}
+
+.page-research .hero,
+.page-research > .wrap[style],
+.page-research > .trust,
+.page-research #what,
+.page-research #domains,
+.page-research #miles,
+.page-research #research ~ section {
+  display: none !important;
+}
+
+.page-research #research {
+  display: block !important;
+  padding-top: 80px;
+}
+
 .page-home .hero::before {
   position: absolute;
   inset: 36px 46% auto -12vw;
