@@ -579,6 +579,7 @@ tr.win .tag {
 /* Homepage */
 .page-home .hero {
   position: relative;
+  display: block;
   padding-top: 52px;
   padding-bottom: 40px;
 }
@@ -616,6 +617,10 @@ tr.win .tag {
   position: relative;
 }
 
+.page-home .hero > div:first-child {
+  max-width: 820px;
+}
+
 .page-home .hero h1 {
   max-width: 720px;
   margin-bottom: 18px;
@@ -624,6 +629,11 @@ tr.win .tag {
 
 .page-home .hero .lede {
   margin-bottom: 26px;
+}
+
+.page-home .hero .btn {
+  padding: 12px 20px;
+  border-radius: 8px;
 }
 
 .page-home .trust {

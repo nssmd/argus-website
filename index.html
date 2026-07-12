@@ -166,45 +166,29 @@
 </head><body class="page-home">
 
 <div class="site-header"><div class="site-header-inner">
-  <a class="site-brand" href="/"><img src="assets/argus-mark-gold.png" alt="">Argus</a>
+  <a class="site-brand" aria-current="page" href="/"><img src="assets/argus-mark-gold.png" alt="">Argus</a>
   <div class="site-links">
-    <a aria-current="page" href="/">系统</a><a href="results.html">成绩</a><a href="research.html">研究</a><a href="how.html">原理</a><a href="use-cases.html">场景</a>
+    <a href="results.html">成绩</a><a href="research.html">研究</a><a href="how.html">原理</a><a href="use-cases.html">场景</a>
   </div>
   <a class="site-cta" href="start.html">开始使用</a>
 </div></div>
 
 <header class="hero wrap">
   <div>
-    <span class="eyebrow"><span class="live"></span><span data-en="Autonomous 7×24 · global #6 on NVIDIA B200" data-ja="自律稼働 7×24 ・ 3つのデーモン" data-ko="7×24 자율 실행 · 세 개의 데몬" data-fr="Fonctionnement autonome 7×24 · trois démons" data-de="Autonomer Betrieb rund um die Uhr 7×24 · drei Daemons" data-es="Funcionando de forma autónoma 7×24 · tres demonios">7×24 自治运行 · NVIDIA B200 全球第六</span></span>
-    <h1 data-en="The AI researcher<br>that <em>never clocks out.</em>" data-ja="自律型AI研究者。<br>それは単なる調整ではなく、<em>発明</em>する。" data-ko="자율적인 AI 연구자.<br>그것은 단순히 조정하는 것이 아니라 <em>발명합니다</em>." data-fr="Un chercheur IA autonome.<br>Il <em>invente</em>, il ne se contente pas d’ajuster." data-de="Ein autonomer KI-Forscher.<br>Er <em>erfindet</em>, nicht nur optimiert er." data-es="Un investigador de IA autónomo.<br><em>Inventa</em>, no solo ajusta.">永不下班的<br><em>AI 研究员。</em></h1>
-    <p class="lede" data-en="Global #6 on NVIDIA SOL-ExecBench. Two B200 kernels at #1. Human SOTA beaten on both H100 and B200. Argus keeps researching, coding, measuring, and shipping while everyone else sleeps." data-ja="Argusは自ら課題を選び、コードを書き、実験を走らせ、論文を書く。答えを読むことを禁じられたまま、公開ベースラインから出発し、<b>37個のカーネルレベル機構</b>を独力で発明した――最良のものは同一プロトコルの公正な下限を下回る。" data-ko="Argus는 스스로 문제를 선택하고, 코드를 작성하고, 실험을 실행하고, 논문을 씁니다. 정답을 읽는 것은 금지된 상태에서 공개 베이스라인으로 시작해 스스로 <b>37개의 커널 수준 메커니즘</b>을 발명했으며, 그중 최고 성과는 동일 프로토콜의 공정 하한선 아래에 도달합니다." data-fr="Argus choisit ses propres problèmes, écrit le code, exécute les expériences, rédige l’article. Interdit de lire la réponse, il est parti d’une base publique et a inventé <b>37 mécanismes au niveau kernel</b> par lui-même — le meilleur descend sous le plancher d’équité du même protocole." data-de="Argus wählt seine Probleme selbst, schreibt den Code, führt die Experimente aus und schreibt das Paper. Da es verboten war, die Antwort zu lesen, startete es von einer öffentlichen Baseline und erfand <b>37 Mechanismen auf Kernel-Ebene</b> eigenständig — der beste davon liegt unter derselben protokollkonformen Fair-Floor." data-es="Argus elige sus propios problemas, escribe el código, ejecuta los experimentos, redacta el artículo. Con prohibición de leer la respuesta, partió de una referencia pública e inventó <b>37 mecanismos a nivel de kernel</b> por su cuenta — el mejor queda por debajo del fair floor del mismo protocolo."><b>NVIDIA SOL-ExecBench 全球第六，两个 B200 kernel 全榜第一，H100 与 B200 都超过 human SOTA。</b>你睡觉的时候，Argus 还在研究、写代码、跑实验、交付结果。</p>
+    <h1>给它一个研究目标。<br><em>它自己把事情做完。</em></h1>
+    <p class="lede">Argus 会持续读资料、写代码、跑实验、检查结果并决定下一步。你提供目标和算力，它交付可以直接使用的研究结果。</p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="results.html" data-en="See every result →" data-ja="結果を見る →" data-ko="결과 보기 →" data-fr="Voir les résultats →" data-de="Ergebnisse ansehen →" data-es="Ver resultados →">看完整成绩墙 →</a>
-      <a class="btn btn-ghost" href="https://dash.argusbot.cn" data-en="Watch Argus work live" data-ja="論文一覧を見る" data-ko="논문 모음 보기" data-fr="Parcourir les articles" data-de="Papers durchsuchen" data-es="Explorar los artículos">看它实时工作</a>
-    </div>
-  </div>
-  <div class="term">
-    <div class="bar"><i></i><i></i><i></i><span>argus-skill — autonomous research runtime</span></div>
-    <div class="body">
-      <div><span class="pr">$</span> argus-skill --status</div>
-      <div class="di">daemon: <span class="ok">alive</span> · continuous · 7×24</div>
-      <div class="pipe">
-        <span class="done">plan ✓</span><span class="done">build ✓</span><span class="done">measure ✓</span><span class="run">review ●</span><span>repeat</span>
-      </div>
-      <div class="di">// four roles · one persistent project memory</div>
-      <div><span class="pr">→</span> engineer <span class="di">running experiment</span></div>
-      <div class="big">research continues <span class="ok" style="font-size:14px">●</span></div>
-      <div class="di">reviewer checkpoint saved · planner preparing next work</div>
+      <a class="btn btn-primary" href="results.html">看它做出了什么 →</a>
     </div>
   </div>
 </header>
 
 <div class="trust"><div class="wrap in">
-  <div class="s"><div class="n">170k</div><div class="l" data-en="lines of Python" data-ja="Pythonの行数" data-ko="Python 코드 줄 수" data-fr="lignes de Python" data-de="Zeilen Python" data-es="líneas de Python">行 Python</div></div>
-  <div class="s"><div class="n">2.6k+</div><div class="l" data-en="tests" data-ja="テスト" data-ko="테스트" data-fr="tests" data-de="Tests" data-es="pruebas">测试</div></div>
-  <div class="s"><div class="n">4</div><div class="l" data-en="resident roles" data-ja="常駐ロール" data-ko="상주 역할" data-fr="rôles résidents" data-de="ständige Rollen" data-es="roles residentes">常驻角色</div></div>
-  <div class="s"><div class="n">7×24</div><div class="l" data-en="autonomous runtime" data-ja="自律ランタイム" data-ko="자율 런타임" data-fr="runtime autonome" data-de="autonome Laufzeit" data-es="runtime autónomo">持续自主运行</div></div>
-  <div class="s"><div class="n">36</div><div class="l" data-en="research PDFs" data-ja="研究PDF" data-ko="연구 PDF" data-fr="PDF de recherche" data-de="Forschungs-PDFs" data-es="PDF de investigación">研究 PDF</div></div>
+  <div class="s"><div class="n">#6</div><div class="l">NVIDIA 全球排名</div></div>
+  <div class="s"><div class="n">2× #1</div><div class="l">B200 kernel</div></div>
+  <div class="s"><div class="n">H100 + B200</div><div class="l">超过 human SOTA</div></div>
+  <div class="s"><div class="n">79.77s</div><div class="l">8×H100 speedrun</div></div>
+  <div class="s"><div class="n">36</div><div class="l">研究 PDF</div></div>
 </div></div>
 
 <section id="what"><div class="wrap">
