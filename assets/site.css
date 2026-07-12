@@ -115,7 +115,7 @@ h2 .num {
 
 .site-header-inner {
   width: min(1200px, calc(100% - 48px));
-  min-height: 64px;
+  min-height: 56px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -135,8 +135,8 @@ h2 .num {
 }
 
 .site-brand img {
-  width: 25px;
-  height: 25px;
+  width: 23px;
+  height: 23px;
   border-radius: 6px;
   box-shadow: 0 0 0 1px rgba(201, 149, 45, 0.26);
 }
@@ -152,7 +152,7 @@ h2 .num {
 .site-links a {
   position: relative;
   flex: 0 0 auto;
-  padding: 23px 0 22px;
+  padding: 19px 0 18px;
   color: var(--mut);
   font-size: 12.5px;
   font-weight: 600;
@@ -183,7 +183,7 @@ h2 .num {
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  min-height: 36px;
+  min-height: 32px;
   padding: 0 15px;
   border: 1px solid #0a2448;
   border-radius: 7px;
@@ -579,7 +579,8 @@ tr.win .tag {
 /* Homepage */
 .page-home .hero {
   position: relative;
-  padding-top: 96px;
+  padding-top: 52px;
+  padding-bottom: 40px;
 }
 
 .page-home #research {
@@ -613,6 +614,16 @@ tr.win .tag {
 
 .page-home .hero > * {
   position: relative;
+}
+
+.page-home .hero h1 {
+  max-width: 720px;
+  margin-bottom: 18px;
+  font-size: clamp(40px, 5.6vw, 58px);
+}
+
+.page-home .hero .lede {
+  margin-bottom: 26px;
 }
 
 .page-home .trust {
@@ -689,7 +700,19 @@ tr.win .tag {
 /* Documentation and story pages */
 .page-doc header,
 .page-story .hero {
-  padding-top: 74px !important;
+  padding-top: 46px !important;
+}
+
+.page-doc header {
+  padding-bottom: 8px !important;
+}
+
+.page-story .hero {
+  padding-bottom: 12px !important;
+}
+
+.page-story .hero h1 {
+  font-size: clamp(34px, 4.8vw, 48px) !important;
 }
 
 .page-doc h1,
@@ -736,6 +759,29 @@ tr.win .tag {
 .page-report > .wrap {
   max-width: 960px !important;
   padding: 58px 26px 96px !important;
+}
+
+.page-results .article-hero {
+  padding: 54px 28px 28px !important;
+}
+
+.page-results .article-hero h1 {
+  max-width: 780px;
+  margin-bottom: 18px;
+  font-size: clamp(40px, 5.4vw, 52px);
+}
+
+.page-results .article-hero .sub {
+  margin-bottom: 24px;
+  font-size: 18px;
+}
+
+.page-research #research {
+  padding-top: 52px;
+}
+
+.page-research #research > .wrap > div:first-child {
+  margin-bottom: 32px !important;
 }
 
 .page-report h1 {
@@ -883,7 +929,8 @@ footer {
   }
 
   .page-home .hero {
-    padding-top: 62px;
+    padding-top: 38px;
+    padding-bottom: 32px;
   }
 
   .page-report > .wrap {
