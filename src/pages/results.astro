@@ -1,0 +1,44 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { results } from "../data/results";
+---
+
+<SiteLayout
+  title="Results · Argus"
+  description="Argus 在 NVIDIA B200、H100/B200 nanochat、8×H100 speedrun、AARRI-Bench 和 Arbor 上的核心成绩。"
+>
+  <section class="page-hero compact">
+    <div class="shell">
+      <p class="eyebrow">Argus · Results</p>
+      <h1>一套系统，六个赛场。</h1>
+      <p class="lede">从 GPU kernel、模型训练到研究 agent，每项成绩都来自真实任务和真实执行。</p>
+    </div>
+  </section>
+
+  <section class="section tight">
+    <div class="shell">
+      <div class="scoreboard">
+        {results.map((item) => (
+          <article class={`score-row ${item.accent}`}>
+            <div class="score-arena">
+              <strong>{item.arena}</strong>
+              <span>{item.context}</span>
+            </div>
+            <div class="score-result">{item.result}</div>
+            <div class="score-comparison">{item.comparison}</div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="cta-band">
+        <h2>结果不是聊天记录，是可交付产物。</h2>
+        <p>论文、代码、实验日志和公开 benchmark 都集中在 Research。</p>
+        <a class="button" href="/research.html">浏览研究成果 →</a>
+      </div>
+    </div>
+  </section>
+</SiteLayout>

@@ -1,0 +1,28 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import PaperExplorer from "../components/PaperExplorer";
+import type { Paper } from "../components/PaperExplorer";
+import papers from "../data/papers.json";
+
+const typedPapers: Paper[] = papers.map((paper) => ({
+  ...paper,
+  status: paper.status as Paper["status"]
+}));
+---
+
+<SiteLayout
+  title="Research · Argus"
+  description="Argus 自主研究成果集：六个研究方向，36 份精选论文 PDF。"
+>
+  <section class="page-hero compact">
+    <div class="shell">
+      <p class="eyebrow">Argus · Research</p>
+      <h1>36 篇论文，六条研究线。</h1>
+      <p class="lede">30 篇 Manuscript，6 篇 Draft。重复版本已经移除。</p>
+    </div>
+  </section>
+
+  <div class="shell">
+    <PaperExplorer papers={typedPapers} client:load />
+  </div>
+</SiteLayout>

@@ -1,0 +1,83 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+---
+
+<SiteLayout
+  title="Argus — 自主 AI 研究系统"
+  description="给 Argus 一个研究目标和算力，它会持续读资料、写代码、跑实验、检查结果并决定下一步。"
+>
+  <section class="page-hero">
+    <div class="shell">
+      <p class="eyebrow">Autonomous research runtime</p>
+      <h1>给它一个研究目标。<br /><em>它自己把事情做完。</em></h1>
+      <p class="lede">
+        Argus 会持续读资料、写代码、跑实验、检查结果并决定下一步。你提供目标和算力，它交付可以直接使用的研究结果。
+      </p>
+      <div class="hero-actions">
+        <a class="button primary" href="/results.html">看它做出了什么 →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="metric-strip" aria-label="核心成绩">
+    <div class="metric-grid">
+      <div class="metric"><strong>#6</strong><span>NVIDIA 全球排名</span></div>
+      <div class="metric"><strong>2× #1</strong><span>B200 kernel</span></div>
+      <div class="metric"><strong>H100 + B200</strong><span>超过 human SOTA</span></div>
+      <div class="metric"><strong>79.77s</strong><span>8×H100 speedrun</span></div>
+      <div class="metric"><strong>36</strong><span>研究 PDF</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">What it is</p>
+        <h2>不是聊天机器人，是一套科研操作系统。</h2>
+        <p>四个专业角色共享同一个长期项目记忆，从目标推进到代码、实验、评审和下一个 idea。</p>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <span class="number">01</span>
+          <h3>自己排活</h3>
+          <p>把长期目标拆成下一步可以执行、可以验收的 mission。</p>
+        </article>
+        <article class="card">
+          <span class="number">02</span>
+          <h3>自己动手</h3>
+          <p>真实写代码、跑 shell、做 profile、启动实验并读取产物。</p>
+        </article>
+        <article class="card">
+          <span class="number">03</span>
+          <h3>自己继续</h3>
+          <p>Reviewer 根据 evidence 决定完成、返工或换方向，状态跨 session 保留。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section surface">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Where it works</p>
+        <h2>只要目标可测，Argus 就能持续搜索。</h2>
+      </div>
+      <div class="card-grid four">
+        <article class="card"><h3>GPU 性能</h3><p>从 profile 到 kernel，实现逼近硬件上限的循环。</p></article>
+        <article class="card"><h3>模型训练</h3><p>围绕 loss、速度和预算持续提出并验证新方案。</p></article>
+        <article class="card"><h3>论文研究</h3><p>从选题、benchmark、实验到 analysis 与 PDF。</p></article>
+        <article class="card"><h3>高成本搜索</h3><p>适合需要数百轮真实反馈的工程与科学任务。</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="cta-band">
+        <h2>把一个真实难题交给 Argus。</h2>
+        <p>先看成绩，再决定它是否值得接手你的任务。</p>
+        <a class="button" href="/results.html">打开成绩墙 →</a>
+      </div>
+    </div>
+  </section>
+</SiteLayout>

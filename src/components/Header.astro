@@ -1,0 +1,32 @@
+---
+const path = Astro.url.pathname;
+const links = [
+  { href: "/results.html", label: "成绩" },
+  { href: "/research.html", label: "研究" },
+  { href: "/how.html", label: "原理" },
+  { href: "/use-cases.html", label: "场景" }
+];
+---
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-brand" href="/" aria-label="Argus 首页">
+      <img src="/assets/argus-mark-gold.png" width="20" height="20" alt="" />
+      <span>Argus</span>
+    </a>
+    <nav class="site-nav" aria-label="主导航">
+      {links.map((link) => (
+        <a href={link.href} aria-current={path === link.href ? "page" : undefined}>
+          {link.label}
+        </a>
+      ))}
+    </nav>
+    <a
+      class="site-start"
+      href="/start.html"
+      aria-current={path === "/start.html" ? "page" : undefined}
+    >
+      开始使用 <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</header>

@@ -1,0 +1,362 @@
+[
+  {
+    "id": "anchoring",
+    "title": "A Diagnostic No-Selection Report for Train-Free LLM Anchoring Mitigation",
+    "href": "/papers/cognitive-bias-llm/anchoring.pdf",
+    "pages": 9,
+    "status": "Manuscript",
+    "category": "cognitive",
+    "categoryLabel": "Cognitive Bias in LLMs",
+    "categoryDescription": "LLM 认知与决策偏差 · 免训练诊断"
+  },
+  {
+    "id": "base-rate-neglect",
+    "title": "Prior-Flip Diagnostics for Base-Rate Neglect in Large Language Models",
+    "href": "/papers/cognitive-bias-llm/base-rate-neglect.pdf",
+    "pages": 22,
+    "status": "Manuscript",
+    "category": "cognitive",
+    "categoryLabel": "Cognitive Bias in LLMs",
+    "categoryDescription": "LLM 认知与决策偏差 · 免训练诊断"
+  },
+  {
+    "id": "default-status-quo",
+    "title": "Default Labels, Switching Costs, and Mixed Train-Free Mitigation in LLM Pair Decisions",
+    "href": "/papers/cognitive-bias-llm/default-status-quo.pdf",
+    "pages": 10,
+    "status": "Manuscript",
+    "category": "cognitive",
+    "categoryLabel": "Cognitive Bias in LLMs",
+    "categoryDescription": "LLM 认知与决策偏差 · 免训练诊断"
+  },
+  {
+    "id": "drift-guard-language-drift",
+    "title": "DriftGuard: A Diagnostic Study of Train-Free Language-Drift Control",
+    "href": "/papers/cognitive-bias-llm/drift-guard-language-drift.pdf",
+    "pages": 10,
+    "status": "Manuscript",
+    "category": "cognitive",
+    "categoryLabel": "Cognitive Bias in LLMs",
+    "categoryDescription": "LLM 认知与决策偏差 · 免训练诊断"
+  },
+  {
+    "id": "framing-effect",
+    "title": "A Train-Free Pilot Diagnostic for Gain/Loss Framing Effects in Large Language Models",
+    "href": "/papers/cognitive-bias-llm/framing-effect.pdf",
+    "pages": 11,
+    "status": "Manuscript",
+    "category": "cognitive",
+    "categoryLabel": "Cognitive Bias in LLMs",
+    "categoryDescription": "LLM 认知与决策偏差 · 免训练诊断"
+  },
+  {
+    "id": "goal-instrumental-constraint-neglect",
+    "title": "Goal-Instrumental Constraint Neglect in LLM Assistants",
+    "href": "/papers/cognitive-bias-llm/goal-instrumental-constraint-neglect.pdf",
+    "pages": 16,
+    "status": "Manuscript",
+    "category": "cognitive",
+    "categoryLabel": "Cognitive Bias in LLMs",
+    "categoryDescription": "LLM 认知与决策偏差 · 免训练诊断"
+  },
+  {
+    "id": "irreversibility-blindness-llm-advice",
+    "title": "Irreversibility Blindness in LLM Advice",
+    "href": "/papers/cognitive-bias-llm/irreversibility-blindness-llm-advice.pdf",
+    "pages": 11,
+    "status": "Manuscript",
+    "category": "cognitive",
+    "categoryLabel": "Cognitive Bias in LLMs",
+    "categoryDescription": "LLM 认知与决策偏差 · 免训练诊断"
+  },
+  {
+    "id": "scale-neglect-llm-advice",
+    "title": "Scale Neglect in LLM Advice: A Source-Backed Diagnostic with Mixed Mitigation Evidence",
+    "href": "/papers/cognitive-bias-llm/scale-neglect-llm-advice.pdf",
+    "pages": 8,
+    "status": "Manuscript",
+    "category": "cognitive",
+    "categoryLabel": "Cognitive Bias in LLMs",
+    "categoryDescription": "LLM 认知与决策偏差 · 免训练诊断"
+  },
+  {
+    "id": "sunk-cost",
+    "title": "A Train-Free Prospective Reframe for Sunk-Cost Decision Advice",
+    "href": "/papers/cognitive-bias-llm/sunk-cost.pdf",
+    "pages": 9,
+    "status": "Manuscript",
+    "category": "cognitive",
+    "categoryLabel": "Cognitive Bias in LLMs",
+    "categoryDescription": "LLM 认知与决策偏差 · 免训练诊断"
+  },
+  {
+    "id": "auditable-evidence-admission",
+    "title": "Auditable Evidence Admission for Traceable Multimodal Reasoning",
+    "href": "/papers/multimodal-mllm/auditable-evidence-admission.pdf",
+    "pages": 12,
+    "status": "Manuscript",
+    "category": "multimodal",
+    "categoryLabel": "Multimodal & Vision-Language Models",
+    "categoryDescription": "视觉语言与多模态感知 · 诊断、缓解与效率"
+  },
+  {
+    "id": "attribute-binding",
+    "title": "A Diagnostic No-Go for Train-Free Localization Probes in Attribute-Object Binding",
+    "href": "/papers/multimodal-mllm/attribute-binding.pdf",
+    "pages": 11,
+    "status": "Manuscript",
+    "category": "multimodal",
+    "categoryLabel": "Multimodal & Vision-Language Models",
+    "categoryDescription": "视觉语言与多模态感知 · 诊断、缓解与效率"
+  },
+  {
+    "id": "contrast-before-answering-vlm-spatial",
+    "title": "Contrast Before Answering: Train-Free Visual Pairing and Region Self-Verification for VLM Spatial Failures",
+    "href": "/papers/multimodal-mllm/contrast-before-answering-vlm-spatial.pdf",
+    "pages": 2,
+    "status": "Draft",
+    "category": "multimodal",
+    "categoryLabel": "Multimodal & Vision-Language Models",
+    "categoryDescription": "视觉语言与多模态感知 · 诊断、缓解与效率"
+  },
+  {
+    "id": "diagnostic-benchmark",
+    "title": "ChartOCR-SourceDiag: Diagnosing Source-Channel Failures in Chart and OCR-Centric Multimodal Reasoning",
+    "href": "/papers/multimodal-mllm/diagnostic-benchmark.pdf",
+    "pages": 11,
+    "status": "Manuscript",
+    "category": "multimodal",
+    "categoryLabel": "Multimodal & Vision-Language Models",
+    "categoryDescription": "视觉语言与多模态感知 · 诊断、缓解与效率"
+  },
+  {
+    "id": "hallucination",
+    "title": "Support-Gated Contrastive Decoding for Reducing Multimodal Hallucination",
+    "href": "/papers/multimodal-mllm/hallucination.pdf",
+    "pages": 8,
+    "status": "Draft",
+    "category": "multimodal",
+    "categoryLabel": "Multimodal & Vision-Language Models",
+    "categoryDescription": "视觉语言与多模态感知 · 诊断、缓解与效率"
+  },
+  {
+    "id": "in-image-text-reading",
+    "title": "Glyph or Guess? A Diagnostic Note on VLM In-Image Text Reading",
+    "href": "/papers/multimodal-mllm/in-image-text-reading.pdf",
+    "pages": 12,
+    "status": "Manuscript",
+    "category": "multimodal",
+    "categoryLabel": "Multimodal & Vision-Language Models",
+    "categoryDescription": "视觉语言与多模态感知 · 诊断、缓解与效率"
+  },
+  {
+    "id": "instruction-data",
+    "title": "Coverage-Aware Selection for Vision-Language Instruction Tuning",
+    "href": "/papers/multimodal-mllm/instruction-data.pdf",
+    "pages": 7,
+    "status": "Draft",
+    "category": "multimodal",
+    "categoryLabel": "Multimodal & Vision-Language Models",
+    "categoryDescription": "视觉语言与多模态感知 · 诊断、缓解与效率"
+  },
+  {
+    "id": "no-go-visual-hallucination-mitigation",
+    "title": "No-Go Evidence for Train-Free Black-Box Visual Hallucination Mitigation",
+    "href": "/papers/multimodal-mllm/no-go-visual-hallucination-mitigation.pdf",
+    "pages": 10,
+    "status": "Manuscript",
+    "category": "multimodal",
+    "categoryLabel": "Multimodal & Vision-Language Models",
+    "categoryDescription": "视觉语言与多模态感知 · 诊断、缓解与效率"
+  },
+  {
+    "id": "prior-override",
+    "title": "A Three-Family Diagnostic Audit for Train-Free Prior-Override Verification in Vision-Language Models",
+    "href": "/papers/multimodal-mllm/prior-override.pdf",
+    "pages": 9,
+    "status": "Manuscript",
+    "category": "multimodal",
+    "categoryLabel": "Multimodal & Vision-Language Models",
+    "categoryDescription": "视觉语言与多模态感知 · 诊断、缓解与效率"
+  },
+  {
+    "id": "qimen-bench-chart-construction",
+    "title": "QimenBench: Cross-Source Target-Control Evidence for Procedural Chart Construction",
+    "href": "/papers/multimodal-mllm/qimen-bench-chart-construction.pdf",
+    "pages": 10,
+    "status": "Manuscript",
+    "category": "multimodal",
+    "categoryLabel": "Multimodal & Vision-Language Models",
+    "categoryDescription": "视觉语言与多模态感知 · 诊断、缓解与效率"
+  },
+  {
+    "id": "spatial-relations",
+    "title": "Do Vision-Language Models Bind Spatial Relations? A Train-Free Diagnostic with No-Supplied-Box Spatial Prompts",
+    "href": "/papers/multimodal-mllm/spatial-relations.pdf",
+    "pages": 10,
+    "status": "Manuscript",
+    "category": "multimodal",
+    "categoryLabel": "Multimodal & Vision-Language Models",
+    "categoryDescription": "视觉语言与多模态感知 · 诊断、缓解与效率"
+  },
+  {
+    "id": "token-efficiency",
+    "title": "When Visual Token Pruning Fails the Frontier: A Full-Matrix Diagnostic for Multimodal LLM Inference",
+    "href": "/papers/multimodal-mllm/token-efficiency.pdf",
+    "pages": 10,
+    "status": "Manuscript",
+    "category": "multimodal",
+    "categoryLabel": "Multimodal & Vision-Language Models",
+    "categoryDescription": "视觉语言与多模态感知 · 诊断、缓解与效率"
+  },
+  {
+    "id": "visual-numerosity",
+    "title": "Train-Free Visual Numerosity Diagnostics Under a Strict Evidence Gate",
+    "href": "/papers/multimodal-mllm/visual-numerosity.pdf",
+    "pages": 10,
+    "status": "Manuscript",
+    "category": "multimodal",
+    "categoryLabel": "Multimodal & Vision-Language Models",
+    "categoryDescription": "视觉语言与多模态感知 · 诊断、缓解与效率"
+  },
+  {
+    "id": "selective-deliberation-agents",
+    "title": "Selective Deliberation for Language Agents: Matching Fixed Test-Time Compute at Half the Cost",
+    "href": "/papers/llm-agent-methods/selective-deliberation-agents.pdf",
+    "pages": 9,
+    "status": "Manuscript",
+    "category": "agents",
+    "categoryLabel": "LLM Agent Methods",
+    "categoryDescription": "多模态智能体 · 测试时计算、工具路由与不确定性"
+  },
+  {
+    "id": "reasoning",
+    "title": "Verifier-Guided Structured Visual Test-Time Scaling for Multimodal Reasoning",
+    "href": "/papers/llm-agent-methods/reasoning.pdf",
+    "pages": 5,
+    "status": "Draft",
+    "category": "agents",
+    "categoryLabel": "LLM Agent Methods",
+    "categoryDescription": "多模态智能体 · 测试时计算、工具路由与不确定性"
+  },
+  {
+    "id": "test-time-scaling-v2",
+    "title": "When Should Multimodal Agents Spend More Test-Time Compute?",
+    "href": "/papers/llm-agent-methods/test-time-scaling-v2.pdf",
+    "pages": 4,
+    "status": "Draft",
+    "category": "agents",
+    "categoryLabel": "LLM Agent Methods",
+    "categoryDescription": "多模态智能体 · 测试时计算、工具路由与不确定性"
+  },
+  {
+    "id": "tool-orchestration",
+    "title": "RouteScope: Auditing Training-Free First-Tool Routing for Multimodal Agents",
+    "href": "/papers/llm-agent-methods/tool-orchestration.pdf",
+    "pages": 12,
+    "status": "Manuscript",
+    "category": "agents",
+    "categoryLabel": "LLM Agent Methods",
+    "categoryDescription": "多模态智能体 · 测试时计算、工具路由与不确定性"
+  },
+  {
+    "id": "visual-uncertainty-v2",
+    "title": "Cross-View Visual Uncertainty Routing for Training-Free Multimodal Confidence",
+    "href": "/papers/llm-agent-methods/visual-uncertainty-v2.pdf",
+    "pages": 12,
+    "status": "Manuscript",
+    "category": "agents",
+    "categoryLabel": "LLM Agent Methods",
+    "categoryDescription": "多模态智能体 · 测试时计算、工具路由与不确定性"
+  },
+  {
+    "id": "i2v-structured-pruning",
+    "title": "A No-Go Diagnostic for DiT-Only Structured Pruning of Wan Image-to-Video Generation",
+    "href": "/papers/efficiency-quant-kvcache/i2v-structured-pruning.pdf",
+    "pages": 10,
+    "status": "Manuscript",
+    "category": "efficiency",
+    "categoryLabel": "Efficiency, Compression & Decoding",
+    "categoryDescription": "模型压缩、推测解码、RAG decoding、量化与 KV Cache"
+  },
+  {
+    "id": "no-extra-model-speculative-decoding",
+    "title": "No-Extra-Model Speculative Decoding for Code-Like Serving Workloads",
+    "href": "/papers/efficiency-quant-kvcache/no-extra-model-speculative-decoding.pdf",
+    "pages": 11,
+    "status": "Manuscript",
+    "category": "efficiency",
+    "categoryLabel": "Efficiency, Compression & Decoding",
+    "categoryDescription": "模型压缩、推测解码、RAG decoding、量化与 KV Cache"
+  },
+  {
+    "id": "evidence-adaptive-rag-decoding",
+    "title": "Evidence-Adaptive Decoding for Retrieval-Augmented Generation",
+    "href": "/papers/efficiency-quant-kvcache/evidence-adaptive-rag-decoding.pdf",
+    "pages": 9,
+    "status": "Manuscript",
+    "category": "efficiency",
+    "categoryLabel": "Efficiency, Compression & Decoding",
+    "categoryDescription": "模型压缩、推测解码、RAG decoding、量化与 KV Cache"
+  },
+  {
+    "id": "longctx-kvcache",
+    "title": "Risk-Routed KV Cache Compression for Long-Context Inference",
+    "href": "/papers/efficiency-quant-kvcache/longctx-kvcache.pdf",
+    "pages": 7,
+    "status": "Draft",
+    "category": "efficiency",
+    "categoryLabel": "Efficiency, Compression & Decoding",
+    "categoryDescription": "模型压缩、推测解码、RAG decoding、量化与 KV Cache"
+  },
+  {
+    "id": "sink-norm-kv-cache-quant",
+    "title": "Calibrated Sink-Norm Protection for Train-Free KV-Cache Quantization",
+    "href": "/papers/efficiency-quant-kvcache/sink-norm-kv-cache-quant.pdf",
+    "pages": 9,
+    "status": "Manuscript",
+    "category": "efficiency",
+    "categoryLabel": "Efficiency, Compression & Decoding",
+    "categoryDescription": "模型压缩、推测解码、RAG decoding、量化与 KV Cache"
+  },
+  {
+    "id": "tail-guard-activation-aware-ptq",
+    "title": "TailGuard Diagnostics for Activation-Aware PTQ",
+    "href": "/papers/efficiency-quant-kvcache/tail-guard-activation-aware-ptq.pdf",
+    "pages": 9,
+    "status": "Manuscript",
+    "category": "efficiency",
+    "categoryLabel": "Efficiency, Compression & Decoding",
+    "categoryDescription": "模型压缩、推测解码、RAG decoding、量化与 KV Cache"
+  },
+  {
+    "id": "world-sim",
+    "title": "Direct-Best Reversals in Train-Free Structured Counterfactual Reasoning",
+    "href": "/papers/world-model/world-sim.pdf",
+    "pages": 12,
+    "status": "Manuscript",
+    "category": "world",
+    "categoryLabel": "World Models",
+    "categoryDescription": "世界状态追踪与结构化反事实模拟"
+  },
+  {
+    "id": "world-state",
+    "title": "Decode-Time Transition Ledgers for Diagnosing World-State Drift",
+    "href": "/papers/world-model/world-state.pdf",
+    "pages": 11,
+    "status": "Manuscript",
+    "category": "world",
+    "categoryLabel": "World Models",
+    "categoryDescription": "世界状态追踪与结构化反事实模拟"
+  },
+  {
+    "id": "trace-width-state-trace",
+    "title": "TraceWidth: A Scoped Audit-Ready State-Trace Protocol with Exact Certificates",
+    "href": "/papers/misc/trace-width-state-trace.pdf",
+    "pages": 11,
+    "status": "Manuscript",
+    "category": "trace",
+    "categoryLabel": "State Trace & Auditability",
+    "categoryDescription": "可审计的状态轨迹协议"
+  }
+]

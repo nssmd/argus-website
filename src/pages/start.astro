@@ -1,0 +1,46 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+---
+
+<SiteLayout
+  title="Get Started · Argus"
+  description="用三步启动 Argus：写目标、启动 daemon、从看板监督研究。"
+>
+  <section class="page-hero compact">
+    <div class="shell narrow">
+      <p class="eyebrow">Get started</p>
+      <h1>你写目标，Argus 做研究。</h1>
+      <p class="lede">任务规格只需要说清楚：要解决什么、什么算赢、预算与边界是什么。</p>
+    </div>
+  </section>
+
+  <section class="section tight">
+    <div class="shell narrow">
+      <div class="section-head"><p class="eyebrow">Step 1</p><h2>写一段 MISSION。</h2></div>
+      <pre class="code-block"><code># MISSION
+目标：把 &lt;metric&gt; 推到 &lt;target&gt;
+范围：模型 / 数据 / GPU / 时间
+完成：结果、代码、报告全部落盘
+不做：明确排除的方向</code></pre>
+    </div>
+  </section>
+
+  <section class="section surface">
+    <div class="shell narrow">
+      <div class="section-head"><p class="eyebrow">Step 2</p><h2>启动 daemon。</h2></div>
+      <pre class="code-block"><code>argus-skill --daemon --continuous \
+  --project-root &lt;项目目录&gt; \
+  --objective "$(cat MISSION.md)"</code></pre>
+    </div>
+  </section>
+
+  <section class="section tight">
+    <div class="shell narrow">
+      <div class="section-head"><p class="eyebrow">Step 3</p><h2>看进度，不接管执行。</h2></div>
+      <p>在看板中查看每个角色、mission、artifact 和 handoff；需要改变优先级时再发 operator 指令。</p>
+      <div class="hero-actions">
+        <a class="button primary" href="https://dash.argusbot.cn">打开实时看板 →</a>
+      </div>
+    </div>
+  </section>
+</SiteLayout>
