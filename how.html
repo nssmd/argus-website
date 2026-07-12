@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Argus 是怎么工作的</title>
-<link rel="icon" type="image/png" href="assets/argus-mark.png">
+<link rel="icon" type="image/png" href="assets/argus-mark-gold.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Noto+Sans+SC:wght@400;500;700&amp;display=swap" rel="stylesheet">
 <style>
@@ -42,9 +42,11 @@
  figcaption{font-size:13px;color:var(--faint);margin-top:7px}
  hr{border:none;border-top:1px solid var(--line);margin:36px 0}
  footer{border-top:1px solid var(--line);margin-top:46px;padding:30px 0 60px;font-family:var(--mono);font-size:12px;color:var(--faint);text-align:center}
-</style></head><body>
+</style>
+<link href="assets/site.css" rel="stylesheet">
+</head><body class="page-doc page-how">
 <div class="nav"><div class="in">
-  <a class="b" href="/"><img src="assets/argus-mark.png" alt="">Argus</a>
+  <a class="b" href="/"><img src="assets/argus-mark-gold.png" alt="">Argus</a>
   <span><a href="/">← 首页</a> &nbsp;·&nbsp; <a href="blog.html">Blog</a> &nbsp;·&nbsp; <a href="https://dash.argusbot.cn">看板</a></span>
 </div></div>
 
@@ -52,30 +54,31 @@
 <header>
   <div class="eyebrow">原理 · How it works</div>
   <h1>Argus 是怎么工作的</h1>
-  <p class="lead">把整套系统讲清楚:一个笨管道、三个 agent、一个碰不到的裁判。然后用两个真实例子走一遍——它怎么写一篇论文,怎么在 nanochat 上一步步发明。 想要逐条穷举的机制清单(每道门、每个阈值)→ <a href="mechanisms.html">完整机制参考</a>。</p>
+  <p class="lead">把整套系统讲清楚:外层 LifeSupervisor、四个常驻角色、内层 SkillLoop 和一份会跨 mission 延续的项目记忆。然后用论文与训练优化两个例子走一遍。想看逐条机制 → <a href="mechanisms.html">完整机制参考</a>。</p>
 </header>
 
 <h2>一句话模型</h2>
-<div class="big"><b>Argus = 一个故意做笨的"流水线管道" + 三个会吵架的 AI agent + 一个被冻结、agent 永远碰不到的"裁判"。</b> 7×24 不停跑。你只写一段"我要什么"的规格,它自己定题、写代码、跑实验、写论文,跑完告诉你结果——包括它做不到什么。</div>
-<p>关键一句:<b>管道不聪明,聪明的是 agent;胜负怎么算,永远由外部冻结的裁判说了算。</b>这是整套系统的命根——因为裁判在 agent 够不到的地方,agent 就没法"作弊刷分",可以被逼到极度激进却依然诚实。</p>
+<div class="big"><b>Argus = 一个持续运行的 LifeSupervisor + Manager / Planner / Engineer / Reviewer 四个角色 + 每个任务内部的 SkillLoop。</b>你给目标和算力,它自己排活、执行、验收、积累经验,然后进入下一轮。</div>
+<p>关键一句:<b>让 agent 做科研判断,让 runtime 负责状态、预算、调度和持续运行。</b>这样系统既不会被一段超长对话拖垮,也不需要人类每一步接管。</p>
 
-<h2>三个角色(会互相对抗)</h2>
+<h2>四个常驻角色</h2>
 <div class="roles">
-  <div class="role"><div class="h"><i style="background:#3b6fd4">P</i>Planner 规划</div><p>定方向、把大目标拆成一个个任务、判断"这个项目做完了没"。像项目经理。</p></div>
+  <div class="role"><div class="h"><i style="background:#c9952d">M</i>Manager 管理</div><p>接住 operator 输入、选择 vertical、推进或回退 pipeline stage。</p></div>
+  <div class="role"><div class="h"><i style="background:#3b6fd4">P</i>Planner 规划</div><p>backlog 为空时继续提出下一批工作,让长期项目不断向前。</p></div>
   <div class="role"><div class="h"><i style="background:var(--accent)">E</i>Engineer 工程</div><p>真正干活的:写代码、跑实验、profile 找瓶颈、改内核、写 LaTeX。像研究员/工程师。</p></div>
   <div class="role"><div class="h"><i style="background:var(--win)">R</i>Reviewer 评审</div><p>专门来挑刺的对手:找漏洞、要求更大胆、判这步过不过。<b>它是"完成"的唯一裁定者。</b></p></div>
 </div>
-<p>三个角色<b>各跑各的大模型,谁也不替谁背书</b>——Engineer 说"我做完了",Reviewer 不信、来挑刺。这种对抗就是质量的来源。</p>
+<p>四个角色各自保留独立上下文,但共享磁盘上的 backlog、journal、artifact 与 reviewer checkpoint。Engineer 说"做完了"不算,Reviewer 看产物再决定。</p>
 
 <h2>一轮是怎么跑的</h2>
-<div class="loop"><span class="c"># 管道每一轮(round)做的事:</span>
-Planner  ──► <span class="ac">挑一个任务</span> 给 Engineer
-Engineer ──► 写代码 / 跑实验 ──► 产物(代码、结果、图)
-Reviewer ──► 审这步 ──► <span class="ok">done</span> / <span class="ac">continue(带具体修改要求)</span> / blocked
-管道     ──► 记状态、过门禁(页数够没?预算超没?)、需要就回滚
-            └─► 反复，直到 Reviewer 判"整个项目完成"
+<div class="loop"><span class="c"># 外层项目循环 + 内层 mission 循环:</span>
+Manager        ──► 选择 vertical / stage
+LifeSupervisor ──► 从 backlog 领取任务
+SkillLoop      ──► 匹配 skill → Engineer 写代码 / 跑实验
+Reviewer       ──► <span class="ok">done</span> / <span class="ac">continue</span> / blocked + 下一步
+LifeSupervisor ──► 写 journal;backlog 空时调用 Planner 继续排活
 </div>
-<div class="note">注意:管道只做"搬运状态 + 检查<b>形式</b>(能不能编译、超没超预算)+ 回滚"。它<b>从不判断"这个想法好不好"</b>——那是 agent 的事。</div>
+<div class="note">一轮结束时,Reviewer 会把 goal、已完成、失败尝试、blocker 和 next step 写进 checkpoint。换 session、换 mission、重启 daemon,工作都能接着走。</div>
 
 <h2>案例 A:写一篇论文(8 个阶段)</h2>
 <p>用真实的 MMR-Trap 论文走一遍。Planner 把目标拆成 8 个阶段,每个阶段 Engineer 干活、Reviewer 把关,过了才进下一步:</p>
@@ -98,14 +101,14 @@ Reviewer ──► 审这步 ──► <span class="ok">done</span> / <span clas
 <div class="step"><div class="n">⑤</div><div><h4>成熟期 + 不毙太早</h4><p>大胆的结构改动第一轮常常更差;给它 2-4 轮"养"再判死。连续没进展才换一条全新方向(basin-hop)。</p></div></div>
 <figure><img src="assets/results.png" alt="nanochat 37 个发明的实测"><figcaption>这样迭代了 3 天 / 60 轮,自创 37 个机制,6 个做完整 10-seed。绿色那个就是上面走完一遍赢出来的。</figcaption></figure>
 
-<h2>为什么可信(它和别人最大的不同)</h2>
+<h2>为什么它能连续跑几天</h2>
 <ul>
-<li><b>裁判冻结、外置</b>:评分器、计时、验证集都锁死在 agent 够不到的地方,它没法刷自己不拥有的分。</li>
-<li><b>防作弊是硬门</b>:"别读答案"是会判负的强制规则 + 隔离作弊配方,不是一句客气话。</li>
-<li><b>硬件诚实</b>:H100 和 B200 不可比,跨硬件比较强制标注,绝不混着报。</li>
-<li><b>失败是一等公民</b>:测出来没赢(PASS-B)照样写清楚归档,不藏。</li>
+<li><b>状态落盘</b>:backlog、事件、配置和 reviewer checkpoint 都在项目状态目录。</li>
+<li><b>默认 open-ended</b>:队列空了由 Planner 继续排活,不是对话结束就停。</li>
+<li><b>会话主动换班</b>:长 session 定期 roll,用精选 checkpoint 续接,避免上下文无限膨胀。</li>
+<li><b>经验能复用</b>:skill miss 时 Scientist 生成 project skill,Reviewer 根据真实使用结果更新 skill 与 wiki。</li>
 </ul>
-<div class="big">一句话:<b>别人比"涨了多少",Argus 比"涨的这点经得起审计"。</b>代价是头条数字更小;好处是没人能用"夸大"打它。</div>
+<div class="big">一句话:<b>Argus 不是一次回答问题,而是持续经营一个研究项目。</b></div>
 
 <hr>
 <p style="font-size:14px;color:var(--mut)">想看真实跑出来的结果 → <a href="benchmark.html">Benchmark 报告</a>;想看完整技术博客 → <a href="blog.html">Blog</a>;此刻在跑什么 → <a href="https://dash.argusbot.cn">实时看板</a>。 想看<b>所有机制的穷举清单</b> → <a href="mechanisms.html">完整机制参考</a>。</p>

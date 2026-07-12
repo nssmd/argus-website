@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Argus — 完整机制参考</title>
-<link rel="icon" type="image/png" href="assets/argus-mark.png">
+<link rel="icon" type="image/png" href="assets/argus-mark-gold.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -36,22 +36,24 @@
  .inv li{color:#cfc7b8;font-size:14px;margin-bottom:7px;margin-left:18px}
  .inv b{color:#fff}
  footer{border-top:1px solid var(--line);margin-top:44px;padding:28px 0 60px;font-family:var(--mono);font-size:12px;color:var(--faint);text-align:center}
-</style></head><body>
+</style>
+<link href="assets/site.css" rel="stylesheet">
+</head><body class="page-doc page-mechanisms">
 <div class="nav"><div class="in">
-  <a class="b" href="/"><img src="assets/argus-mark.png" alt="">Argus</a>
+  <a class="b" href="/"><img src="assets/argus-mark-gold.png" alt="">Argus</a>
   <span><a href="how.html">← 原理</a> &nbsp;·&nbsp; <a href="blog.html">Blog</a> &nbsp;·&nbsp; <a href="https://dash.argusbot.cn">看板</a></span>
 </div></div>
 <div class="wrap">
 <header>
   <div class="eyebrow">深入 · 完整机制参考</div>
   <h1>Argus 用到的所有机制</h1>
-  <p class="lead">这是穷举版——每一道门、每一个信号、每一条协议,带真实阈值。先看 <a href="how.html">原理页</a> 建立直觉,这页是逐条参考。八大类。</p>
+  <p class="lead">这是深度参考页——从四个常驻角色、阶段系统、搜索机制到运维通道。先看 <a href="how.html">原理页</a> 建立直觉,再回来查细节。</p>
 </header>
 
 <div class="toc">
   <a href="#roles">1 · 角色与一轮循环</a>
   <a href="#stages">2 · 阶段机与门禁</a>
-  <a href="#verifier">3 · 冻结裁判与诚实</a>
+  <a href="#verifier">3 · 评测与结果约束</a>
   <a href="#search">4 · 搜索与发明纪律</a>
   <a href="#population">5 · 种群进化与跳变</a>
   <a href="#evolve">6 · 自进化元循环</a>
@@ -60,13 +62,14 @@
 </div>
 
 <h2 id="roles"><span class="num">1</span>角色与一轮循环</h2>
-<p class="sub">三个角色各跑各的模型、互不背书;Reviewer 是"完成"的唯一裁定者。</p>
+<p class="sub">Manager、Planner、Engineer、Reviewer 四个常驻角色分工;Reviewer 是"完成"的唯一裁定者。</p>
 <table>
 <tr><th>机制</th><th>做什么 / 真实规则</th></tr>
+<tr><td><b>Manager 前门</b></td><td>判断 operator 输入是 chat 还是 task、选择 vertical,并作为 pipeline stage 转移的唯一权威。</td></tr>
 <tr><td><b>Planner 规划</b> <span class="k">missions/base.py</span></td><td>定方向、排任务顺序、判 <code>project_done</code>。<b>只有 8 阶段全 done 且终门过</b>才判完成;<b>backlog 空≠完成</b>。</td></tr>
 <tr><td><b>Engineer 工程</b></td><td>写代码、跑实验、profile、改内核、写 LaTeX。own pool <code>{engineer,general}</code>。</td></tr>
 <tr><td><b>Reviewer 评审</b></td><td>每个 stage 判 <code>done / continue(带具体修改) / blocked</code>。<b>是项目完成的唯一真值源</b>。默认排除自己的 role.md 防自指。</td></tr>
-<tr><td><b>一轮(round)</b> <span class="k">supervisor/_core.py tick()</span></td><td>Planner 挑任务→Engineer 干活出产物→Reviewer 判→管道记状态/过门/回滚→循环。预算上限 <span class="num-badge">$30/任务 · $180/天</span>。</td></tr>
+<tr><td><b>一轮(round)</b> <span class="k">supervisor/_core.py tick()</span></td><td>LifeSupervisor 领 backlog→SkillLoop 匹配能力→Engineer 干活→Reviewer 判→写回状态与下一步。预算上限 <span class="num-badge">$30/任务 · $180/天</span>。</td></tr>
 </table>
 
 <h2 id="stages"><span class="num">2</span>阶段机与门禁(测"形式")</h2>
@@ -82,8 +85,8 @@
 <tr><td><b>format-preflight</b></td><td>EMNLP/AAAI 各自的官方模板/页数/样式门。</td></tr>
 </table>
 
-<h2 id="verifier"><span class="num">3</span>冻结裁判与诚实(命根)</h2>
-<p class="sub">"什么算赢"锁死在 agent 够不到的外部。这是整套系统能诚实的唯一原因。</p>
+<h2 id="verifier"><span class="num">3</span>评测与结果约束</h2>
+<p class="sub">每个 vertical 定义自己的 metric、预算与有效性条件,agent 围绕它做搜索。</p>
 <table>
 <tr><th>机制</th><th>真实规则 / 阈值</th></tr>
 <tr><td><b>冻结裁判封印</b> <span class="k">self_improving/seal_check.py</span></td><td>堵三个洞:① scorer(<code>analyze_sweep.py</code>)<b>哈希钉死</b>;② 评估/计时/读数 anchor <b>必须逐字保留</b>(改了判负);③ 自报 train_time <b>被独立 wall-clock 夹住</b>(<code>train_time≥wall</code> 判负)。物理下限 <span class="num-badge">20000ms</span>。</td></tr>

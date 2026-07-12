@@ -1,19 +1,19 @@
 :root {
-  --page: #f5f6f7;
+  --page: #f5f8fd;
   --paper: #ffffff;
-  --ink: #111318;
-  --muted: #626a75;
-  --faint: #8a929d;
-  --line: #e1e3e6;
-  --line-strong: #c9cdd3;
-  --accent: #d45735;
-  --accent-dark: #aa3d22;
-  --blue: #2563eb;
-  --blue-soft: #eef4ff;
-  --green: #087a55;
-  --green-soft: #eaf7f2;
-  --orange-soft: #fff2ed;
-  --code: #14171d;
+  --ink: #081b36;
+  --muted: #58708f;
+  --faint: #8aa0ba;
+  --line: #dce6f3;
+  --line-strong: #c5d4e7;
+  --accent: #c9952d;
+  --accent-dark: #8d6312;
+  --blue: #175dcc;
+  --blue-soft: #edf4ff;
+  --green: #118b67;
+  --green-soft: #eaf8f3;
+  --orange-soft: #fff7e5;
+  --code: #071426;
   --sans: "Plus Jakarta Sans", Arial, sans-serif;
   --serif: "Fraunces", Georgia, serif;
   --mono: "JetBrains Mono", monospace;
@@ -34,7 +34,10 @@ html {
 }
 
 body {
-  background: var(--paper);
+  background:
+    radial-gradient(circle at 88% 2%, rgba(201, 149, 45, 0.09), transparent 25rem),
+    radial-gradient(circle at 8% 12%, rgba(23, 93, 204, 0.08), transparent 30rem),
+    linear-gradient(180deg, var(--paper) 0, var(--page) 44rem);
   color: var(--ink);
   font-family: var(--sans);
   font-size: 17px;
@@ -50,7 +53,7 @@ a {
 }
 
 ::selection {
-  background: #dbe7ff;
+  background: #dbe8ff;
   color: var(--ink);
 }
 
@@ -61,7 +64,7 @@ a {
 }
 
 a:hover {
-  color: #1748ad;
+  color: #0d3f91;
   text-decoration-color: currentColor;
 }
 
@@ -293,12 +296,13 @@ h1 {
 }
 
 .pdfbtn {
-  background: var(--accent);
+  background: linear-gradient(135deg, var(--blue), #0d3f91);
   color: #fff;
+  box-shadow: 0 14px 30px -20px rgba(23, 93, 204, 0.85);
 }
 
 .pdfbtn:hover {
-  background: var(--accent-dark);
+  background: linear-gradient(135deg, #246fdf, var(--blue));
   color: #fff;
 }
 
@@ -378,6 +382,10 @@ h1 {
   font-weight: 700;
   line-height: 1;
   font-variant-numeric: tabular-nums;
+}
+
+.signal:nth-child(even) strong {
+  color: var(--accent-dark);
 }
 
 .signal span {
@@ -472,7 +480,7 @@ h1 {
 
 .shows .box.proof {
   background: var(--blue-soft);
-  border-color: #cfddfb;
+  border-color: #cbdcf4;
 }
 
 .shows .box h4 {
@@ -675,12 +683,12 @@ blockquote {
 }
 
 .crow.win .track i {
-  background: var(--green);
+  background: linear-gradient(90deg, #5a8bea, var(--blue));
 }
 
 .crow.win .cv,
 .crow.win .cl {
-  color: var(--green);
+  color: var(--blue);
   font-weight: 700;
 }
 
@@ -819,7 +827,7 @@ hr {
 footer {
   padding: 34px 24px 54px;
   border-top: 1px solid var(--line);
-  background: var(--page);
+  background: linear-gradient(90deg, var(--blue-soft), var(--paper), var(--orange-soft));
   color: var(--faint);
   font-family: var(--mono);
   font-size: 10px;
