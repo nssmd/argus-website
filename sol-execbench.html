@@ -51,7 +51,7 @@
 
  <div class="eyebrow">Argus 自治研究 · 外部验证 · NVIDIA SOL-ExecBench</div>
  <h1>SOL-ExecBench（B200）：argus 冲到<u>全球第六</u>，两个 kernel 拿下全榜第一</h1>
- <div class="lede"><a class="ext" href="https://research.nvidia.com/benchmarks/sol-execbench/leaderboard" target="_blank" rel="noopener">SOL-ExecBench</a> 是 NVIDIA 的公开 GPU 算子基准（235 个真实 kernel · <b>B200</b>）。分数 = <b>SOL score</b>，即算子达到硬件「光速」（peak throughput，理论峰值吞吐）的比例，越接近 1 越好。argus 提交了其中 <b>101 个 kernel</b>，全部由 NVIDIA 在自家 B200 上实测；这轮 campaign 的综合排名达到<b>全球第六</b>，7 个 kernel 曾进入公开榜前三，其中 <b>2 个全榜第一</b>。</div>
+ <div class="lede"><a class="ext" href="https://research.nvidia.com/benchmarks/sol-execbench/leaderboard" target="_blank" rel="noopener">SOL-ExecBench</a> 是 NVIDIA 的公开 GPU 算子基准（235 个真实 kernel · <b>B200</b>）。<b>SOL-Score</b> 根据 SOLAR 分析得到的 B200 理论 roofline 评价自定义 kernel，越高越好。argus 提交了其中 <b>101 个 kernel</b>，全部由 NVIDIA 在 B200 上实测；这轮 campaign 的综合排名达到<b>全球第六</b>，7 个 kernel 曾进入公开榜前三，其中 <b>2 个全榜第一</b>。</div>
 
  <div class="verdict">✅ 在 NVIDIA 官方 SOL-ExecBench B200 榜上，argus 的综合表现达到<b>全球第六</b>。其中 <b>040_conv2d_residual_block（0.851）</b> 与 <b>002_fp8_attention_qkv_projection（0.708）</b> 是<b>全榜第一</b>，分别压过 SF Tensor / Databricks（0.846）与 <b>Recursive（0.647）</b>。所有分数均由 <b>NVIDIA 在 B200 上实测</b>，任何人都可以在公开榜复核。<span class="warnb">完整战绩：101 个提交、7 个 kernel 曾进公开前三、2 个全榜第一。榜单持续变化；“全球第六”记录的是这轮 campaign 达到的综合名次。</span></div>
 
@@ -62,9 +62,9 @@
    <div class="stat"><div class="n">#6</div><div class="l">综合全球名次</div></div>
  </div>
 
- <h2>结果 · NVIDIA SOL-ExecBench B200 官方榜（SOL score 越高 → 越接近硬件光速）</h2>
+ <h2>结果 · NVIDIA SOL-ExecBench B200 官方榜（SOL-Score 越高越好）</h2>
  <div class="panel"><table>
-  <tr><th>kernel（我们优化的算子）</th><th>官方名次</th><th>SOL score</th><th>榜上对手</th><th>越接近光速 → 条越长</th></tr>
+  <tr><th>kernel（我们优化的算子）</th><th>官方名次</th><th>SOL-Score</th><th>榜上对手</th><th>分数 → 条越长</th></tr>
 
   <tr class="win"><td><span class="mech">040_conv2d_residual_block</span></td><td><span class="tag r1">★ #1</span></td><td class="num">0.851</td><td class="vs">#2 SF Tensor 0.846 · #3 Databricks 0.846</td><td><div class="bar"><i style="width:85%"></i></div></td></tr>
 
@@ -87,7 +87,7 @@
  <div class="grid2">
   <div><h2>分数怎么来的（为什么这次更硬）</h2><div class="panel" style="padding:18px 20px">
    <div style="font-size:13px;color:#33507a">
-   • <b>SOL score</b> = 算子实测吞吐 ÷ B200 理论「光速」峰值。1.0 = 打满硬件；越高越好。<br><br>
+   • <b>SOL-Score</b> 以 SOLAR 分析得到的 B200 理论 roofline 为参照评价 custom kernel；越高越好。<br><br>
    • 流程：提交 kernel → <b>NVIDIA 在 B200 上跑并计分</b> → 上公开榜。分数<b>不是我们自己机器上测的</b>，而是第三方（NVIDIA）在标准 B200 上测的。<br><br>
    • 因此任何人都能在公开榜上<b>独立复核</b>我们的名次——这比我们自建 harness 自测的数<b>更可信</b>，正是「自报 → 外部可核」的那一步。
    </div>
