@@ -1,0 +1,47 @@
+---
+import "asciinema-player/dist/bundle/asciinema-player.css";
+---
+
+<div
+  id="argus-cli-recording"
+  class="cli-recording"
+  role="region"
+  aria-label="Argus CLI 真实操作回放"
+>
+  <noscript>
+    <a href="/assets/demos/argus-cli.cast">下载 CLI 录制</a>
+  </noscript>
+</div>
+
+<script>
+  import { create } from "asciinema-player";
+
+  const mount = document.querySelector("#argus-cli-recording");
+
+  if (mount instanceof HTMLElement && mount.dataset.ready !== "true") {
+    mount.dataset.ready = "true";
+    const player = create("/assets/demos/argus-cli.cast", mount, {
+      autoPlay: false,
+      controls: true,
+      cursorMode: "hidden",
+      fit: "width",
+      idleTimeLimit: 2,
+      loop: true,
+      poster: "npt:0:04",
+      preload: true,
+      terminalFontFamily: '"JetBrains Mono", ui-monospace, monospace',
+      terminalFontSize: "12px",
+      terminalLineHeight: 1.28,
+    });
+
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      new IntersectionObserver(
+        ([entry]) => {
+          if (entry?.isIntersecting) void player.play();
+          else player.pause();
+        },
+        { threshold: 0.2 },
+      ).observe(mount);
+    }
+  }
+</script>

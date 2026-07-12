@@ -1,46 +1,141 @@
 ---
+import CliRecording from "../components/CliRecording.astro";
 import SiteLayout from "../layouts/SiteLayout.astro";
 ---
 
 <SiteLayout
   title="Get Started · Argus"
-  description="用三步启动 Argus：写目标、启动 daemon、从看板监督研究。"
+  description="真实体验 Argus CLI 与 WebUI：直接用自然语言交代目标，在同一个研究驾驶舱里查看角色、进度与结果。"
 >
-  <section class="page-hero compact">
-    <div class="shell narrow">
+  <section class="page-hero compact product-hero">
+    <div class="shell demo-shell">
       <p class="eyebrow">Get started</p>
-      <h1>你写目标，Argus 做研究。</h1>
-      <p class="lede">任务规格只需要说清楚：要解决什么、什么算赢、预算与边界是什么。</p>
-    </div>
-  </section>
-
-  <section class="section tight">
-    <div class="shell narrow">
-      <div class="section-head"><p class="eyebrow">Step 1</p><h2>写一段 MISSION。</h2></div>
-      <pre class="code-block"><code># MISSION
-目标：把 &lt;metric&gt; 推到 &lt;target&gt;
-范围：模型 / 数据 / GPU / 时间
-完成：结果、代码、报告全部落盘
-不做：明确排除的方向</code></pre>
-    </div>
-  </section>
-
-  <section class="section surface">
-    <div class="shell narrow">
-      <div class="section-head"><p class="eyebrow">Step 2</p><h2>启动 daemon。</h2></div>
-      <pre class="code-block"><code>argus-skill --daemon --continuous \
-  --project-root &lt;项目目录&gt; \
-  --objective "$(cat MISSION.md)"</code></pre>
-    </div>
-  </section>
-
-  <section class="section tight">
-    <div class="shell narrow">
-      <div class="section-head"><p class="eyebrow">Step 3</p><h2>看进度，不接管执行。</h2></div>
-      <p>在看板中查看每个角色、mission、artifact 和 handoff；需要改变优先级时再发 operator 指令。</p>
+      <h1>打开 Argus，<em>直接说你要什么。</em></h1>
+      <p class="lede">
+        CLI 与 WebUI 是同一套研究系统的两个驾驶舱。输入自然语言，Manager 会理解、规划并调动整个团队——不需要用 Python 命令和 agent 交互。
+      </p>
       <div class="hero-actions">
-        <a class="button primary" href="https://dash.argusbot.cn">打开实时看板 →</a>
+        <a class="button primary" href="#cli">先看 CLI →</a>
+        <a class="button" href="#webui">再看 WebUI ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="cli" class="section demo-section">
+    <div class="shell demo-shell">
+      <div class="demo-intro">
+        <div class="section-head">
+          <p class="eyebrow">01 · Terminal cockpit</p>
+          <h2>CLI 不是命令堆，是完整的研究驾驶舱。</h2>
+          <p>运行 <code>argus</code>，直接说话。角色状态、研究轨迹、Reviewer 裁决与最终成果都在同一个终端里。</p>
+        </div>
+        <div class="launch-command" aria-label="CLI 启动命令">
+          <span>启动</span>
+          <code>argus</code>
+        </div>
+      </div>
+
+      <div class="demo-frame terminal-demo">
+        <div class="demo-frame__bar">
+          <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <strong>Argus CLI</strong>
+          <span>REAL RUN</span>
+        </div>
+        <CliRecording />
+      </div>
+
+      <p class="demo-caption">
+        <strong>真实任务回放</strong>
+        创作《秋江赋》：四个角色完成 4 轮协作，Reviewer 验收后，CLI 直接打开最终成品。
+      </p>
+      <div class="demo-points" aria-label="CLI 功能">
+        <span>自然语言交互</span>
+        <span>实时角色状态</span>
+        <span>完整研究轨迹</span>
+        <span>成果原地预览</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="webui" class="section surface demo-section">
+    <div class="shell demo-shell">
+      <div class="demo-intro">
+        <div class="section-head">
+          <p class="eyebrow">02 · Web cockpit</p>
+          <h2>同一个项目，在浏览器里一眼看全。</h2>
+          <p>切换 Mission 与 Activity，展开每个角色的工作，直接阅读 Reviewer 认可的结果；底部输入框仍然只需要自然语言。</p>
+        </div>
+        <div class="launch-command" aria-label="WebUI 启动命令">
+          <span>启动</span>
+          <code>argus --web</code>
+        </div>
+      </div>
+
+      <div class="demo-frame browser-demo">
+        <div class="demo-frame__bar">
+          <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <strong>Argus WebUI</strong>
+          <span>REAL RUN</span>
+        </div>
+        <video
+          data-web-demo
+          controls
+          loop
+          muted
+          playsinline
+          preload="metadata"
+          poster="/assets/demos/argus-web-demo-poster.webp"
+          aria-label="Argus WebUI 真实操作演示"
+        >
+          <source src="/assets/demos/argus-web-demo.webm" type="video/webm" />
+          <a href="/assets/demos/argus-web-demo.webm">下载 WebUI 演示视频</a>
+        </video>
+      </div>
+
+      <p class="demo-caption">
+        <strong>同一条真实轨迹</strong>
+        浏览器同步显示任务、角色交接、验收证据与《秋江赋》全文，并展示自然语言输入入口。
+      </p>
+      <div class="demo-points" aria-label="WebUI 功能">
+        <span>多项目切换</span>
+        <span>Mission / Activity</span>
+        <span>四角色展开</span>
+        <span>结果即时阅读</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell demo-shell">
+      <div class="cta-band product-cta">
+        <p class="eyebrow">Choose your cockpit</p>
+        <h2>没有 Python 交互层。只有两个真正的产品入口。</h2>
+        <p>终端与浏览器共享同一份项目状态、事件、预算与成果。选你喜欢的界面，随时切换。</p>
+        <div class="launch-options">
+          <div><span>Terminal</span><code>argus</code></div>
+          <div><span>Browser</span><code>argus --web</code></div>
+        </div>
+        <div class="hero-actions">
+          <a class="button" href="https://github.com/lbx154/argus-skill#快速开始">查看安装说明 →</a>
+        </div>
       </div>
     </div>
   </section>
 </SiteLayout>
+
+<script>
+  const video = document.querySelector("[data-web-demo]");
+
+  if (
+    video instanceof HTMLVideoElement &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) void video.play();
+        else video.pause();
+      },
+      { threshold: 0.25 },
+    ).observe(video);
+  }
+</script>
