@@ -2,10 +2,10 @@
 <html lang="en"><head>
 <meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>Argus — Global #6 on NVIDIA SOL-ExecBench</title>
-<meta content="Argus reached global #6 on NVIDIA SOL-ExecBench, with two B200 kernels at #1 — alongside 63/82 on AARRI-Bench, 28.0 on Arbor, 37 invented mechanisms, and 33 research PDFs." name="description"/>
+<meta content="Argus reached global #6 on NVIDIA SOL-ExecBench, beat human SOTA on both H100 and B200 nanochat, ran an 8×H100 speedrun in 79.77 seconds, and produced 33 research PDFs." name="description"/>
 <link href="assets/argus-mark.png" rel="icon" type="image/png"/>
 <meta content="Argus — Global #6 on NVIDIA SOL-ExecBench" property="og:title"/>
-<meta content="Two B200 kernels at #1. AARRI-Bench 63/82. Arbor 28.0. An N=10-certified 79.77s speedrun. 37 original mechanisms. 33 research PDFs." property="og:description"/>
+<meta content="Two B200 kernels at #1. Human SOTA beaten on H100 and B200. 8×H100 speedrun: 79.77s. AARRI: 63/82. Arbor: 28.0. 33 research PDFs." property="og:description"/>
 <meta content="https://argusbot.cn/assets/argus-og.png" property="og:image"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
@@ -29,9 +29,9 @@
 <div class="hero-copy">
 <div class="eyebrow" data-zh="Argus 正式发布 · 2026 年 7 月">Introducing Argus · July 2026</div>
 <h1 data-zh="NVIDIA B200 全球第六。它永不下班。">Global #6 on NVIDIA B200. And it never clocks out.</h1>
-<p class="sub" data-zh="Argus 在 NVIDIA 公开 SOL-ExecBench 综合排名达到&lt;b&gt;全球第六&lt;/b&gt;,两个 kernel 拿下全榜第一。然后这套 7×24 自主科研系统继续向前:AARRI-Bench 63/82,Arbor 数学数据合成 28.0,8×H100 speedrun 以 N=10 认证 79.77 秒,发明 37 个机制,并产出 33 份研究 PDF。">Argus reached <b>global #6 overall</b> on NVIDIA's public SOL-ExecBench, with two kernels taking #1. Then the 7×24 research system kept moving: 63/82 on AARRI-Bench, 28.0 on Arbor's math-data task, an N=10-certified 79.77-second 8×H100 speedrun, 37 original mechanisms, and 33 research PDFs.</p>
+<p class="sub" data-zh="Argus 在 NVIDIA SOL-ExecBench 达到&lt;b&gt;全球第六&lt;/b&gt;,两个 kernel 拿下全榜第一;在 nanochat 5 分钟挑战中,H100 与 B200 都超过 human SOTA;在 8×H100 speedrun 跑出 &lt;b&gt;79.77 秒&lt;/b&gt;。然后它继续做研究、跑 benchmark、写论文。">Argus reached <b>global #6</b> on NVIDIA SOL-ExecBench, with two kernels taking #1; beat human SOTA on both H100 and B200 in the five-minute nanochat challenge; and ran the 8×H100 speedrun in <b>79.77 seconds</b>. Then it kept researching, benchmarking, and writing papers.</p>
 <div class="hero-footer">
-<div class="meta"><span class="byline" data-zh="Argus Research 团队">Argus Research</span><span data-zh="2026 年 7 月 · 7 分钟阅读 · NVIDIA B200 + H100">July 2026 · 7 min read · NVIDIA B200 + H100</span></div>
+<div class="meta"><span class="byline" data-zh="Argus Research 团队">Argus Research</span><span data-zh="2026 年 7 月 · 5 分钟阅读 · NVIDIA B200 + H100">July 2026 · 5 min read · NVIDIA B200 + H100</span></div>
 <div class="hero-actions">
 <a class="pdfbtn" data-zh="观看 Argus 实时工作 ↗" href="https://dash.argusbot.cn" rel="noopener" target="_blank">Watch Argus work live ↗</a>
 <a class="benchmark-btn" data-zh="查看数据" href="benchmark.html">View the data</a>
@@ -49,19 +49,20 @@
 <div class="signal-grid" aria-label="Key results">
 <div class="signal"><strong>#6</strong><span data-zh="NVIDIA SOL-ExecBench 全球综合排名">global overall on NVIDIA SOL-ExecBench</span></div>
 <div class="signal"><strong>2× #1</strong><span data-zh="两个 B200 kernel 全榜第一">B200 kernels at #1</span></div>
-<div class="signal"><strong>37</strong><span data-zh="个自主提出并实测的新机制">original mechanisms built and tested</span></div>
+<div class="signal"><strong>0.9636</strong><span data-zh="B200 nanochat · 超过 human SOTA 0.9646">B200 nanochat · beats human SOTA at 0.9646</span></div>
 <div class="signal"><strong>33</strong><span data-zh="份跨六个方向的研究 PDF">research PDFs across six directions</span></div>
 </div>
 <div class="callout" data-zh="大多数 AI agent 在给出一个&lt;i&gt;听起来合理&lt;/i&gt;的答案时就停了。Argus 会继续写代码、跑实验、读结果、否掉烂 idea,直到交付一个更快的 kernel、一条更强的研究流水线,或者一篇完整论文。"><b>Most AI agents stop at an answer that sounds plausible.</b> Argus keeps writing code, running experiments, reading results, and killing weak ideas until it ships a faster kernel, a stronger research pipeline, or a finished paper.</div>
 
-<h2 data-zh="一套系统,六个赛场">One system. Six scoreboards.</h2>
+<h2 data-zh="成绩墙">The scoreboard</h2>
 <table>
-<tr><th data-zh="赛场">Arena</th><th data-zh="Argus 成绩">Argus result</th><th data-zh="超过谁">What it beat</th></tr>
+<tr><th data-zh="赛场">Arena</th><th data-zh="Argus 成绩">Argus result</th><th data-zh="对比 / 结果">Comparison / outcome</th></tr>
 <tr><td><b>NVIDIA SOL-ExecBench</b><br><span style="font-size:11px;color:#0FAE74">B200</span></td><td data-zh="全球综合 &lt;b&gt;#6&lt;/b&gt; · 两个 kernel &lt;b&gt;#1&lt;/b&gt; · 7 个 top-3">Global <b>#6</b> overall · two kernels at <b>#1</b> · 7 top-three finishes</td><td data-zh="两个算子正面超过 Recursive">Two head-to-head wins over Recursive</td></tr>
+<tr><td><a href="nanochat-b200.html"><b>nanochat · B200</b></a><br><span style="font-size:11px;color:#0FAE74">5 min · 1×B200</span></td><td data-zh="426 次自治尝试 · &lt;b&gt;0.9636 BPB&lt;/b&gt;">426 autonomous attempts · <b>0.9636 BPB</b></td><td data-zh="超过 human SOTA &lt;b&gt;0.9646&lt;/b&gt;">beats human SOTA <b>0.9646</b></td></tr>
+<tr><td><a href="benchmark.html"><b>nanochat · H100</b></a><br><span style="font-size:11px;color:#0FAE74">5 min · 1×H100</span></td><td data-zh="37 个新机制 · &lt;b&gt;0.9855 BPB&lt;/b&gt;">37 original mechanisms · <b>0.9855 BPB</b></td><td data-zh="超过 human SOTA &lt;b&gt;0.9879&lt;/b&gt;">beats human SOTA <b>0.9879</b></td></tr>
+<tr><td><a href="speedrun.html"><b>nanoGPT speedrun</b></a><br><span style="font-size:11px;color:#0FAE74">8×H100 · N=10</span></td><td data-zh="达到 val_loss≤3.28:&lt;b&gt;79.77 秒&lt;/b&gt;">Reached val_loss≤3.28 in <b>79.77 seconds</b></td><td data-zh="human #83 同机重测:&lt;b&gt;80.18 秒&lt;/b&gt;">human #83, same-device rerun: <b>80.18 seconds</b></td></tr>
 <tr><td><b>AARRI-Bench</b></td><td data-zh="&lt;b&gt;63/82(76.8%)&lt;/b&gt; · 严格 judge 64/82(78.0%)"><b>63/82 (76.8%)</b> · strict judge 64/82 (78.0%)</td><td data-zh="论文报告最佳 68.3%">Paper-reported best: 68.3%</td></tr>
 <tr><td><b>Arbor · RUC NLPIR</b></td><td data-zh="Math-Reasoning Data &lt;b&gt;28.0&lt;/b&gt; · 配套评测 23.96">Math-Reasoning Data <b>28.0</b> · companion eval 23.96</td><td data-zh="Arbor 20.83 · Claude Code 8.33 · Codex 6.25">Arbor 20.83 · Claude Code 8.33 · Codex 6.25</td></tr>
-<tr><td><b>nanoGPT speedrun</b></td><td data-zh="8×H100 · N=10 · &lt;b&gt;79.77 秒&lt;/b&gt;">8×H100 · N=10 · <b>79.77 seconds</b></td><td data-zh="同机重测 #83:80.18 秒">Same-device #83 rerun: 80.18 seconds</td></tr>
-<tr><td><b>nanochat · 5 min</b></td><td data-zh="37 个新机制 · 最佳组合 &lt;b&gt;0.9855 BPB&lt;/b&gt;">37 new mechanisms · best stack <b>0.9855 BPB</b></td><td data-zh="从调参走到结构与 kernel 发明">From tuning to structural and kernel invention</td></tr>
 <tr><td data-zh="&lt;b&gt;端到端研究&lt;/b&gt;"><b>End-to-end research</b></td><td data-zh="六个方向 · &lt;b&gt;33 份研究 PDF&lt;/b&gt;">Six directions · <b>33 research PDFs</b></td><td data-zh="从选题一路跑到论文交付">From topic selection to paper delivery</td></tr>
 </table>
 
@@ -74,21 +75,6 @@
 <div class="axis" data-zh="002_fp8_attention_qkv_projection · NVIDIA B200 · SOL-Score 越高越好">002_fp8_attention_qkv_projection · NVIDIA B200 · higher SOL-Score is better</div>
 </div>
 <p data-zh="在 fp8-attention 上,Argus 同时占住 #1 和 #3,把 Recursive 夹在中间;在 flux-rmsnorm 上再次正面超过 Recursive。&lt;a href='sol-execbench.html'&gt;看完整 B200 战绩 →&lt;/a&gt;">On fp8-attention, Argus holds #1 and #3 with Recursive in between; on flux-rmsnorm, it beat Recursive again. <a href="sol-execbench.html">See the full B200 run →</a></p>
-
-<h2 data-zh="它也能像研究员一样工作">It also wins at research work</h2>
-<p data-zh="AARRI-Bench 用 82 个任务测试真实研究实习生能力:理解上下文、做判断、操作环境、把事情推进到底。Argus SkillLoop 通过 &lt;b&gt;63/82(76.8%)&lt;/b&gt;,严格 LLM-judge 给出 &lt;b&gt;64/82(78.0%)&lt;/b&gt;,超过论文报告的最好成绩 68.3%。">AARRI-Bench uses 82 tasks to test real research-intern work: understanding context, exercising judgment, operating the environment, and driving work to completion. Argus SkillLoop passed <b>63/82 (76.8%)</b>; a strict LLM judge scored <b>64/82 (78.0%)</b>, above the paper's reported best of 68.3%.</p>
-<div class="chart">
-<div class="crow win"><span class="cl">★ Argus · GPT-5.5</span><span class="track"><i style="width:76.8%"></i></span><span class="cv">76.8</span></div>
-<div class="crow"><span class="cl">Mini-SWE-Agent · Opus-4.7</span><span class="track"><i style="width:68.3%"></i></span><span class="cv">68.3</span></div>
-<div class="crow"><span class="cl">Hermes · Opus-4.7</span><span class="track"><i style="width:64.6%"></i></span><span class="cv">64.6</span></div>
-<div class="crow"><span class="cl">Claude Code · Opus-4.7</span><span class="track"><i style="width:62.2%"></i></span><span class="cv">62.2</span></div>
-</div>
-<p data-zh="在人大 NLPIR 的 Arbor Math-Reasoning Data 任务上,Argus 优化了一条数学题生成流水线,把 gap 推到 &lt;b&gt;28.0&lt;/b&gt;,超过 Arbor 自家 agent 的 20.83、Claude Code 的 8.33 和 Codex 的 6.25。它优化的不是一道题,而是一台会持续制造更强训练数据的机器。">On RUC NLPIR's Arbor Math-Reasoning Data task, Argus optimized a math-problem generation pipeline and pushed the gap to <b>28.0</b> — above Arbor's own agent at 20.83, Claude Code at 8.33, and Codex at 6.25. It improved not one problem, but a machine that keeps producing stronger training data.</p>
-
-<h2 data-zh="它会发明,不只是调参">It invents, not just tunes</h2>
-<p data-zh="在 nanochat 5 分钟单卡 H100 挑战里,Argus 连续运行约 3 天、60 次 mission,提出并实测了 &lt;b&gt;37 个新机制&lt;/b&gt;,横跨结构、kernel、数值精度和更新方式。6 个候选进入完整 10-seed 测量。">In the five-minute, single-H100 nanochat challenge, Argus ran for roughly three days and 60 missions, proposing and measuring <b>37 original mechanisms</b> across architecture, kernels, numerical precision, and update mechanics. Six advanced to full 10-seed measurement.</p>
-<figure><img alt="BPB results from the nanochat invention run" src="assets/results.png"/><figcaption data-zh="37 个机制中的 6 个进入 10-seed 测量;val BPB 越低越好。">Six of 37 mechanisms advanced to 10-seed measurement; lower validation BPB is better.</figcaption></figure>
-<p data-zh="最佳单机制来自 q/k 的 &lt;code&gt;rotary→RMSNorm&lt;/code&gt; Triton 接缝,达到 &lt;b&gt;0.98738 BPB&lt;/b&gt;。三个接缝组合后进一步降到 &lt;b&gt;0.98550&lt;/b&gt;。这已经不是搜索几个超参——它在改训练系统本身。">The best single mechanism was a q/k <code>rotary→RMSNorm</code> Triton seam at <b>0.98738 BPB</b>. Stacking three seams pushed the result to <b>0.98550</b>. This is no longer a search over a few knobs; it is changing the training system itself.</p>
 
 <h2 data-zh="一座真正会自己运转的实验室">A research lab that actually runs itself</h2>
 <pre>LifeSupervisor
