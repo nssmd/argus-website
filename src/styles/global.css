@@ -492,6 +492,61 @@ main {
   max-width: 1100px;
 }
 
+.runtime-flow {
+  border-block: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.runtime-flow__track {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.runtime-flow__track div {
+  position: relative;
+  min-width: 0;
+  padding: 19px 16px;
+  border-right: 1px solid var(--line);
+}
+
+.runtime-flow__track div:first-child {
+  padding-left: 0;
+}
+
+.runtime-flow__track div:last-child {
+  border-right: 0;
+}
+
+.runtime-flow__track div:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  right: -7px;
+  top: 17px;
+  z-index: 1;
+  padding: 0 2px;
+  background: #fff;
+  color: var(--gold-dark);
+  font-family: var(--mono);
+  font-size: 10px;
+}
+
+.runtime-flow__track span {
+  display: block;
+  color: var(--gold-dark);
+  font-family: var(--mono);
+  font-size: 9px;
+}
+
+.runtime-flow__track strong {
+  display: block;
+  margin-top: 3px;
+  overflow: hidden;
+  color: var(--ink-2);
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .demo-section {
   scroll-margin-top: 64px;
 }
@@ -972,6 +1027,24 @@ main {
 
   .launch-options {
     grid-template-columns: 1fr;
+  }
+
+  .runtime-flow .demo-shell {
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .runtime-flow .demo-shell::-webkit-scrollbar {
+    display: none;
+  }
+
+  .runtime-flow__track {
+    width: 720px;
+  }
+
+  .runtime-flow__track div:first-child {
+    padding-left: 16px;
   }
 
   .paper-toolbar {
