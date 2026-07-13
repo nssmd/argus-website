@@ -1,0 +1,45 @@
+---
+type Props = { locale: "en" | "zh" };
+const { locale } = Astro.props;
+const caption = locale === "zh"
+  ? "一个目标，在四个角色之间持续流动，直到证据足够。"
+  : "One objective moves through four roles until the evidence is strong enough.";
+---
+
+<figure class="research-field" data-research-field>
+  <div class="research-field__plane" data-research-field-plane>
+    <svg class="research-field__links" viewBox="0 0 520 360" aria-hidden="true">
+      <defs>
+        <linearGradient id="field-blue-gold" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="var(--blue)" />
+          <stop offset="0.5" stop-color="var(--gold)" />
+          <stop offset="1" stop-color="var(--blue)" />
+        </linearGradient>
+      </defs>
+      <path class="research-field__link" d="M260 180C196 112 144 88 82 86" />
+      <path class="research-field__link" d="M260 180C324 112 376 88 438 86" />
+      <path class="research-field__link" d="M260 180C196 248 144 272 82 274" />
+      <path class="research-field__link" d="M260 180C324 248 376 272 438 274" />
+      <circle cx="260" cy="180" r="112" class="research-field__orbit" />
+      <circle cx="260" cy="180" r="72" class="research-field__orbit secondary" />
+    </svg>
+    <div class="research-field__scan" data-research-field-scan></div>
+    <div class="research-field__core" data-research-field-core>
+      <img src="/assets/argus-mark-gold.png" width="58" height="58" alt="" />
+      <strong>ARGUS</strong>
+      <span>objective</span>
+    </div>
+    {[
+      ["M", "Manager", "north-west"],
+      ["P", "Planner", "north-east"],
+      ["E", "Engineer", "south-west"],
+      ["R", "Reviewer", "south-east"],
+    ].map(([letter, role, position], index) => (
+      <div class={`research-field__node ${position}`} data-research-field-node style={`--node-index:${index}`}>
+        <i>{letter}</i>
+        <span>{role}</span>
+      </div>
+    ))}
+  </div>
+  <figcaption>{caption}</figcaption>
+</figure>

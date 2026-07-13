@@ -29,7 +29,7 @@
   } else {
     void import("gsap").then(({ gsap }) => {
       const heroTargets = gsap.utils.toArray<HTMLElement>(
-        ".page-hero .eyebrow, .page-hero h1, .page-hero .lede, .page-hero .hero-actions, .page-hero .demo-source",
+        ".page-hero .eyebrow, .page-hero h1, .page-hero .lede, .page-hero .hero-actions, .page-hero .demo-source, [data-research-field]",
       );
       const revealTargets = gsap.utils.toArray<HTMLElement>(revealSelector);
       const canObserve = "IntersectionObserver" in window;
@@ -44,19 +44,36 @@
           const rect = surface.getBoundingClientRect();
           surface.style.setProperty("--pointer-x", `${event.clientX - rect.left}px`);
           surface.style.setProperty("--pointer-y", `${event.clientY - rect.top}px`);
+          if (surface.matches(".card, .paper-card, .role, .launch-command")) {
+            rotateYTo(((event.clientX - rect.left) / rect.width - 0.5) * 4.5);
+            rotateXTo(-((event.clientY - rect.top) / rect.height - 0.5) * 3.5);
+          }
         };
+        const rotateXTo = gsap.quickTo(surface, "rotationX", {
+          duration: 0.38,
+          ease: "power3.out",
+        });
+        const rotateYTo = gsap.quickTo(surface, "rotationY", {
+          duration: 0.38,
+          ease: "power3.out",
+        });
         const enter = () => gsap.to(surface, {
           "--spotlight-opacity": 1,
           duration: 0.2,
           ease: "power1.out",
           overwrite: "auto",
         });
-        const leave = () => gsap.to(surface, {
-          "--spotlight-opacity": 0,
-          duration: 0.35,
-          ease: "power2.out",
-          overwrite: "auto",
-        });
+        const leave = () => {
+          gsap.to(surface, {
+            "--spotlight-opacity": 0,
+            rotationX: 0,
+            rotationY: 0,
+            duration: 0.42,
+            ease: "power2.out",
+            overwrite: "auto",
+            clearProps: "transform",
+          });
+        };
         surface.addEventListener("pointermove", move);
         surface.addEventListener("pointerenter", enter);
         surface.addEventListener("pointerleave", leave);
@@ -68,6 +85,12 @@
       };
 
       if (finePointer) {
+        const ambientMove = (event: PointerEvent) => {
+          document.body.style.setProperty("--ambient-x", `${event.clientX}px`);
+          document.body.style.setProperty("--ambient-y", `${event.clientY}px`);
+        };
+        window.addEventListener("pointermove", ambientMove, { passive: true });
+        pointerCleanups.push(() => window.removeEventListener("pointermove", ambientMove));
         document.querySelectorAll<HTMLElement>(
           ".page-hero, .card, .score-row, .role, .launch-command, .paper-card",
         ).forEach(attachPointerSurface);
@@ -92,6 +115,81 @@
             element.removeEventListener("pointermove", move);
             element.removeEventListener("pointerleave", leave);
           });
+        });
+      }
+
+      const progress = document.querySelector<HTMLElement>("[data-scroll-progress]");
+      if (progress) {
+        const progressTo = gsap.quickTo(progress, "scaleX", {
+          duration: 0.22,
+          ease: "power1.out",
+        });
+        const updateProgress = () => {
+          const range = document.documentElement.scrollHeight - window.innerHeight;
+          progressTo(range > 0 ? window.scrollY / range : 0);
+        };
+        window.addEventListener("scroll", updateProgress, { passive: true });
+        window.addEventListener("resize", updateProgress);
+        updateProgress();
+        pointerCleanups.push(() => {
+          window.removeEventListener("scroll", updateProgress);
+          window.removeEventListener("resize", updateProgress);
+        });
+      }
+
+      const researchField = document.querySelector<HTMLElement>("[data-research-field]");
+      const researchPlane = document.querySelector<HTMLElement>("[data-research-field-plane]");
+      if (researchField) {
+        gsap.to(".research-field__link", {
+          strokeDashoffset: -72,
+          duration: 4.8,
+          ease: "none",
+          repeat: -1,
+        });
+        gsap.to("[data-research-field-scan]", {
+          rotation: 360,
+          duration: 12,
+          ease: "none",
+          repeat: -1,
+          transformOrigin: "50% 50%",
+        });
+        gsap.to("[data-research-field-core]", {
+          scale: 1.035,
+          duration: 1.7,
+          ease: "sine.inOut",
+          yoyo: true,
+          repeat: -1,
+          transformOrigin: "50% 50%",
+        });
+        gsap.to("[data-research-field-node]", {
+          y: (index) => index % 2 === 0 ? -5 : 5,
+          duration: 2.2,
+          stagger: 0.18,
+          ease: "sine.inOut",
+          yoyo: true,
+          repeat: -1,
+        });
+      }
+      if (finePointer && researchPlane) {
+        const rotateXTo = gsap.quickTo(researchPlane, "rotationX", { duration: 0.6, ease: "power3.out" });
+        const rotateYTo = gsap.quickTo(researchPlane, "rotationY", { duration: 0.6, ease: "power3.out" });
+        const fieldMove = (event: PointerEvent) => {
+          const rect = researchPlane.getBoundingClientRect();
+          rotateYTo(((event.clientX - rect.left) / rect.width - 0.5) * 5);
+          rotateXTo(-((event.clientY - rect.top) / rect.height - 0.5) * 4);
+        };
+        const fieldLeave = () => gsap.to(researchPlane, {
+          rotationX: 0,
+          rotationY: 0,
+          duration: 0.7,
+          ease: "power3.out",
+          clearProps: "transform",
+        });
+        researchPlane.addEventListener("pointermove", fieldMove);
+        researchPlane.addEventListener("pointerleave", fieldLeave);
+        pointerCleanups.push(() => {
+          researchPlane.removeEventListener("pointermove", fieldMove);
+          researchPlane.removeEventListener("pointerleave", fieldLeave);
         });
       }
 
