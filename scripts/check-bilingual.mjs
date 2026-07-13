@@ -34,6 +34,9 @@ for (const [englishPath, chinesePath] of pairs) {
   assert(chinese.includes('<html lang="zh-CN">'), `${chinesePath} is not Simplified Chinese`);
   assert(english.includes('hreflang="zh-Hans"'), `${englishPath} lacks zh-Hans alternate`);
   assert(chinese.includes('hreflang="en"'), `${chinesePath} lacks English alternate`);
+  assert(english.includes("data-theme-toggle"), `${englishPath} lacks theme toggle`);
+  assert(chinese.includes("data-theme-toggle"), `${chinesePath} lacks theme toggle`);
+  assert(english.includes("argus-site-theme"), `${englishPath} lacks theme persistence`);
   const visibleEnglish = english
     .replace(/<script[\s\S]*?<\/script>/g, "")
     .replace(/中/g, "");
