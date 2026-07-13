@@ -1,5 +1,6 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import ResearchField from "../components/ResearchField.astro";
 import { localeFromPath, pathForLocale } from "../i18n";
 
 const locale = localeFromPath(Astro.url.pathname);
@@ -48,13 +49,16 @@ const copy = locale === "zh" ? {
   description={copy.description}
 >
   <section class="page-hero">
-    <div class="shell">
-      <p class="eyebrow">Autonomous research runtime</p>
-      <h1>{copy.heroLead}<br /><em>{copy.heroEm}</em></h1>
-      <p class="lede">{copy.lede}</p>
-      <div class="hero-actions">
-        <a class="button primary" href={href("/results.html")}>{copy.results}</a>
+    <div class="shell hero-system-grid">
+      <div class="hero-system-copy">
+        <p class="eyebrow">Autonomous research runtime</p>
+        <h1>{copy.heroLead}<br /><em>{copy.heroEm}</em></h1>
+        <p class="lede">{copy.lede}</p>
+        <div class="hero-actions">
+          <a class="button primary" href={href("/results.html")}>{copy.results}</a>
+        </div>
       </div>
+      <ResearchField locale={locale} />
     </div>
   </section>
 
