@@ -1,6 +1,7 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import { localeFromPath, pathForLocale } from "../i18n";
 import "../styles/global.css";
 
 type Props = {
@@ -14,10 +15,15 @@ const {
   description,
   image = "https://argusbot.cn/assets/argus-og-blue-gold.png"
 } = Astro.props;
+const locale = localeFromPath(Astro.url.pathname);
+const englishPath = pathForLocale(Astro.url.pathname, "en");
+const chinesePath = pathForLocale(Astro.url.pathname, "zh");
+const englishUrl = new URL(englishPath, Astro.site);
+const chineseUrl = new URL(chinesePath, Astro.site);
 ---
 
 <!doctype html>
-<html lang="zh-CN">
+<html lang={locale === "zh" ? "zh-CN" : "en"}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -26,7 +32,13 @@ const {
     <meta property="og:description" content={description} />
     <meta property="og:image" content={image} />
     <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:locale" content={locale === "zh" ? "zh_CN" : "en_US"} />
+    <meta property="og:locale:alternate" content={locale === "zh" ? "en_US" : "zh_CN"} />
     <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href={Astro.url.href} />
+    <link rel="alternate" hreflang="en" href={englishUrl} />
+    <link rel="alternate" hreflang="zh-Hans" href={chineseUrl} />
+    <link rel="alternate" hreflang="x-default" href={englishUrl} />
     <link rel="icon" type="image/png" href="/assets/argus-mark-gold.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

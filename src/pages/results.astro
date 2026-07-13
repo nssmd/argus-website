@@ -1,17 +1,38 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
 import { results } from "../data/results";
+import { localeFromPath, pathForLocale } from "../i18n";
+
+const locale = localeFromPath(Astro.url.pathname);
+const href = (path: string) => pathForLocale(path, locale);
+const copy = locale === "zh" ? {
+  title: "Results · Argus",
+  description: "Argus 在 NVIDIA B200、H100/B200 nanochat、8×H100 speedrun、AARRI-Bench 和 Arbor 上的核心成绩。",
+  hero: "一套系统，六个赛场。",
+  lede: "从 GPU kernel、模型训练到研究 agent，每项成绩都来自真实任务和真实执行。",
+  ctaTitle: "结果不是聊天记录，是可交付产物。",
+  ctaBody: "论文、代码、实验日志和公开 benchmark 都集中在 Research。",
+  cta: "浏览研究成果 →",
+} : {
+  title: "Results · Argus",
+  description: "Selected Argus results across NVIDIA B200 kernels, H100/B200 nanochat, an 8×H100 speedrun, AARRI-Bench, and Arbor.",
+  hero: "One system. Six very different arenas.",
+  lede: "From GPU kernels and model training to research agents, every result comes from a real task executed on real infrastructure.",
+  ctaTitle: "The result is not a chat transcript. It is a deliverable.",
+  ctaBody: "Papers, code, experiment logs, and public benchmarks are collected in Research.",
+  cta: "Browse the research →",
+};
 ---
 
 <SiteLayout
-  title="Results · Argus"
-  description="Argus 在 NVIDIA B200、H100/B200 nanochat、8×H100 speedrun、AARRI-Bench 和 Arbor 上的核心成绩。"
+  title={copy.title}
+  description={copy.description}
 >
   <section class="page-hero compact">
     <div class="shell">
       <p class="eyebrow">Argus · Results</p>
-      <h1>一套系统，六个赛场。</h1>
-      <p class="lede">从 GPU kernel、模型训练到研究 agent，每项成绩都来自真实任务和真实执行。</p>
+      <h1>{copy.hero}</h1>
+      <p class="lede">{copy.lede}</p>
     </div>
   </section>
 
@@ -35,9 +56,9 @@ import { results } from "../data/results";
   <section class="section">
     <div class="shell">
       <div class="cta-band">
-        <h2>结果不是聊天记录，是可交付产物。</h2>
-        <p>论文、代码、实验日志和公开 benchmark 都集中在 Research。</p>
-        <a class="button" href="/research.html">浏览研究成果 →</a>
+        <h2>{copy.ctaTitle}</h2>
+        <p>{copy.ctaBody}</p>
+        <a class="button" href={href("/research.html")}>{copy.cta}</a>
       </div>
     </div>
   </section>

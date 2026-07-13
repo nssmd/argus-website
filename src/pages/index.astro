@@ -1,31 +1,66 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import { localeFromPath, pathForLocale } from "../i18n";
+
+const locale = localeFromPath(Astro.url.pathname);
+const href = (path: string) => pathForLocale(path, locale);
+const copy = locale === "zh" ? {
+  title: "Argus — 自主 AI 研究系统",
+  description: "给 Argus 一个研究目标和算力，它会持续读资料、写代码、跑实验、检查结果并决定下一步。",
+  heroLead: "给它一个研究目标。",
+  heroEm: "它自己把事情做完。",
+  lede: "Argus 会持续读资料、写代码、跑实验、检查结果并决定下一步。你提供目标和算力，它交付可以直接使用的研究结果。",
+  results: "看它做出了什么 →",
+  metricLabel: "核心成绩",
+  metrics: [["#6", "NVIDIA 全球排名"], ["2× #1", "B200 kernel"], ["H100 + B200", "超过 human SOTA"], ["79.77s", "8×H100 speedrun"], ["41", "研究 PDF"]],
+  whatTitle: "不是聊天机器人，是一套科研操作系统。",
+  whatBody: "四个专业角色共享同一个长期项目记忆，从目标推进到代码、实验、评审和下一个 idea。",
+  pillars: [["自己排活", "把长期目标拆成下一步可以执行、可以验收的 mission。"], ["自己动手", "真实写代码、跑 shell、做 profile、启动实验并读取产物。"], ["自己继续", "Reviewer 根据 evidence 决定完成、返工或换方向，状态跨 session 保留。"]],
+  unknownTitle: "未知不是边界，而是 Argus 开始工作的地方。",
+  unknownBody: "目标可以模糊，答案可以从未存在。Argus 会在科研、数学与文学创作中自己寻找方向、验证判断、持续深入。",
+  domains: [["科学研究", "从开放问题出发，自主提出假设、设计实验，让证据决定下一步。"], ["数学探索", "拆解命题、寻找结构、尝试证明与反例，在未知中持续推进。"], ["文学创作", "构思、写作、批评、重写，让作品在迭代中不断生长。"], ["工程突破", "面对清晰指标，用数百轮真实实验把性能推向边界。"]],
+  ctaTitle: "把一个真实难题交给 Argus。",
+  ctaBody: "先看成绩，再决定它是否值得接手你的任务。",
+  cta: "打开成绩墙 →",
+} : {
+  title: "Argus — Autonomous AI Research",
+  description: "Give Argus a research objective and compute. It reads, builds, experiments, reviews the evidence, and keeps deciding what to do next.",
+  heroLead: "Give it a research objective.",
+  heroEm: "It carries the work through.",
+  lede: "Argus reads the literature, writes code, runs experiments, inspects the evidence, and chooses the next move. You provide the objective and compute; it returns research you can inspect and use.",
+  results: "See what it has accomplished →",
+  metricLabel: "Selected results",
+  metrics: [["#6", "NVIDIA global ranking"], ["2× #1", "B200 kernels"], ["H100 + B200", "Beyond human SOTA"], ["79.77s", "8×H100 speedrun"], ["41", "Research PDFs"]],
+  whatTitle: "Not a chatbot. A research operating system.",
+  whatBody: "Four specialist roles share durable project memory, carrying an objective through code, experiments, review, and the next idea.",
+  pillars: [["Plans its own work", "Turns a long-horizon objective into the next executable, reviewable mission."], ["Does the work", "Writes real code, runs shell commands, profiles systems, launches experiments, and reads the artifacts."], ["Keeps going", "A reviewer decides whether the evidence warrants completion, revision, or a new direction—and the state survives every session."]],
+  unknownTitle: "The unknown is not a boundary. It is where Argus begins.",
+  unknownBody: "The objective may be underspecified and the answer may not exist yet. Argus finds directions, tests its judgment, and keeps digging across science, mathematics, writing, and engineering.",
+  domains: [["Scientific research", "Starts from an open question, forms hypotheses, designs experiments, and lets the evidence choose the next step."], ["Mathematical exploration", "Decomposes conjectures, searches for structure, and pursues proofs or counterexamples, pressing forward through the unknown."], ["Creative writing", "Develops an idea through drafting, criticism, and revision until the work earns its final form."], ["Engineering breakthroughs", "Uses hundreds of measured iterations to push a clear performance target toward the frontier."]],
+  ctaTitle: "Give Argus a problem that actually matters.",
+  ctaBody: "Start with the evidence. Then decide whether it should take on yours.",
+  cta: "Open the results wall →",
+};
 ---
 
 <SiteLayout
-  title="Argus — 自主 AI 研究系统"
-  description="给 Argus 一个研究目标和算力，它会持续读资料、写代码、跑实验、检查结果并决定下一步。"
+  title={copy.title}
+  description={copy.description}
 >
   <section class="page-hero">
     <div class="shell">
       <p class="eyebrow">Autonomous research runtime</p>
-      <h1>给它一个研究目标。<br /><em>它自己把事情做完。</em></h1>
-      <p class="lede">
-        Argus 会持续读资料、写代码、跑实验、检查结果并决定下一步。你提供目标和算力，它交付可以直接使用的研究结果。
-      </p>
+      <h1>{copy.heroLead}<br /><em>{copy.heroEm}</em></h1>
+      <p class="lede">{copy.lede}</p>
       <div class="hero-actions">
-        <a class="button primary" href="/results.html">看它做出了什么 →</a>
+        <a class="button primary" href={href("/results.html")}>{copy.results}</a>
       </div>
     </div>
   </section>
 
-  <section class="metric-strip" aria-label="核心成绩">
+  <section class="metric-strip" aria-label={copy.metricLabel}>
     <div class="metric-grid">
-      <div class="metric"><strong>#6</strong><span>NVIDIA 全球排名</span></div>
-      <div class="metric"><strong>2× #1</strong><span>B200 kernel</span></div>
-      <div class="metric"><strong>H100 + B200</strong><span>超过 human SOTA</span></div>
-      <div class="metric"><strong>79.77s</strong><span>8×H100 speedrun</span></div>
-      <div class="metric"><strong>41</strong><span>研究 PDF</span></div>
+      {copy.metrics.map(([value, label]) => <div class="metric"><strong>{value}</strong><span>{label}</span></div>)}
     </div>
   </section>
 
@@ -33,25 +68,11 @@ import SiteLayout from "../layouts/SiteLayout.astro";
     <div class="shell">
       <div class="section-head">
         <p class="eyebrow">What it is</p>
-        <h2>不是聊天机器人，是一套科研操作系统。</h2>
-        <p>四个专业角色共享同一个长期项目记忆，从目标推进到代码、实验、评审和下一个 idea。</p>
+        <h2>{copy.whatTitle}</h2>
+        <p>{copy.whatBody}</p>
       </div>
       <div class="card-grid">
-        <article class="card">
-          <span class="number">01</span>
-          <h3>自己排活</h3>
-          <p>把长期目标拆成下一步可以执行、可以验收的 mission。</p>
-        </article>
-        <article class="card">
-          <span class="number">02</span>
-          <h3>自己动手</h3>
-          <p>真实写代码、跑 shell、做 profile、启动实验并读取产物。</p>
-        </article>
-        <article class="card">
-          <span class="number">03</span>
-          <h3>自己继续</h3>
-          <p>Reviewer 根据 evidence 决定完成、返工或换方向，状态跨 session 保留。</p>
-        </article>
+        {copy.pillars.map(([title, body], index) => <article class="card"><span class="number">{String(index + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{body}</p></article>)}
       </div>
     </div>
   </section>
@@ -60,14 +81,11 @@ import SiteLayout from "../layouts/SiteLayout.astro";
     <div class="shell">
       <div class="section-head">
         <p class="eyebrow">Open-ended exploration</p>
-        <h2>未知不是边界，而是 Argus 开始工作的地方。</h2>
-        <p>目标可以模糊，答案可以从未存在。Argus 会在科研、数学与文学创作中自己寻找方向、验证判断、持续深入。</p>
+        <h2>{copy.unknownTitle}</h2>
+        <p>{copy.unknownBody}</p>
       </div>
       <div class="card-grid four">
-        <article class="card"><h3>科学研究</h3><p>从开放问题出发，自主提出假设、设计实验，让证据决定下一步。</p></article>
-        <article class="card"><h3>数学探索</h3><p>拆解命题、寻找结构、尝试证明与反例，在未知中持续推进。</p></article>
-        <article class="card"><h3>文学创作</h3><p>构思、写作、批评、重写，让作品在迭代中不断生长。</p></article>
-        <article class="card"><h3>工程突破</h3><p>面对清晰指标，用数百轮真实实验把性能推向边界。</p></article>
+        {copy.domains.map(([title, body]) => <article class="card"><h3>{title}</h3><p>{body}</p></article>)}
       </div>
     </div>
   </section>
@@ -75,9 +93,9 @@ import SiteLayout from "../layouts/SiteLayout.astro";
   <section class="section">
     <div class="shell">
       <div class="cta-band">
-        <h2>把一个真实难题交给 Argus。</h2>
-        <p>先看成绩，再决定它是否值得接手你的任务。</p>
-        <a class="button" href="/results.html">打开成绩墙 →</a>
+        <h2>{copy.ctaTitle}</h2>
+        <p>{copy.ctaBody}</p>
+        <a class="button" href={href("/results.html")}>{copy.cta}</a>
       </div>
     </div>
   </section>

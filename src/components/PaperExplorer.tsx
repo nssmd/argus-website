@@ -13,9 +13,10 @@ export type Paper = {
 
 type Props = {
   papers: Paper[];
+  locale?: "en" | "zh";
 };
 
-export default function PaperExplorer({ papers }: Props) {
+export default function PaperExplorer({ papers, locale = "en" }: Props) {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("all");
 
@@ -32,31 +33,47 @@ export default function PaperExplorer({ papers }: Props) {
       const queryMatch =
         !normalized ||
         paper.title.toLowerCase().includes(normalized) ||
-        paper.categoryLabel.toLowerCase().includes(normalized);
+        paper.categoryLabel.toLowerCase().includes(normalized) ||
+        paper.categoryDescription.toLowerCase().includes(normalized);
       return categoryMatch && queryMatch;
     });
   }, [category, papers, query]);
+  const copy = locale === "zh" ? {
+    searchLabel: "搜索论文",
+    searchPlaceholder: "搜索标题或研究方向",
+    categories: "研究方向",
+    all: "全部",
+    count: (value: number) => `${value} 篇`,
+    empty: "没有匹配的论文。",
+  } : {
+    searchLabel: "Search papers",
+    searchPlaceholder: "Search by title or research area",
+    categories: "Research areas",
+    all: "All",
+    count: (value: number) => `${value} ${value === 1 ? "paper" : "papers"}`,
+    empty: "No papers match your search.",
+  };
 
   return (
     <section className="paper-explorer">
       <div className="paper-toolbar">
         <label className="paper-search">
-          <span className="sr-only">搜索论文</span>
+          <span className="sr-only">{copy.searchLabel}</span>
           <input
             type="search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="搜索标题或研究方向"
+            placeholder={copy.searchPlaceholder}
           />
         </label>
-        <div className="paper-filters" aria-label="研究方向">
+        <div className="paper-filters" aria-label={copy.categories}>
           <button
             type="button"
             className={category === "all" ? "active" : ""}
             aria-pressed={category === "all"}
             onClick={() => setCategory("all")}
           >
-            全部
+            {copy.all}
           </button>
           {categories.map(([id, label]) => (
             <button
@@ -71,7 +88,7 @@ export default function PaperExplorer({ papers }: Props) {
           ))}
         </div>
         <p className="paper-count-live" aria-live="polite" aria-atomic="true">
-          {filtered.length} 篇
+          {copy.count(filtered.length)}
         </p>
       </div>
 
@@ -98,7 +115,7 @@ export default function PaperExplorer({ papers }: Props) {
       </div>
 
       {filtered.length === 0 && (
-        <div className="paper-empty">没有匹配的论文。</div>
+        <div className="paper-empty">{copy.empty}</div>
       )}
     </section>
   );

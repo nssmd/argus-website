@@ -1,16 +1,32 @@
+---
+import { localeFromPath, pathForLocale } from "../i18n";
+
+const locale = localeFromPath(Astro.url.pathname);
+const copy = locale === "zh" ? {
+  tagline: "灯熄了，研究继续。",
+  nav: "页脚导航",
+  links: ["成绩", "研究", "原理", "场景", "开始使用"],
+} : {
+  tagline: "The lights go out. The research keeps moving.",
+  nav: "Footer navigation",
+  links: ["Results", "Research", "How it works", "Use cases", "Get started"],
+};
+const localized = (href: string) => pathForLocale(href, locale);
+---
+
 <footer class="site-footer">
   <div>
-    <a class="footer-brand" href="/">
+    <a class="footer-brand" href={localized("/")}>
       <img src="/assets/argus-mark-gold.png" width="20" height="20" alt="" />
       Argus
     </a>
-    <p>灯熄了，研究继续。</p>
+    <p>{copy.tagline}</p>
   </div>
-  <nav aria-label="页脚导航">
-    <a href="/results.html">成绩</a>
-    <a href="/research.html">研究</a>
-    <a href="/how.html">原理</a>
-    <a href="/use-cases.html">场景</a>
-    <a href="/start.html">开始使用</a>
+  <nav aria-label={copy.nav}>
+    <a href={localized("/results.html")}>{copy.links[0]}</a>
+    <a href={localized("/research.html")}>{copy.links[1]}</a>
+    <a href={localized("/how.html")}>{copy.links[2]}</a>
+    <a href={localized("/use-cases.html")}>{copy.links[3]}</a>
+    <a href={localized("/start.html")}>{copy.links[4]}</a>
   </nav>
 </footer>

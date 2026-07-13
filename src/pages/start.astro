@@ -1,36 +1,100 @@
 ---
 import CliRecording from "../components/CliRecording.astro";
 import SiteLayout from "../layouts/SiteLayout.astro";
+import { localeFromPath, pathForLocale } from "../i18n";
+
+const locale = localeFromPath(Astro.url.pathname);
+const publicResearchHref = pathForLocale("/research.html", locale);
+const copy = locale === "zh" ? {
+  title: "Get Started · Argus",
+  description: "观看 Argus 的真实运行流程：Manager 回复、角色交接、Engineer 执行、Reviewer 打回与成果交付。",
+  heroLead: "打开 Argus，",
+  heroEm: "直接说你要什么。",
+  lede: "下面不是界面截图，而是两段真实运行：Manager 如何组织回复，团队如何接力，Reviewer 为什么打回，以及结果怎样进入你的工作台。",
+  fullCli: "看完整 CLI 流程 →",
+  web: "看 Web 研究轨迹 ↓",
+  source: "录制版本：boxiu/main · 文学 699dc2c / 数学 24cf964 · Codex 与 Copilot xhigh",
+  flowLabel: "Argus 运行流程",
+  flow: ["用户目标", "Manager 路由", "Planner 拆解", "Engineer 执行", "Reviewer 裁决", "成果交付"],
+  cliTitle: "从输入任务那一刻开始，看四个角色真正接力。",
+  cliBody: "切换观看文学创作与计算数学两条真实任务。每条都从用户输入开始，保留 Manager 监控问答、Planner 计划、Engineer 执行和 Reviewer 独立验收。",
+  launch: "启动",
+  cliLaunchLabel: "CLI 启动命令",
+  webLaunchLabel: "WebUI 启动命令",
+  cliCaptionTitle: "两条端到端真实回放",
+  cliCaption: "《秋江赋》经历首轮打回与六阶段推进；Erdős–Straus 完成 999 个 n、两种完整算法、848,804 条精确解审计和三阶段验收。",
+  cliPointsLabel: "CLI 功能",
+  cliPoints: ["从任务输入开始", "Manager 监视器", "Planner 结构化计划", "Reviewer 打回 → 验收"],
+  webTitle: "同一个 boxiu/main session，在 WebUI 逐层展开。",
+  webBody: "直接阅读 Manager 的监控回答，再展开 Planner 计划、Engineer 命令流与 Reviewer 裁决；Mission 视图保留六阶段推进、完整 replay 和审定成果。",
+  videoLabel: "Argus WebUI 真实操作演示",
+  videoDownload: "下载 WebUI 演示视频",
+  webCaptionTitle: "26 秒同任务回放",
+  webCaption: "展示监控问答、角色日志、六阶段 Mission replay，以及 Reviewer 审定稿在右侧工作台和大图预览中的交付。",
+  webPointsLabel: "WebUI 功能",
+  webPoints: ["会话搜索", "Agent 对话", "Engineer 原始输出", "Reviewer 裁决", "Mission replay", "证据与结果预览"],
+  choose: "从一句话，到一条可审查的研究轨迹。",
+  chooseBody: "终端与浏览器共享同一份对话、角色状态、执行证据与 Reviewer 裁决。没有 Python 交互层，也没有隐藏在演示之外的另一套流程。",
+  terminal: "Terminal",
+  browser: "Browser",
+  install: "浏览公开研究 →",
+} : {
+  title: "Get Started · Argus",
+  description: "Watch real Argus runs: a Manager response, specialist handoffs, Engineer execution, Reviewer rejection, and final delivery.",
+  heroLead: "Open Argus. ",
+  heroEm: "Tell it what you need.",
+  lede: "These are not static screenshots. They are real runs: how the Manager frames the work, how the team hands it off, why the Reviewer sends it back, and how the result arrives in your workspace.",
+  fullCli: "Watch the complete CLI run →",
+  web: "Watch the Web research trail ↓",
+  source: "Recorded on boxiu/main · literature 699dc2c / mathematics 24cf964 · Codex and Copilot at xhigh",
+  flowLabel: "The Argus workflow",
+  flow: ["Your objective", "Manager routing", "Planner decomposition", "Engineer execution", "Reviewer decision", "Deliverable"],
+  cliTitle: "Watch all four roles take over from the moment you submit the task.",
+  cliBody: "Switch between a creative-writing run and a computational mathematics run. Each begins with your request and preserves the Manager’s monitoring dialogue, the Planner’s structure, the Engineer’s execution, and the Reviewer’s independent acceptance.",
+  launch: "Launch",
+  cliLaunchLabel: "CLI launch command",
+  webLaunchLabel: "WebUI launch command",
+  cliCaptionTitle: "Two genuine end-to-end replays",
+  cliCaption: "Autumn River Rhapsody survives an initial rejection and advances through six stages. The Erdős–Straus run checks 999 values of n with two complete algorithms, audits 848,804 exact solutions, and clears three review stages.",
+  cliPointsLabel: "CLI capabilities",
+  cliPoints: ["Starts with the actual task", "Manager monitoring", "Structured Planner handoff", "Reviewer rejection → acceptance"],
+  webTitle: "The same boxiu/main session, unfolded layer by layer in the WebUI.",
+  webBody: "Read the Manager’s monitoring response, then open the Planner’s plan, the Engineer’s command stream, and the Reviewer’s verdict. Mission view preserves the six-stage progression, complete replay, and approved deliverable.",
+  videoLabel: "A real Argus WebUI walkthrough",
+  videoDownload: "Download the WebUI demo",
+  webCaptionTitle: "The same task in 26 seconds",
+  webCaption: "Monitoring dialogue, role logs, a six-stage Mission replay, and the Reviewer-approved result delivered in the right-hand workspace and expanded preview.",
+  webPointsLabel: "WebUI capabilities",
+  webPoints: ["Session search", "Agent dialogue", "Raw Engineer output", "Reviewer verdicts", "Mission replay", "Evidence and result preview"],
+  choose: "From one sentence to an auditable research trail.",
+  chooseBody: "Terminal and browser share the same conversation, role state, execution evidence, and Reviewer decisions. There is no hidden Python interaction layer and no second workflow behind the demo.",
+  terminal: "Terminal",
+  browser: "Browser",
+  install: "Browse the public research →",
+};
 ---
 
 <SiteLayout
-  title="Get Started · Argus"
-  description="观看 Argus 的真实运行流程：Manager 回复、角色交接、Engineer 执行、Reviewer 打回与成果交付。"
+  title={copy.title}
+  description={copy.description}
 >
   <section class="page-hero compact product-hero">
     <div class="shell demo-shell">
       <p class="eyebrow">Get started</p>
-      <h1>打开 Argus，<em>直接说你要什么。</em></h1>
-      <p class="lede">
-        下面不是界面截图，而是两段真实运行：Manager 如何组织回复，团队如何接力，Reviewer 为什么打回，以及结果怎样进入你的工作台。
-      </p>
+      <h1>{copy.heroLead}<em>{copy.heroEm}</em></h1>
+      <p class="lede">{copy.lede}</p>
       <div class="hero-actions">
-        <a class="button primary" href="#cli">看完整 CLI 流程 →</a>
-        <a class="button" href="#webui">看 Web 研究轨迹 ↓</a>
+        <a class="button primary" href="#cli">{copy.fullCli}</a>
+        <a class="button" href="#webui">{copy.web}</a>
       </div>
-      <p class="demo-source">录制版本：boxiu/main · 文学 699dc2c / 数学 24cf964 · Codex 与 Copilot xhigh</p>
+      <p class="demo-source">{copy.source}</p>
     </div>
   </section>
 
-  <section class="runtime-flow" aria-label="Argus 运行流程">
+  <section class="runtime-flow" aria-label={copy.flowLabel}>
     <div class="shell demo-shell">
       <div class="runtime-flow__track">
-        <div><span>01</span><strong>用户目标</strong></div>
-        <div><span>02</span><strong>Manager 路由</strong></div>
-        <div><span>03</span><strong>Planner 拆解</strong></div>
-        <div><span>04</span><strong>Engineer 执行</strong></div>
-        <div><span>05</span><strong>Reviewer 裁决</strong></div>
-        <div><span>06</span><strong>成果交付</strong></div>
+        {copy.flow.map((label, index) => <div><span>{String(index + 1).padStart(2, "0")}</span><strong>{label}</strong></div>)}
       </div>
     </div>
   </section>
@@ -40,11 +104,11 @@ import SiteLayout from "../layouts/SiteLayout.astro";
       <div class="demo-intro">
         <div class="section-head">
           <p class="eyebrow">01 · Terminal cockpit</p>
-          <h2>从输入任务那一刻开始，看四个角色真正接力。</h2>
-          <p>切换观看文学创作与计算数学两条真实任务。每条都从用户输入开始，保留 Manager 监控问答、Planner 计划、Engineer 执行和 Reviewer 独立验收。</p>
+          <h2>{copy.cliTitle}</h2>
+          <p>{copy.cliBody}</p>
         </div>
-        <div class="launch-command" aria-label="CLI 启动命令">
-          <span>启动</span>
+        <div class="launch-command" aria-label={copy.cliLaunchLabel}>
+          <span>{copy.launch}</span>
           <code>argus</code>
         </div>
       </div>
@@ -59,14 +123,11 @@ import SiteLayout from "../layouts/SiteLayout.astro";
       </div>
 
       <p class="demo-caption">
-        <strong>两条端到端真实回放</strong>
-        《秋江赋》经历首轮打回与六阶段推进；Erdős–Straus 完成 999 个 n、两种完整算法、848,804 条精确解审计和三阶段验收。
+        <strong>{copy.cliCaptionTitle}</strong>
+        {copy.cliCaption}
       </p>
-      <div class="demo-points" aria-label="CLI 功能">
-        <span>从任务输入开始</span>
-        <span>Manager 监视器</span>
-        <span>Planner 结构化计划</span>
-        <span>Reviewer 打回 → 验收</span>
+      <div class="demo-points" aria-label={copy.cliPointsLabel}>
+        {copy.cliPoints.map((point) => <span>{point}</span>)}
       </div>
     </div>
   </section>
@@ -76,11 +137,11 @@ import SiteLayout from "../layouts/SiteLayout.astro";
       <div class="demo-intro">
         <div class="section-head">
           <p class="eyebrow">02 · Web cockpit</p>
-          <h2>同一个 boxiu/main session，在 WebUI 逐层展开。</h2>
-          <p>直接阅读 Manager 的监控回答，再展开 Planner 计划、Engineer 命令流与 Reviewer 裁决；Mission 视图保留六阶段推进、完整 replay 和审定成果。</p>
+          <h2>{copy.webTitle}</h2>
+          <p>{copy.webBody}</p>
         </div>
-        <div class="launch-command" aria-label="WebUI 启动命令">
-          <span>启动</span>
+        <div class="launch-command" aria-label={copy.webLaunchLabel}>
+          <span>{copy.launch}</span>
           <code>argus --web</code>
         </div>
       </div>
@@ -99,24 +160,19 @@ import SiteLayout from "../layouts/SiteLayout.astro";
           playsinline
           preload="metadata"
           poster="/assets/demos/argus-web-boxiu-86b683ba-poster.webp"
-          aria-label="Argus WebUI 真实操作演示"
+          aria-label={copy.videoLabel}
         >
           <source src="/assets/demos/argus-web-boxiu-86b683ba.webm" type="video/webm" />
-          <a href="/assets/demos/argus-web-boxiu-86b683ba.webm">下载 WebUI 演示视频</a>
+          <a href="/assets/demos/argus-web-boxiu-86b683ba.webm">{copy.videoDownload}</a>
         </video>
       </div>
 
       <p class="demo-caption">
-        <strong>26 秒同任务回放</strong>
-        展示监控问答、角色日志、六阶段 Mission replay，以及 Reviewer 审定稿在右侧工作台和大图预览中的交付。
+        <strong>{copy.webCaptionTitle}</strong>
+        {copy.webCaption}
       </p>
-      <div class="demo-points" aria-label="WebUI 功能">
-        <span>会话搜索</span>
-        <span>Agent 对话</span>
-        <span>Engineer 原始输出</span>
-        <span>Reviewer 裁决</span>
-        <span>Mission replay</span>
-        <span>证据与结果预览</span>
+      <div class="demo-points" aria-label={copy.webPointsLabel}>
+        {copy.webPoints.map((point) => <span>{point}</span>)}
       </div>
     </div>
   </section>
@@ -125,14 +181,14 @@ import SiteLayout from "../layouts/SiteLayout.astro";
     <div class="shell demo-shell">
       <div class="cta-band product-cta">
         <p class="eyebrow">Choose your cockpit</p>
-        <h2>从一句话，到一条可审查的研究轨迹。</h2>
-        <p>终端与浏览器共享同一份对话、角色状态、执行证据与 Reviewer 裁决。没有 Python 交互层，也没有隐藏在演示之外的另一套流程。</p>
+        <h2>{copy.choose}</h2>
+        <p>{copy.chooseBody}</p>
         <div class="launch-options">
-          <div><span>Terminal</span><code>argus</code></div>
-          <div><span>Browser</span><code>argus --web</code></div>
+          <div><span>{copy.terminal}</span><code>argus</code></div>
+          <div><span>{copy.browser}</span><code>argus --web</code></div>
         </div>
         <div class="hero-actions">
-          <a class="button" href="https://github.com/lbx154/argus-skill#快速开始">查看安装说明 →</a>
+          <a class="button" href={publicResearchHref}>{copy.install}</a>
         </div>
       </div>
     </div>

@@ -3,26 +3,61 @@ import SiteLayout from "../layouts/SiteLayout.astro";
 import PaperExplorer from "../components/PaperExplorer";
 import type { Paper } from "../components/PaperExplorer";
 import papers from "../data/papers.json";
+import { localeFromPath } from "../i18n";
 
+const locale = localeFromPath(Astro.url.pathname);
+const chineseLabels: Record<string, string> = {
+  agents: "LLM 智能体方法",
+  cognitive: "LLM 认知偏差",
+  efficiency: "效率、压缩与解码",
+  multimodal: "多模态与视觉语言模型",
+  trace: "状态轨迹与可审计性",
+  world: "世界模型",
+};
+const englishDescriptions: Record<string, string> = {
+  agents: "Multimodal agents · test-time compute, tool routing, and uncertainty",
+  cognitive: "Cognition and decision bias in LLMs · training-free diagnostics",
+  efficiency: "Compression, speculative decoding, RAG decoding, quantization, and KV cache",
+  multimodal: "Vision-language and multimodal perception · diagnostics, mitigation, and efficiency",
+  trace: "Auditable protocols for state traces",
+  world: "World-state tracking and structured counterfactual simulation",
+};
 const typedPapers: Paper[] = papers.map((paper) => ({
   ...paper,
-  status: paper.status as Paper["status"]
+  status: paper.status as Paper["status"],
+  categoryLabel: locale === "zh"
+    ? chineseLabels[paper.category] ?? paper.categoryLabel
+    : paper.categoryLabel,
+  categoryDescription: locale === "zh"
+    ? paper.categoryDescription
+    : englishDescriptions[paper.category] ?? paper.categoryDescription,
 }));
+const copy = locale === "zh" ? {
+  title: "Research · Argus",
+  description: "Argus 自主研究成果集：六个研究方向，41 份精选论文 PDF。",
+  hero: "41 篇论文，六条研究线。",
+  lede: "35 篇 Manuscript，6 篇 Draft。重复版本已经移除。",
+} : {
+  title: "Research · Argus",
+  description: "The Argus autonomous research collection: 41 selected papers across six research programs.",
+  hero: "41 papers across six research programs.",
+  lede: "35 manuscripts and 6 drafts, with duplicate versions removed.",
+};
 ---
 
 <SiteLayout
-  title="Research · Argus"
-  description="Argus 自主研究成果集：六个研究方向，41 份精选论文 PDF。"
+  title={copy.title}
+  description={copy.description}
 >
   <section class="page-hero compact">
     <div class="shell">
       <p class="eyebrow">Argus · Research</p>
-      <h1>41 篇论文，六条研究线。</h1>
-      <p class="lede">35 篇 Manuscript，6 篇 Draft。重复版本已经移除。</p>
+      <h1>{copy.hero}</h1>
+      <p class="lede">{copy.lede}</p>
     </div>
   </section>
 
   <div class="shell">
-    <PaperExplorer papers={typedPapers} client:load />
+    <PaperExplorer papers={typedPapers} locale={locale} client:load />
   </div>
 </SiteLayout>

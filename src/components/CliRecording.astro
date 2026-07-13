@@ -1,16 +1,32 @@
 ---
 import "asciinema-player/dist/bundle/asciinema-player.css";
+import { localeFromPath } from "../i18n";
+
+const locale = localeFromPath(Astro.url.pathname);
+const copy = locale === "zh" ? {
+  choose: "选择 CLI 真实任务",
+  literature: "文学创作 · 秋江赋",
+  math: "计算数学 · Erdős–Straus",
+  replay: "Argus CLI 真实操作回放",
+  download: "下载 CLI 录制",
+} : {
+  choose: "Choose a real CLI run",
+  literature: "Creative writing · Autumn River Rhapsody",
+  math: "Computational mathematics · Erdős–Straus",
+  replay: "Replay of a real Argus CLI session",
+  download: "Download the CLI recording",
+};
 ---
 
 <div class="cli-recording-switcher" data-cli-recording-switcher>
-  <div class="cli-demo-tabs" role="tablist" aria-label="选择 CLI 真实任务">
+  <div class="cli-demo-tabs" role="tablist" aria-label={copy.choose}>
     <button
       type="button"
       role="tab"
       aria-selected="true"
       data-cli-source="/assets/demos/argus-cli-boxiu-a205d115.cast"
     >
-      <strong>文学创作 · 秋江赋</strong>
+      <strong>{copy.literature}</strong>
       <span>83s · main@699dc2c</span>
     </button>
     <button
@@ -19,18 +35,18 @@ import "asciinema-player/dist/bundle/asciinema-player.css";
       aria-selected="false"
       data-cli-source="/assets/demos/argus-cli-math-boxiu-fe6dd4a8.cast"
     >
-      <strong>计算数学 · Erdős–Straus</strong>
+      <strong>{copy.math}</strong>
       <span>76s · main@24cf964</span>
     </button>
   </div>
   <div
     class="cli-recording"
     role="tabpanel"
-    aria-label="Argus CLI 真实操作回放"
+    aria-label={copy.replay}
     data-cli-recording-mount
   >
     <noscript>
-      <a href="/assets/demos/argus-cli-boxiu-a205d115.cast">下载 CLI 录制</a>
+      <a href="/assets/demos/argus-cli-boxiu-a205d115.cast">{copy.download}</a>
     </noscript>
   </div>
 </div>

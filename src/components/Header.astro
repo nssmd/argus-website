@@ -1,32 +1,53 @@
 ---
+import { localeFromPath, pathForLocale } from "../i18n";
+
 const path = Astro.url.pathname;
+const locale = localeFromPath(path);
+const copy = locale === "zh" ? {
+  home: "Argus 首页",
+  nav: "主导航",
+  start: "开始使用",
+  links: ["成绩", "研究", "原理", "场景"],
+} : {
+  home: "Argus home",
+  nav: "Main navigation",
+  start: "Get started",
+  links: ["Results", "Research", "How it works", "Use cases"],
+};
 const links = [
-  { href: "/results.html", label: "成绩" },
-  { href: "/research.html", label: "研究" },
-  { href: "/how.html", label: "原理" },
-  { href: "/use-cases.html", label: "场景" }
+  { href: "/results.html", label: copy.links[0] },
+  { href: "/research.html", label: copy.links[1] },
+  { href: "/how.html", label: copy.links[2] },
+  { href: "/use-cases.html", label: copy.links[3] }
 ];
+const localized = (href: string) => pathForLocale(href, locale);
+const currentBase = pathForLocale(path, "en");
 ---
 
 <header class="site-header">
   <div class="site-header__inner">
-    <a class="site-brand" href="/" aria-label="Argus 首页">
+    <a class="site-brand" href={localized("/")} aria-label={copy.home}>
       <img src="/assets/argus-mark-gold.png" width="20" height="20" alt="" />
       <span>Argus</span>
     </a>
-    <nav class="site-nav" aria-label="主导航">
+    <nav class="site-nav" aria-label={copy.nav}>
       {links.map((link) => (
-        <a href={link.href} aria-current={path === link.href ? "page" : undefined}>
+        <a href={localized(link.href)} aria-current={currentBase === link.href ? "page" : undefined}>
           {link.label}
         </a>
       ))}
     </nav>
+    <nav class="language-switcher" aria-label="Language">
+      <a href={pathForLocale(path, "en")} hreflang="en" lang="en" aria-current={locale === "en" ? "page" : undefined}>EN</a>
+      <span aria-hidden="true">/</span>
+      <a href={pathForLocale(path, "zh")} hreflang="zh-Hans" lang="zh-CN" aria-current={locale === "zh" ? "page" : undefined}>简</a>
+    </nav>
     <a
       class="site-start"
-      href="/start.html"
-      aria-current={path === "/start.html" ? "page" : undefined}
+      href={localized("/start.html")}
+      aria-current={currentBase === "/start.html" ? "page" : undefined}
     >
-      开始使用 <span aria-hidden="true">→</span>
+      {copy.start} <span aria-hidden="true">→</span>
     </a>
   </div>
 </header>

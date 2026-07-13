@@ -1,17 +1,47 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import { localeFromPath } from "../i18n";
+
+const locale = localeFromPath(Astro.url.pathname);
 const stages = ["research", "plan", "benchmark", "run", "analysis", "draft", "review", "submission"];
+const copy = locale === "zh" ? {
+  title: "How It Works · Argus",
+  description: "Argus 如何用 LifeSupervisor、四个角色和 SkillLoop 持续经营一个研究项目。",
+  hero: "一个项目，两层循环，四个角色。",
+  lede: "外层维持项目生命，内层完成一个 mission；状态、失败和下一步不会随对话消失。",
+  architecture: "LifeSupervisor 让研究持续，SkillLoop 让每轮闭环。",
+  architectureBody: "backlog 空时 Planner 继续排活；Engineer 真正执行；Reviewer 根据 evidence 决定 done、continue 或 blocked。",
+  roles: [["Manager", "入口、vertical 与 stage 权威。"], ["Planner", "提出下一批值得做的工作。"], ["Engineer", "写代码、跑实验、产出 artifact。"], ["Reviewer", "验收、返工、记录 checkpoint。"]],
+  pipeline: "从一个目标到一篇 PDF。",
+  run: "B200 上的 426 次自治搜索。",
+  runBody: "每个点是一轮真实尝试，floor 从 1.0587 推到 0.9636。",
+  alt: "B200 nanochat 进化曲线",
+  caption: "val BPB 越低越好；Argus 最终超过 human SOTA 0.9646。",
+} : {
+  title: "How Argus Works",
+  description: "How LifeSupervisor, four specialist roles, and SkillLoop keep an Argus research project moving.",
+  hero: "One project. Two loops. Four specialist roles.",
+  lede: "The outer loop keeps the project alive; the inner loop closes one mission at a time. State, failure, and the next move do not disappear when a chat ends.",
+  architecture: "LifeSupervisor sustains the project. SkillLoop closes the loop.",
+  architectureBody: "When the backlog runs dry, the Planner proposes the next work. The Engineer executes it. The Reviewer decides—against the evidence—whether to finish, revise, or block.",
+  roles: [["Manager", "Owns the front door, domain selection, and stage authority."], ["Planner", "Chooses the next batch of work worth doing."], ["Engineer", "Writes code, runs experiments, and produces inspectable artifacts."], ["Reviewer", "Accepts, rejects, or sends work back, and maintains the working checkpoint."]],
+  pipeline: "From one objective to a reviewable PDF.",
+  run: "426 autonomous searches on a B200.",
+  runBody: "Every point is a real attempt. The floor moved from 1.0587 to 0.9636.",
+  alt: "The B200 nanochat optimization trajectory",
+  caption: "Lower validation BPB is better. Argus ultimately beat the human SOTA of 0.9646.",
+};
 ---
 
 <SiteLayout
-  title="How It Works · Argus"
-  description="Argus 如何用 LifeSupervisor、四个角色和 SkillLoop 持续经营一个研究项目。"
+  title={copy.title}
+  description={copy.description}
 >
   <section class="page-hero compact">
     <div class="shell">
       <p class="eyebrow">How it works</p>
-      <h1>一个项目，两层循环，四个角色。</h1>
-      <p class="lede">外层维持项目生命，内层完成一个 mission；状态、失败和下一步不会随对话消失。</p>
+      <h1>{copy.hero}</h1>
+      <p class="lede">{copy.lede}</p>
     </div>
   </section>
 
@@ -19,16 +49,11 @@ const stages = ["research", "plan", "benchmark", "run", "analysis", "draft", "re
     <div class="shell architecture">
       <div class="section-head">
         <p class="eyebrow">Architecture</p>
-        <h2>LifeSupervisor 让研究持续，SkillLoop 让每轮闭环。</h2>
-        <p>
-          backlog 空时 Planner 继续排活；Engineer 真正执行；Reviewer 根据 evidence 决定 done、continue 或 blocked。
-        </p>
+        <h2>{copy.architecture}</h2>
+        <p>{copy.architectureBody}</p>
       </div>
       <div class="role-list">
-        <article class="role"><i>M</i><div><h3>Manager</h3><p>入口、vertical 与 stage 权威。</p></div></article>
-        <article class="role"><i>P</i><div><h3>Planner</h3><p>提出下一批值得做的工作。</p></div></article>
-        <article class="role"><i>E</i><div><h3>Engineer</h3><p>写代码、跑实验、产出 artifact。</p></div></article>
-        <article class="role"><i>R</i><div><h3>Reviewer</h3><p>验收、返工、记录 checkpoint。</p></div></article>
+        {copy.roles.map(([name, body], index) => <article class="role"><i>{["M", "P", "E", "R"][index]}</i><div><h3>{name}</h3><p>{body}</p></div></article>)}
       </div>
     </div>
   </section>
@@ -37,7 +62,7 @@ const stages = ["research", "plan", "benchmark", "run", "analysis", "draft", "re
     <div class="shell">
       <div class="section-head">
         <p class="eyebrow">Paper pipeline</p>
-        <h2>从一个目标到一篇 PDF。</h2>
+        <h2>{copy.pipeline}</h2>
       </div>
       <div class="pipeline">
         {stages.map((stage, index) => (
@@ -51,12 +76,12 @@ const stages = ["research", "plan", "benchmark", "run", "analysis", "draft", "re
     <div class="shell">
       <div class="section-head">
         <p class="eyebrow">A real run</p>
-        <h2>B200 上的 426 次自治搜索。</h2>
-        <p>每个点是一轮真实尝试，floor 从 1.0587 推到 0.9636。</p>
+        <h2>{copy.run}</h2>
+        <p>{copy.runBody}</p>
       </div>
       <figure class="figure">
-        <img src="/assets/nanochat-b200-trajectory.svg" alt="B200 nanochat 进化曲线" />
-        <figcaption>val BPB 越低越好；Argus 最终超过 human SOTA 0.9646。</figcaption>
+        <img src="/assets/nanochat-b200-trajectory.svg" alt={copy.alt} />
+        <figcaption>{copy.caption}</figcaption>
       </figure>
     </div>
   </section>
