@@ -821,6 +821,11 @@ main {
   font-style: italic;
 }
 
+:lang(zh-CN) .product-intro h1 {
+  font-size: clamp(34px, 8.8vw, 56px);
+  letter-spacing: -0.045em;
+}
+
 @keyframes hero-gradient {
   to { background-position: 100% 50%; }
 }
@@ -2257,6 +2262,34 @@ main {
     display: block;
     margin-top: 6px;
     text-align: left;
+  }
+
+  .evolution-loop__track {
+    min-width: 0;
+    grid-template-columns: 1fr;
+  }
+
+  .evolution-step,
+  .evolution-step:last-child {
+    min-height: 0;
+    padding: 18px 20px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .evolution-step:last-child {
+    border-bottom: 0;
+  }
+
+  .evolution-step:not(:last-child)::after {
+    content: "↓";
+    right: 19px;
+    top: auto;
+    bottom: -8px;
+  }
+
+  .evolution-step strong {
+    margin-top: 9px;
   }
 
   .trajectory-ledger,

@@ -7,41 +7,91 @@ import { localeFromPath, pathForLocale } from "../i18n";
 const locale = localeFromPath(Astro.url.pathname);
 const href = (path: string) => pathForLocale(path, locale);
 const copy = locale === "zh" ? {
-  title: "Argus — 自主 AI 研究系统",
-  description: "给 Argus 一个研究目标和算力，它会持续读资料、写代码、跑实验、检查结果并决定下一步。",
+  title: "Argus — 自进化科研基础 Agent",
+  description: "Argus 将每一次研究过程转化为数据、Skill 与评测信号，在真实实验中持续扩展到新的 OOD 任务，并沉淀论文背后的高价值过程数据。",
+  heroEyebrow: "自进化科研运行时",
   heroLead: "给它一个研究目标。",
-  heroEm: "它自己把事情做完。",
-  lede: "Argus 会持续读资料、写代码、跑实验、检查结果并决定下一步。你提供目标和算力，它交付可以直接使用的研究结果。",
+  heroEm: "它会在研究中进化。",
+  lede: "Argus 不只是完成一次任务。它持续读资料、写代码、跑实验、检查证据；每一次成功、失败与改道都会沉淀为数据、Skill 和评测信号，让系统实时演进，并扩展到从未见过的 OOD 任务。",
   results: "看它做出了什么 →",
+  evolutionLink: "看自进化飞轮 ↓",
+  conceptLabel: "Argus 核心能力",
+  heroConcepts: [["实时自进化", "每一轮研究都改善下一轮"], ["OOD 扩展", "陌生任务触发新 Skill 与新工具"], ["上限不锁死", "Model、Harness 与数据共同升级"]],
   metricLabel: "核心成绩",
   metrics: [["#6", "NVIDIA 全球排名"], ["2× #1", "B200 kernel"], ["H100 + B200", "超过 human SOTA"], ["79.77s", "8×H100 speedrun"], ["41", "研究 PDF"]],
-  whatTitle: "不是聊天机器人，是一套科研操作系统。",
-  whatBody: "四个专业角色共享同一个长期项目记忆，从目标推进到代码、实验、评审和下一个 idea。",
-  pillars: [["自己排活", "把长期目标拆成下一步可以执行、可以验收的 mission。"], ["自己动手", "真实写代码、跑 shell、做 profile、启动实验并读取产物。"], ["自己继续", "Reviewer 根据 evidence 决定完成、返工或换方向，状态跨 session 保留。"]],
-  unknownTitle: "未知不是边界，而是 Argus 开始工作的地方。",
-  unknownBody: "目标可以模糊，答案可以从未存在。Argus 会在科研、数学与文学创作中自己寻找方向、验证判断、持续深入。",
-  domains: [["科学研究", "从开放问题出发，自主提出假设、设计实验，让证据决定下一步。"], ["数学探索", "拆解命题、寻找结构、尝试证明与反例，在未知中持续推进。"], ["文学创作", "构思、写作、批评、重写，让作品在迭代中不断生长。"], ["工程突破", "面对清晰指标，用数百轮真实实验把性能推向边界。"]],
-  ctaTitle: "把一个真实难题交给 Argus。",
-  ctaBody: "先看成绩，再决定它是否值得接手你的任务。",
+  signal: "目标 → 尝试 → 证据 → 失败 → 蒸馏 → SKILL → 下一片前沿",
+  whatEyebrow: "Self-evolving system",
+  whatTitle: "不是固定工作流，而是一套会改写自己的科研系统。",
+  whatBody: "模型提供科学表征与推理，Harness 负责规划、工具、记忆和验证；真实执行轨迹持续回流为数据、Skills、评测与训练任务。能力上限不由单一模型锁死，任务宽度也不由预设工作流锁死。",
+  pillars: [["实时演进", "成功、失败、卡点与改道都会进入经验回放，成为下一轮可学习的信号。"], ["轻易扩展 OOD", "遇到分布外任务时，Argus 组合已有能力、生成新 Skill、接入新工具并创建新评测。"], ["上限与宽度保持开放", "Research Model、Agent Harness 与数据引擎协同升级，不必等待一次整体重训或重写系统。"]],
+  loopTitle: "一次研究，怎样变成下一次能力",
+  loopNote: "每一轮都抬高能力上限、拓宽任务面，并加深长期记忆。",
+  loopReturn: "执行证据回流，下一轮不再从零开始",
+  loopSteps: [["01", "未知目标", "目标可以分布外，答案甚至可以尚不存在。"], ["02", "计划与执行", "组合模型、工具、记忆与已有 Skills。"], ["03", "证据与失败", "记录实验、反例、卡点和每次决策依据。"], ["04", "能力蒸馏", "生成训练数据、Verifier、Skill 与新任务。"], ["05", "协同更新", "Model × Harness 根据真实反馈共同升级。"], ["06", "扩展新边界", "下一类 OOD 任务不再从零开始。"]],
+  dataEyebrow: "The missing data market",
+  dataTitle: "论文公开了答案，却几乎从不公开答案是怎样被找到的。",
+  dataBody: "一篇论文、一个数学猜想的背后，从 idea 如何产生，到遇到什么困难、为什么原路线失败、如何判断该换路，再到最终证据链——这些极其精细的过程通常是研究者的看家本领，也是今天训练数据中的巨大空白。Argus 原生记录这条过程。",
+  trajectoryTitle: "一个科研成果背后的完整“研究电影”",
+  trajectoryCaption: "PDF 只保留最后一帧；Argus 保留从想法到结果的整段轨迹。",
+  trajectory: [["01", "Idea 起源", "为什么是这个问题、为什么是现在、最初判断来自哪里。"], ["02", "假设选择", "考虑过哪些路线，放弃了什么，关键假设和风险是什么。"], ["03", "失败分支", "哪次实验或证明尝试失败，出现了什么反常证据。"], ["04", "瓶颈诊断", "系统如何定位卡点，区分实现问题、数据问题与方法问题。"], ["05", "策略改道", "为什么更换模型、工具、Skill 或研究方向，依据是什么。"], ["06", "证据收敛", "有效结果如何复现、审计并最终形成论文、证明或工程成果。"]],
+  processSignals: ["Idea provenance", "失败分支", "瓶颈诊断", "工具选择", "证据血缘", "改道理由"],
+  businessTitle: "这不是日志，而是一种新的科研数据产品。",
+  businessAssetEyebrow: "过程数据 → 复利资产",
+  businessBody: "它比论文正文更细，比普通 CoT 更真实：带环境、工具、失败、反馈、版本和证据血缘，可直接服务基础模型后训练、科研 Agent 训练与评测。",
+  businessModels: [["DATA LICENSING", "过程数据授权", "按学科、任务和难度提供高密度研究轨迹数据集，用于训练、对齐和评测下一代科研模型。"], ["CAPABILITY ASSETS", "能力产品", "从轨迹中抽取专精模型、Skills、Verifier、Benchmark 和工具适配器，形成可复用能力包。"], ["PRIVATE FLYWHEEL", "企业私域飞轮", "在企业或实验室环境内持续生成专属过程数据，让 Model × Harness 越用越懂该领域。"]],
+  businessFoot: "成果产生一次价值；过程数据、Skill 与评测资产可以持续复用、授权并产生复利。",
+  governance: "商业化前提：完整 provenance、版权边界、脱敏、访问控制与客户数据隔离。",
+  unknownTitle: "OOD 不是异常，而是系统扩展能力宽度的入口。",
+  oodEyebrow: "OOD 前沿扩展",
+  unknownBody: "固定 Agent 在陌生任务前往往失效；Argus 把陌生任务转化为新 mission、新工具接口、新 Skill 与新评测，使能力面随着真实实践持续展开。",
+  domains: [["科学研究", "没有现成 SOP 时，自主提出假设、设计实验，让证据决定下一步。"], ["数学探索", "围绕猜想搜索结构、证明与反例，并完整保留每次失败和转向。"], ["文学创作", "将构思、写作、批评和重写沉淀为可复用的审美与创作能力。"], ["工程突破", "面对新硬件、新约束和新指标，用数百轮真实实验把性能推向边界。"]],
+  ctaTitle: "交付一个结果，也沉淀一个领域的能力与数据。",
+  ctaBody: "从单个难题开始，Argus 交付可审计成果；从持续任务开始，形成专精模型、Skills、Verifier 与高价值过程数据资产。",
   cta: "打开成绩墙 →",
+  start: "开始使用 →",
 } : {
-  title: "Argus — Autonomous AI Research",
-  description: "Give Argus a research objective and compute. It reads, builds, experiments, reviews the evidence, and keeps deciding what to do next.",
+  title: "Argus — A Self-Evolving Research Agent",
+  description: "Argus turns every research run into data, skills, and evaluation signals, expanding into new OOD tasks while capturing the high-value process behind scientific results.",
+  heroEyebrow: "Self-evolving research runtime",
   heroLead: "Give it a research objective.",
-  heroEm: "It carries the work through.",
-  lede: "Argus reads the literature, writes code, runs experiments, inspects the evidence, and chooses the next move. You provide the objective and compute; it returns research you can inspect and use.",
+  heroEm: "It evolves while solving it.",
+  lede: "Argus does more than finish a run. It reads, builds, experiments, and checks the evidence. Every success, failure, and pivot becomes data, a reusable skill, and an evaluation signal—so the system evolves in real time and expands into OOD work it has never seen before.",
   results: "See what it has accomplished →",
+  evolutionLink: "See the evolution loop ↓",
+  conceptLabel: "Core Argus capabilities",
+  heroConcepts: [["Live evolution", "Every research cycle improves the next"], ["OOD expansion", "Novel tasks trigger new skills and tools"], ["Unfixed ceiling", "Model, harness, and data improve together"]],
   metricLabel: "Selected results",
   metrics: [["#6", "NVIDIA global ranking"], ["2× #1", "B200 kernels"], ["H100 + B200", "Beyond human SOTA"], ["79.77s", "8×H100 speedrun"], ["41", "Research PDFs"]],
-  whatTitle: "Not a chatbot. A research operating system.",
-  whatBody: "Four specialist roles share durable project memory, carrying an objective through code, experiments, review, and the next idea.",
-  pillars: [["Plans its own work", "Turns a long-horizon objective into the next executable, reviewable mission."], ["Does the work", "Writes real code, runs shell commands, profiles systems, launches experiments, and reads the artifacts."], ["Keeps going", "A reviewer decides whether the evidence warrants completion, revision, or a new direction—and the state survives every session."]],
-  unknownTitle: "The unknown is not a boundary. It is where Argus begins.",
-  unknownBody: "The objective may be underspecified and the answer may not exist yet. Argus finds directions, tests its judgment, and keeps digging across science, mathematics, writing, and engineering.",
-  domains: [["Scientific research", "Starts from an open question, forms hypotheses, designs experiments, and lets the evidence choose the next step."], ["Mathematical exploration", "Decomposes conjectures, searches for structure, and pursues proofs or counterexamples, pressing forward through the unknown."], ["Creative writing", "Develops an idea through drafting, criticism, and revision until the work earns its final form."], ["Engineering breakthroughs", "Uses hundreds of measured iterations to push a clear performance target toward the frontier."]],
-  ctaTitle: "Give Argus a problem that actually matters.",
-  ctaBody: "Start with the evidence. Then decide whether it should take on yours.",
+  signal: "OBJECTIVE → ATTEMPT → EVIDENCE → FAILURE → DISTILL → SKILL → NEXT FRONTIER",
+  whatEyebrow: "Self-evolving system",
+  whatTitle: "Not a fixed workflow. A research system that rewrites itself.",
+  whatBody: "The model supplies scientific representations and reasoning; the harness supplies planning, tools, memory, and verification. Real execution trajectories continuously flow back into data, skills, evaluations, and training tasks. The ceiling is not fixed by one model, and the breadth is not fixed by one workflow.",
+  pillars: [["Real-time evolution", "Successes, failures, bottlenecks, and pivots enter experience replay as learnable signals for the next run."], ["Fast OOD expansion", "When a task falls outside the distribution, Argus composes existing capabilities, creates a new skill, connects a new tool, and builds a new evaluation."], ["An open ceiling and task surface", "The research model, agent harness, and data engine co-evolve without waiting for a full system rewrite or a single monolithic retraining cycle."]],
+  loopTitle: "How one research run becomes the next capability",
+  loopNote: "Every cycle raises the ceiling, widens the task surface, and deepens durable memory.",
+  loopReturn: "Execution evidence flows back; the next run does not start from zero",
+  loopSteps: [["01", "Unknown objective", "The task may be OOD and the answer may not exist yet."], ["02", "Plan and execute", "Compose models, tools, memory, and existing skills."], ["03", "Evidence and failure", "Record experiments, counterexamples, bottlenecks, and decisions."], ["04", "Distill capability", "Create training data, verifiers, skills, and new tasks."], ["05", "Co-update", "Model × Harness improve together from real feedback."], ["06", "Expand the frontier", "The next class of OOD work no longer starts from zero."]],
+  dataEyebrow: "The missing data market",
+  dataTitle: "Papers publish the answer. They rarely publish how the answer was found.",
+  dataBody: "Behind a paper or mathematical conjecture lies a path from the birth of an idea to dead ends, bottleneck diagnosis, strategic pivots, and the final chain of evidence. These fine-grained decisions are often a researcher's most guarded craft—and a vast blank space in today's training data. Argus records that process natively.",
+  trajectoryTitle: "The full research film behind one artifact",
+  trajectoryCaption: "The PDF keeps the final frame. Argus keeps the path from idea to result.",
+  trajectory: [["01", "Idea provenance", "Why this question, why now, and where the first judgment came from."], ["02", "Hypothesis choice", "Which routes were considered, what was rejected, and which assumptions carried risk."], ["03", "Failed branch", "Which experiment or proof attempt failed and what anomalous evidence appeared."], ["04", "Bottleneck diagnosis", "How the system separated implementation, data, and method failures."], ["05", "Strategic pivot", "Why it changed models, tools, skills, or direction—and on what evidence."], ["06", "Evidence convergence", "How the result became reproducible, auditable, and ready as a paper, proof, or system artifact."]],
+  processSignals: ["Idea provenance", "Rejected branches", "Failure diagnosis", "Tool choice", "Evidence lineage", "Pivot rationale"],
+  businessTitle: "This is not exhaust. It is a new research data product.",
+  businessAssetEyebrow: "Process data → compounding asset",
+  businessBody: "It is finer than the paper and more grounded than generic chain-of-thought: tied to environments, tools, failures, feedback, versions, and evidence lineage—ready for foundation-model post-training, research-agent training, and evaluation.",
+  businessModels: [["DATA LICENSING", "Research trajectory data", "License dense, provenance-rich research trajectories by field, task, and difficulty for training, alignment, and evaluation."], ["CAPABILITY ASSETS", "Capability products", "Extract specialist models, skills, verifiers, benchmarks, and tool adapters from successful trajectories."], ["PRIVATE FLYWHEEL", "Private domain flywheels", "Generate proprietary process data inside an enterprise or laboratory so Model × Harness becomes more domain-native with every use."]],
+  businessFoot: "A result creates value once. Process data, skills, and evaluations can be reused, licensed, and compounded.",
+  governance: "Commercialization requires provenance, rights boundaries, redaction, access control, and strict customer-data isolation.",
+  unknownTitle: "OOD is not an exception. It is how the system widens its capability surface.",
+  oodEyebrow: "OOD frontier expansion",
+  unknownBody: "Fixed agents tend to fail when the workflow runs out. Argus turns unfamiliar work into a new mission, tool interface, skill, and evaluation—so its breadth keeps expanding through practice.",
+  domains: [["Scientific research", "When no SOP exists, it forms hypotheses, designs experiments, and lets evidence choose the next move."], ["Mathematical exploration", "It searches structures, proofs, and counterexamples around a conjecture while preserving every failure and pivot."], ["Creative writing", "It turns ideation, drafting, critique, and revision into reusable creative judgment."], ["Engineering breakthroughs", "Across new hardware, constraints, and metrics, it uses hundreds of measured iterations to push the frontier."]],
+  ctaTitle: "Deliver one result—and accumulate a domain's capability and data.",
+  ctaBody: "Start with one hard problem for an auditable result. Continue with a stream of work to build specialist models, skills, verifiers, and high-value process-data assets.",
   cta: "Open the results wall →",
+  start: "Get started →",
 };
 ---
 
@@ -54,11 +104,15 @@ const copy = locale === "zh" ? {
   <section id="intro" class="page-hero product-intro">
     <div class="shell hero-system-grid">
       <div class="hero-system-copy">
-        <p class="eyebrow">Autonomous research runtime</p>
+        <p class="eyebrow">{copy.heroEyebrow}</p>
         <h1>{copy.heroLead}<br /><em>{copy.heroEm}</em></h1>
         <p class="lede">{copy.lede}</p>
         <div class="hero-actions">
           <a class="button primary" href={href("/results.html")}>{copy.results}</a>
+          <a class="button" href="#evolution">{copy.evolutionLink}</a>
+        </div>
+        <div class="hero-thesis" aria-label={copy.conceptLabel}>
+          {copy.heroConcepts.map(([title, body]) => <div><strong>{title}</strong><span>{body}</span></div>)}
         </div>
       </div>
       <ResearchField locale={locale} />
@@ -73,29 +127,89 @@ const copy = locale === "zh" ? {
 
   <div class="signal-rail" aria-hidden="true">
     <div>
-      <span>MANAGER → PLANNER → ENGINEER → REVIEWER → EVIDENCE</span>
-      <span>MANAGER → PLANNER → ENGINEER → REVIEWER → EVIDENCE</span>
-      <span>MANAGER → PLANNER → ENGINEER → REVIEWER → EVIDENCE</span>
+      <span>{copy.signal}</span>
+      <span>{copy.signal}</span>
+      <span>{copy.signal}</span>
     </div>
   </div>
 
-  <section class="section">
+  <section id="evolution" class="section">
     <div class="shell">
       <div class="section-head">
-        <p class="eyebrow">What it is</p>
+        <p class="eyebrow">{copy.whatEyebrow}</p>
         <h2>{copy.whatTitle}</h2>
         <p>{copy.whatBody}</p>
       </div>
       <div class="card-grid">
         {copy.pillars.map(([title, body], index) => <article class="card"><span class="number">{String(index + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{body}</p></article>)}
       </div>
+      <div class="evolution-loop">
+        <div class="evolution-loop__intro">
+          <strong>{copy.loopTitle}</strong>
+          <span>{copy.loopNote}</span>
+        </div>
+        <div class="evolution-loop__viewport">
+          <div class="evolution-loop__track">
+            {copy.loopSteps.map(([number, title, body]) => <div class="evolution-step"><span>{number}</span><strong>{title}</strong><p>{body}</p></div>)}
+          </div>
+        </div>
+        <div class="evolution-loop__return"><span aria-hidden="true">↺</span>{copy.loopReturn}</div>
+      </div>
     </div>
   </section>
 
-  <section class="section surface">
+  <section id="process-data" class="section surface data-economy">
+    <div class="shell">
+      <div class="section-head wide">
+        <p class="eyebrow">{copy.dataEyebrow}</p>
+        <h2>{copy.dataTitle}</h2>
+        <p>{copy.dataBody}</p>
+      </div>
+      <div class="process-data-grid">
+        <article class="trajectory-ledger">
+          <div class="trajectory-ledger__head">
+            <h3>{copy.trajectoryTitle}</h3>
+            <p>{copy.trajectoryCaption}</p>
+          </div>
+          <div class="trajectory-list">
+            {copy.trajectory.map(([number, title, body]) => (
+              <div class="trajectory-entry">
+                <span>{number}</span>
+                <div><strong>{title}</strong><p>{body}</p></div>
+              </div>
+            ))}
+          </div>
+          <div class="trajectory-signals">
+            {copy.processSignals.map((signal) => <span>{signal}</span>)}
+          </div>
+        </article>
+
+        <div class="business-case">
+          <div class="business-thesis">
+            <p class="eyebrow">{copy.businessAssetEyebrow}</p>
+            <h3>{copy.businessTitle}</h3>
+            <p>{copy.businessBody}</p>
+          </div>
+          <div class="business-grid">
+            {copy.businessModels.map(([badge, title, body]) => (
+              <article class="card business-card">
+                <span class="business-badge">{badge}</span>
+                <h3>{title}</h3>
+                <p>{body}</p>
+              </article>
+            ))}
+          </div>
+          <p class="business-foot">{copy.businessFoot}</p>
+          <p class="data-governance">{copy.governance}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="shell">
       <div class="section-head">
-        <p class="eyebrow">Open-ended exploration</p>
+        <p class="eyebrow">{copy.oodEyebrow}</p>
         <h2>{copy.unknownTitle}</h2>
         <p>{copy.unknownBody}</p>
       </div>
@@ -110,7 +224,10 @@ const copy = locale === "zh" ? {
       <div class="cta-band">
         <h2>{copy.ctaTitle}</h2>
         <p>{copy.ctaBody}</p>
-        <a class="button" href={href("/results.html")}>{copy.cta}</a>
+        <div class="hero-actions">
+          <a class="button" href={href("/results.html")}>{copy.cta}</a>
+          <a class="button" href={href("/start.html")}>{copy.start}</a>
+        </div>
       </div>
     </div>
   </section>
