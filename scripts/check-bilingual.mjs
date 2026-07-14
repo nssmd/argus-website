@@ -52,6 +52,12 @@ for (const page of ["index.html", "zh.html"]) {
   assert(html.includes('data-argus-logo="mark"'), `${page} lacks the rounded mark`);
 }
 
+const css = fs.readFileSync(path.resolve("src/styles/global.css"), "utf8");
+assert(css.includes("scroll-padding-inline: 18px"), "mobile nav lacks scroll padding");
+assert(css.includes("scroll-snap-type: x proximity"), "mobile nav lacks scroll snapping");
+assert(css.includes("--signal-segment-width: max(33.333vw, 480px)"), "signal rail segment width changed");
+assert(css.includes("--signal-gap: clamp(24px, 4vw, 48px)"), "signal rail lacks explicit spacing");
+
 for (const page of fs.readdirSync(dist, { recursive: true })) {
   if (typeof page !== "string" || !page.endsWith(".html")) continue;
   const html = read(page);

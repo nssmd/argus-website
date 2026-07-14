@@ -1054,8 +1054,10 @@ main {
 
 .signal-rail > div {
   --signal-segment-width: max(33.333vw, 480px);
+  --signal-gap: clamp(24px, 4vw, 48px);
   width: max-content;
   display: flex;
+  gap: var(--signal-gap);
   padding: 7px 0;
   animation: signal-rail 24s linear infinite;
 }
@@ -1074,7 +1076,7 @@ main {
 }
 
 @keyframes signal-rail {
-  to { transform: translateX(calc(var(--signal-segment-width) * -3)); }
+  to { transform: translateX(calc(var(--signal-segment-width) * -3 - var(--signal-gap) * 3)); }
 }
 
 .metric-grid {
@@ -2512,7 +2514,14 @@ main {
   .runtime-flow .demo-shell {
     width: 100%;
     overflow-x: auto;
+    scroll-padding-inline: 18px;
+    scroll-snap-type: x proximity;
     scrollbar-width: none;
+  }
+
+  .site-nav a {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
   }
 
   .runtime-flow .demo-shell::-webkit-scrollbar {
