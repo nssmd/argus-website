@@ -2,11 +2,11 @@
 type Props = { locale: "en" | "zh" };
 const { locale } = Astro.props;
 const caption = locale === "zh"
-  ? "目标在四个角色间持续流动；每次尝试又沉淀为下一轮的数据、Skill 与判断。"
-  : "The objective moves through four roles; every attempt becomes data, skills, and judgment for the next run.";
-const telemetryTop = locale === "zh" ? "实时 · 演进中" : "LIVE · EVOLVING";
-const telemetryBottom = locale === "zh" ? "证据 → 能力" : "EVIDENCE → CAPABILITY";
-const coreLabel = locale === "zh" ? "从证据中学习" : "learns from evidence";
+  ? "Life 让目标在四个角色间持续流动，并把每次工作沉淀为下一轮的能力。"
+  : "Life keeps the objective moving through four roles and turns every run into capability for the next.";
+const telemetryTop = locale === "zh" ? "LIFE · 7×24" : "LIFE · 24/7";
+const telemetryBottom = locale === "zh" ? "工作 → 学习" : "WORK → LEARNING";
+const coreLabel = locale === "zh" ? "边工作边学习" : "learns while working";
 ---
 
 <figure class="research-field" data-research-field>
