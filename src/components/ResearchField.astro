@@ -1,5 +1,6 @@
 ---
 type Props = { locale: "en" | "zh" };
+import ArgusLogo from "./ArgusLogo.astro";
 const { locale } = Astro.props;
 const caption = locale === "zh"
   ? "Life 让目标在四个角色间持续流动，并把每次工作沉淀为下一轮的能力。"
@@ -45,7 +46,7 @@ const coreLabel = locale === "zh" ? "边工作边学习" : "learns while working
     </svg>
     <div class="research-field__scan" data-research-field-scan></div>
     <div class="research-field__core" data-research-field-core>
-      <img src="/assets/argus-mark-gold.png" width="58" height="58" alt="" />
+      <ArgusLogo variant="mark" class="argus-logo--research" decorative />
       <strong>ARGUS</strong>
       <span>{coreLabel}</span>
     </div>

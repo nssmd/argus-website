@@ -42,6 +42,14 @@ for (const [englishPath, chinesePath] of pairs) {
     .replace(/中/g, "");
   assert(!/[\u3400-\u9fff]/.test(visibleEnglish), `${englishPath} leaks Chinese visible copy`);
   assert(/[\u3400-\u9fff]/.test(chinese), `${chinesePath} lacks Chinese copy`);
+  assert(!english.includes("argus-mark-gold.png"), `${englishPath} still uses the legacy mark`);
+  assert(!chinese.includes("argus-mark-gold.png"), `${chinesePath} still uses the legacy mark`);
+}
+
+for (const page of ["index.html", "zh.html"]) {
+  const html = read(page);
+  assert(html.includes('data-argus-logo="horizontal"'), `${page} lacks the rounded horizontal logo`);
+  assert(html.includes('data-argus-logo="mark"'), `${page} lacks the rounded mark`);
 }
 
 for (const page of fs.readdirSync(dist, { recursive: true })) {

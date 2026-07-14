@@ -1,5 +1,6 @@
 ---
 import { localeFromPath, pathForLocale } from "../i18n";
+import ArgusLogo from "./ArgusLogo.astro";
 
 const path = Astro.url.pathname;
 const locale = localeFromPath(path);
@@ -32,8 +33,7 @@ const currentBase = pathForLocale(path, "en");
   <div class="site-progress" data-scroll-progress aria-hidden="true"></div>
   <div class="site-header__inner">
     <a class="site-brand" href={localized("/")} aria-label={copy.home}>
-      <img src="/assets/argus-mark-gold.png" width="20" height="20" alt="" />
-      <span>Argus</span>
+      <ArgusLogo variant="horizontal" class="argus-logo--header" decorative />
     </a>
     <nav class="site-nav" aria-label={copy.nav}>
       {links.map((link) => (

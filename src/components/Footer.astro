@@ -1,5 +1,6 @@
 ---
 import { localeFromPath, pathForLocale } from "../i18n";
+import ArgusLogo from "./ArgusLogo.astro";
 
 const locale = localeFromPath(Astro.url.pathname);
 const copy = locale === "zh" ? {
@@ -17,8 +18,7 @@ const localized = (href: string) => pathForLocale(href, locale);
 <footer class="site-footer">
   <div>
     <a class="footer-brand" href={localized("/")}>
-      <img src="/assets/argus-mark-gold.png" width="20" height="20" alt="" />
-      Argus
+      <ArgusLogo variant="horizontal" class="argus-logo--footer" decorative />
     </a>
     <p>{copy.tagline}</p>
   </div>
