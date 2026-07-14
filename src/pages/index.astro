@@ -3,6 +3,7 @@ import SiteLayout from "../layouts/SiteLayout.astro";
 import ResearchField from "../components/ResearchField.astro";
 import BrandUniverse from "../components/BrandUniverse.astro";
 import DenseIntelligence from "../components/DenseIntelligence.astro";
+import MathematicalManifesto from "../components/MathematicalManifesto.astro";
 import { localeFromPath, pathForLocale } from "../i18n";
 
 const locale = localeFromPath(Astro.url.pathname);
@@ -129,6 +130,7 @@ const copy = locale === "zh" ? {
   </section>
 
   <DenseIntelligence locale={locale} />
+  <MathematicalManifesto locale={locale} />
 
   <section class="metric-strip" aria-label={copy.metricLabel}>
     <div class="metric-grid">
