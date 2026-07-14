@@ -6,7 +6,7 @@ import io
 import zipfile
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFilter
+from PIL import Image, ImageDraw
 
 
 ARCHIVE_ROOT = "argus-logo-final-02-rounded"
@@ -35,7 +35,10 @@ def extract_svg_sources(archive: Path, output_dir: Path) -> dict[str, Path]:
         for key, relative in mapping.items():
             source = bundle.read(f"{ARCHIVE_ROOT}/{relative}").decode("utf-8")
             target = output_dir / f"argus-{key}.svg"
-            recolor_svg(source, target)
+            if key == "mark-rounded-small":
+                target.write_text(source.replace("#000000", "#073e8c"), encoding="utf-8")
+            else:
+                recolor_svg(source, target)
             result[key] = target
     return result
 
@@ -66,30 +69,12 @@ def _gradient_mark(image: Image.Image) -> Image.Image:
     return gradient
 
 
-def _og_image(mark: Image.Image) -> Image.Image:
-    canvas = Image.new("RGB", (1200, 630), "#071d3f")
+def _og_image(base: Image.Image, mark: Image.Image) -> Image.Image:
+    canvas = base.convert("RGB").copy()
     draw = ImageDraw.Draw(canvas)
-    for radius, color in (
-        (520, (7, 95, 228, 100)),
-        (360, (92, 63, 192, 78)),
-        (220, (217, 154, 22, 68)),
-    ):
-        glow = Image.new("RGBA", canvas.size)
-        glow_draw = ImageDraw.Draw(glow)
-        cx, cy = 600, 286
-        glow_draw.ellipse((cx - radius, cy - radius, cx + radius, cy + radius), fill=color)
-        glow = glow.filter(ImageFilter.GaussianBlur(radius / 2.8))
-        canvas.paste(glow, mask=glow)
-    large_mark = _gradient_mark(mark.resize((300, 300), Image.Resampling.LANCZOS))
-    canvas.paste(large_mark, (450, 100), large_mark)
-    draw.text((600, 460), "ARGUS", anchor="mm", fill="#f6f9ff", font_size=72)
-    draw.text(
-        (600, 530),
-        "SELF-EVOLVING RESEARCH RUNTIME",
-        anchor="mm",
-        fill="#d9b65f",
-        font_size=24,
-    )
+    draw.rectangle((78, 62, 142, 126), fill="#ffffff")
+    rounded_mark = _gradient_mark(mark.resize((52, 52), Image.Resampling.LANCZOS))
+    canvas.paste(rounded_mark, (84, 68), rounded_mark)
     return canvas
 
 
@@ -114,10 +99,8 @@ def generate_assets(archive: Path, sidecar: Path, output_dir: Path) -> None:
         )
 
         mark_1024 = _read_png(bundle, "png/marks/argus-mark-1024.png")
-        _og_image(mark_1024).save(
-            output_dir / "argus-og-blue-gold.png",
-            optimize=True,
-        )
+        og_path = output_dir / "argus-og-blue-gold.png"
+        _og_image(Image.open(og_path), mark_1024).save(og_path, optimize=True)
 
 
 def main() -> None:

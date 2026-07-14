@@ -2334,6 +2334,8 @@ main {
     justify-content: flex-start;
     gap: 24px;
     overflow-x: auto;
+    scroll-padding-inline: 18px;
+    scroll-snap-type: x proximity;
     border-top: 1px solid var(--line);
     scrollbar-width: none;
   }
@@ -2514,8 +2516,6 @@ main {
   .runtime-flow .demo-shell {
     width: 100%;
     overflow-x: auto;
-    scroll-padding-inline: 18px;
-    scroll-snap-type: x proximity;
     scrollbar-width: none;
   }
 

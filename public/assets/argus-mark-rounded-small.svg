@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img">
   <title>Argus rounded small-size mark</title>
-  <path d="M350 90h90v344h-90v-48q-50 56-126 56Q64 442 64 266Q64 88 230 88q76 0 120 54V90ZM146 266q45-92 98-92t104 92q-51 92-104 92t-98-92Z" fill="currentColor" fill-rule="evenodd"/>
-<path d="M290 266A46 46 0 1 0 198 266A46 46 0 1 0 290 266ZM280 246A16 16 0 1 0 248 246A16 16 0 1 0 280 246Z" fill="currentColor" fill-rule="evenodd"/>
+  <path d="M350 90h90v344h-90v-48q-50 56-126 56Q64 442 64 266Q64 88 230 88q76 0 120 54V90ZM146 266q45-92 98-92t104 92q-51 92-104 92t-98-92Z" fill="#073e8c" fill-rule="evenodd"/>
+<path d="M290 266A46 46 0 1 0 198 266A46 46 0 1 0 290 266ZM280 246A16 16 0 1 0 248 246A16 16 0 1 0 280 246Z" fill="#073e8c" fill-rule="evenodd"/>
 </svg>

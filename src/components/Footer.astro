@@ -4,10 +4,12 @@ import ArgusLogo from "./ArgusLogo.astro";
 
 const locale = localeFromPath(Astro.url.pathname);
 const copy = locale === "zh" ? {
+  home: "Argus 首页",
   tagline: "灯熄了，研究继续。",
   nav: "页脚导航",
   links: ["成绩", "研究", "原理", "场景", "开始使用"],
 } : {
+  home: "Argus home",
   tagline: "The lights go out. The research keeps moving.",
   nav: "Footer navigation",
   links: ["Results", "Research", "How it works", "Use cases", "Get started"],
@@ -17,7 +19,7 @@ const localized = (href: string) => pathForLocale(href, locale);
 
 <footer class="site-footer">
   <div>
-    <a class="footer-brand" href={localized("/")}>
+    <a class="footer-brand" href={localized("/")} aria-label={copy.home}>
       <ArgusLogo variant="horizontal" class="argus-logo--footer" decorative />
     </a>
     <p>{copy.tagline}</p>
