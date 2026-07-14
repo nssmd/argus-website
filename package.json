@@ -6,6 +6,7 @@
     "dev": "astro dev",
     "build": "astro check && astro build && node scripts/check-bilingual.mjs",
     "check:bilingual": "node scripts/check-bilingual.mjs",
+    "check:opening-type": "node scripts/check-opening-pixel-type.mjs",
     "preview": "astro preview"
   },
   "dependencies": {

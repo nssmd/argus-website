@@ -36,6 +36,8 @@
   --sans: "Plus Jakarta Sans", "Noto Sans SC", system-ui, sans-serif;
   --serif: "Fraunces", Georgia, serif;
   --mono: "JetBrains Mono", ui-monospace, monospace;
+  --pixel-hard: "Silkscreen", "JetBrains Mono", ui-monospace, monospace;
+  --pixel-soft: "Pixelify Sans", "Plus Jakarta Sans", system-ui, sans-serif;
   --shadow: 0 24px 64px -44px rgba(8, 27, 54, 0.45);
 }
 
@@ -463,6 +465,8 @@ main {
 .font-5 { font-family: "Arial Black", Arial, sans-serif; font-weight: 900; letter-spacing: -0.06em; }
 .font-6 { font-family: "Times New Roman", Times, serif; font-weight: 400; }
 .font-7 { font-family: "Courier New", Courier, monospace; font-weight: 700; letter-spacing: -0.08em; }
+.font-8 { font-family: var(--pixel-soft); font-weight: 600; letter-spacing: -0.035em; }
+.font-9 { font-family: var(--pixel-hard); font-weight: 700; letter-spacing: 0.015em; }
 
 .brand-universe__halo {
   z-index: 2;

@@ -1,13 +1,14 @@
 ---
 type Props = { locale: "en" | "zh" };
 const { locale } = Astro.props;
+const FONT_SEQUENCE = [0, 8, 3, 1, 6, 2, 9, 5, 4, 7] as const;
 const words = Array.from({ length: 38 }, (_, index) => ({
   text: ["ARGUS", "Argus", "argus"][index % 3],
   x: (index * 37 + 7) % 96,
   y: (index * 53 + 11) % 94,
   size: 15 + ((index * 17) % 58),
   rotate: -18 + ((index * 13) % 37),
-  font: index % 8,
+  font: FONT_SEQUENCE[index % FONT_SEQUENCE.length],
   tone: index % 4,
   depth: 0.35 + (index % 5) * 0.14,
 }));
