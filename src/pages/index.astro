@@ -16,7 +16,7 @@ const copy = locale === "zh" ? {
   results: "看它做出了什么 →",
   evolutionLink: "看自进化飞轮 ↓",
   conceptLabel: "Argus 核心能力",
-  heroConcepts: [["实时自进化", "每一轮研究都改善下一轮"], ["OOD 扩展", "陌生任务触发新 Skill 与新工具"], ["上限不锁死", "Model、Harness 与数据共同升级"]],
+  heroConcepts: [["实时自进化", "每一轮研究都改善下一轮"], ["OOD 扩展", "陌生任务触发新 Skill 与新工具"], ["上限不锁死", "横向跨域，纵向持续深入"]],
   metricLabel: "核心成绩",
   metrics: [["#6", "NVIDIA 全球排名"], ["2× #1", "B200 kernel"], ["H100 + B200", "超过 human SOTA"], ["79.77s", "8×H100 speedrun"], ["41", "研究 PDF"]],
   signal: "目标 → 尝试 → 证据 → 失败 → 蒸馏 → SKILL → 下一片前沿",
@@ -41,10 +41,14 @@ const copy = locale === "zh" ? {
   businessModels: [["DATA LICENSING", "过程数据授权", "按学科、任务和难度提供高密度研究轨迹数据集，用于训练、对齐和评测下一代科研模型。"], ["CAPABILITY ASSETS", "能力产品", "从轨迹中抽取专精模型、Skills、Verifier、Benchmark 和工具适配器，形成可复用能力包。"], ["PRIVATE FLYWHEEL", "企业私域飞轮", "在企业或实验室环境内持续生成专属过程数据，让 Model × Harness 越用越懂该领域。"]],
   businessFoot: "成果产生一次价值；过程数据、Skill 与评测资产可以持续复用、授权并产生复利。",
   governance: "商业化前提：完整 provenance、版权边界、脱敏、访问控制与客户数据隔离。",
-  unknownTitle: "OOD 不是异常，而是系统扩展能力宽度的入口。",
+  unknownTitle: "因为能够自进化，Argus 可以轻易扩展到新领域，并在其中越做越深。",
   oodEyebrow: "OOD 前沿扩展",
-  unknownBody: "固定 Agent 在陌生任务前往往失效；Argus 把陌生任务转化为新 mission、新工具接口、新 Skill 与新评测，使能力面随着真实实践持续展开。",
-  domains: [["科学研究", "没有现成 SOP 时，自主提出假设、设计实验，让证据决定下一步。"], ["数学探索", "围绕猜想搜索结构、证明与反例，并完整保留每次失败和转向。"], ["文学创作", "将构思、写作、批评和重写沉淀为可复用的审美与创作能力。"], ["工程突破", "面对新硬件、新约束和新指标，用数百轮真实实验把性能推向边界。"]],
+  unknownBody: "量化因子、文学、法律、数学证明、工程实践与科学研究的方法各不相同，但 Argus 不依赖一套锁死的工作流。它会为新领域接入数据、工具与验证环境，再把真实研究轨迹沉淀为领域专属的 Skills、Verifier 和长期记忆。",
+  depthEyebrow: "Depth through evolution",
+  depthTitle: "任何领域一旦进入专家级研究，就不可能只依赖模型训练时学到的知识。",
+  depthBody: "预训练知识只能提供通用先验。严肃研究还需要最新资料、私有数据、领域规范、真实工具反馈、失败路径与可复验证据。自进化让这些部署后的经验不再丢失，而是不断转化为下一轮可以直接调用的能力。",
+  depthSignals: [["模型先验", "已有训练知识只是起点"], ["外部实践", "读取领域数据并使用真实工具"], ["验证反馈", "通过回测、判例、证明与实验判断真伪"], ["能力沉淀", "形成 Memory、Skill、Verifier 与新数据"]],
+  domains: [["QUANT", "量化因子研究", "读取市场、基本面与另类数据，提出因子、回测归因、排除泄漏，并随市场 regime 持续更新。"], ["LITERATURE", "文学研究与创作", "阅读语料、研究风格与叙事，在创作、批评和重写中沉淀可复用的审美判断。"], ["LEGAL", "法律研究", "持续检索法条、判例和司法辖区差异，构建论证并核验引用、时效与适用边界。"], ["PROOF", "数学证明", "围绕猜想搜索结构、证明与反例，调用形式化工具，并完整保留每次失败和转向。"], ["ENGINEERING", "工程实践", "面对新硬件、软件栈与约束，通过 profiling 和真实实验持续定位瓶颈、优化实现。"], ["SCIENCE", "科学研究", "从开放问题出发阅读前沿工作、提出假设、设计实验或仿真，让证据决定下一步。"]],
   ctaTitle: "交付一个结果，也沉淀一个领域的能力与数据。",
   ctaBody: "从单个难题开始，Argus 交付可审计成果；从持续任务开始，形成专精模型、Skills、Verifier 与高价值过程数据资产。",
   cta: "打开成绩墙 →",
@@ -59,7 +63,7 @@ const copy = locale === "zh" ? {
   results: "See what it has accomplished →",
   evolutionLink: "See the evolution loop ↓",
   conceptLabel: "Core Argus capabilities",
-  heroConcepts: [["Live evolution", "Every research cycle improves the next"], ["OOD expansion", "Novel tasks trigger new skills and tools"], ["Unfixed ceiling", "Model, harness, and data improve together"]],
+  heroConcepts: [["Live evolution", "Every research cycle improves the next"], ["OOD expansion", "Novel tasks trigger new skills and tools"], ["Unfixed ceiling", "Expand across fields and deeper within them"]],
   metricLabel: "Selected results",
   metrics: [["#6", "NVIDIA global ranking"], ["2× #1", "B200 kernels"], ["H100 + B200", "Beyond human SOTA"], ["79.77s", "8×H100 speedrun"], ["41", "Research PDFs"]],
   signal: "OBJECTIVE → ATTEMPT → EVIDENCE → FAILURE → DISTILL → SKILL → NEXT FRONTIER",
@@ -84,10 +88,14 @@ const copy = locale === "zh" ? {
   businessModels: [["DATA LICENSING", "Research trajectory data", "License dense, provenance-rich research trajectories by field, task, and difficulty for training, alignment, and evaluation."], ["CAPABILITY ASSETS", "Capability products", "Extract specialist models, skills, verifiers, benchmarks, and tool adapters from successful trajectories."], ["PRIVATE FLYWHEEL", "Private domain flywheels", "Generate proprietary process data inside an enterprise or laboratory so Model × Harness becomes more domain-native with every use."]],
   businessFoot: "A result creates value once. Process data, skills, and evaluations can be reused, licensed, and compounded.",
   governance: "Commercialization requires provenance, rights boundaries, redaction, access control, and strict customer-data isolation.",
-  unknownTitle: "OOD is not an exception. It is how the system widens its capability surface.",
+  unknownTitle: "Because it self-evolves, Argus can enter new domains quickly—and keep getting deeper inside them.",
   oodEyebrow: "OOD frontier expansion",
-  unknownBody: "Fixed agents tend to fail when the workflow runs out. Argus turns unfamiliar work into a new mission, tool interface, skill, and evaluation—so its breadth keeps expanding through practice.",
-  domains: [["Scientific research", "When no SOP exists, it forms hypotheses, designs experiments, and lets evidence choose the next move."], ["Mathematical exploration", "It searches structures, proofs, and counterexamples around a conjecture while preserving every failure and pivot."], ["Creative writing", "It turns ideation, drafting, critique, and revision into reusable creative judgment."], ["Engineering breakthroughs", "Across new hardware, constraints, and metrics, it uses hundreds of measured iterations to push the frontier."]],
+  unknownBody: "Quant factors, literature, law, mathematical proof, engineering practice, and scientific research use very different methods. Argus is not bound to one frozen workflow: it connects the data, tools, and verification environment for a new field, then distills real research trajectories into domain-specific skills, verifiers, and durable memory.",
+  depthEyebrow: "Depth through evolution",
+  depthTitle: "No domain can reach expert-grade research by relying on pretrained knowledge alone.",
+  depthBody: "Pretraining provides a general prior. Serious research also requires current literature, private data, domain rules, real tool feedback, failed paths, and reproducible evidence. Self-evolution keeps this post-deployment experience from disappearing and turns it into capability the next run can use directly.",
+  depthSignals: [["Model prior", "Existing training knowledge is only the starting point"], ["External practice", "Read domain data and operate real tools"], ["Verified feedback", "Use backtests, cases, proofs, and experiments to decide what holds"], ["Capability distillation", "Create memory, skills, verifiers, and new data"]],
+  domains: [["QUANT", "Quant factor research", "Read market, fundamental, and alternative data; propose factors, backtest and attribute them, eliminate leakage, and adapt across regimes."], ["LITERATURE", "Literary research and creation", "Study corpora, style, and narrative, then compound aesthetic judgment through creation, critique, and revision."], ["LEGAL", "Legal research", "Continuously retrieve statutes, cases, and jurisdictional differences while checking citations, currency, and applicability."], ["PROOF", "Mathematical proof", "Search for structures, proofs, and counterexamples around a conjecture, use formal tools, and preserve every failure and pivot."], ["ENGINEERING", "Engineering practice", "Across unfamiliar hardware, software stacks, and constraints, use profiling and real experiments to diagnose and optimize systems."], ["SCIENCE", "Scientific research", "Read frontier work, form hypotheses, design experiments or simulations, and let the evidence choose the next move."]],
   ctaTitle: "Deliver one result—and accumulate a domain's capability and data.",
   ctaBody: "Start with one hard problem for an auditable result. Continue with a stream of work to build specialist models, skills, verifiers, and high-value process-data assets.",
   cta: "Open the results wall →",
@@ -213,8 +221,20 @@ const copy = locale === "zh" ? {
         <h2>{copy.unknownTitle}</h2>
         <p>{copy.unknownBody}</p>
       </div>
-      <div class="card-grid four">
-        {copy.domains.map(([title, body]) => <article class="card"><h3>{title}</h3><p>{body}</p></article>)}
+      <article class="card depth-principle">
+        <div class="depth-principle__copy">
+          <p class="eyebrow">{copy.depthEyebrow}</p>
+          <h3>{copy.depthTitle}</h3>
+          <p>{copy.depthBody}</p>
+        </div>
+        <div class="depth-principle__flow">
+          {copy.depthSignals.map(([title, body], index) => (
+            <div><span>{String(index + 1).padStart(2, "0")}</span><strong>{title}</strong><small>{body}</small></div>
+          ))}
+        </div>
+      </article>
+      <div class="card-grid domain-grid">
+        {copy.domains.map(([badge, title, body]) => <article class="card domain-card"><span class="domain-badge">{badge}</span><h3>{title}</h3><p>{body}</p></article>)}
       </div>
     </div>
   </section>

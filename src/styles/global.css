@@ -1437,6 +1437,95 @@ main {
   font-size: 9px;
 }
 
+.depth-principle {
+  display: grid;
+  grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+  gap: 30px;
+  margin-bottom: 16px;
+  padding: 30px;
+  border-color: #244b80;
+  background:
+    radial-gradient(circle at 8% 4%, rgba(7, 95, 228, 0.36), transparent 20rem),
+    radial-gradient(circle at 96% 96%, rgba(217, 154, 22, 0.22), transparent 18rem),
+    linear-gradient(145deg, #06162c, #0b326d);
+  color: #fff;
+}
+
+.depth-principle .eyebrow {
+  color: #edc96f;
+}
+
+.depth-principle__copy h3 {
+  margin: 0;
+  color: #fff;
+  font-family: var(--serif);
+  font-size: clamp(24px, 3.2vw, 34px);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.depth-principle__copy > p:last-child {
+  margin: 13px 0 0;
+  color: #d4e1f3;
+  font-size: 12px;
+}
+
+.depth-principle__flow {
+  align-self: stretch;
+  overflow: hidden;
+  display: grid;
+  gap: 1px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.depth-principle__flow > div {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 30px 108px minmax(0, 1fr);
+  gap: 11px;
+  align-items: center;
+  padding: 11px 13px;
+  background: rgba(4, 23, 51, 0.78);
+}
+
+.depth-principle__flow span {
+  color: #edc96f;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.depth-principle__flow strong {
+  color: #fff;
+  font-size: 11px;
+}
+
+.depth-principle__flow small {
+  color: #a9bfdc;
+  font-size: 9px;
+  line-height: 1.45;
+}
+
+.domain-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.domain-card {
+  min-height: 186px;
+}
+
+.domain-badge {
+  display: block;
+  margin-bottom: 17px;
+  color: var(--gold-dark);
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+}
+
 .scoreboard {
   overflow: hidden;
   border: 1px solid var(--line);
@@ -2295,6 +2384,24 @@ main {
   .trajectory-ledger,
   .business-thesis {
     padding: 22px;
+  }
+
+  .depth-principle {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 24px;
+  }
+
+  .depth-principle__flow > div {
+    grid-template-columns: 30px minmax(0, 1fr);
+  }
+
+  .depth-principle__flow small {
+    grid-column: 2;
+  }
+
+  .domain-card {
+    min-height: 0;
   }
 
   .demo-intro {
