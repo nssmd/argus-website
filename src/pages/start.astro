@@ -1,5 +1,5 @@
 ---
-import CliRecording from "../components/CliRecording.astro";
+import ResearchVideoDemo from "../components/ResearchVideoDemo.astro";
 import SiteLayout from "../layouts/SiteLayout.astro";
 import { localeFromPath, pathForLocale } from "../i18n";
 
@@ -7,29 +7,29 @@ const locale = localeFromPath(Astro.url.pathname);
 const publicResearchHref = pathForLocale("/research.html", locale);
 const copy = locale === "zh" ? {
   title: "Get Started · Argus",
-  description: "观看 Argus 的真实运行流程：Manager 回复、角色交接、Engineer 执行、Reviewer 打回与成果交付。",
+  description: "观看 Argus 从研究方向或创作要求出发，经真实执行、Reviewer 多轮打回到论文与文学成稿的完整轨迹。",
   heroLead: "打开 Argus，",
   heroEm: "直接说你要什么。",
-  lede: "下面不是界面截图，而是两段真实运行：Manager 如何组织回复，团队如何接力，Reviewer 为什么打回，以及结果怎样进入你的工作台。",
-  fullCli: "看完整 CLI 流程 →",
+  lede: "下面不是界面截图，而是三条真实运行。两条长程研究按关键节点分段快进，保留任务输入、真实实验、Reviewer 打回、失败恢复和最终论文；文学创作完整保留 1 分 29 秒回放。",
+  fullCli: "看三条研究与创作实录 →",
   web: "看 Web 研究轨迹 ↓",
-  source: "录制版本：boxiu/main · 文学 699dc2c / 数学 24cf964 · Codex 与 Copilot xhigh",
+  source: "真实录制 · 研究原片 19:54 / 11:29 → 2:17 / 2:07 · 文学创作完整回放 1:29",
   flowLabel: "Argus 运行流程",
   flow: ["用户目标", "Manager 路由", "Planner 拆解", "Engineer 执行", "Reviewer 裁决", "成果交付"],
-  cliTitle: "从输入任务那一刻开始，看四个角色真正接力。",
-  cliBody: "切换观看文学创作与计算数学两条真实任务。每条都从用户输入开始，保留 Manager 监控问答、Planner 计划、Engineer 执行和 Reviewer 独立验收。",
+  cliTitle: "从一句研究方向或创作要求，到论文与成稿。",
+  cliBody: "第一条从 8B 开源模型的自信幻觉问题出发，自主提出方法并推进到论文；第二条实现 Agreement-Margin Abstention，在真实 benchmark 上经历多轮运行、打回和恢复；第三条完成《雨停之前》的文学创作、章节打回与最终审校。三条都保留 Manager、Planner、Engineer 与 Reviewer 的真实交接。",
   launch: "启动",
   cliLaunchLabel: "CLI 启动命令",
   webLaunchLabel: "WebUI 启动命令",
-  cliCaptionTitle: "两条端到端真实回放",
-  cliCaption: "《秋江赋》经历首轮打回与六阶段推进；Erdős–Straus 完成 999 个 n、两种完整算法、848,804 条精确解审计和三阶段验收。",
+  cliCaptionTitle: "三条真实运行，按内容选择节奏。",
+  cliCaption: "两条研究实录分段压缩，保留实验、审稿、失败恢复与论文交付；文学创作完整呈现章节推进、Reviewer 打回和最终成稿。",
   cliPointsLabel: "CLI 功能",
-  cliPoints: ["从任务输入开始", "Manager 监视器", "Planner 结构化计划", "Reviewer 打回 → 验收"],
-  webTitle: "同一个 boxiu/main session，在 WebUI 逐层展开。",
-  webBody: "直接阅读 Manager 的监控回答，再展开 Planner 计划、Engineer 命令流与 Reviewer 裁决；Mission 视图保留六阶段推进、完整 replay 和审定成果。",
+  cliPoints: ["保留任务原文", "真实 benchmark", "文学创作与章节审校", "Reviewer 多轮打回", "失败恢复 → 最终交付"],
+  webTitle: "在 WebUI 中逐层查看角色状态、证据和交付物。",
+  webBody: "直接阅读 Manager 的监控回答，再展开 Planner 计划、Engineer 命令流与 Reviewer 裁决；Mission 视图保留阶段推进、完整 replay 和审定成果。",
   videoLabel: "Argus WebUI 真实操作演示",
   videoDownload: "下载 WebUI 演示视频",
-  webCaptionTitle: "26 秒同任务回放",
+  webCaptionTitle: "26 秒 WebUI 回放",
   webCaption: "展示监控问答、角色日志、六阶段 Mission replay，以及 Reviewer 审定稿在右侧工作台和大图预览中的交付。",
   webPointsLabel: "WebUI 功能",
   webPoints: ["会话搜索", "Agent 对话", "Engineer 原始输出", "Reviewer 裁决", "Mission replay", "证据与结果预览"],
@@ -40,29 +40,29 @@ const copy = locale === "zh" ? {
   install: "浏览公开研究 →",
 } : {
   title: "Get Started · Argus",
-  description: "Watch real Argus runs: a Manager response, specialist handoffs, Engineer execution, Reviewer rejection, and final delivery.",
+  description: "Watch Argus move from a research direction or creative brief through execution, repeated Reviewer rejection, and final delivery.",
   heroLead: "Open Argus. ",
   heroEm: "Tell it what you need.",
-  lede: "These are not static screenshots. They are real runs: how the Manager frames the work, how the team hands it off, why the Reviewer sends it back, and how the result arrives in your workspace.",
-  fullCli: "Watch the complete CLI run →",
+  lede: "These are not static screenshots. They are three real runs: two long-horizon research sessions condensed stage by stage, plus a complete 1:29 literary-writing replay. The original request, execution, Reviewer rejection, recovery, and final delivery remain visible.",
+  fullCli: "Watch all three runs →",
   web: "Watch the Web research trail ↓",
-  source: "Recorded on boxiu/main · literature 699dc2c / mathematics 24cf964 · Codex and Copilot at xhigh",
+  source: "Real recordings · research 19:54 / 11:29 → 2:17 / 2:07 · complete literary replay 1:29",
   flowLabel: "The Argus workflow",
   flow: ["Your objective", "Manager routing", "Planner decomposition", "Engineer execution", "Reviewer decision", "Deliverable"],
-  cliTitle: "Watch all four roles take over from the moment you submit the task.",
-  cliBody: "Switch between a creative-writing run and a computational mathematics run. Each begins with your request and preserves the Manager’s monitoring dialogue, the Planner’s structure, the Engineer’s execution, and the Reviewer’s independent acceptance.",
+  cliTitle: "From one research direction or creative brief to a paper or final draft.",
+  cliBody: "The first run starts with confident hallucination in open-domain QA for 8B models, develops a method, and advances it to a paper. The second implements Agreement-Margin Abstention on real benchmarks through repeated runs, rejection, and recovery. The third writes Before the Rain Stops through chapter-level rejection and final review. All three preserve the actual Manager, Planner, Engineer, and Reviewer handoffs.",
   launch: "Launch",
   cliLaunchLabel: "CLI launch command",
   webLaunchLabel: "WebUI launch command",
-  cliCaptionTitle: "Two genuine end-to-end replays",
-  cliCaption: "Autumn River Rhapsody survives an initial rejection and advances through six stages. The Erdős–Straus run checks 999 values of n with two complete algorithms, audits 848,804 exact solutions, and clears three review stages.",
+  cliCaptionTitle: "Three real runs, paced for their content.",
+  cliCaption: "The research runs are condensed while preserving experiments, review, recovery, and paper delivery. The literary run fully preserves chapter progression, Reviewer rejection, and the final draft.",
   cliPointsLabel: "CLI capabilities",
-  cliPoints: ["Starts with the actual task", "Manager monitoring", "Structured Planner handoff", "Reviewer rejection → acceptance"],
-  webTitle: "The same boxiu/main session, unfolded layer by layer in the WebUI.",
-  webBody: "Read the Manager’s monitoring response, then open the Planner’s plan, the Engineer’s command stream, and the Reviewer’s verdict. Mission view preserves the six-stage progression, complete replay, and approved deliverable.",
+  cliPoints: ["Original request preserved", "Real benchmarks", "Literary writing and chapter review", "Repeated Reviewer rejection", "Recovery → final delivery"],
+  webTitle: "Inspect role state, evidence, and deliverables layer by layer in the WebUI.",
+  webBody: "Read the Manager’s monitoring response, then open the Planner’s plan, the Engineer’s command stream, and the Reviewer’s verdict. Mission view preserves stage progression, complete replay, and the approved deliverable.",
   videoLabel: "A real Argus WebUI walkthrough",
   videoDownload: "Download the WebUI demo",
-  webCaptionTitle: "The same task in 26 seconds",
+  webCaptionTitle: "A 26-second WebUI replay",
   webCaption: "Monitoring dialogue, role logs, a six-stage Mission replay, and the Reviewer-approved result delivered in the right-hand workspace and expanded preview.",
   webPointsLabel: "WebUI capabilities",
   webPoints: ["Session search", "Agent dialogue", "Raw Engineer output", "Reviewer verdicts", "Mission replay", "Evidence and result preview"],
@@ -117,9 +117,9 @@ const copy = locale === "zh" ? {
         <div class="demo-frame__bar">
           <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
           <strong>Argus CLI</strong>
-          <span>BOXIU MAIN · REAL RUNS</span>
+          <span>3 REAL RUNS</span>
         </div>
-        <CliRecording />
+        <ResearchVideoDemo />
       </div>
 
       <p class="demo-caption">

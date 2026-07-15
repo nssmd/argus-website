@@ -1950,12 +1950,34 @@ main {
   background: #070f1b;
 }
 
+.research-video-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #050b14;
+}
+
+.research-video-stage video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #050b14;
+  object-fit: contain;
+}
+
 .cli-demo-tabs {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.09);
   background: rgba(255, 255, 255, 0.09);
+}
+
+.research-video-tabs {
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .cli-demo-tabs button {

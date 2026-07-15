@@ -1,0 +1,181 @@
+---
+import { localeFromPath } from "../i18n";
+
+const locale = localeFromPath(Astro.url.pathname);
+const copy = locale === "zh" ? {
+  choose: "选择一条真实运行记录",
+  download: "下载当前演示视频",
+  runs: [
+    {
+      title: "研究方向 → 论文",
+      meta: "19:54 → 2:17 · 分段变速",
+      label: "Argus 从研究方向到论文交付的真实回放",
+      src: "/assets/demos/argus-research-to-paper-condensed.mp4",
+      poster: "/assets/demos/argus-research-to-paper-poster.webp",
+    },
+    {
+      title: "方法实现 → Benchmark",
+      meta: "11:29 → 2:07 · 分段变速",
+      label: "Argus 实现 Agreement-Margin 并完成真实 benchmark 的回放",
+      src: "/assets/demos/argus-ama-benchmark-condensed.mp4",
+      poster: "/assets/demos/argus-ama-benchmark-poster.webp",
+    },
+    {
+      title: "文学创作 → 成稿",
+      meta: "1:29 · 完整回放",
+      label: "Argus 完成《雨停之前》文学创作与章节审校的真实回放",
+      src: "/assets/demos/argus-literary-creation.mp4",
+      poster: "/assets/demos/argus-literary-creation-poster.webp",
+    },
+  ],
+} : {
+  choose: "Choose a real Argus run",
+  download: "Download the current demo video",
+  runs: [
+    {
+      title: "Research direction → paper",
+      meta: "19:54 → 2:17 · variable speed",
+      label: "A real Argus run from research direction to paper delivery",
+      src: "/assets/demos/argus-research-to-paper-condensed.mp4",
+      poster: "/assets/demos/argus-research-to-paper-poster.webp",
+    },
+    {
+      title: "Method → benchmark",
+      meta: "11:29 → 2:07 · variable speed",
+      label: "A real Argus run implementing Agreement-Margin on real benchmarks",
+      src: "/assets/demos/argus-ama-benchmark-condensed.mp4",
+      poster: "/assets/demos/argus-ama-benchmark-poster.webp",
+    },
+    {
+      title: "Literary brief → final draft",
+      meta: "1:29 · complete replay",
+      label: "A real Argus literary-writing and chapter-review run for Before the Rain Stops",
+      src: "/assets/demos/argus-literary-creation.mp4",
+      poster: "/assets/demos/argus-literary-creation-poster.webp",
+    },
+  ],
+};
+---
+
+<div class="research-video-switcher" data-research-video-switcher>
+  <div class="cli-demo-tabs research-video-tabs" role="tablist" aria-label={copy.choose}>
+    {copy.runs.map((run, index) => (
+      <button
+        id={`research-video-tab-${index}`}
+        type="button"
+        role="tab"
+        aria-controls="research-video-panel"
+        aria-selected={index === 0 ? "true" : "false"}
+        tabindex={index === 0 ? 0 : -1}
+        data-video-src={run.src}
+        data-video-poster={run.poster}
+        data-video-label={run.label}
+      >
+        <strong>{run.title}</strong>
+        <span>{run.meta}</span>
+      </button>
+    ))}
+  </div>
+
+  <div
+    id="research-video-panel"
+    class="research-video-stage"
+    role="tabpanel"
+    aria-labelledby="research-video-tab-0"
+  >
+    <video
+      data-research-video
+      controls
+      loop
+      muted
+      playsinline
+      preload="metadata"
+      poster={copy.runs[0].poster}
+      aria-label={copy.runs[0].label}
+    >
+      <source src={copy.runs[0].src} type="video/mp4" />
+      <a data-video-download href={copy.runs[0].src}>{copy.download}</a>
+    </video>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-research-video-switcher]").forEach((root) => {
+    if (root.dataset.ready === "true") return;
+
+    const video = root.querySelector<HTMLVideoElement>("[data-research-video]");
+    const source = video?.querySelector<HTMLSourceElement>("source");
+    const download = video?.querySelector<HTMLAnchorElement>("[data-video-download]");
+    const panel = root.querySelector<HTMLElement>('[role="tabpanel"]');
+    const buttons = [...root.querySelectorAll<HTMLButtonElement>("[data-video-src]")];
+
+    if (!(video && source && download && panel && buttons.length > 0)) return;
+
+    root.dataset.ready = "true";
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let visible = false;
+    let activeSource = "";
+
+    const playWhenAppropriate = () => {
+      if (visible && !reducedMotion) void video.play().catch(() => undefined);
+    };
+
+    const load = (button: HTMLButtonElement) => {
+      const nextSource = button.dataset.videoSrc ?? "";
+
+      buttons.forEach((candidate) => {
+        const selected = candidate === button;
+        candidate.setAttribute("aria-selected", String(selected));
+        candidate.tabIndex = selected ? 0 : -1;
+      });
+      panel.setAttribute("aria-labelledby", button.id);
+
+      if (nextSource === activeSource) {
+        playWhenAppropriate();
+        return;
+      }
+
+      activeSource = nextSource;
+      video.pause();
+      source.src = nextSource;
+      video.poster = button.dataset.videoPoster ?? "";
+      video.setAttribute("aria-label", button.dataset.videoLabel ?? "");
+      download.href = nextSource;
+      video.load();
+      playWhenAppropriate();
+    };
+
+    buttons.forEach((button, index) => {
+      button.addEventListener("click", () => load(button));
+      button.addEventListener("keydown", (event) => {
+        let nextIndex: number | undefined;
+
+        if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+          nextIndex = (index + 1) % buttons.length;
+        } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+          nextIndex = (index - 1 + buttons.length) % buttons.length;
+        } else if (event.key === "Home") {
+          nextIndex = 0;
+        } else if (event.key === "End") {
+          nextIndex = buttons.length - 1;
+        }
+
+        if (nextIndex === undefined) return;
+        event.preventDefault();
+        buttons[nextIndex]?.focus();
+        if (buttons[nextIndex]) load(buttons[nextIndex]);
+      });
+    });
+
+    load(buttons[0]);
+
+    new IntersectionObserver(
+      ([entry]) => {
+        visible = Boolean(entry?.isIntersecting);
+        if (visible) playWhenAppropriate();
+        else video.pause();
+      },
+      { threshold: 0.2 },
+    ).observe(root);
+  });
+</script>
