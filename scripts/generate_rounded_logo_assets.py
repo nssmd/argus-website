@@ -91,12 +91,14 @@ def generate_assets(archive: Path, sidecar: Path, output_dir: Path) -> None:
         for size in (16, 32, 48):
             layer = _read_png(bundle, f"png/marks/argus-mark-{size}.png")
             favicon_layers.append(_recolor(layer, (7, 62, 140)))
+        favicon_path = output_dir / "argus-mark-rounded-favicon.ico"
         favicon_layers[-1].save(
-            output_dir / "argus-mark-rounded-favicon.ico",
+            favicon_path,
             format="ICO",
             sizes=[(16, 16), (32, 32), (48, 48)],
             append_images=favicon_layers[:-1],
         )
+        (output_dir.parent / "favicon.ico").write_bytes(favicon_path.read_bytes())
 
         mark_1024 = _read_png(bundle, "png/marks/argus-mark-1024.png")
         og_path = output_dir / "argus-og-blue-gold.png"

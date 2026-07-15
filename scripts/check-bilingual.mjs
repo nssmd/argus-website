@@ -63,6 +63,13 @@ assert(css.includes("scroll-padding-inline: 18px"), "mobile nav lacks scroll pad
 assert(css.includes("scroll-snap-type: x proximity"), "mobile nav lacks scroll snapping");
 assert(css.includes("--signal-segment-width: max(33.333vw, 480px)"), "signal rail segment width changed");
 assert(css.includes("--signal-gap: clamp(24px, 4vw, 48px)"), "signal rail lacks explicit spacing");
+assert(fs.existsSync(path.join(dist, "favicon.ico")), "missing root favicon.ico for search crawlers");
+const home = read("index.html");
+assert(home.includes('href="/favicon.ico"'), "root favicon.ico link tag missing from HTML");
+assert(
+  home.indexOf('href="/favicon.ico"') < home.indexOf('href="/assets/argus-mark-rounded-small.svg"'),
+  "root favicon.ico is not the primary icon declaration",
+);
 const smallFavicon = fs.readFileSync(path.resolve("public/assets/argus-mark-rounded-small.svg"), "utf8");
 assert(smallFavicon.includes('fill="#073e8c"'), "small SVG favicon lacks explicit deep-blue fill");
 
