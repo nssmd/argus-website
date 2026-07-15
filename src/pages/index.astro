@@ -21,7 +21,7 @@ const copy = locale === "zh" ? {
   conceptLabel: "Argus 核心能力",
   heroConcepts: [["Life 学习", "7×24 工作，也从工作中学习"], ["OOD 扩展", "陌生任务触发新 Skill 与新工具"], ["上限不锁死", "横向跨域，纵向持续深入"]],
   metricLabel: "核心成绩",
-  metrics: [["#6", "NVIDIA 全球排名"], ["2× #1", "B200 kernel"], ["H100 + B200", "超过 human SOTA"], ["79.77s", "8×H100 speedrun"], ["41", "研究 PDF"]],
+  metrics: [["#6", "NVIDIA 全球排名"], ["2× #1", "B200 kernel"], ["H100 + B200", "超过 human SOTA"], ["79.77s", "8×H100 speedrun"], ["43", "研究 PDF"]],
   signal: "目标 → 执行 → 证据 → 记忆 → 技能 → 下一轮任务",
   whatEyebrow: "Life-driven self-evolution",
   whatTitle: "不是固定工作流，而是一套会改写自己的科研系统。",
@@ -78,7 +78,7 @@ const copy = locale === "zh" ? {
   conceptLabel: "Core Argus capabilities",
   heroConcepts: [["Life learning", "Works 24/7 and learns from the work"], ["OOD expansion", "Novel tasks trigger new skills and tools"], ["Unfixed ceiling", "Expand across fields and deeper within them"]],
   metricLabel: "Selected results",
-  metrics: [["#6", "NVIDIA global ranking"], ["2× #1", "B200 kernels"], ["H100 + B200", "Beyond human SOTA"], ["79.77s", "8×H100 speedrun"], ["41", "Research PDFs"]],
+  metrics: [["#6", "NVIDIA global ranking"], ["2× #1", "B200 kernels"], ["H100 + B200", "Beyond human SOTA"], ["79.77s", "8×H100 speedrun"], ["43", "Research PDFs"]],
   signal: "LIFE → MISSION → EVIDENCE → MEMORY → SKILL → NEXT MISSION",
   whatEyebrow: "Life-driven self-evolution",
   whatTitle: "Not a fixed workflow. A research system that rewrites itself.",
@@ -136,7 +136,7 @@ const copy = locale === "zh" ? {
     <div class="shell hero-system-grid">
       <div class="hero-system-copy">
         <p class="eyebrow">{copy.heroEyebrow}</p>
-        <h1>{copy.heroLead}<br /><em>{copy.heroEm}</em></h1>
+        <h2 class="hero-title">{copy.heroLead}<br /><em>{copy.heroEm}</em></h2>
         <p class="lede">{copy.lede}</p>
         <div class="hero-actions">
           <a class="button primary" href={href("/results.html")}>{copy.results}</a>

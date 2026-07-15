@@ -119,8 +119,8 @@ const copy = locale === "zh" ? {
         <strong>{copy.cliCaptionTitle}</strong>
         {copy.cliCaption}
       </p>
-      <div class="demo-points" aria-label={copy.cliPointsLabel}>
-        {copy.cliPoints.map((point) => <span>{point}</span>)}
+      <div class="demo-points" role="list" aria-label={copy.cliPointsLabel}>
+        {copy.cliPoints.map((point) => <span role="listitem">{point}</span>)}
       </div>
     </div>
   </section>
@@ -151,7 +151,7 @@ const copy = locale === "zh" ? {
           loop
           muted
           playsinline
-          preload="metadata"
+          preload="none"
           poster="/assets/demos/argus-web-boxiu-86b683ba-poster.webp"
           aria-label={copy.videoLabel}
         >
@@ -164,8 +164,8 @@ const copy = locale === "zh" ? {
         <strong>{copy.webCaptionTitle}</strong>
         {copy.webCaption}
       </p>
-      <div class="demo-points" aria-label={copy.webPointsLabel}>
-        {copy.webPoints.map((point) => <span>{point}</span>)}
+      <div class="demo-points" role="list" aria-label={copy.webPointsLabel}>
+        {copy.webPoints.map((point) => <span role="listitem">{point}</span>)}
       </div>
     </div>
   </section>

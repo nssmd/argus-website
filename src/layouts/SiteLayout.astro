@@ -21,6 +21,7 @@ const englishPath = pathForLocale(Astro.url.pathname, "en");
 const chinesePath = pathForLocale(Astro.url.pathname, "zh");
 const englishUrl = new URL(englishPath, Astro.site);
 const chineseUrl = new URL(chinesePath, Astro.site);
+const fontStylesheet = "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&family=Pixelify+Sans:wght@400..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Silkscreen:wght@400;700&display=swap";
 ---
 
 <!doctype html>
@@ -41,14 +42,24 @@ const chineseUrl = new URL(chinesePath, Astro.site);
     <link rel="alternate" hreflang="en" href={englishUrl} />
     <link rel="alternate" hreflang="zh-Hans" href={chineseUrl} />
     <link rel="alternate" hreflang="x-default" href={englishUrl} />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
     <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
     <link rel="icon" type="image/svg+xml" href="/assets/argus-mark-rounded-small.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&family=Pixelify+Sans:wght@400..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Silkscreen:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preload" as="style" href={fontStylesheet} />
+    <link id="site-fonts" rel="stylesheet" href={fontStylesheet} media="print" />
+    <script is:inline>
+      {
+        const fonts = document.getElementById("site-fonts");
+        if (fonts instanceof HTMLLinkElement) {
+          const activate = () => fonts.setAttribute("media", "all");
+          if (fonts.sheet) activate();
+          else fonts.addEventListener("load", activate, { once: true });
+        }
+      }
+    </script>
+    <noscript><link rel="stylesheet" href={fontStylesheet} /></noscript>
     <script is:inline>
       {
         let saved = null;

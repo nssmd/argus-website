@@ -58,6 +58,10 @@ for (const page of ["index.html", "zh.html"]) {
   assert(html.includes("data-brand-universe"), `${page} lacks the kinetic BrandUniverse opening`);
   assert(html.includes('id="intro"'), `${page} lacks the BrandUniverse enter target`);
   assert(!html.includes("data-home-chapter"), `${page} still renders numbered homepage chapters`);
+  assert(
+    html.includes(">43<") && (html.includes("Research PDFs") || html.includes("研究 PDF")),
+    `${page} has a stale research-paper metric`,
+  );
   const heroAt = html.indexOf('class="page-hero"');
   const denseAt = html.indexOf('id="dense-intelligence"');
   const metricsAt = html.indexOf('class="metric-strip"');
@@ -79,6 +83,10 @@ for (const page of ["index.html", "zh.html"]) {
     `${page} homepage section order was not restored`,
   );
 }
+
+const sitemap = read("sitemap.xml");
+assert((sitemap.match(/<url>/g) || []).length === 12, "sitemap.xml must list all 12 public pages");
+assert(sitemap.includes("https://argusbot.cn/zh/start.html"), "sitemap.xml lacks the Chinese Get Started page");
 
 for (const page of ["start.html", "zh/start.html"]) {
   const html = read(page);

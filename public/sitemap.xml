@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
+  <url>
+    <loc>https://argusbot.cn/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh.html" />
+  </url>
+  <url>
+    <loc>https://argusbot.cn/zh.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh.html" />
+  </url>
+  <url>
+    <loc>https://argusbot.cn/results.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/results.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/results.html" />
+  </url>
+  <url>
+    <loc>https://argusbot.cn/zh/results.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/results.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/results.html" />
+  </url>
+  <url>
+    <loc>https://argusbot.cn/research.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/research.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/research.html" />
+  </url>
+  <url>
+    <loc>https://argusbot.cn/zh/research.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/research.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/research.html" />
+  </url>
+  <url>
+    <loc>https://argusbot.cn/how.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/how.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/how.html" />
+  </url>
+  <url>
+    <loc>https://argusbot.cn/zh/how.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/how.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/how.html" />
+  </url>
+  <url>
+    <loc>https://argusbot.cn/use-cases.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/use-cases.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/use-cases.html" />
+  </url>
+  <url>
+    <loc>https://argusbot.cn/zh/use-cases.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/use-cases.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/use-cases.html" />
+  </url>
+  <url>
+    <loc>https://argusbot.cn/start.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/start.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/start.html" />
+  </url>
+  <url>
+    <loc>https://argusbot.cn/zh/start.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/start.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/start.html" />
+  </url>
+</urlset>

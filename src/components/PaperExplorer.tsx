@@ -53,6 +53,7 @@ export default function PaperExplorer({ papers, locale = "en" }: Props) {
     searchLabel: "搜索论文",
     searchPlaceholder: "搜索标题、简介或研究方向",
     categories: "研究方向",
+    filterHint: "横向滑动查看更多研究方向",
     all: "全部",
     count: (value: number) => `${value} 篇`,
     empty: "没有匹配的论文。",
@@ -60,6 +61,7 @@ export default function PaperExplorer({ papers, locale = "en" }: Props) {
     searchLabel: "Search papers",
     searchPlaceholder: "Search titles, summaries, or research areas",
     categories: "Research areas",
+    filterHint: "Scroll sideways for more research areas",
     all: "All",
     count: (value: number) => `${value} ${value === 1 ? "paper" : "papers"}`,
     empty: "No papers match your search.",
@@ -98,6 +100,7 @@ export default function PaperExplorer({ papers, locale = "en" }: Props) {
             </button>
           ))}
         </div>
+        <p className="paper-filter-hint" aria-hidden="true">{copy.filterHint}</p>
         <p className="paper-count-live" aria-live="polite" aria-atomic="true">
           {copy.count(filtered.length)}
         </p>

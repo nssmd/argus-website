@@ -23,7 +23,7 @@
   ].join(",");
   const resetMotionStyles = () => {
     document.querySelectorAll<HTMLElement>(
-      `${revealSelector}, .site-header, .page-hero .eyebrow, .page-hero h1, .page-hero .lede, .page-hero .hero-actions, .page-hero .hero-thesis > div, .page-hero .demo-source, [data-research-field], [data-brand-word], [data-brand-core], .brand-universe__core, .brand-universe__enter`,
+      `${revealSelector}, .site-header, .page-hero .eyebrow, .page-hero h1, .page-hero .hero-title, .page-hero .lede, .page-hero .hero-actions, .page-hero .hero-thesis > div, .page-hero .demo-source, [data-research-field], [data-brand-word], [data-brand-core], .brand-universe__core, .brand-universe__enter`,
     ).forEach((element) => {
       element.style.removeProperty("opacity");
       element.style.removeProperty("visibility");
@@ -36,7 +36,7 @@
   } else {
     void import("gsap").then(({ gsap }) => {
       const heroTargets = gsap.utils.toArray<HTMLElement>(
-        ".page-hero .eyebrow, .page-hero h1, .page-hero .lede, .page-hero .hero-actions, .page-hero .hero-thesis > div, .page-hero .demo-source, [data-research-field]",
+        ".page-hero .eyebrow, .page-hero h1, .page-hero .hero-title, .page-hero .lede, .page-hero .hero-actions, .page-hero .hero-thesis > div, .page-hero .demo-source, [data-research-field]",
       );
       const revealTargets = gsap.utils.toArray<HTMLElement>(revealSelector);
       const brandUniverse = document.querySelector<HTMLElement>("[data-brand-universe]");
@@ -360,10 +360,12 @@
         });
       }
 
-      gsap.set(heroTargets, { autoAlpha: 0, y: 24 });
       if (brandUniverse) {
+        gsap.set(heroTargets, { autoAlpha: 0, y: 24 });
         gsap.set(activeBrandWords, { autoAlpha: 0 });
         gsap.set(".brand-universe__core, .brand-universe__enter", { autoAlpha: 0 });
+      } else {
+        gsap.set(heroTargets, { y: 12 });
       }
       if (canObserve) gsap.set(revealTargets, { autoAlpha: 0, y: 20 });
       root.classList.remove("motion-prep");
