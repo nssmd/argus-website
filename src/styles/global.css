@@ -2236,8 +2236,8 @@ main {
 
 .paper-card {
   position: relative;
-  min-height: 180px;
-  padding: 20px;
+  min-height: 270px;
+  padding: 20px 20px 48px;
   border: 1px solid var(--line);
   border-radius: 13px;
   background: var(--surface);
@@ -2283,10 +2283,17 @@ main {
   line-height: 1.28;
 }
 
-.paper-card p {
+.paper-card__category {
   margin: 0;
   color: var(--muted);
   font-size: 11px;
+}
+
+.paper-card .paper-card__summary {
+  margin-top: 13px;
+  color: var(--ink-2);
+  font-size: 12px;
+  line-height: 1.62;
 }
 
 .paper-open {

@@ -441,13 +441,21 @@
       const mutationObserver = "MutationObserver" in window
         ? new MutationObserver(animatePaperCards)
         : null;
-      mutationObserver?.observe(document.body, { childList: true, subtree: true });
-      animatePaperCards();
+      let paperCardMotionStarted = false;
+      const startPaperCardMotion = () => {
+        if (paperCardMotionStarted) return;
+        paperCardMotionStarted = true;
+        mutationObserver?.observe(document.body, { childList: true, subtree: true });
+        animatePaperCards();
+      };
+      document.addEventListener("argus:paper-explorer-ready", startPaperCardMotion, { once: true });
+      if (root.dataset.paperExplorerReady === "true") startPaperCardMotion();
       window.addEventListener("pagehide", (event) => {
         if (event.persisted) return;
         observer?.disconnect();
         mutationObserver?.disconnect();
         brandVisibilityObserver?.disconnect();
+        document.removeEventListener("argus:paper-explorer-ready", startPaperCardMotion);
         pointerCleanups.forEach((cleanup) => cleanup());
       }, { once: true });
     }).catch(() => {

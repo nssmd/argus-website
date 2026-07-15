@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export type Paper = {
   id: string;
@@ -9,6 +9,7 @@ export type Paper = {
   category: string;
   categoryLabel: string;
   categoryDescription: string;
+  summary: string;
 };
 
 type Props = {
@@ -19,6 +20,15 @@ type Props = {
 export default function PaperExplorer({ papers, locale = "en" }: Props) {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("all");
+
+  useEffect(() => {
+    document.documentElement.dataset.paperExplorerReady = "true";
+    document.dispatchEvent(new Event("argus:paper-explorer-ready"));
+
+    return () => {
+      delete document.documentElement.dataset.paperExplorerReady;
+    };
+  }, []);
 
   const categories = useMemo(() => {
     const values = new Map<string, string>();
@@ -34,20 +44,21 @@ export default function PaperExplorer({ papers, locale = "en" }: Props) {
         !normalized ||
         paper.title.toLowerCase().includes(normalized) ||
         paper.categoryLabel.toLowerCase().includes(normalized) ||
-        paper.categoryDescription.toLowerCase().includes(normalized);
+        paper.categoryDescription.toLowerCase().includes(normalized) ||
+        paper.summary.toLowerCase().includes(normalized);
       return categoryMatch && queryMatch;
     });
   }, [category, papers, query]);
   const copy = locale === "zh" ? {
     searchLabel: "搜索论文",
-    searchPlaceholder: "搜索标题或研究方向",
+    searchPlaceholder: "搜索标题、简介或研究方向",
     categories: "研究方向",
     all: "全部",
     count: (value: number) => `${value} 篇`,
     empty: "没有匹配的论文。",
   } : {
     searchLabel: "Search papers",
-    searchPlaceholder: "Search by title or research area",
+    searchPlaceholder: "Search titles, summaries, or research areas",
     categories: "Research areas",
     all: "All",
     count: (value: number) => `${value} ${value === 1 ? "paper" : "papers"}`,
@@ -55,7 +66,7 @@ export default function PaperExplorer({ papers, locale = "en" }: Props) {
   };
 
   return (
-    <section className="paper-explorer">
+    <section className="paper-explorer" data-paper-explorer>
       <div className="paper-toolbar">
         <label className="paper-search">
           <span className="sr-only">{copy.searchLabel}</span>
@@ -108,7 +119,8 @@ export default function PaperExplorer({ papers, locale = "en" }: Props) {
               <span>{paper.pages} pp</span>
             </div>
             <h2>{paper.title}</h2>
-            <p>{paper.categoryLabel}</p>
+            <p className="paper-card__category">{paper.categoryLabel}</p>
+            <p className="paper-card__summary">{paper.summary}</p>
             <span className="paper-open">PDF ↗</span>
           </a>
         ))}

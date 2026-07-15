@@ -3,6 +3,7 @@ import SiteLayout from "../layouts/SiteLayout.astro";
 import PaperExplorer from "../components/PaperExplorer";
 import type { Paper } from "../components/PaperExplorer";
 import papers from "../data/papers.json";
+import paperSummaries from "../data/paperSummaries";
 import { localeFromPath } from "../i18n";
 
 const locale = localeFromPath(Astro.url.pathname);
@@ -22,16 +23,32 @@ const englishDescriptions: Record<string, string> = {
   trace: "Auditable protocols for state traces",
   world: "World-state tracking and structured counterfactual simulation",
 };
-const typedPapers: Paper[] = papers.map((paper) => ({
-  ...paper,
-  status: paper.status as Paper["status"],
-  categoryLabel: locale === "zh"
-    ? chineseLabels[paper.category] ?? paper.categoryLabel
-    : paper.categoryLabel,
-  categoryDescription: locale === "zh"
-    ? paper.categoryDescription
-    : englishDescriptions[paper.category] ?? paper.categoryDescription,
-}));
+const paperIds = new Set(papers.map((paper) => paper.id));
+const missingSummaries = papers.filter((paper) => !paperSummaries[paper.id]);
+const orphanSummaries = Object.keys(paperSummaries).filter((id) => !paperIds.has(id));
+
+if (missingSummaries.length > 0 || orphanSummaries.length > 0) {
+  throw new Error(
+    `Paper summary mismatch. Missing: ${missingSummaries.map((paper) => paper.id).join(", ") || "none"}; ` +
+    `orphaned: ${orphanSummaries.join(", ") || "none"}`,
+  );
+}
+
+const typedPapers: Paper[] = papers.map((paper) => {
+  const summary = paperSummaries[paper.id];
+
+  return {
+    ...paper,
+    status: paper.status as Paper["status"],
+    categoryLabel: locale === "zh"
+      ? chineseLabels[paper.category] ?? paper.categoryLabel
+      : paper.categoryLabel,
+    categoryDescription: locale === "zh"
+      ? paper.categoryDescription
+      : englishDescriptions[paper.category] ?? paper.categoryDescription,
+    summary: locale === "zh" ? summary.zh : summary.en,
+  };
+});
 const copy = locale === "zh" ? {
   title: "Research · Argus",
   description: "Argus 自主研究成果集：六个研究方向，41 份精选论文 PDF。",
