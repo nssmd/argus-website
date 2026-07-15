@@ -73,12 +73,36 @@ for (const page of ["start.html", "zh/start.html"]) {
   assert(!html.includes("cli-demo-tabs"), `${page} still nests text tabs inside the CLI frame`);
 }
 
+const pickerSource = fs.readFileSync(
+  path.resolve("src/components/ResearchVideoDemo.astro"),
+  "utf8",
+);
+const desktopMatch = pickerSource.match(/matchMedia\("\(min-width:\s*(\d+)px\)"/);
+assert(desktopMatch, "run picker script lacks a desktop media gate");
+const desktopBreakpoint = Number(desktopMatch[1]);
+assert(desktopBreakpoint === 821, `run picker desktop gate should be 821px, found ${desktopBreakpoint}`);
+assert(
+  pickerSource.includes("scrollIntoView({") && pickerSource.includes("desktop.matches"),
+  "run picker selection must still gate player scrolling on the desktop media query",
+);
+
 const css = fs.readFileSync(path.resolve("src/styles/global.css"), "utf8");
 assert(css.includes("scroll-snap-type: x mandatory"), "run rail lacks mandatory horizontal snap");
 assert(css.includes("min(82vw"), "mobile run cards are not ~82vw wide");
 assert(
   css.includes("linear-gradient(90deg, var(--blue), var(--gold))"),
   "selected run card lacks the blue-to-gold border token",
+);
+assert(css.includes("grid-template-columns: repeat(4, 1fr)"), "desktop run rail lacks the four-column layout");
+assert(css.includes("@media (max-width: 820px)"), "run picker CSS lacks the 820px mobile breakpoint");
+const mobileBreakpoint = 820;
+assert(
+  desktopBreakpoint === mobileBreakpoint + 1,
+  `run picker breakpoints should be adjacent; found desktop ${desktopBreakpoint}px and mobile ${mobileBreakpoint}px`,
+);
+assert(
+  840 >= desktopBreakpoint && 840 > mobileBreakpoint,
+  "840px should resolve to the desktop four-column layout and desktop scroll gate",
 );
 assert(css.includes("scroll-padding-inline: 18px"), "mobile nav lacks scroll padding");
 assert(css.includes("scroll-snap-type: x proximity"), "mobile nav lacks scroll snapping");
