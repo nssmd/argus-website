@@ -129,9 +129,6 @@ const copy = locale === "zh" ? {
     </div>
   </section>
 
-  <DenseIntelligence locale={locale} />
-  <MathematicalManifesto locale={locale} />
-
   <section class="metric-strip" aria-label={copy.metricLabel}>
     <div class="metric-grid">
       {copy.metrics.map(([value, label]) => <div class="metric"><strong>{value}</strong><span>{label}</span></div>)}
@@ -143,6 +140,9 @@ const copy = locale === "zh" ? {
       {Array.from({ length: 6 }, () => <span>{copy.signal}</span>)}
     </div>
   </div>
+
+  <DenseIntelligence locale={locale} />
+  <MathematicalManifesto locale={locale} />
 
   <section id="evolution" class="section">
     <div class="shell">

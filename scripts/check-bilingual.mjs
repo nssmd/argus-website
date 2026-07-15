@@ -56,6 +56,11 @@ for (const page of ["index.html", "zh.html"]) {
   const html = read(page);
   assert(html.includes('data-argus-logo="horizontal"'), `${page} lacks the rounded horizontal logo`);
   assert(html.includes('data-argus-logo="mark"'), `${page} lacks the rounded mark`);
+  const metricsAt = html.indexOf('class="metric-strip"');
+  const signalAt = html.indexOf('class="signal-rail"');
+  const denseAt = html.indexOf('id="dense-intelligence"');
+  assert(metricsAt >= 0 && signalAt >= 0 && denseAt >= 0, `${page} lacks homepage proof blocks`);
+  assert(metricsAt < signalAt && signalAt < denseAt, `${page} does not surface results before Dense Intelligence`);
 }
 
 for (const page of ["start.html", "zh/start.html"]) {
