@@ -63,4 +63,14 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/start.html" />
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/start.html" />
   </url>
+  <url>
+    <loc>https://argusbot.cn/release.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/release.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/release.html" />
+  </url>
+  <url>
+    <loc>https://argusbot.cn/zh/release.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/release.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/release.html" />
+  </url>
 </urlset>

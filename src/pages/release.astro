@@ -1,0 +1,234 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { localeFromPath, pathForLocale } from "../i18n";
+
+const locale = localeFromPath(Astro.url.pathname);
+const href = (path: string) => pathForLocale(path, locale);
+const copy = locale === "zh" ? {
+  title: "Release 与安装 · Argus",
+  description: "Argus Binary Preview 的 npm 安装方式、平台支持、版本状态与更新命令。核心仓库保持私有，公开包只分发启动器和平台二进制。",
+  eyebrow: "Binary Preview · 0.1.0",
+  hero: "通过 npm 安装 Argus。",
+  lede: "核心仓库保持私有；公开 npm 包只包含一个轻量启动器和对应平台的可执行文件，不包含 Argus Python 源码树。",
+  pending: "发布候选 · npm 尚未开放",
+  pendingBody: "安装命令已经冻结并完成 Linux 本地验证，Windows 原生构建正在等待私有 CI runner 验证。npm 包尚未发布；状态变为 Available 前，安装命令会返回未找到。",
+  updated: "状态更新：2026 年 7 月 16 日",
+  installTitle: "安装 Binary Preview",
+  installBody: "需要 Node.js 22 或更高版本。npm 会自动选择与你的系统匹配的平台包。",
+  installLabel: "全局安装",
+  setupLabel: "首次配置",
+  launchLabel: "启动 Terminal cockpit",
+  webLabel: "启动 Web cockpit",
+  stepsLabel: "安装步骤",
+  steps: [
+    ["01", "安装", "npm 下载轻量启动器和对应平台二进制。"],
+    ["02", "配置", "运行交互式 setup，配置模型后端、API 与机器规则。"],
+    ["03", "启动", "在项目目录运行 argus；同一会话也可切换到 Web cockpit。"],
+  ],
+  platformsTitle: "首发平台",
+  platformsBody: "第一阶段只覆盖日常 Terminal / PowerShell 使用，不安装系统服务。",
+  platforms: [
+    ["Linux x64", "Validated", "单文件二进制已完成构建、npm 安装和端到端后端拉起验证。"],
+    ["Windows x64", "Release candidate", "面向 Windows Terminal、PowerShell 与经典控制台；等待 Windows runner 生成并验证真实 .exe。"],
+  ],
+  packageTitle: "包里有什么",
+  packageBody: "公开分发面保持很小，平台实现彼此隔离。",
+  packageFacts: [
+    ["@argusbot/cli", "约 1.4 KB", "命令入口与平台选择器"],
+    ["平台包", "约 55 MB", "argus-core 可执行文件、SHA-256 与第三方许可证清单"],
+    ["核心源码", "不包含", "npm tarball 不含 .py、tests、docs 或私有 Git 历史"],
+  ],
+  releaseTitle: "0.1.0 Binary Preview",
+  releasePoints: [
+    "Terminal 与 Web cockpit，共享 Manager、Planner、Engineer、Reviewer 状态",
+    "后端自动启动、版本握手、真实 PID 所有权与安全停止",
+    "Linux x64 与 Windows x64 独立平台包",
+    "公开包不包含 Python 源码树；核心 GitHub 仓库保持 private",
+  ],
+  limitsTitle: "Preview 边界",
+  limits: [
+    "Windows 首版不安装 Windows Service，不承诺关闭所有终端或重启后继续运行。",
+    "Qlib、LightGBM、PyTorch 与私有市场数据集成不进入核心包，后续作为可选量化 runtime 提供。",
+    "二进制分发避免直接公开源码，但不是不可逆向的密码学安全边界。",
+  ],
+  updateTitle: "更新与卸载",
+  updateLabel: "更新",
+  uninstallLabel: "卸载",
+  demo: "先看真实运行 →",
+  research: "浏览公开研究 →",
+} : {
+  title: "Release & Installation · Argus",
+  description: "npm installation, platform support, release status, and update commands for the Argus Binary Preview. The core repository stays private; public packages contain only launchers and platform binaries.",
+  eyebrow: "Binary Preview · 0.1.0",
+  hero: "Install Argus from npm.",
+  lede: "The core repository remains private. Public npm packages contain a small launcher and a platform executable—not the Argus Python source tree.",
+  pending: "Release candidate · npm not yet available",
+  pendingBody: "The command surface is frozen and the Linux package has passed local validation. The native Windows build is awaiting verification on the private CI runner. Until this status changes to Available, npm will report that the packages are not found.",
+  updated: "Status updated July 16, 2026",
+  installTitle: "Install the Binary Preview",
+  installBody: "Node.js 22 or newer is required. npm selects the matching platform package automatically.",
+  installLabel: "Global install",
+  setupLabel: "First-time setup",
+  launchLabel: "Launch the Terminal cockpit",
+  webLabel: "Launch the Web cockpit",
+  stepsLabel: "Installation steps",
+  steps: [
+    ["01", "Install", "npm downloads the small launcher and the executable for your platform."],
+    ["02", "Configure", "Run the guided setup for model backends, API access, and machine policy."],
+    ["03", "Launch", "Run argus from a project directory, or switch the same session to the Web cockpit."],
+  ],
+  platformsTitle: "Initial platforms",
+  platformsBody: "The first release targets everyday terminal use and does not install an operating-system service.",
+  platforms: [
+    ["Linux x64", "Validated", "The single-file binary passed build, npm installation, and end-to-end backend startup tests."],
+    ["Windows x64", "Release candidate", "Targets Windows Terminal, PowerShell, and the classic console; awaiting a real .exe build on the Windows runner."],
+  ],
+  packageTitle: "What ships",
+  packageBody: "The public distribution surface stays small and platform-specific.",
+  packageFacts: [
+    ["@argusbot/cli", "~1.4 KB", "Command shims and platform selection"],
+    ["Platform package", "~55 MB", "argus-core executable, SHA-256, and third-party notices"],
+    ["Core source", "Not included", "No .py tree, tests, docs, or private Git history in the npm tarball"],
+  ],
+  releaseTitle: "0.1.0 Binary Preview",
+  releasePoints: [
+    "Terminal and Web cockpits with shared Manager, Planner, Engineer, and Reviewer state",
+    "Automatic backend startup, release handshake, real PID ownership, and clean shutdown",
+    "Separate Linux x64 and Windows x64 platform packages",
+    "No Python source tree in public packages; the core GitHub repository remains private",
+  ],
+  limitsTitle: "Preview boundaries",
+  limits: [
+    "The first Windows build does not install a Windows Service or promise survival after all terminals close or the machine restarts.",
+    "Qlib, LightGBM, PyTorch, and private market-data integrations are excluded from the core package and will arrive as an optional quant runtime.",
+    "Binary distribution avoids direct source publication, but it is not a cryptographic barrier against reverse engineering.",
+  ],
+  updateTitle: "Update or remove",
+  updateLabel: "Update",
+  uninstallLabel: "Uninstall",
+  demo: "Watch real runs →",
+  research: "Browse public research →",
+};
+---
+
+<SiteLayout title={copy.title} description={copy.description}>
+  <section class="page-hero compact release-hero">
+    <div class="shell release-shell">
+      <p class="eyebrow">{copy.eyebrow}</p>
+      <h1>{copy.hero}</h1>
+      <p class="lede">{copy.lede}</p>
+      <div class="release-status" role="status">
+        <div>
+          <span class="release-status__dot" aria-hidden="true"></span>
+          <strong>{copy.pending}</strong>
+        </div>
+        <p>{copy.pendingBody}</p>
+        <small>{copy.updated}</small>
+      </div>
+      <div class="hero-actions">
+        <a class="button primary" href="#install">{copy.installTitle}</a>
+        <a class="button" href={href("/start.html")}>{copy.demo}</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="install" class="section release-install">
+    <div class="shell release-shell">
+      <div class="section-head">
+        <p class="eyebrow">npm</p>
+        <h2>{copy.installTitle}</h2>
+        <p>{copy.installBody}</p>
+      </div>
+      <div class="install-grid">
+        <div class="install-command-stack">
+          {[
+            [copy.installLabel, "npm install -g @argusbot/cli"],
+            [copy.setupLabel, "argus-skill --setup"],
+            [copy.launchLabel, "argus"],
+            [copy.webLabel, "argus --web"],
+          ].map(([label, command]) => (
+            <div class="install-command">
+              <span>{label}</span>
+              <code>{command}</code>
+            </div>
+          ))}
+        </div>
+        <div class="install-steps" aria-label={copy.stepsLabel}>
+          {copy.steps.map(([number, title, body]) => (
+            <article><span>{number}</span><div><h3>{title}</h3><p>{body}</p></div></article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section surface">
+    <div class="shell release-shell">
+      <div class="section-head">
+        <p class="eyebrow">Platforms</p>
+        <h2>{copy.platformsTitle}</h2>
+        <p>{copy.platformsBody}</p>
+      </div>
+      <div class="release-platforms">
+        {copy.platforms.map(([name, status, body]) => (
+          <article><div><h3>{name}</h3><span>{status}</span></div><p>{body}</p></article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell release-shell release-two-column">
+      <div>
+        <div class="section-head">
+          <p class="eyebrow">Distribution</p>
+          <h2>{copy.packageTitle}</h2>
+          <p>{copy.packageBody}</p>
+        </div>
+        <div class="package-facts">
+          {copy.packageFacts.map(([name, value, body]) => (
+            <div><strong>{name}</strong><span>{value}</span><p>{body}</p></div>
+          ))}
+        </div>
+      </div>
+      <aside class="release-notes">
+        <p class="eyebrow">Release notes</p>
+        <h2>{copy.releaseTitle}</h2>
+        <ul>{copy.releasePoints.map((point) => <li>{point}</li>)}</ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section surface">
+    <div class="shell release-shell release-two-column">
+      <div class="release-limits">
+        <p class="eyebrow">Scope</p>
+        <h2>{copy.limitsTitle}</h2>
+        <ul>{copy.limits.map((point) => <li>{point}</li>)}</ul>
+      </div>
+      <div>
+        <div class="section-head compact-head">
+          <p class="eyebrow">Lifecycle</p>
+          <h2>{copy.updateTitle}</h2>
+        </div>
+        <div class="install-command-stack compact-commands">
+          <div class="install-command"><span>{copy.updateLabel}</span><code>npm update -g @argusbot/cli</code></div>
+          <div class="install-command"><span>{copy.uninstallLabel}</span><code>npm uninstall -g @argusbot/cli</code></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell release-shell">
+      <div class="cta-band product-cta">
+        <h2>{copy.releaseTitle}</h2>
+        <p>{copy.pendingBody}</p>
+        <div class="hero-actions">
+          <a class="button primary" href={href("/start.html")}>{copy.demo}</a>
+          <a class="button" href={href("/research.html")}>{copy.research}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</SiteLayout>

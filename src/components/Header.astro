@@ -9,13 +9,13 @@ const copy = locale === "zh" ? {
   nav: "主导航",
   light: "切换到白天模式",
   dark: "切换到黑夜模式",
-  links: ["首页", "成绩", "研究", "原理", "场景", "开始使用"],
+  links: ["首页", "成绩", "研究", "原理", "场景", "演示", "安装"],
 } : {
   home: "Argus home",
   nav: "Main navigation",
   light: "Switch to light mode",
   dark: "Switch to dark mode",
-  links: ["Home", "Results", "Research", "How it works", "Use cases", "Get started"],
+  links: ["Home", "Results", "Research", "How it works", "Use cases", "Demo", "Install"],
 };
 const links = [
   { href: "/", label: copy.links[0] },
@@ -24,6 +24,7 @@ const links = [
   { href: "/how.html", label: copy.links[3] },
   { href: "/use-cases.html", label: copy.links[4] },
   { href: "/start.html", label: copy.links[5] },
+  { href: "/release.html", label: copy.links[6] },
 ];
 const localized = (href: string) => pathForLocale(href, locale);
 const currentBase = pathForLocale(path, "en");

@@ -7,12 +7,12 @@ const copy = locale === "zh" ? {
   home: "Argus 首页",
   tagline: "灯熄了，研究继续。",
   nav: "页脚导航",
-  links: ["成绩", "研究", "原理", "场景", "开始使用"],
+  links: ["成绩", "研究", "原理", "场景", "演示", "安装"],
 } : {
   home: "Argus home",
   tagline: "The lights go out. The research keeps moving.",
   nav: "Footer navigation",
-  links: ["Results", "Research", "How it works", "Use cases", "Get started"],
+  links: ["Results", "Research", "How it works", "Use cases", "Demo", "Install"],
 };
 const localized = (href: string) => pathForLocale(href, locale);
 ---
@@ -30,5 +30,6 @@ const localized = (href: string) => pathForLocale(href, locale);
     <a href={localized("/how.html")}>{copy.links[2]}</a>
     <a href={localized("/use-cases.html")}>{copy.links[3]}</a>
     <a href={localized("/start.html")}>{copy.links[4]}</a>
+    <a href={localized("/release.html")}>{copy.links[5]}</a>
   </nav>
 </footer>

@@ -1844,6 +1844,252 @@ main {
   line-height: 1.75;
 }
 
+.release-shell {
+  width: min(1080px, calc(100% - 40px));
+}
+
+.release-hero h1 {
+  max-width: 900px;
+}
+
+.release-status {
+  max-width: 820px;
+  margin-top: 28px;
+  padding: 20px 22px;
+  border: 1px solid color-mix(in srgb, var(--gold) 54%, var(--line));
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--gold-soft) 58%, var(--surface));
+}
+
+.release-status > div {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.release-status__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--gold-dark);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--gold) 18%, transparent);
+}
+
+.release-status strong {
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.release-status p {
+  max-width: 720px;
+  margin: 9px 0 10px;
+  color: var(--ink-2);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.release-status small {
+  color: var(--faint);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.04em;
+}
+
+.release-install {
+  scroll-margin-top: 70px;
+}
+
+.install-grid,
+.release-two-column {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: start;
+}
+
+.install-command-stack {
+  display: grid;
+  gap: 10px;
+}
+
+.install-command {
+  padding: 14px 16px;
+  border: 1px solid #24364f;
+  border-radius: 11px;
+  background: #071426;
+  box-shadow: 0 18px 44px -34px rgba(4, 20, 45, 0.72);
+}
+
+.install-command span {
+  display: block;
+  margin-bottom: 5px;
+  color: #8ca8cd;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.install-command code {
+  color: #f7fbff;
+  font-family: var(--mono);
+  font-size: clamp(12px, 1.5vw, 14px);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.install-steps {
+  display: grid;
+  gap: 2px;
+}
+
+.install-steps article {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.install-steps article:first-child {
+  padding-top: 0;
+}
+
+.install-steps article > span {
+  color: var(--gold-dark);
+  font-family: var(--mono);
+  font-size: 10px;
+}
+
+.install-steps h3,
+.release-platforms h3,
+.release-notes h2,
+.release-limits h2 {
+  margin: 0;
+}
+
+.install-steps h3 {
+  font-size: 15px;
+}
+
+.install-steps p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.release-platforms {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.release-platforms article {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface-raised);
+  box-shadow: var(--shadow);
+}
+
+.release-platforms article > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.release-platforms h3 {
+  font-size: 19px;
+}
+
+.release-platforms span {
+  flex: 0 0 auto;
+  padding: 5px 8px;
+  border: 1px solid color-mix(in srgb, var(--blue) 36%, var(--line));
+  border-radius: 999px;
+  background: var(--blue-soft);
+  color: var(--blue);
+  font-family: var(--mono);
+  font-size: 9px;
+}
+
+.release-platforms p {
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.package-facts {
+  border-top: 1px solid var(--line);
+}
+
+.package-facts > div {
+  display: grid;
+  grid-template-columns: minmax(130px, 0.8fr) minmax(110px, 0.5fr) minmax(0, 1.7fr);
+  gap: 18px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.package-facts strong,
+.package-facts span {
+  color: var(--ink);
+  font-size: 12px;
+}
+
+.package-facts span {
+  color: var(--blue);
+  font-family: var(--mono);
+}
+
+.package-facts p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.release-notes,
+.release-limits {
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface-raised);
+  box-shadow: var(--shadow);
+}
+
+.release-notes h2,
+.release-limits h2 {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 500;
+}
+
+.release-notes ul,
+.release-limits ul {
+  margin: 20px 0 0;
+  padding-left: 20px;
+}
+
+.release-notes li,
+.release-limits li {
+  margin-top: 10px;
+  color: var(--ink-2);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.compact-head {
+  margin-bottom: 20px;
+}
+
+.compact-commands {
+  max-width: 560px;
+}
+
 .shell.demo-shell {
   width: min(1160px, calc(100% - 40px));
 }
@@ -2663,6 +2909,27 @@ main {
 
   .page-hero {
     padding: 46px 0 34px;
+  }
+
+  .install-grid,
+  .release-two-column,
+  .release-platforms {
+    grid-template-columns: 1fr;
+  }
+
+  .package-facts > div {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  .release-platforms article > div {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .release-notes,
+  .release-limits {
+    padding: 24px;
   }
 
   .brand-universe {

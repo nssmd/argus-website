@@ -14,7 +14,7 @@ const copy = locale === "zh" ? {
   domains: [["性能工程", "profile、改 kernel、测真实延迟，持续砍算力成本。"], ["安全研究", "围绕可验证 exploit 不断形成并测试新假设。"], ["硬科学", "分子、材料、芯片等高成本实验空间的长期搜索。"], ["量化研究", "因子提出、回测、诊断失效、再发明。"]],
   ctaTitle: "你的问题适合 Argus 吗？",
   ctaBody: "如果它需要昂贵的人持续试错，而且结果可以测，就值得交给 Argus。",
-  cta: "开始定义任务 →",
+  cta: "查看安装与 Release →",
 } : {
   title: "Use Cases · Argus",
   description: "Argus is built for expensive research work that demands invention, sustained execution, and verifiable outcomes.",
@@ -25,7 +25,7 @@ const copy = locale === "zh" ? {
   domains: [["Performance engineering", "Profile the system, rewrite kernels, measure real latency, and keep reducing compute cost."], ["Security research", "Form and test new hypotheses against exploits that can actually be reproduced."], ["Hard science", "Search costly experimental spaces in molecules, materials, chips, and adjacent fields."], ["Quantitative research", "Propose factors, backtest them, diagnose failure, and invent again."]],
   ctaTitle: "Is your problem a fit for Argus?",
   ctaBody: "If it burns through expert trial and error—and the result can be measured—it is worth handing to Argus.",
-  cta: "Define the task →",
+  cta: "Installation & release →",
 };
 ---
 
@@ -66,7 +66,7 @@ const copy = locale === "zh" ? {
       <div class="cta-band">
         <h2>{copy.ctaTitle}</h2>
         <p>{copy.ctaBody}</p>
-        <a class="button primary" href={href("/start.html")}>{copy.cta}</a>
+        <a class="button primary" href={href("/release.html")}>{copy.cta}</a>
       </div>
     </div>
   </section>

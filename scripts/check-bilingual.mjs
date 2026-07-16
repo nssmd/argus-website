@@ -7,6 +7,7 @@ const pairs = [
   ["how.html", "zh/how.html"],
   ["results.html", "zh/results.html"],
   ["research.html", "zh/research.html"],
+  ["release.html", "zh/release.html"],
   ["start.html", "zh/start.html"],
   ["use-cases.html", "zh/use-cases.html"],
 ];
@@ -85,8 +86,21 @@ for (const page of ["index.html", "zh.html"]) {
 }
 
 const sitemap = read("sitemap.xml");
-assert((sitemap.match(/<url>/g) || []).length === 12, "sitemap.xml must list all 12 public pages");
+assert((sitemap.match(/<url>/g) || []).length === 14, "sitemap.xml must list all 14 public pages");
 assert(sitemap.includes("https://argusbot.cn/zh/start.html"), "sitemap.xml lacks the Chinese Get Started page");
+assert(sitemap.includes("https://argusbot.cn/zh/release.html"), "sitemap.xml lacks the Chinese release page");
+
+for (const page of ["release.html", "zh/release.html"]) {
+  const html = read(page);
+  assert(html.includes("npm install -g @argusbot/cli"), `${page} lacks the npm install command`);
+  assert(html.includes("argus-skill --setup"), `${page} lacks first-time setup`);
+  assert(html.includes("argus --web"), `${page} lacks the Web cockpit command`);
+  assert(html.includes("0.1.0"), `${page} lacks the Binary Preview version`);
+  assert(
+    html.includes("npm not yet available") || html.includes("npm 尚未开放"),
+    `${page} does not disclose that npm publication is pending`,
+  );
+}
 
 for (const page of ["start.html", "zh/start.html"]) {
   const html = read(page);

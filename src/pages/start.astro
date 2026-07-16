@@ -5,6 +5,7 @@ import { localeFromPath, pathForLocale } from "../i18n";
 
 const locale = localeFromPath(Astro.url.pathname);
 const publicResearchHref = pathForLocale("/research.html", locale);
+const releaseHref = pathForLocale("/release.html", locale);
 const copy = locale === "zh" ? {
   title: "Get Started · Argus",
   description: "观看 Argus 从研究方向、创作要求或数学问题出发，经真实执行、Reviewer 多轮打回到论文、文学成稿与计算验收的完整轨迹。",
@@ -12,6 +13,7 @@ const copy = locale === "zh" ? {
   heroEm: "直接说你要什么。",
   lede: "下面不是界面截图，而是四条真实运行。两条长程研究按关键节点分段快进，保留任务输入、真实实验、Reviewer 打回、失败恢复和最终论文；文学创作与计算数学分别完整保留 1 分 29 秒和 1 分 17 秒回放。",
   fullCli: "看四条真实运行 →",
+  release: "查看 Release 与安装 →",
   web: "看 Web 研究轨迹 ↓",
   source: "真实录制 · 长程研究 19:54 / 11:29 → 2:17 / 2:07 · 文学 1:29 · 数学 1:17",
   flowLabel: "Argus 运行流程",
@@ -45,6 +47,7 @@ const copy = locale === "zh" ? {
   heroEm: "Tell it what you need.",
   lede: "These are not static screenshots. They are four real runs: two long-horizon research sessions condensed stage by stage, plus complete 1:29 literary-writing and 1:17 computational-mathematics replays. The request, execution, Reviewer rejection, recovery, and delivery remain visible.",
   fullCli: "Watch all four runs →",
+  release: "Release & installation →",
   web: "Watch the Web research trail ↓",
   source: "Real recordings · long-horizon 19:54 / 11:29 → 2:17 / 2:07 · literature 1:29 · math 1:17",
   flowLabel: "The Argus workflow",
@@ -84,7 +87,8 @@ const copy = locale === "zh" ? {
       <h1>{copy.heroLead}<em>{copy.heroEm}</em></h1>
       <p class="lede">{copy.lede}</p>
       <div class="hero-actions">
-        <a class="button primary" href="#run-picker">{copy.fullCli}</a>
+        <a class="button primary" href={releaseHref}>{copy.release}</a>
+        <a class="button" href="#run-picker">{copy.fullCli}</a>
         <a class="button" href="#webui">{copy.web}</a>
       </div>
       <p class="demo-source">{copy.source}</p>
@@ -181,7 +185,8 @@ const copy = locale === "zh" ? {
           <div><span>{copy.browser}</span><code>argus --web</code></div>
         </div>
         <div class="hero-actions">
-          <a class="button primary" href={publicResearchHref}>{copy.install}</a>
+          <a class="button primary" href={releaseHref}>{copy.release}</a>
+          <a class="button" href={publicResearchHref}>{copy.install}</a>
         </div>
       </div>
     </div>
