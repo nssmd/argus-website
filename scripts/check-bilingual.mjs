@@ -7,7 +7,6 @@ const pairs = [
   ["how.html", "zh/how.html"],
   ["results.html", "zh/results.html"],
   ["research.html", "zh/research.html"],
-  ["release.html", "zh/release.html"],
   ["start.html", "zh/start.html"],
   ["use-cases.html", "zh/use-cases.html"],
 ];
@@ -86,20 +85,14 @@ for (const page of ["index.html", "zh.html"]) {
 }
 
 const sitemap = read("sitemap.xml");
-assert((sitemap.match(/<url>/g) || []).length === 14, "sitemap.xml must list all 14 public pages");
+assert((sitemap.match(/<url>/g) || []).length === 12, "sitemap.xml must list all 12 public pages");
 assert(sitemap.includes("https://argusbot.cn/zh/start.html"), "sitemap.xml lacks the Chinese Get Started page");
-assert(sitemap.includes("https://argusbot.cn/zh/release.html"), "sitemap.xml lacks the Chinese release page");
+assert(!sitemap.includes("release.html"), "sitemap.xml still lists a release page");
 
-for (const page of ["release.html", "zh/release.html"]) {
+for (const page of pairs.flat()) {
   const html = read(page);
-  assert(html.includes("npm install -g @argusevolve/argus@beta"), `${page} lacks the single-package npm beta install command`);
-  assert(html.includes("https://argusbot.cn/argus/install.sh"), `${page} lacks the Linux installer command`);
-  assert(html.includes("https://argusbot.cn/argus/install.ps1"), `${page} lacks the Windows installer command`);
-  assert(html.includes("argus --setup"), `${page} lacks first-time setup`);
-  assert(html.includes("argus --web"), `${page} lacks the Web cockpit command`);
-  assert(html.includes("0.1.1"), `${page} lacks the Binary Preview version`);
-  assert(html.includes("Coming Soon") || html.includes("coming soon"), `${page} lacks code-coming-soon copy`);
-  assert(html.includes("npm Beta") || html.includes("npm beta"), `${page} lacks npm beta positioning`);
+  assert(!html.includes("/release.html"), `${page} still links to a release page`);
+  assert(!/\bnpm\b|npmjs|@argusevolve\/argus/i.test(html), `${page} still exposes npm content`);
 }
 
 for (const page of ["start.html", "zh/start.html"]) {
