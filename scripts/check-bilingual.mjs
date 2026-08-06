@@ -65,24 +65,32 @@ for (const page of ["index.html", "zh.html"]) {
   const heroAt = html.indexOf('class="page-hero"');
   const denseAt = html.indexOf('id="dense-intelligence"');
   const metricsAt = html.indexOf('class="metric-strip"');
+  const overviewAt = html.indexOf('class="section overview-film"');
   const signalAt = html.indexOf('class="signal-rail"');
   const evolutionAt = html.indexOf('id="evolution"');
   const multiAgentAt = html.indexOf('id="multi-agent"');
   const processAt = html.indexOf('id="process-data"');
   assert(
-    [heroAt, denseAt, metricsAt, signalAt, evolutionAt, multiAgentAt, processAt].every((index) => index >= 0),
+    [heroAt, denseAt, metricsAt, overviewAt, signalAt, evolutionAt, multiAgentAt, processAt].every((index) => index >= 0),
     `${page} lacks a restored homepage section`,
   );
   assert(
     heroAt < denseAt &&
       denseAt < metricsAt &&
-      metricsAt < signalAt &&
+      metricsAt < overviewAt &&
+      overviewAt < signalAt &&
       signalAt < evolutionAt &&
       evolutionAt < multiAgentAt &&
       multiAgentAt < processAt,
     `${page} homepage section order was not restored`,
   );
+  assert(html.includes('/assets/demos/argus-overview-90s.mp4'), `${page} lacks the 90-second overview video`);
+  assert(html.includes('/assets/demos/argus-overview-90s-poster.webp'), `${page} lacks the overview poster`);
+  assert(!html.includes("Commercialization requires") && !html.includes("商业化前提"), `${page} still contains the removed commercialization-premise sentence`);
 }
+
+assert(fs.existsSync(path.join(dist, "assets/demos/argus-overview-90s.mp4")), "missing overview MP4");
+assert(fs.existsSync(path.join(dist, "assets/demos/argus-overview-90s-poster.webp")), "missing overview poster");
 
 const sitemap = read("sitemap.xml");
 assert((sitemap.match(/<url>/g) || []).length === 12, "sitemap.xml must list all 12 public pages");

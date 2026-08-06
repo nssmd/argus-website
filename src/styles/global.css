@@ -193,7 +193,10 @@ input {
 .motion-prep .runtime-flow__track > div,
 .motion-prep .evolution-step,
 .motion-prep .trajectory-entry,
-.motion-prep .position-thesis {
+.motion-prep .overview-film__stage,
+.motion-prep .position-thesis,
+.motion-prep .application-thesis,
+.motion-prep .application-foot {
   opacity: 0;
 }
 
@@ -1176,6 +1179,46 @@ main {
   font-size: 11px;
 }
 
+.overview-film {
+  overflow: hidden;
+}
+
+.overview-film__stage {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #03070d;
+  box-shadow: var(--shadow-lg);
+}
+
+.overview-film__stage video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  background: #03070d;
+  object-fit: contain;
+}
+
+.overview-film__meta {
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 10px 16px;
+  border-top: 1px solid color-mix(in srgb, var(--line) 72%, #fff);
+  background: var(--surface-raised);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 10px;
+}
+
+.overview-film__meta a {
+  color: var(--blue);
+  font-weight: 700;
+  text-underline-offset: 3px;
+}
+
 .section {
   padding: 84px 0;
 }
@@ -1399,12 +1442,14 @@ main {
 
 .process-data-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+  gap: 18px;
   align-items: start;
 }
 
 .trajectory-ledger,
-.position-thesis {
+.position-thesis,
+.application-thesis {
   border: 1px solid var(--line);
   border-radius: 16px;
   box-shadow: var(--shadow);
@@ -1418,7 +1463,9 @@ main {
 .trajectory-ledger__head h3,
 .trajectory-ledger__head p,
 .position-thesis h3,
-.position-thesis p {
+.position-thesis p,
+.application-thesis h3,
+.application-thesis p {
   margin: 0;
 }
 
@@ -1507,6 +1554,78 @@ main {
   color: var(--ink-2);
   font-family: var(--mono);
   font-size: 8px;
+}
+
+.application-case {
+  min-width: 0;
+}
+
+.application-thesis {
+  padding: 27px;
+  border-color: #244b80;
+  background:
+    radial-gradient(circle at 92% 4%, rgba(217, 154, 22, 0.3), transparent 16rem),
+    linear-gradient(145deg, #071a33, #0b3678);
+  color: #fff;
+}
+
+.application-thesis .eyebrow {
+  color: #edc96f;
+}
+
+.application-thesis h3 {
+  max-width: 540px;
+  color: #fff;
+  font-family: var(--serif);
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 1.18;
+}
+
+.application-thesis > p:last-child {
+  margin-top: 12px;
+  color: #d5e3f6;
+  font-size: 12px;
+}
+
+.application-grid {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.application-card {
+  min-height: 0;
+  padding: 18px 20px;
+  box-shadow: none;
+}
+
+.application-badge {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--gold-dark);
+  font-family: var(--mono);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.application-card h3 {
+  font-size: 15px;
+}
+
+.application-card p {
+  font-size: 11px;
+}
+
+.application-foot {
+  margin: 13px 0 0;
+  padding: 13px 15px;
+  border-left: 3px solid var(--blue);
+  background: var(--blue-soft);
+  color: var(--ink-2);
+  font-size: 11px;
+  font-weight: 700;
 }
 
 .position-thesis {
@@ -2749,8 +2868,15 @@ main {
   }
 
   .trajectory-ledger,
-  .position-thesis {
+  .position-thesis,
+  .application-thesis {
     padding: 22px;
+  }
+
+  .overview-film__meta {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
   }
 
   .depth-principle {
