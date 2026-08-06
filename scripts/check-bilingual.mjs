@@ -101,6 +101,9 @@ for (const page of pairs.flat()) {
   const html = read(page);
   assert(!html.includes("/release.html"), `${page} still links to a release page`);
   assert(!/\bnpm\b|npmjs|@argusevolve\/argus/i.test(html), `${page} still exposes npm content`);
+  assert(html.includes("https://arxiv.org/abs/2608.05144"), `${page} lacks the Argus paper link`);
+  assert(html.includes("https://www.youtube.com/watch?v=i8Qy9HCboQE"), `${page} lacks the YouTube demo link`);
+  assert(html.includes("https://github.com/lbx154/Argus"), `${page} lacks the Argus code link`);
 }
 
 for (const page of ["start.html", "zh/start.html"]) {

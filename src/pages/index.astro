@@ -18,6 +18,7 @@ const copy = locale === "zh" ? {
   lede: "Argus 的 Life 7×24 持续运行：读资料、写代码、跑实验、检查证据，也从每一次成功、失败与改道中学习。经验会沉淀为 Memory、Skill、评测和过程数据，让系统不断进化，并扩展到从未见过的 OOD 任务。",
   results: "看它做出了什么 →",
   evolutionLink: "看自进化飞轮 ↓",
+  projectLinksLabel: "项目链接",
   conceptLabel: "Argus 核心能力",
   heroConcepts: [["Life 学习", "7×24 工作，也从工作中学习"], ["OOD 扩展", "陌生任务触发新 Skill 与新工具"], ["上限不锁死", "横向跨域，纵向持续深入"]],
   metricLabel: "核心成绩",
@@ -79,6 +80,7 @@ const copy = locale === "zh" ? {
   lede: "Argus Life runs 24/7: reading, building, experimenting, and checking evidence—while learning from every success, failure, and pivot. Experience becomes memory, skills, evaluations, and process data, so the system keeps evolving into OOD work it has never seen before.",
   results: "See what it has accomplished →",
   evolutionLink: "See the evolution loop ↓",
+  projectLinksLabel: "Project links",
   conceptLabel: "Core Argus capabilities",
   heroConcepts: [["Life learning", "Works 24/7 and learns from the work"], ["OOD expansion", "Novel tasks trigger new skills and tools"], ["Unfixed ceiling", "Expand across fields and deeper within them"]],
   metricLabel: "Selected results",
@@ -150,6 +152,11 @@ const copy = locale === "zh" ? {
           <a class="button primary" href={href("/results.html")}>{copy.results}</a>
           <a class="button" href="#evolution">{copy.evolutionLink}</a>
         </div>
+        <nav class="hero-project-links" aria-label={copy.projectLinksLabel}>
+          <a href="https://arxiv.org/abs/2608.05144" target="_blank" rel="noopener noreferrer">📄 Paper ↗</a>
+          <a href="https://www.youtube.com/watch?v=i8Qy9HCboQE" target="_blank" rel="noopener noreferrer">🎬 Demo ↗</a>
+          <a href="https://github.com/lbx154/Argus" target="_blank" rel="noopener noreferrer">💻 Code ↗</a>
+        </nav>
         <div class="hero-thesis" aria-label={copy.conceptLabel}>
           {copy.heroConcepts.map(([title, body]) => <div><strong>{title}</strong><span>{body}</span></div>)}
         </div>

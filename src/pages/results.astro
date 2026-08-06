@@ -5,7 +5,7 @@ import { localeFromPath, pathForLocale } from "../i18n";
 
 const locale = localeFromPath(Astro.url.pathname);
 const href = (path: string) => pathForLocale(path, locale);
-const reportHref = "https://arxiv.org/pdf/2608.05144";
+const reportHref = "https://arxiv.org/abs/2608.05144";
 const copy = locale === "zh" ? {
   title: "Results · Argus",
   description: "Argus 在十个 benchmark 赛场以及 ACE-2 芯片设计和材料生成垂直任务上的实测结果。",

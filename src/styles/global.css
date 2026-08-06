@@ -933,6 +933,26 @@ main {
   flex-wrap: wrap;
 }
 
+.hero-project-links {
+  display: flex;
+  gap: 8px 16px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.hero-project-links a {
+  color: var(--blue);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  text-decoration-color: color-mix(in srgb, var(--blue) 40%, transparent);
+  text-underline-offset: 3px;
+}
+
+.hero-project-links a:hover {
+  color: var(--gold-dark);
+}
+
 .hero-thesis {
   max-width: 720px;
   display: grid;
@@ -2678,6 +2698,12 @@ main {
   font-style: italic;
 }
 
+.footer-navs {
+  display: grid;
+  gap: 12px;
+  justify-items: end;
+}
+
 .site-footer nav {
   display: flex;
   gap: 18px;
@@ -2692,6 +2718,12 @@ main {
 
 .site-footer nav a:hover {
   color: var(--blue);
+}
+
+.site-footer .footer-resources a {
+  color: var(--blue);
+  font-family: var(--mono);
+  font-weight: 700;
 }
 
 @media (max-width: 820px) {
@@ -2991,6 +3023,10 @@ main {
 
   .site-footer {
     flex-direction: column;
+  }
+
+  .footer-navs {
+    justify-items: start;
   }
 }
 
