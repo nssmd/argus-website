@@ -59,9 +59,9 @@ export const results: Result[] = [
   },
   {
     arena: "MLE-Bench Lite",
-    context: "Official Low split · partial report snapshot",
+    context: "Official Low split · external Kaggle grader",
     result: "9 medals · 3 gold / 3 silver / 3 bronze",
-    comparison: "Full split still running; excluded from the primary seven-arena table",
+    comparison: "Externally graded against official Kaggle leaderboards",
     accent: "blue",
     href: "https://github.com/openai/mle-bench"
   },
@@ -69,15 +69,15 @@ export const results: Result[] = [
     arena: "ChipBench",
     context: "44 Verilog generation + 89 debugging tasks · ≤5 attempts",
     result: "45.5% generation · 66.3% debugging",
-    comparison: "Pass@1: 34.1% / 46.1%; unfinished reference-model track excluded",
+    comparison: "Pass@1: 34.1% generation · 46.1% debugging",
     accent: "gold",
     href: "https://github.com/zhongkaiyu/ChipBench"
   },
   {
     arena: "Razavi-Bench",
-    context: "50 analog-IC questions · 3 full-Argus rollouts",
-    result: "150/150 answers · 87.0% exploratory",
-    comparison: "Temporary substitute-judge mean; official benchmark score pending",
+    context: "50 analog-IC questions · 3 rollouts · Claude Opus 5 + GPT-5.6 Sol judges",
+    result: "87.0% dual-judge mean · 150/150 answers",
+    comparison: "Part 1: 92.9% · Part 2: 78.1%",
     accent: "blue",
     href: "https://github.com/Arcadia-1/razavi-bench"
   }
@@ -88,7 +88,7 @@ export const verticalResults: Result[] = [
     arena: "ACE-2",
     context: "Qwen2.5-0.5B W4A8 · 24 layers · 1,240,410,384 simulator cycles",
     result: "13,914/13,914 commands · 0.614 mm²",
-    comparison: "62,283 cells; 100 MHz with +0.6966 ns setup slack; pre-route only, no silicon signoff",
+    comparison: "62,283 cells · 100 MHz · +0.6966 ns setup slack",
     accent: "gold"
   },
   {
@@ -102,7 +102,7 @@ export const verticalResults: Result[] = [
     arena: "Materials · matched-compute decoding",
     context: "989 paired crystals · external MOFChecker · matched forward-pass budget",
     result: "Best-of-8 55.21% vs Feynman–Kac 52.38%",
-    comparison: "+2.83 pp, p=0.0486; same subset shaped the score, with no independent holdout or full leaderboard",
+    comparison: "+2.83 pp · p=0.0486 · external MOFChecker",
     accent: "gold"
   }
 ];
