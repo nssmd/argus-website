@@ -193,9 +193,7 @@ input {
 .motion-prep .runtime-flow__track > div,
 .motion-prep .evolution-step,
 .motion-prep .trajectory-entry,
-.motion-prep .business-thesis,
-.motion-prep .business-foot,
-.motion-prep .data-governance {
+.motion-prep .position-thesis {
   opacity: 0;
 }
 
@@ -1395,19 +1393,18 @@ main {
   font-size: 18px;
 }
 
-.data-economy {
+.process-evidence {
   overflow: hidden;
 }
 
 .process-data-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
-  gap: 18px;
+  grid-template-columns: minmax(0, 1fr);
   align-items: start;
 }
 
 .trajectory-ledger,
-.business-thesis {
+.position-thesis {
   border: 1px solid var(--line);
   border-radius: 16px;
   box-shadow: var(--shadow);
@@ -1420,8 +1417,8 @@ main {
 
 .trajectory-ledger__head h3,
 .trajectory-ledger__head p,
-.business-thesis h3,
-.business-thesis p {
+.position-thesis h3,
+.position-thesis p {
   margin: 0;
 }
 
@@ -1512,11 +1509,7 @@ main {
   font-size: 8px;
 }
 
-.business-case {
-  min-width: 0;
-}
-
-.business-thesis {
+.position-thesis {
   padding: 27px;
   border-color: #244b80;
   background:
@@ -1525,11 +1518,11 @@ main {
   color: #fff;
 }
 
-.business-thesis .eyebrow {
+.position-thesis .eyebrow {
   color: #edc96f;
 }
 
-.business-thesis h3 {
+.position-thesis h3 {
   max-width: 540px;
   color: #fff;
   font-family: var(--serif);
@@ -1538,7 +1531,7 @@ main {
   line-height: 1.18;
 }
 
-.business-thesis > p:last-child {
+.position-thesis > p:last-child {
   margin-top: 12px;
   color: #d5e3f6;
   font-size: 12px;
@@ -1548,14 +1541,14 @@ main {
   margin-top: 18px;
 }
 
-.business-thesis .architecture-thesis__body {
+.position-thesis .architecture-thesis__body {
   max-width: 900px;
   margin-top: 12px;
   color: #d5e3f6;
   font-size: 14px;
 }
 
-.business-thesis .architecture-thesis__source {
+.position-thesis .architecture-thesis__source {
   max-width: 980px;
   margin-top: 18px;
   padding-top: 14px;
@@ -1568,52 +1561,6 @@ main {
   color: #edc96f;
   text-decoration-color: rgba(237, 201, 111, 0.58);
   text-underline-offset: 3px;
-}
-
-.business-grid {
-  display: grid;
-  gap: 10px;
-  margin-top: 12px;
-}
-
-.business-card {
-  min-height: 0;
-  padding: 18px 20px;
-  box-shadow: none;
-}
-
-.business-badge {
-  display: block;
-  margin-bottom: 8px;
-  color: var(--gold-dark);
-  font-family: var(--mono);
-  font-size: 8px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-}
-
-.business-card h3 {
-  font-size: 15px;
-}
-
-.business-card p {
-  font-size: 11px;
-}
-
-.business-foot {
-  margin: 13px 0 0;
-  padding: 13px 15px;
-  border-left: 3px solid var(--blue);
-  background: var(--blue-soft);
-  color: var(--ink-2);
-  font-size: 11px;
-  font-weight: 700;
-}
-
-.data-governance {
-  margin: 9px 2px 0;
-  color: var(--faint);
-  font-size: 9px;
 }
 
 .depth-principle {
@@ -2802,7 +2749,7 @@ main {
   }
 
   .trajectory-ledger,
-  .business-thesis {
+  .position-thesis {
     padding: 22px;
   }
 
