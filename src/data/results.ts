@@ -82,3 +82,27 @@ export const results: Result[] = [
     href: "https://github.com/Arcadia-1/razavi-bench"
   }
 ];
+
+export const verticalResults: Result[] = [
+  {
+    arena: "ACE-2",
+    context: "Qwen2.5-0.5B W4A8 · 24 layers · 1,240,410,384 simulator cycles",
+    result: "13,914/13,914 commands · 0.614 mm²",
+    comparison: "62,283 cells; 100 MHz with +0.6966 ns setup slack; pre-route only, no silicon signoff",
+    accent: "gold"
+  },
+  {
+    arena: "Materials · controllable MOF generation",
+    context: "MOFFlow-2 · 3,300 balanced condition requests · 16.7% trainable parameters",
+    result: "92.5% metal · 100.0% nuclearity · 74.5% ligand",
+    comparison: "Permuted controls: 17.4% / 24.3% / 39.0%; unconditional validity 37.12% vs 30.61%",
+    accent: "blue"
+  },
+  {
+    arena: "Materials · matched-compute decoding",
+    context: "989 paired crystals · external MOFChecker · matched forward-pass budget",
+    result: "Best-of-8 55.21% vs Feynman–Kac 52.38%",
+    comparison: "+2.83 pp, p=0.0486; same subset shaped the score, with no independent holdout or full leaderboard",
+    accent: "gold"
+  }
+];

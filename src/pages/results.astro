@@ -1,6 +1,6 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
-import { results } from "../data/results";
+import { results, verticalResults } from "../data/results";
 import { localeFromPath, pathForLocale } from "../i18n";
 
 const locale = localeFromPath(Astro.url.pathname);
@@ -8,23 +8,29 @@ const href = (path: string) => pathForLocale(path, locale);
 const reportHref = "https://arxiv.org/pdf/2608.05144";
 const copy = locale === "zh" ? {
   title: "Results · Argus",
-  description: "Argus 在 SWE-Bench Pro、GPU kernel、模型训练、研究任务、数据合成、MLE-Bench Lite、ChipBench 与 Razavi-Bench 上的实测结果。",
+  description: "Argus 在十个 benchmark 赛场以及 ACE-2 芯片设计和材料生成垂直任务上的实测结果。",
   hero: "一套系统，十个赛场。",
   lede: "从软件修复、GPU kernel 和模型训练到数字与模拟芯片任务，各行保留原生指标、协议与未完成边界。",
   sourcePrefix: "前七项来自",
   sourceTitle: "技术报告（arXiv:2608.05144）",
   sourceSuffix: "的主结果表；MLE-Bench Lite 是报告中的进行中快照；ChipBench 与 Razavi-Bench 为报告后新增。",
+  verticalEyebrow: "技术报告 · 垂直成果",
+  verticalTitle: "Benchmark 之外：芯片与材料。",
+  verticalBody: "以下是技术报告中的独立垂直案例，不计入十个 benchmark 赛场，也不包装成排行榜成绩。正结果与证据边界同时保留。",
   ctaTitle: "结果不是聊天记录，是可交付产物。",
   ctaBody: "论文、代码、实验日志和公开 benchmark 都集中在 Research。",
   cta: "浏览研究成果 →",
 } : {
   title: "Results · Argus",
-  description: "Measured Argus results across SWE-Bench Pro, GPU kernels, model training, research tasks, data synthesis, MLE-Bench Lite, ChipBench, and Razavi-Bench.",
+  description: "Measured Argus results across ten benchmark arenas plus the ACE-2 chip-design and materials-generation verticals.",
   hero: "One system. Ten very different arenas.",
   lede: "From software repair, GPU kernels, and model training to digital and analog chip tasks, every row preserves its native metric, protocol, and unfinished boundaries.",
   sourcePrefix: "The first seven rows are the primary table in the",
   sourceTitle: "technical report (arXiv:2608.05144)",
   sourceSuffix: "; MLE-Bench Lite is its in-progress snapshot, while ChipBench and Razavi-Bench are post-report additions.",
+  verticalEyebrow: "Technical report · vertical results",
+  verticalTitle: "Beyond benchmarks: chips and materials.",
+  verticalBody: "These independent report verticals do not count toward the ten benchmark arenas and are not presented as leaderboard results. Positive evidence and its boundaries appear together.",
   ctaTitle: "The result is not a chat transcript. It is a deliverable.",
   ctaBody: "Papers, code, experiment logs, and public benchmarks are collected in Research.",
   cta: "Browse the research →",
@@ -57,6 +63,28 @@ const copy = locale === "zh" ? {
               ) : (
                 <strong>{item.arena}</strong>
               )}
+              <span>{item.context}</span>
+            </div>
+            <div class="score-result">{item.result}</div>
+            <div class="score-comparison">{item.comparison}</div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section surface">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">{copy.verticalEyebrow}</p>
+        <h2>{copy.verticalTitle}</h2>
+        <p>{copy.verticalBody}</p>
+      </div>
+      <div class="scoreboard">
+        {verticalResults.map((item) => (
+          <article class={`score-row ${item.accent}`}>
+            <div class="score-arena">
+              <strong>{item.arena}</strong>
               <span>{item.context}</span>
             </div>
             <div class="score-result">{item.result}</div>
