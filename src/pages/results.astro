@@ -5,19 +5,26 @@ import { localeFromPath, pathForLocale } from "../i18n";
 
 const locale = localeFromPath(Astro.url.pathname);
 const href = (path: string) => pathForLocale(path, locale);
+const reportHref = "https://arxiv.org/pdf/2608.05144";
 const copy = locale === "zh" ? {
   title: "Results · Argus",
-  description: "Argus 在 NVIDIA B200、H100/B200 nanochat、8×H100 speedrun、AARRI-Bench 和 Arbor 上的核心成绩。",
-  hero: "一套系统，六个赛场。",
-  lede: "从 GPU kernel、系统优化到研究 agent，每项成绩都来自真实任务和真实执行。",
+  description: "Argus 在 SWE-Bench Pro、GPU kernel、模型训练、研究任务、数据合成、MLE-Bench Lite、ChipBench 与 Razavi-Bench 上的实测结果。",
+  hero: "一套系统，十个赛场。",
+  lede: "从软件修复、GPU kernel 和模型训练到数字与模拟芯片任务，各行保留原生指标、协议与未完成边界。",
+  sourcePrefix: "前七项来自",
+  sourceTitle: "技术报告（arXiv:2608.05144）",
+  sourceSuffix: "的主结果表；MLE-Bench Lite 是报告中的进行中快照；ChipBench 与 Razavi-Bench 为报告后新增。",
   ctaTitle: "结果不是聊天记录，是可交付产物。",
   ctaBody: "论文、代码、实验日志和公开 benchmark 都集中在 Research。",
   cta: "浏览研究成果 →",
 } : {
   title: "Results · Argus",
-  description: "Selected Argus results across NVIDIA B200 kernels, H100/B200 nanochat, an 8×H100 speedrun, AARRI-Bench, and Arbor.",
-  hero: "One system. Six very different arenas.",
-  lede: "From GPU kernels and systems optimization to research agents, every result comes from a real task executed on real infrastructure.",
+  description: "Measured Argus results across SWE-Bench Pro, GPU kernels, model training, research tasks, data synthesis, MLE-Bench Lite, ChipBench, and Razavi-Bench.",
+  hero: "One system. Ten very different arenas.",
+  lede: "From software repair, GPU kernels, and model training to digital and analog chip tasks, every row preserves its native metric, protocol, and unfinished boundaries.",
+  sourcePrefix: "The first seven rows are the primary table in the",
+  sourceTitle: "technical report (arXiv:2608.05144)",
+  sourceSuffix: "; MLE-Bench Lite is its in-progress snapshot, while ChipBench and Razavi-Bench are post-report additions.",
   ctaTitle: "The result is not a chat transcript. It is a deliverable.",
   ctaBody: "Papers, code, experiment logs, and public benchmarks are collected in Research.",
   cta: "Browse the research →",
@@ -33,6 +40,9 @@ const copy = locale === "zh" ? {
       <p class="eyebrow">Argus · Results</p>
       <h1>{copy.hero}</h1>
       <p class="lede">{copy.lede}</p>
+      <p class="result-source">
+        {copy.sourcePrefix} <a href={reportHref} target="_blank" rel="noopener noreferrer">{copy.sourceTitle}</a>{copy.sourceSuffix}
+      </p>
     </div>
   </section>
 
@@ -42,7 +52,11 @@ const copy = locale === "zh" ? {
         {results.map((item) => (
           <article class={`score-row ${item.accent}`}>
             <div class="score-arena">
-              <strong>{item.arena}</strong>
+              {item.href ? (
+                <a href={item.href} target="_blank" rel="noopener noreferrer"><strong>{item.arena} ↗</strong></a>
+              ) : (
+                <strong>{item.arena}</strong>
+              )}
               <span>{item.context}</span>
             </div>
             <div class="score-result">{item.result}</div>

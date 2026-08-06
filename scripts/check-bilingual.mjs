@@ -59,7 +59,7 @@ for (const page of ["index.html", "zh.html"]) {
   assert(html.includes('id="intro"'), `${page} lacks the BrandUniverse enter target`);
   assert(!html.includes("data-home-chapter"), `${page} still renders numbered homepage chapters`);
   assert(
-    html.includes(">43<") && (html.includes("Research PDFs") || html.includes("研究 PDF")),
+    html.includes(">10<") && (html.includes("Selected papers") || html.includes("精选研究论文")),
     `${page} has a stale research-paper metric`,
   );
   const heroAt = html.indexOf('class="page-hero"');
