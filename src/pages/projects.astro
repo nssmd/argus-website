@@ -25,6 +25,11 @@ const labels = locale === "zh" ? {
   outcome: "已交付",
   stack: "技术",
   open: "打开",
+  linkLabels: {
+    repository: "打开 GitHub 仓库",
+    official: "打开官方发行仓库",
+    report: "阅读技术报告",
+  },
   teamTitle: "一个团队，一套持续扩展的能力版图。",
   teamBody: "Argus 是长期自主工作的基础运行时；ACE、MiniMax-H3 和自主数学研究则展示同一套研究与工程方法如何进入不同领域。",
   organization: "访问 Argus AI Team GitHub →",
@@ -52,6 +57,11 @@ const labels = locale === "zh" ? {
   outcome: "Delivered",
   stack: "Built with",
   open: "Open",
+  linkLabels: {
+    repository: "Open GitHub repository",
+    official: "Open official release",
+    report: "Read technical report",
+  },
   teamTitle: "One team. A continuously expanding capability map.",
   teamBody: "Argus provides the persistent autonomy layer. ACE, MiniMax-H3, and autonomous mathematics show how the same research and engineering discipline transfers into distinct domains.",
   organization: "Visit Argus AI Team on GitHub →",
@@ -75,7 +85,8 @@ const groupedProjects = Object.entries(labels.categories).map(([category, label]
       <h1>{labels.hero}</h1>
       <p class="lede">{labels.lede}</p>
       <div class="hero-actions">
-        <a class="button primary" href={href("/get-started.html")}>{labels.start}</a>
+        <a class="button primary" href="https://github.com/Argus-AiTeam" target="_blank" rel="noopener noreferrer">{labels.organization}</a>
+        <a class="button" href={href("/get-started.html")}>{labels.start}</a>
         <a class="button" href={href("/results.html")}>{labels.results}</a>
       </div>
     </div>
@@ -95,7 +106,6 @@ const groupedProjects = Object.entries(labels.categories).map(([category, label]
                 <h3>{project.title}</h3>
                 <span class={`project-status ${project.status}`}>{labels.statuses[project.status]}</span>
               </div>
-              {project.credit && <p class="project-card__credit">{project.credit[locale]}</p>}
               <p class="project-card__description">{project.description[locale]}</p>
               <div class="project-card__outcome">
                 <span>{labels.outcome}</span>
@@ -107,7 +117,9 @@ const groupedProjects = Object.entries(labels.categories).map(([category, label]
               </div>
               <div class="project-card__links">
                 {project.links.map((link) => (
-                  <a href={link.href} target="_blank" rel="noopener noreferrer">{link.label} ↗</a>
+                  <a class={link.kind === "repository" ? "primary" : ""} href={link.href} target="_blank" rel="noopener noreferrer">
+                    <span>{labels.linkLabels[link.kind]}</span><i aria-hidden="true">↗</i>
+                  </a>
                 ))}
               </div>
             </article>

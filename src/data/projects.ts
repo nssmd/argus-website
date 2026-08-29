@@ -1,5 +1,5 @@
 export type ProjectLink = {
-  label: string;
+  kind: "repository" | "official" | "report";
   href: string;
 };
 
@@ -13,10 +13,6 @@ export type Project = {
     zh: string;
   };
   outcome: {
-    en: string;
-    zh: string;
-  };
-  credit?: {
     en: string;
     zh: string;
   };
@@ -40,9 +36,9 @@ export const projects: Project[] = [
     },
     technologies: ["Python", "Multi-agent", "CLI", "WebUI"],
     links: [
-      { label: "Preview", href: "https://github.com/lbx154/Argus" },
-      { label: "Official", href: "https://github.com/microsoft/ArgusAgent" },
-      { label: "Report", href: "https://arxiv.org/abs/2608.05144" },
+      { kind: "repository", href: "https://github.com/lbx154/Argus" },
+      { kind: "official", href: "https://github.com/microsoft/ArgusAgent" },
+      { kind: "report", href: "https://arxiv.org/abs/2608.05144" },
     ],
   },
   {
@@ -58,13 +54,9 @@ export const projects: Project[] = [
       en: "13,914/13,914 commands, 0.614 mm², 62,283 cells, and SKY130 at 100 MHz.",
       zh: "13,914/13,914 条命令通过，0.614 mm²、62,283 cells，SKY130 100 MHz。",
     },
-    credit: {
-      en: "Led by aHappend",
-      zh: "由 aHappend 主导",
-    },
     technologies: ["SystemVerilog", "W4A8", "SKY130", "RTL"],
     links: [
-      { label: "GitHub", href: "https://github.com/Argus-AiTeam/ace-2" },
+      { kind: "repository", href: "https://github.com/Argus-AiTeam/ace-2" },
     ],
   },
   {
@@ -80,13 +72,9 @@ export const projects: Project[] = [
       en: "A verified 24-layer cascade and an expanding mixed-precision accelerator roadmap.",
       zh: "已验证 24 层级联，并持续推进混合精度加速器路线。",
     },
-    credit: {
-      en: "Led by aHappend",
-      zh: "由 aHappend 主导",
-    },
     technologies: ["Python", "SystemVerilog", "AWQ W4A16", "Hybrid RTL"],
     links: [
-      { label: "GitHub", href: "https://github.com/Argus-AiTeam/ace-3" },
+      { kind: "repository", href: "https://github.com/Argus-AiTeam/ace-3" },
     ],
   },
   {
@@ -104,7 +92,7 @@ export const projects: Project[] = [
     },
     technologies: ["MLX", "Apple Silicon", "Python", "MiniMax-H3"],
     links: [
-      { label: "GitHub", href: "https://github.com/Argus-AiTeam/minimax-h3-mac" },
+      { kind: "repository", href: "https://github.com/Argus-AiTeam/minimax-h3-mac" },
     ],
   },
   {
@@ -122,7 +110,7 @@ export const projects: Project[] = [
     },
     technologies: ["CUDA", "RTX A6000", "Video", "Audio"],
     links: [
-      { label: "GitHub", href: "https://github.com/Argus-AiTeam/minimax-h3-desktop" },
+      { kind: "repository", href: "https://github.com/Argus-AiTeam/minimax-h3-desktop" },
     ],
   },
   {
@@ -140,7 +128,7 @@ export const projects: Project[] = [
     },
     technologies: ["ComfyUI", "MLX", "Apple Silicon", "Python"],
     links: [
-      { label: "GitHub", href: "https://github.com/Argus-AiTeam/ComfyUI-MiniMax-H3-MLX" },
+      { kind: "repository", href: "https://github.com/Argus-AiTeam/ComfyUI-MiniMax-H3-MLX" },
     ],
   },
   {
@@ -158,7 +146,7 @@ export const projects: Project[] = [
     },
     technologies: ["Mathematics", "TeX", "Research agents", "Bilingual"],
     links: [
-      { label: "GitHub", href: "https://github.com/Argus-AiTeam/Hilbert16-Dual-Argus-Observatory" },
+      { kind: "repository", href: "https://github.com/Argus-AiTeam/Hilbert16-Dual-Argus-Observatory" },
     ],
   },
 ];
