@@ -5,9 +5,10 @@ const dist = path.resolve("dist");
 const pairs = [
   ["index.html", "zh.html"],
   ["how.html", "zh/how.html"],
+  ["projects.html", "zh/projects.html"],
   ["results.html", "zh/results.html"],
   ["research.html", "zh/research.html"],
-  ["release.html", "zh/release.html"],
+  ["get-started.html", "zh/get-started.html"],
   ["start.html", "zh/start.html"],
   ["use-cases.html", "zh/use-cases.html"],
 ];
@@ -60,44 +61,70 @@ for (const page of ["index.html", "zh.html"]) {
   assert(html.includes('id="intro"'), `${page} lacks the BrandUniverse enter target`);
   assert(!html.includes("data-home-chapter"), `${page} still renders numbered homepage chapters`);
   assert(
-    html.includes(">43<") && (html.includes("Research PDFs") || html.includes("研究 PDF")),
+    html.includes(">10<") && (html.includes("Selected papers") || html.includes("精选研究论文")),
     `${page} has a stale research-paper metric`,
   );
   const heroAt = html.indexOf('class="page-hero"');
   const denseAt = html.indexOf('id="dense-intelligence"');
   const metricsAt = html.indexOf('class="metric-strip"');
+  const overviewAt = html.indexOf('class="section overview-film"');
   const signalAt = html.indexOf('class="signal-rail"');
   const evolutionAt = html.indexOf('id="evolution"');
   const multiAgentAt = html.indexOf('id="multi-agent"');
   const processAt = html.indexOf('id="process-data"');
   assert(
-    [heroAt, denseAt, metricsAt, signalAt, evolutionAt, multiAgentAt, processAt].every((index) => index >= 0),
+    [heroAt, denseAt, metricsAt, overviewAt, signalAt, evolutionAt, multiAgentAt, processAt].every((index) => index >= 0),
     `${page} lacks a restored homepage section`,
   );
   assert(
     heroAt < denseAt &&
       denseAt < metricsAt &&
-      metricsAt < signalAt &&
+      metricsAt < overviewAt &&
+      overviewAt < signalAt &&
       signalAt < evolutionAt &&
       evolutionAt < multiAgentAt &&
       multiAgentAt < processAt,
     `${page} homepage section order was not restored`,
   );
+  assert(html.includes('/assets/demos/argus-overview-90s.mp4'), `${page} lacks the 90-second overview video`);
+  assert(html.includes('/assets/demos/argus-overview-90s-poster.webp'), `${page} lacks the overview poster`);
+  assert(html.includes("Argus: A General-Purpose Agentic Reasoning Runtime") || html.includes("面向长程任务的通用 Agentic Reasoning Runtime"), `${page} lacks the prominent technical report`);
+  assert(html.includes("https://arxiv.org/pdf/2608.05144"), `${page} lacks the direct technical-report PDF`);
+  assert(!html.includes("Commercialization requires") && !html.includes("商业化前提"), `${page} still contains the removed commercialization-premise sentence`);
 }
 
-const sitemap = read("sitemap.xml");
-assert((sitemap.match(/<url>/g) || []).length === 14, "sitemap.xml must list all 14 public pages");
-assert(sitemap.includes("https://argusbot.cn/zh/start.html"), "sitemap.xml lacks the Chinese Get Started page");
-assert(sitemap.includes("https://argusbot.cn/zh/release.html"), "sitemap.xml lacks the Chinese release page");
+assert(fs.existsSync(path.join(dist, "assets/demos/argus-overview-90s.mp4")), "missing overview MP4");
+assert(fs.existsSync(path.join(dist, "assets/demos/argus-overview-90s-poster.webp")), "missing overview poster");
 
-for (const page of ["release.html", "zh/release.html"]) {
+const sitemap = read("sitemap.xml");
+assert((sitemap.match(/<url>/g) || []).length === 16, "sitemap.xml must list all 16 public pages");
+assert(sitemap.includes("https://argusbot.cn/zh/start.html"), "sitemap.xml lacks the Chinese Get Started page");
+assert(!sitemap.includes("release.html"), "sitemap.xml still lists a release page");
+
+for (const page of pairs.flat()) {
   const html = read(page);
-  assert(html.includes("npm install -g @argusbot/cli@beta"), `${page} lacks the npm beta install command`);
-  assert(html.includes("argus-skill --setup"), `${page} lacks first-time setup`);
-  assert(html.includes("argus --web"), `${page} lacks the Web cockpit command`);
-  assert(html.includes("0.1.0"), `${page} lacks the Binary Preview version`);
-  assert(html.includes("Coming Soon") || html.includes("coming soon"), `${page} lacks code-coming-soon copy`);
-  assert(html.includes("npm Beta") || html.includes("npm beta"), `${page} lacks npm beta positioning`);
+  assert(!html.includes("/release.html"), `${page} still links to a release page`);
+  assert(!/\bnpm\b|npmjs|@argusevolve\/argus/i.test(html), `${page} still exposes npm content`);
+  assert(html.includes("https://arxiv.org/abs/2608.05144"), `${page} lacks the Argus paper link`);
+  assert(html.includes("https://www.youtube.com/watch?v=i8Qy9HCboQE"), `${page} lacks the YouTube demo link`);
+  assert(html.includes("https://github.com/lbx154/Argus"), `${page} lacks the Argus code link`);
+}
+
+for (const page of ["projects.html", "zh/projects.html"]) {
+  const html = read(page);
+  assert(html.includes("Argus AI Team"), `${page} lacks the team identity`);
+  assert(html.includes("microsoft/ArgusAgent"), `${page} lacks the official Argus repository`);
+  assert(html.includes("Argus-AiTeam/ace-2"), `${page} lacks ACE-2`);
+  assert(html.includes("Argus-AiTeam/ace-3"), `${page} lacks ACE-3`);
+  assert(html.includes("Argus-AiTeam/minimax-h3-mac"), `${page} lacks MiniMax-H3 for Mac`);
+}
+
+for (const page of ["get-started.html", "zh/get-started.html"]) {
+  const html = read(page);
+  assert(html.includes("docs/agent-install.md"), `${page} lacks the agent installation contract`);
+  assert(html.includes("argus doctor --deep --advisor auto"), `${page} lacks active diagnosis`);
+  assert(html.includes("GitHub Copilot CLI"), `${page} lacks the Copilot backend`);
+  assert(html.includes("microsoft/ArgusAgent"), `${page} lacks the official distribution link`);
 }
 
 for (const page of ["start.html", "zh/start.html"]) {

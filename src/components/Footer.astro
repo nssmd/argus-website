@@ -7,12 +7,14 @@ const copy = locale === "zh" ? {
   home: "Argus 首页",
   tagline: "灯熄了，研究继续。",
   nav: "页脚导航",
-  links: ["成绩", "研究", "原理", "场景", "演示", "安装"],
+  resources: "项目链接",
+  links: ["项目", "成绩", "研究", "原理", "场景", "演示", "开始使用"],
 } : {
   home: "Argus home",
   tagline: "The lights go out. The research keeps moving.",
   nav: "Footer navigation",
-  links: ["Results", "Research", "How it works", "Use cases", "Demo", "Install"],
+  resources: "Project links",
+  links: ["Projects", "Results", "Research", "How it works", "Use cases", "Demo", "Get started"],
 };
 const localized = (href: string) => pathForLocale(href, locale);
 ---
@@ -24,12 +26,21 @@ const localized = (href: string) => pathForLocale(href, locale);
     </a>
     <p>{copy.tagline}</p>
   </div>
-  <nav aria-label={copy.nav}>
-    <a href={localized("/results.html")}>{copy.links[0]}</a>
-    <a href={localized("/research.html")}>{copy.links[1]}</a>
-    <a href={localized("/how.html")}>{copy.links[2]}</a>
-    <a href={localized("/use-cases.html")}>{copy.links[3]}</a>
-    <a href={localized("/start.html")}>{copy.links[4]}</a>
-    <a href={localized("/release.html")}>{copy.links[5]}</a>
-  </nav>
+  <div class="footer-navs">
+    <nav aria-label={copy.nav}>
+      <a href={localized("/projects.html")}>{copy.links[0]}</a>
+      <a href={localized("/results.html")}>{copy.links[1]}</a>
+      <a href={localized("/research.html")}>{copy.links[2]}</a>
+      <a href={localized("/how.html")}>{copy.links[3]}</a>
+      <a href={localized("/use-cases.html")}>{copy.links[4]}</a>
+      <a href={localized("/start.html")}>{copy.links[5]}</a>
+      <a href={localized("/get-started.html")}>{copy.links[6]}</a>
+    </nav>
+    <nav class="footer-resources" aria-label={copy.resources}>
+      <a href="https://arxiv.org/abs/2608.05144" target="_blank" rel="noopener noreferrer">📄 Technical Report · arXiv:2608.05144 ↗</a>
+      <a href="https://www.youtube.com/watch?v=i8Qy9HCboQE" target="_blank" rel="noopener noreferrer">🎬 YouTube Demo ↗</a>
+      <a href="https://github.com/lbx154/Argus" target="_blank" rel="noopener noreferrer">💻 GitHub ↗</a>
+      <a href="https://github.com/Argus-AiTeam" target="_blank" rel="noopener noreferrer">◫ Argus AI Team ↗</a>
+    </nav>
+  </div>
 </footer>

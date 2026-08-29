@@ -14,6 +14,16 @@
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh.html" />
   </url>
   <url>
+    <loc>https://argusbot.cn/projects.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/projects.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/projects.html" />
+  </url>
+  <url>
+    <loc>https://argusbot.cn/zh/projects.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/projects.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/projects.html" />
+  </url>
+  <url>
     <loc>https://argusbot.cn/results.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/results.html" />
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/results.html" />
@@ -54,6 +64,16 @@
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/use-cases.html" />
   </url>
   <url>
+    <loc>https://argusbot.cn/get-started.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/get-started.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/get-started.html" />
+  </url>
+  <url>
+    <loc>https://argusbot.cn/zh/get-started.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/get-started.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/get-started.html" />
+  </url>
+  <url>
     <loc>https://argusbot.cn/start.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/start.html" />
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/start.html" />
@@ -62,15 +82,5 @@
     <loc>https://argusbot.cn/zh/start.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/start.html" />
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/start.html" />
-  </url>
-  <url>
-    <loc>https://argusbot.cn/release.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/release.html" />
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/release.html" />
-  </url>
-  <url>
-    <loc>https://argusbot.cn/zh/release.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/release.html" />
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/release.html" />
   </url>
 </urlset>

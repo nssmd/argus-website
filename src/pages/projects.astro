@@ -1,0 +1,142 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { projects } from "../data/projects";
+import { localeFromPath, pathForLocale } from "../i18n";
+
+const locale = localeFromPath(Astro.url.pathname);
+const href = (path: string) => pathForLocale(path, locale);
+const labels = locale === "zh" ? {
+  title: "Projects · Argus AI Team",
+  description: "浏览 Argus AI Team 的 Agent runtime、芯片、模型部署和自主研究项目。",
+  eyebrow: "Argus AI Team · Projects",
+  hero: "从自主 Agent 到芯片、模型与科学研究。",
+  lede: "这里集中展示团队已经公开的系统、工程和研究成果。每个项目都直接连接到代码、证据或技术报告。",
+  categories: {
+    runtime: "Agent Runtime",
+    hardware: "芯片与 RTL",
+    model: "模型部署",
+    research: "自主研究",
+  },
+  statuses: {
+    preview: "Preview",
+    active: "Active",
+    research: "Research",
+  },
+  outcome: "已交付",
+  stack: "技术",
+  open: "打开",
+  teamTitle: "一个团队，一套持续扩展的能力版图。",
+  teamBody: "Argus 是长期自主工作的基础运行时；ACE、MiniMax-H3 和自主数学研究则展示同一套研究与工程方法如何进入不同领域。",
+  organization: "访问 Argus AI Team GitHub →",
+  startTitle: "想先使用核心 Argus runtime？",
+  startBody: "从安装指引开始，选择已有 Agent CLI 作为后端，并完成第一次经过 Reviewer 验收的运行。",
+  start: "开始使用 Argus →",
+  results: "查看量化成绩 →",
+} : {
+  title: "Projects · Argus AI Team",
+  description: "Explore Argus AI Team projects across agent runtimes, chips, model deployment, and autonomous research.",
+  eyebrow: "Argus AI Team · Projects",
+  hero: "From autonomous agents to chips, models, and scientific research.",
+  lede: "This is the shared home for the team's public systems, engineering work, and research. Every project connects directly to code, evidence, or a technical report.",
+  categories: {
+    runtime: "Agent runtime",
+    hardware: "Chips and RTL",
+    model: "Model deployment",
+    research: "Autonomous research",
+  },
+  statuses: {
+    preview: "Preview",
+    active: "Active",
+    research: "Research",
+  },
+  outcome: "Delivered",
+  stack: "Built with",
+  open: "Open",
+  teamTitle: "One team. A continuously expanding capability map.",
+  teamBody: "Argus provides the persistent autonomy layer. ACE, MiniMax-H3, and autonomous mathematics show how the same research and engineering discipline transfers into distinct domains.",
+  organization: "Visit Argus AI Team on GitHub →",
+  startTitle: "Want to use the core Argus runtime first?",
+  startBody: "Follow the guided installation path, reuse an Agent CLI you already have, and complete a first run that is independently reviewed.",
+  start: "Get started with Argus →",
+  results: "See measured results →",
+};
+
+const groupedProjects = Object.entries(labels.categories).map(([category, label]) => ({
+  category,
+  label,
+  projects: projects.filter((project) => project.category === category),
+}));
+---
+
+<SiteLayout title={labels.title} description={labels.description}>
+  <section class="page-hero compact projects-hero">
+    <div class="shell">
+      <p class="eyebrow">{labels.eyebrow}</p>
+      <h1>{labels.hero}</h1>
+      <p class="lede">{labels.lede}</p>
+      <div class="hero-actions">
+        <a class="button primary" href={href("/get-started.html")}>{labels.start}</a>
+        <a class="button" href={href("/results.html")}>{labels.results}</a>
+      </div>
+    </div>
+  </section>
+
+  {groupedProjects.map((group, index) => (
+    <section class={`section project-group ${index % 2 === 1 ? "surface" : ""}`}>
+      <div class="shell">
+        <div class="section-head">
+          <p class="eyebrow">{String(index + 1).padStart(2, "0")} · {group.category}</p>
+          <h2>{group.label}</h2>
+        </div>
+        <div class="project-grid">
+          {group.projects.map((project) => (
+            <article class="project-card">
+              <div class="project-card__head">
+                <h3>{project.title}</h3>
+                <span class={`project-status ${project.status}`}>{labels.statuses[project.status]}</span>
+              </div>
+              {project.credit && <p class="project-card__credit">{project.credit[locale]}</p>}
+              <p class="project-card__description">{project.description[locale]}</p>
+              <div class="project-card__outcome">
+                <span>{labels.outcome}</span>
+                <strong>{project.outcome[locale]}</strong>
+              </div>
+              <div class="project-card__stack">
+                <span>{labels.stack}</span>
+                <div>{project.technologies.map((technology) => <small>{technology}</small>)}</div>
+              </div>
+              <div class="project-card__links">
+                {project.links.map((link) => (
+                  <a href={link.href} target="_blank" rel="noopener noreferrer">{link.label} ↗</a>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="section">
+    <div class="shell">
+      <div class="team-band">
+        <div>
+          <p class="eyebrow">Argus AI Team</p>
+          <h2>{labels.teamTitle}</h2>
+          <p>{labels.teamBody}</p>
+        </div>
+        <a class="button" href="https://github.com/Argus-AiTeam" target="_blank" rel="noopener noreferrer">{labels.organization}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="cta-band">
+        <h2>{labels.startTitle}</h2>
+        <p>{labels.startBody}</p>
+        <a class="button primary" href={href("/get-started.html")}>{labels.start}</a>
+      </div>
+    </div>
+  </section>
+</SiteLayout>

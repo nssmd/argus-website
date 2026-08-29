@@ -1,23 +1,36 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
-import { results } from "../data/results";
+import { results, verticalResults } from "../data/results";
 import { localeFromPath, pathForLocale } from "../i18n";
 
 const locale = localeFromPath(Astro.url.pathname);
 const href = (path: string) => pathForLocale(path, locale);
+const reportHref = "https://arxiv.org/abs/2608.05144";
 const copy = locale === "zh" ? {
   title: "Results · Argus",
-  description: "Argus 在 NVIDIA B200、H100/B200 nanochat、8×H100 speedrun、AARRI-Bench 和 Arbor 上的核心成绩。",
-  hero: "一套系统，六个赛场。",
-  lede: "从 GPU kernel、系统优化到研究 agent，每项成绩都来自真实任务和真实执行。",
+  description: "Argus 在十个 benchmark 赛场以及 ACE-2 芯片设计和材料生成垂直任务上的实测结果。",
+  hero: "一套系统，十个赛场。",
+  lede: "从软件修复、GPU kernel 和模型训练到数字与模拟芯片任务，各行保留原生指标与实验协议。",
+  sourcePrefix: "前七项来自",
+  sourceTitle: "技术报告（arXiv:2608.05144）",
+  sourceSuffix: "的主结果表；MLE-Bench Lite 同样收录在报告中；ChipBench 与 Razavi-Bench 为报告后新增。",
+  verticalEyebrow: "技术报告 · 垂直成果",
+  verticalTitle: "Benchmark 之外：芯片与材料。",
+  verticalBody: "以下为技术报告中的 ACE-2 芯片设计与材料生成实验结果。",
   ctaTitle: "结果不是聊天记录，是可交付产物。",
   ctaBody: "论文、代码、实验日志和公开 benchmark 都集中在 Research。",
   cta: "浏览研究成果 →",
 } : {
   title: "Results · Argus",
-  description: "Selected Argus results across NVIDIA B200 kernels, H100/B200 nanochat, an 8×H100 speedrun, AARRI-Bench, and Arbor.",
-  hero: "One system. Six very different arenas.",
-  lede: "From GPU kernels and systems optimization to research agents, every result comes from a real task executed on real infrastructure.",
+  description: "Measured Argus results across ten benchmark arenas plus the ACE-2 chip-design and materials-generation verticals.",
+  hero: "One system. Ten very different arenas.",
+  lede: "From software repair, GPU kernels, and model training to digital and analog chip tasks, every row preserves its native metric and experimental protocol.",
+  sourcePrefix: "The first seven rows are the primary table in the",
+  sourceTitle: "technical report (arXiv:2608.05144)",
+  sourceSuffix: "; MLE-Bench Lite also appears in the report, while ChipBench and Razavi-Bench are post-report additions.",
+  verticalEyebrow: "Technical report · vertical results",
+  verticalTitle: "Beyond benchmarks: chips and materials.",
+  verticalBody: "These are the ACE-2 chip-design and materials-generation results reported in the technical report.",
   ctaTitle: "The result is not a chat transcript. It is a deliverable.",
   ctaBody: "Papers, code, experiment logs, and public benchmarks are collected in Research.",
   cta: "Browse the research →",
@@ -33,6 +46,9 @@ const copy = locale === "zh" ? {
       <p class="eyebrow">Argus · Results</p>
       <h1>{copy.hero}</h1>
       <p class="lede">{copy.lede}</p>
+      <p class="result-source">
+        {copy.sourcePrefix} <a href={reportHref} target="_blank" rel="noopener noreferrer">{copy.sourceTitle}</a>{copy.sourceSuffix}
+      </p>
     </div>
   </section>
 
@@ -40,6 +56,32 @@ const copy = locale === "zh" ? {
     <div class="shell">
       <div class="scoreboard">
         {results.map((item) => (
+          <article class={`score-row ${item.accent}`}>
+            <div class="score-arena">
+              {item.href ? (
+                <a href={item.href} target="_blank" rel="noopener noreferrer"><strong>{item.arena} ↗</strong></a>
+              ) : (
+                <strong>{item.arena}</strong>
+              )}
+              <span>{item.context}</span>
+            </div>
+            <div class="score-result">{item.result}</div>
+            <div class="score-comparison">{item.comparison}</div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section surface">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">{copy.verticalEyebrow}</p>
+        <h2>{copy.verticalTitle}</h2>
+        <p>{copy.verticalBody}</p>
+      </div>
+      <div class="scoreboard">
+        {verticalResults.map((item) => (
           <article class={`score-row ${item.accent}`}>
             <div class="score-arena">
               <strong>{item.arena}</strong>

@@ -1,0 +1,204 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { localeFromPath, pathForLocale } from "../i18n";
+
+const locale = localeFromPath(Astro.url.pathname);
+const href = (path: string) => pathForLocale(path, locale);
+const installGuide = "https://github.com/lbx154/Argus/blob/main/docs/agent-install.md";
+const pluginGuide = "https://github.com/lbx154/Argus/blob/main/docs/plugin.md";
+const copy = locale === "zh" ? {
+  title: "开始使用 · Argus",
+  description: "选择已有 Agent CLI，安装并验证 Argus，然后启动第一次经过独立 Reviewer 验收的长程任务。",
+  eyebrow: "Argus · Get Started",
+  hero: "沿用你已经在用的 Agent CLI。",
+  lede: "Argus 不要求新的模型账户。让 Copilot、Codex、Claude、Pi 或其他受支持的 CLI 成为执行后端，再由 Manager、Planner、Engineer 与 Reviewer 接管长程工作。",
+  assisted: "推荐：让 Agent 帮你安装",
+  assistedBody: "把下面的提示词发送给当前正在使用的 Code Agent。它会读取与你的操作系统对应的安装契约，完成安装、配置和真实 smoke test，并在需要登录、sudo 或全局修改前征求确认。",
+  copy: "复制提示词",
+  copied: "已复制",
+  prompt: "阅读 https://github.com/lbx154/Argus/blob/main/docs/agent-install.md，并使用其中适合当前操作系统的章节安装 Argus。优先使用正在进行本次对话的 Agent CLI 作为 Argus 后端。完成真实 Agent-turn smoke test，然后运行 `argus doctor --deep --advisor auto`。在登录账户、使用 sudo 或修改全局配置前，说明原因并等待确认。不要要求我在对话中粘贴密码、Token 或 API Key。",
+  platformsTitle: "选择你的平台",
+  platformsBody: "平台采用不同的安装方式，避免把 Windows、macOS 与 Linux 命令混在一起。所有平台都需要 Python 3.11+、Node.js 22.12+，以及一个已登录的 Agent CLI。",
+  platforms: [
+    ["Windows 10/11", "Direct Python install", "通过 Python 直接安装，不创建虚拟环境；支持 Manager chat、Web/TUI 和原生 durable subagents。"],
+    ["macOS", "Managed uv tool", "由 uv 管理独立环境，无需手工创建 venv；适合 Apple Silicon 与日常桌面使用。"],
+    ["Linux", "Isolated source venv", "在明确的 venv 中保留 Python、CUDA 工具和长期进程的可复现所有权。"],
+  ],
+  openGuide: "打开对应安装步骤 ↗",
+  firstTitle: "第一次运行",
+  firstBody: "安装完成后，按顺序配置后端、让 doctor 主动修复环境，再进入 cockpit。首次真实运行应通过 status 和 Reviewer 结果确认，而不是只看命令是否存在。",
+  steps: [
+    ["01", "确认版本", "argus --version"],
+    ["02", "配置后端", "argus --setup"],
+    ["03", "检查并修复", "argus doctor --deep --advisor auto"],
+    ["04", "确认状态", "argus --status"],
+    ["05", "进入 cockpit", "argus"],
+  ],
+  backendsTitle: "使用你已有的模型与账户",
+  backendsBody: "Argus 负责组织、记忆、执行与独立验收；实际推理由你选择的 CLI 提供。安装前先完成对应 CLI 的登录。",
+  backends: ["GitHub Copilot CLI", "Pi", "OpenAI Codex CLI", "Claude Code", "OpenCode", "Grok Build", "Qoder", "DeepSeek Harness"],
+  linksTitle: "接下来去哪里",
+  report: "阅读 Argus 技术报告",
+  demo: "观看四条真实运行",
+  plugin: "接入现有 Coding Agent",
+  code: "查看 Preview 仓库",
+  official: "查看官方发行仓库",
+  helpTitle: "遇到问题时，先保留诊断证据。",
+  helpBody: "运行 doctor，记录平台、Argus 版本、后端名称和失败阶段，再到 GitHub 提交可复现的问题。",
+  issues: "打开 GitHub Issues ↗",
+} : {
+  title: "Get Started · Argus",
+  description: "Reuse an Agent CLI you already trust, install and verify Argus, and launch a first long-horizon task with independent review.",
+  eyebrow: "Argus · Get Started",
+  hero: "Bring the Agent CLI you already use.",
+  lede: "Argus does not require another model account. Use Copilot, Codex, Claude, Pi, or another supported CLI as the execution backend, then let the Manager, Planner, Engineer, and Reviewer sustain the work.",
+  assisted: "Recommended: let your Agent install it",
+  assistedBody: "Send the prompt below to the Code Agent you are using now. It will read the installation contract for your operating system, install and configure Argus, run a real smoke test, and pause before login, sudo, or global configuration changes.",
+  copy: "Copy prompt",
+  copied: "Copied",
+  prompt: "Read https://github.com/lbx154/Argus/blob/main/docs/agent-install.md and install Argus using the section for this operating system. Prefer the Agent CLI running this conversation as the Argus backend. Run setup through its real Agent-turn smoke test, then run `argus doctor --deep --advisor auto`. Before account login, sudo, or global configuration changes, explain why and wait for approval. Never ask me to paste a password, token, or API key into the conversation.",
+  platformsTitle: "Choose your platform",
+  platformsBody: "Each platform has its own installation path; do not mix Windows, macOS, and Linux commands. All platforms require Python 3.11+, Node.js 22.12+, and one authenticated Agent CLI.",
+  platforms: [
+    ["Windows 10/11", "Direct Python install", "Install directly through Python without creating a virtual environment. Manager chat, Web/TUI, and native durable subagents are supported."],
+    ["macOS", "Managed uv tool", "Let uv own the isolated environment instead of creating a venv manually. This is the clean desktop path for Apple Silicon."],
+    ["Linux", "Isolated source venv", "Keep Python, CUDA tooling, and long-running process ownership reproducible inside an explicit venv."],
+  ],
+  openGuide: "Open the platform instructions ↗",
+  firstTitle: "Your first run",
+  firstBody: "After installation, configure the backend, let doctor actively repair the environment, and enter the cockpit. Confirm the first real run through status and Reviewer evidence—not only the presence of a command.",
+  steps: [
+    ["01", "Confirm version", "argus --version"],
+    ["02", "Configure backend", "argus --setup"],
+    ["03", "Inspect and repair", "argus doctor --deep --advisor auto"],
+    ["04", "Confirm status", "argus --status"],
+    ["05", "Enter the cockpit", "argus"],
+  ],
+  backendsTitle: "Use the models and accounts you already have",
+  backendsBody: "Argus provides organization, memory, execution, and independent review. The CLI you select provides model inference; authenticate that CLI before setup.",
+  backends: ["GitHub Copilot CLI", "Pi", "OpenAI Codex CLI", "Claude Code", "OpenCode", "Grok Build", "Qoder", "DeepSeek Harness"],
+  linksTitle: "Where to go next",
+  report: "Read the Argus technical report",
+  demo: "Watch four real runs",
+  plugin: "Connect an existing Coding Agent",
+  code: "Open the preview repository",
+  official: "Open the official release",
+  helpTitle: "When something fails, preserve the diagnostic evidence.",
+  helpBody: "Run doctor, record the platform, Argus version, backend name, and failing stage, then open a reproducible GitHub issue.",
+  issues: "Open GitHub Issues ↗",
+};
+---
+
+<SiteLayout title={copy.title} description={copy.description}>
+  <section class="page-hero compact onboarding-hero">
+    <div class="shell onboarding-shell">
+      <p class="eyebrow">{copy.eyebrow}</p>
+      <h1>{copy.hero}</h1>
+      <p class="lede">{copy.lede}</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#agent-install">{copy.assisted}</a>
+        <a class="button" href={href("/start.html")}>{copy.demo}</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="agent-install" class="section">
+    <div class="shell onboarding-shell">
+      <div class="section-head">
+        <p class="eyebrow">01 · Agent-assisted</p>
+        <h2>{copy.assisted}</h2>
+        <p>{copy.assistedBody}</p>
+      </div>
+      <div class="agent-install-card">
+        <pre id="agent-install-prompt"><code>{copy.prompt}</code></pre>
+        <button class="copy-button" type="button" data-copy-target="agent-install-prompt" data-copy-label={copy.copy} data-copied-label={copy.copied}>{copy.copy}</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section surface">
+    <div class="shell onboarding-shell">
+      <div class="section-head">
+        <p class="eyebrow">02 · Platform</p>
+        <h2>{copy.platformsTitle}</h2>
+        <p>{copy.platformsBody}</p>
+      </div>
+      <div class="platform-grid">
+        {copy.platforms.map(([name, method, body]) => (
+          <article class="platform-card">
+            <span>{method}</span>
+            <h3>{name}</h3>
+            <p>{body}</p>
+            <a href={installGuide} target="_blank" rel="noopener noreferrer">{copy.openGuide}</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell onboarding-shell">
+      <div class="section-head">
+        <p class="eyebrow">03 · First run</p>
+        <h2>{copy.firstTitle}</h2>
+        <p>{copy.firstBody}</p>
+      </div>
+      <div class="first-run-list">
+        {copy.steps.map(([number, title, command]) => (
+          <article>
+            <span>{number}</span>
+            <div><strong>{title}</strong><code>{command}</code></div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section surface">
+    <div class="shell onboarding-shell">
+      <div class="section-head">
+        <p class="eyebrow">04 · Backends</p>
+        <h2>{copy.backendsTitle}</h2>
+        <p>{copy.backendsBody}</p>
+      </div>
+      <div class="backend-cloud">
+        {copy.backends.map((backend) => <span>{backend}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell onboarding-shell">
+      <div class="onboarding-links">
+        <p class="eyebrow">{copy.linksTitle}</p>
+        <div>
+          <a href="https://arxiv.org/abs/2608.05144" target="_blank" rel="noopener noreferrer">{copy.report} ↗</a>
+          <a href={href("/start.html")}>{copy.demo} →</a>
+          <a href={pluginGuide} target="_blank" rel="noopener noreferrer">{copy.plugin} ↗</a>
+          <a href="https://github.com/lbx154/Argus" target="_blank" rel="noopener noreferrer">{copy.code} ↗</a>
+          <a href="https://github.com/microsoft/ArgusAgent" target="_blank" rel="noopener noreferrer">{copy.official} ↗</a>
+        </div>
+      </div>
+      <div class="cta-band onboarding-help">
+        <h2>{copy.helpTitle}</h2>
+        <p>{copy.helpBody}</p>
+        <a class="button primary" href="https://github.com/microsoft/ArgusAgent/issues" target="_blank" rel="noopener noreferrer">{copy.issues}</a>
+      </div>
+    </div>
+  </section>
+</SiteLayout>
+
+<script>
+  document.querySelectorAll("[data-copy-target]").forEach((element) => {
+    if (!(element instanceof HTMLButtonElement)) return;
+    element.addEventListener("click", async () => {
+      const target = document.getElementById(element.dataset.copyTarget ?? "");
+      if (!target) return;
+      await navigator.clipboard.writeText(target.textContent?.trim() ?? "");
+      element.textContent = element.dataset.copiedLabel ?? "Copied";
+      window.setTimeout(() => {
+        element.textContent = element.dataset.copyLabel ?? "Copy";
+      }, 1800);
+    });
+  });
+</script>
