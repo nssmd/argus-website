@@ -5,8 +5,10 @@ const dist = path.resolve("dist");
 const pairs = [
   ["index.html", "zh.html"],
   ["how.html", "zh/how.html"],
+  ["projects.html", "zh/projects.html"],
   ["results.html", "zh/results.html"],
   ["research.html", "zh/research.html"],
+  ["get-started.html", "zh/get-started.html"],
   ["start.html", "zh/start.html"],
   ["use-cases.html", "zh/use-cases.html"],
 ];
@@ -86,6 +88,8 @@ for (const page of ["index.html", "zh.html"]) {
   );
   assert(html.includes('/assets/demos/argus-overview-90s.mp4'), `${page} lacks the 90-second overview video`);
   assert(html.includes('/assets/demos/argus-overview-90s-poster.webp'), `${page} lacks the overview poster`);
+  assert(html.includes("Argus: A General-Purpose Agentic Reasoning Runtime") || html.includes("面向长程任务的通用 Agentic Reasoning Runtime"), `${page} lacks the prominent technical report`);
+  assert(html.includes("https://arxiv.org/pdf/2608.05144"), `${page} lacks the direct technical-report PDF`);
   assert(!html.includes("Commercialization requires") && !html.includes("商业化前提"), `${page} still contains the removed commercialization-premise sentence`);
 }
 
@@ -93,7 +97,7 @@ assert(fs.existsSync(path.join(dist, "assets/demos/argus-overview-90s.mp4")), "m
 assert(fs.existsSync(path.join(dist, "assets/demos/argus-overview-90s-poster.webp")), "missing overview poster");
 
 const sitemap = read("sitemap.xml");
-assert((sitemap.match(/<url>/g) || []).length === 12, "sitemap.xml must list all 12 public pages");
+assert((sitemap.match(/<url>/g) || []).length === 16, "sitemap.xml must list all 16 public pages");
 assert(sitemap.includes("https://argusbot.cn/zh/start.html"), "sitemap.xml lacks the Chinese Get Started page");
 assert(!sitemap.includes("release.html"), "sitemap.xml still lists a release page");
 
@@ -104,6 +108,23 @@ for (const page of pairs.flat()) {
   assert(html.includes("https://arxiv.org/abs/2608.05144"), `${page} lacks the Argus paper link`);
   assert(html.includes("https://www.youtube.com/watch?v=i8Qy9HCboQE"), `${page} lacks the YouTube demo link`);
   assert(html.includes("https://github.com/lbx154/Argus"), `${page} lacks the Argus code link`);
+}
+
+for (const page of ["projects.html", "zh/projects.html"]) {
+  const html = read(page);
+  assert(html.includes("Argus AI Team"), `${page} lacks the team identity`);
+  assert(html.includes("microsoft/ArgusAgent"), `${page} lacks the official Argus repository`);
+  assert(html.includes("Argus-AiTeam/ace-2"), `${page} lacks ACE-2`);
+  assert(html.includes("Argus-AiTeam/ace-3"), `${page} lacks ACE-3`);
+  assert(html.includes("Argus-AiTeam/minimax-h3-mac"), `${page} lacks MiniMax-H3 for Mac`);
+}
+
+for (const page of ["get-started.html", "zh/get-started.html"]) {
+  const html = read(page);
+  assert(html.includes("docs/agent-install.md"), `${page} lacks the agent installation contract`);
+  assert(html.includes("argus doctor --deep --advisor auto"), `${page} lacks active diagnosis`);
+  assert(html.includes("GitHub Copilot CLI"), `${page} lacks the Copilot backend`);
+  assert(html.includes("microsoft/ArgusAgent"), `${page} lacks the official distribution link`);
 }
 
 for (const page of ["start.html", "zh/start.html"]) {

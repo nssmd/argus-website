@@ -16,13 +16,25 @@ const copy = locale === "zh" ? {
   heroLead: "给它一个研究目标。",
   heroEm: "它会边工作，边学习。",
   lede: "Argus 的 Life 7×24 持续运行：读资料、写代码、跑实验、检查证据，也从每一次成功、失败与改道中学习。经验会沉淀为 Memory、Skill、评测和过程数据，让系统不断进化，并扩展到从未见过的 OOD 任务。",
-  results: "看它做出了什么 →",
+  startNow: "开始使用 Argus →",
+  projects: "浏览团队项目 →",
+  results: "查看量化成绩",
   evolutionLink: "看自进化飞轮 ↓",
   projectLinksLabel: "项目链接",
   conceptLabel: "Argus 核心能力",
   heroConcepts: [["Life 学习", "7×24 工作，也从工作中学习"], ["OOD 扩展", "陌生任务触发新 Skill 与新工具"], ["上限不锁死", "横向跨域，纵向持续深入"]],
   metricLabel: "核心成绩",
   metrics: [["#6", "NVIDIA 全球排名"], ["2× #1", "B200 kernel"], ["H100 + B200", "超过 human SOTA"], ["79.77s", "8×H100 speedrun"], ["10", "精选研究论文"]],
+  reportEyebrow: "Technical Report · arXiv:2608.05144",
+  reportTitle: "Argus：面向长程任务的通用 Agentic Reasoning Runtime。",
+  reportBody: "这份说明性技术报告系统介绍 Argus 的 Driver–Harness 模型、四角色权责边界、持久化运行机制与跨软件工程、GPU、模型训练、芯片和科学任务的实证结果。",
+  reportFacts: [["27", "长期 campaigns"], ["1,548h", "累计运行时间"], ["95–99%", "自主工作 duty cycle"]],
+  reportRead: "阅读技术报告 →",
+  reportPdf: "打开 PDF ↗",
+  hubEyebrow: "Argus AI Team · Hub",
+  hubTitle: "使用系统、浏览项目、追溯证据。",
+  hubBody: "网站将团队的 runtime、工程项目、benchmark 与研究成果连接在一起。你可以从一次安装开始，也可以直接进入已经交付的项目和证据。",
+  hubCards: [["RUN", "开始使用 Argus", "沿用已有 Agent CLI，完成安装、doctor 检查和第一次真实运行。", "/get-started.html"], ["PROJECTS", "浏览团队项目", "查看 Argus、ACE、MiniMax-H3 与自主研究项目。", "/projects.html"], ["EVIDENCE", "查看成果与证据", "从 benchmark 数字进入代码、技术报告和研究材料。", "/results.html"]],
   overviewEyebrow: "90 秒概览",
   overviewTitle: "Argus 怎样持续做研究、验证结果并积累能力。",
   overviewBody: "从一个研究目标出发，Manager、Planner、Engineer 与 Reviewer 围绕证据持续协作；每轮结果再进入长期记忆、Skills 与评测。",
@@ -70,7 +82,8 @@ const copy = locale === "zh" ? {
   domains: [["QUANT", "量化因子研究", "读取市场、基本面与另类数据，提出因子、回测归因、排除泄漏，并随市场 regime 持续更新。"], ["LITERATURE", "文学研究与创作", "阅读语料、研究风格与叙事，在创作、批评和重写中沉淀可复用的审美判断。"], ["LEGAL", "法律研究", "持续检索法条、判例和司法辖区差异，构建论证并核验引用、时效与适用边界。"], ["PROOF", "数学证明", "围绕猜想搜索结构、证明与反例，调用形式化工具，并完整保留每次失败和转向。"], ["ENGINEERING", "工程实践", "面对新硬件、软件栈与约束，通过 profiling 和真实实验持续定位瓶颈、优化实现。"], ["SCIENCE", "科学研究", "从开放问题出发阅读前沿工作、提出假设、设计实验或仿真，让证据决定下一步。"]],
   ctaTitle: "从一个难题开始，让能力在真实研究中积累。",
   ctaBody: "每一轮研究都会留下可审计成果，并形成可复用的领域 Skills、Verifier、工具链与长期记忆。",
-  cta: "打开成绩墙 →",
+  cta: "开始使用 Argus →",
+  ctaProjects: "浏览团队项目 →",
 } : {
   title: "Argus — A Self-Evolving Research Agent",
   description: "Argus turns every research run into memory, skills, and evaluation signals, expanding into new OOD tasks while preserving the complete process behind scientific results.",
@@ -78,13 +91,25 @@ const copy = locale === "zh" ? {
   heroLead: "Give it a research objective.",
   heroEm: "It learns while it works.",
   lede: "Argus Life runs 24/7: reading, building, experimenting, and checking evidence—while learning from every success, failure, and pivot. Experience becomes memory, skills, evaluations, and process data, so the system keeps evolving into OOD work it has never seen before.",
-  results: "See what it has accomplished →",
+  startNow: "Get started with Argus →",
+  projects: "Explore team projects →",
+  results: "Measured results",
   evolutionLink: "See the evolution loop ↓",
   projectLinksLabel: "Project links",
   conceptLabel: "Core Argus capabilities",
   heroConcepts: [["Life learning", "Works 24/7 and learns from the work"], ["OOD expansion", "Novel tasks trigger new skills and tools"], ["Unfixed ceiling", "Expand across fields and deeper within them"]],
   metricLabel: "Selected results",
   metrics: [["#6", "NVIDIA global ranking"], ["2× #1", "B200 kernels"], ["H100 + B200", "Beyond human SOTA"], ["79.77s", "8×H100 speedrun"], ["10", "Selected papers"]],
+  reportEyebrow: "Technical report · arXiv:2608.05144",
+  reportTitle: "Argus: A General-Purpose Agentic Reasoning Runtime for Long-Horizon Tasks.",
+  reportBody: "The explanatory report presents the Driver–Harness model, the authority boundaries between four roles, the persistent runtime, and measured results across software engineering, GPUs, model training, chips, and scientific work.",
+  reportFacts: [["27", "long-running campaigns"], ["1,548h", "aggregate runtime"], ["95–99%", "autonomous duty cycle"]],
+  reportRead: "Read the technical report →",
+  reportPdf: "Open PDF ↗",
+  hubEyebrow: "Argus AI Team · Hub",
+  hubTitle: "Use the system. Explore the projects. Trace the evidence.",
+  hubBody: "The site connects the team's runtime, engineering projects, benchmarks, and research. Start with an installation or move directly into delivered projects and their evidence.",
+  hubCards: [["RUN", "Get started with Argus", "Reuse an Agent CLI, complete setup and doctor, then launch a first real run.", "/get-started.html"], ["PROJECTS", "Explore team projects", "Open Argus, ACE, MiniMax-H3, and autonomous research projects.", "/projects.html"], ["EVIDENCE", "Inspect results and evidence", "Move from benchmark claims to code, technical reports, and research artifacts.", "/results.html"]],
   overviewEyebrow: "90-second overview",
   overviewTitle: "How Argus sustains research, verifies results, and accumulates capability.",
   overviewBody: "Starting from one research objective, the Manager, Planner, Engineer, and Reviewer collaborate around evidence; each run then updates durable memory, skills, and evaluations.",
@@ -132,7 +157,8 @@ const copy = locale === "zh" ? {
   domains: [["QUANT", "Quant factor research", "Read market, fundamental, and alternative data; propose factors, backtest and attribute them, eliminate leakage, and adapt across regimes."], ["LITERATURE", "Literary research and creation", "Study corpora, style, and narrative, then compound aesthetic judgment through creation, critique, and revision."], ["LEGAL", "Legal research", "Continuously retrieve statutes, cases, and jurisdictional differences while checking citations, currency, and applicability."], ["PROOF", "Mathematical proof", "Search for structures, proofs, and counterexamples around a conjecture, use formal tools, and preserve every failure and pivot."], ["ENGINEERING", "Engineering practice", "Across unfamiliar hardware, software stacks, and constraints, use profiling and real experiments to diagnose and optimize systems."], ["SCIENCE", "Scientific research", "Read frontier work, form hypotheses, design experiments or simulations, and let the evidence choose the next move."]],
   ctaTitle: "Start with one hard problem and let capability accumulate through real research.",
   ctaBody: "Every research cycle leaves an auditable result and builds reusable domain skills, verifiers, toolchains, and durable memory.",
-  cta: "Open the results wall →",
+  cta: "Get started with Argus →",
+  ctaProjects: "Explore team projects →",
 };
 ---
 
@@ -149,13 +175,14 @@ const copy = locale === "zh" ? {
         <h2 class="hero-title">{copy.heroLead}<br /><em>{copy.heroEm}</em></h2>
         <p class="lede">{copy.lede}</p>
         <div class="hero-actions">
-          <a class="button primary" href={href("/results.html")}>{copy.results}</a>
-          <a class="button" href="#evolution">{copy.evolutionLink}</a>
+          <a class="button primary" href={href("/get-started.html")}>{copy.startNow}</a>
+          <a class="button" href={href("/projects.html")}>{copy.projects}</a>
         </div>
         <nav class="hero-project-links" aria-label={copy.projectLinksLabel}>
-          <a href="https://arxiv.org/abs/2608.05144" target="_blank" rel="noopener noreferrer">📄 Paper ↗</a>
+          <a href="https://arxiv.org/abs/2608.05144" target="_blank" rel="noopener noreferrer">📄 Technical report · arXiv:2608.05144 ↗</a>
           <a href="https://www.youtube.com/watch?v=i8Qy9HCboQE" target="_blank" rel="noopener noreferrer">🎬 Demo ↗</a>
           <a href="https://github.com/lbx154/Argus" target="_blank" rel="noopener noreferrer">💻 Code ↗</a>
+          <a href={href("/results.html")}>↗ {copy.results}</a>
         </nav>
         <div class="hero-thesis" aria-label={copy.conceptLabel}>
           {copy.heroConcepts.map(([title, body]) => <div><strong>{title}</strong><span>{body}</span></div>)}
@@ -171,6 +198,45 @@ const copy = locale === "zh" ? {
   <section class="metric-strip" aria-label={copy.metricLabel}>
     <div class="metric-grid">
       {copy.metrics.map(([value, label]) => <div class="metric"><strong>{value}</strong><span>{label}</span></div>)}
+    </div>
+  </section>
+
+  <section class="section technical-report-section">
+    <div class="shell">
+      <article class="technical-report-card">
+        <div class="technical-report-card__copy">
+          <p class="eyebrow">{copy.reportEyebrow}</p>
+          <h2>{copy.reportTitle}</h2>
+          <p>{copy.reportBody}</p>
+          <div class="hero-actions">
+            <a class="button primary" href="https://arxiv.org/abs/2608.05144" target="_blank" rel="noopener noreferrer">{copy.reportRead}</a>
+            <a class="button" href="https://arxiv.org/pdf/2608.05144" target="_blank" rel="noopener noreferrer">{copy.reportPdf}</a>
+          </div>
+        </div>
+        <div class="technical-report-card__facts">
+          {copy.reportFacts.map(([value, label]) => <div><strong>{value}</strong><span>{label}</span></div>)}
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section home-hub">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">{copy.hubEyebrow}</p>
+        <h2>{copy.hubTitle}</h2>
+        <p>{copy.hubBody}</p>
+      </div>
+      <div class="hub-grid">
+        {copy.hubCards.map(([badge, title, body, target]) => (
+          <a class="hub-card" href={href(target)}>
+            <span>{badge}</span>
+            <h3>{title}</h3>
+            <p>{body}</p>
+            <i aria-hidden="true">→</i>
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 
@@ -330,7 +396,8 @@ const copy = locale === "zh" ? {
         <h2>{copy.ctaTitle}</h2>
         <p>{copy.ctaBody}</p>
         <div class="hero-actions">
-          <a class="button primary" href={href("/results.html")}>{copy.cta}</a>
+          <a class="button primary" href={href("/get-started.html")}>{copy.cta}</a>
+          <a class="button" href={href("/projects.html")}>{copy.ctaProjects}</a>
         </div>
       </div>
     </div>

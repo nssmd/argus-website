@@ -9,20 +9,22 @@ const copy = locale === "zh" ? {
   nav: "主导航",
   light: "切换到白天模式",
   dark: "切换到黑夜模式",
-  links: ["首页", "成绩", "研究", "原理", "场景", "演示"],
+  start: "开始使用",
+  links: ["首页", "项目", "成绩", "研究", "原理", "演示"],
 } : {
   home: "Argus home",
   nav: "Main navigation",
   light: "Switch to light mode",
   dark: "Switch to dark mode",
-  links: ["Home", "Results", "Research", "How it works", "Use cases", "Demo"],
+  start: "Get started",
+  links: ["Home", "Projects", "Results", "Research", "How it works", "Demo"],
 };
 const links = [
   { href: "/", label: copy.links[0] },
-  { href: "/results.html", label: copy.links[1] },
-  { href: "/research.html", label: copy.links[2] },
-  { href: "/how.html", label: copy.links[3] },
-  { href: "/use-cases.html", label: copy.links[4] },
+  { href: "/projects.html", label: copy.links[1] },
+  { href: "/results.html", label: copy.links[2] },
+  { href: "/research.html", label: copy.links[3] },
+  { href: "/how.html", label: copy.links[4] },
   { href: "/start.html", label: copy.links[5] },
 ];
 const localized = (href: string) => pathForLocale(href, locale);
@@ -42,6 +44,7 @@ const currentBase = pathForLocale(path, "en");
         </a>
       ))}
     </nav>
+    <a class="site-start" href={localized("/get-started.html")} aria-current={currentBase === "/get-started.html" ? "page" : undefined}>{copy.start}</a>
     <nav class="language-switcher" aria-label="Language">
       <a href={pathForLocale(path, "en")} hreflang="en" lang="en" aria-current={locale === "en" ? "page" : undefined}>EN</a>
       <span aria-hidden="true">/</span>
