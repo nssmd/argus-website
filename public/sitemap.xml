@@ -64,6 +64,16 @@
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/use-cases.html" />
   </url>
   <url>
+    <loc>https://argusbot.cn/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/contact.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/contact.html" />
+  </url>
+  <url>
+    <loc>https://argusbot.cn/zh/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/contact.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/contact.html" />
+  </url>
+  <url>
     <loc>https://argusbot.cn/get-started.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/get-started.html" />
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/get-started.html" />

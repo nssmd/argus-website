@@ -1902,6 +1902,171 @@ main {
   margin-top: 20px;
 }
 
+.team-member-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.team-member-card {
+  display: flex;
+  min-height: 470px;
+  flex-direction: column;
+  padding: 25px;
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  background:
+    radial-gradient(circle at 100% 0, color-mix(in srgb, var(--blue) 12%, transparent), transparent 17rem),
+    var(--surface-raised);
+  box-shadow: var(--shadow);
+}
+
+.team-member-card:nth-child(4n + 2),
+.team-member-card:nth-child(4n + 3) {
+  background:
+    radial-gradient(circle at 100% 0, color-mix(in srgb, var(--gold) 15%, transparent), transparent 17rem),
+    var(--surface-raised);
+}
+
+.team-member-card__identity {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.team-member-card__identity img {
+  flex: none;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+}
+
+.team-member-card__identity h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.team-member-card__identity a {
+  display: inline-block;
+  margin-top: 3px;
+  color: var(--blue);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.team-member-card__bio {
+  min-height: 72px;
+  margin: 22px 0 0;
+  color: var(--ink-2);
+  font-size: 13px;
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
+.team-member-card__bio.empty {
+  color: var(--faint);
+  font-style: italic;
+}
+
+.team-member-card__meta {
+  display: flex;
+  gap: 7px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.team-member-card__meta span {
+  padding: 5px 8px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--muted);
+  background: var(--surface-soft);
+  font-family: var(--mono);
+  font-size: 9px;
+}
+
+.team-member-card__stats {
+  display: flex;
+  gap: 18px;
+  margin-top: 17px;
+  color: var(--faint);
+  font-family: var(--mono);
+  font-size: 9px;
+}
+
+.team-member-card__stats strong {
+  color: var(--ink);
+  font-size: 12px;
+}
+
+.team-member-card__contact {
+  display: grid;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.team-member-card__contact a {
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-soft);
+  text-decoration: none;
+}
+
+.team-member-card__contact span,
+.team-member-card__contact strong {
+  display: block;
+}
+
+.team-member-card__contact span {
+  color: var(--faint);
+  font-family: var(--mono);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.team-member-card__contact strong {
+  margin-top: 3px;
+  overflow: hidden;
+  color: var(--blue);
+  font-family: var(--mono);
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.team-member-card__github {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: var(--blue);
+  color: var(--on-accent);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.team-member-card__github i {
+  font-size: 14px;
+  font-style: normal;
+}
+
+.team-member-card__github:hover {
+  background: var(--blue-dark);
+}
+
 .evolution-loop {
   margin-top: 26px;
   overflow: hidden;
@@ -3432,6 +3597,7 @@ main {
   .project-grid,
   .platform-grid,
   .technical-report-card,
+  .team-member-grid,
   .architecture,
   .process-data-grid,
   .paper-grid {

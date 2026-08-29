@@ -1,0 +1,117 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { teamMembers } from "../data/team";
+import { localeFromPath, pathForLocale } from "../i18n";
+
+const locale = localeFromPath(Astro.url.pathname);
+const href = (path: string) => pathForLocale(path, locale);
+const copy = locale === "zh" ? {
+  title: "Contact Us · Argus AI Team",
+  description: "认识 Argus AI Team 成员，并通过公开的 GitHub、邮箱和个人网站联系我们。",
+  eyebrow: "Argus AI Team · Contact",
+  hero: "认识构建 Argus 的成员。",
+  lede: "这里展示成员在 GitHub 上公开的个人资料。你可以直接访问个人主页、公开邮箱或网站，与具体成员取得联系。",
+  organization: "访问团队 GitHub ↗",
+  project: "查看团队项目 →",
+  membersTitle: "团队成员",
+  membersBody: "Bio、邮箱、网站、组织和位置均来自各成员当前公开的 GitHub Profile；未公开的信息不会被推断或补充。",
+  noBio: "GitHub 暂未公开 Bio。",
+  publicEmail: "公开邮箱",
+  website: "个人网站",
+  github: "打开 GitHub Profile",
+  repos: "公开仓库",
+  followers: "Followers",
+  contactTitle: "关于项目、合作或问题反馈",
+  contactBody: "项目问题优先通过 GitHub Issue 留下可追踪上下文；成员相关交流可使用卡片中的公开联系方式。",
+  issues: "前往 Argus Issues ↗",
+  start: "开始使用 Argus →",
+} : {
+  title: "Contact Us · Argus AI Team",
+  description: "Meet the Argus AI Team and contact members through their public GitHub profiles, email addresses, and websites.",
+  eyebrow: "Argus AI Team · Contact",
+  hero: "Meet the people building Argus.",
+  lede: "This page presents information members publish on GitHub. Open a profile, use a public email address, or visit a personal website to reach the right person directly.",
+  organization: "Visit the team on GitHub ↗",
+  project: "Explore team projects →",
+  membersTitle: "Team members",
+  membersBody: "Bios, emails, websites, affiliations, and locations come from each member's current public GitHub profile. Information that is not public is not inferred or added.",
+  noBio: "No public GitHub bio.",
+  publicEmail: "Public email",
+  website: "Website",
+  github: "Open GitHub profile",
+  repos: "public repos",
+  followers: "followers",
+  contactTitle: "Projects, collaboration, and support",
+  contactBody: "Use a GitHub Issue when a project question benefits from shared, traceable context. For member-specific conversations, use the public contact details in each card.",
+  issues: "Open Argus Issues ↗",
+  start: "Get started with Argus →",
+};
+---
+
+<SiteLayout title={copy.title} description={copy.description}>
+  <section class="page-hero compact contact-hero">
+    <div class="shell">
+      <p class="eyebrow">{copy.eyebrow}</p>
+      <h1>{copy.hero}</h1>
+      <p class="lede">{copy.lede}</p>
+      <div class="hero-actions">
+        <a class="button primary" href="https://github.com/Argus-AiTeam" target="_blank" rel="noopener noreferrer">{copy.organization}</a>
+        <a class="button" href={href("/projects.html")}>{copy.project}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tight">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">People</p>
+        <h2>{copy.membersTitle}</h2>
+        <p>{copy.membersBody}</p>
+      </div>
+      <div class="team-member-grid">
+        {teamMembers.map((member) => (
+          <article class="team-member-card">
+            <div class="team-member-card__identity">
+              <img src={member.avatar} width="72" height="72" loading="lazy" alt="" />
+              <div>
+                <h3>{member.name ?? member.login}</h3>
+                <a href={member.profile} target="_blank" rel="noopener noreferrer">@{member.login}</a>
+              </div>
+            </div>
+            <p class:list={["team-member-card__bio", { empty: !member.bio }]}>{member.bio ?? copy.noBio}</p>
+            {(member.company || member.location) && (
+              <div class="team-member-card__meta">
+                {member.company && <span>{member.company}</span>}
+                {member.location && <span>{member.location}</span>}
+              </div>
+            )}
+            <div class="team-member-card__stats">
+              <span><strong>{member.publicRepos}</strong> {copy.repos}</span>
+              <span><strong>{member.followers}</strong> {copy.followers}</span>
+            </div>
+            <div class="team-member-card__contact">
+              {member.email && <a href={`mailto:${member.email}`}><span>{copy.publicEmail}</span><strong>{member.email}</strong></a>}
+              {member.website && <a href={member.website} target="_blank" rel="noopener noreferrer"><span>{copy.website}</span><strong>{new URL(member.website).hostname}</strong></a>}
+            </div>
+            <a class="team-member-card__github" href={member.profile} target="_blank" rel="noopener noreferrer">
+              <span>{copy.github}</span><i aria-hidden="true">↗</i>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="cta-band">
+        <h2>{copy.contactTitle}</h2>
+        <p>{copy.contactBody}</p>
+        <div class="hero-actions">
+          <a class="button primary" href="https://github.com/microsoft/ArgusAgent/issues" target="_blank" rel="noopener noreferrer">{copy.issues}</a>
+          <a class="button" href={href("/get-started.html")}>{copy.start}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</SiteLayout>
