@@ -145,9 +145,19 @@ for (const page of ["contact.html", "zh/contact.html"]) {
     assert(html.includes(`github.com/${login}`), `${page} lacks ${login}`);
   }
   assert(html.includes("mailto:sufeng_guo@smail.nju.edu.cn"), `${page} lacks aHappend's public email`);
+  assert(html.includes("mailto:hapouterwall@gmail.com"), `${page} lacks aHappend's public README email`);
+  assert(html.includes("mailto:sufeng_guo@qq.com"), `${page} lacks aHappend's public README email`);
   assert(html.includes("mailto:chenxxxxxx@mail.nwpu.edu.cn"), `${page} lacks Chenxxxxxx06's public email`);
+  assert(html.includes("mailto:3653448612@qq.com"), `${page} lacks Chenxxxxxx06's public README email`);
   assert(html.includes("mailto:lbxhaixing154@sjtu.edu.cn"), `${page} lacks lbx154's public email`);
+  assert(html.includes("mailto:2581235653@sjtu.edu.cn"), `${page} lacks nssmd's public README email`);
+  assert(html.includes("mailto:fanyj28@mail2.sysu.edu.cn"), `${page} lacks waltstephen's public README email`);
+  assert(!html.includes("team-member-card__bio"), `${page} still exposes member bios`);
+  assert(!html.includes("team-member-card__stats"), `${page} still exposes profile statistics`);
+  assert(html.includes("/assets/argus-wechat-group-2.jpg"), `${page} lacks the WeChat community QR code`);
 }
+
+assert(fs.existsSync(path.join(dist, "assets/argus-wechat-group-2.jpg")), "missing WeChat community QR code");
 
 for (const page of ["start.html", "zh/start.html"]) {
   const html = read(page);
