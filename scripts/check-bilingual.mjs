@@ -90,6 +90,9 @@ for (const page of ["index.html", "zh.html"]) {
   assert(html.includes('/assets/demos/argus-overview-90s-poster.webp'), `${page} lacks the overview poster`);
   assert(html.includes("Argus: A General-Purpose Agentic Reasoning Runtime") || html.includes("面向长程任务的通用 Agentic Reasoning Runtime"), `${page} lacks the prominent technical report`);
   assert(html.includes("https://arxiv.org/pdf/2608.05144"), `${page} lacks the direct technical-report PDF`);
+  assert(html.includes('class="resource-gateway__grid"'), `${page} lacks the primary resource gateway`);
+  assert(html.includes("https://github.com/Argus-AiTeam"), `${page} lacks the prominent team repository link`);
+  assert(html.includes("https://github.com/microsoft/ArgusAgent"), `${page} lacks the prominent official repository link`);
   assert(!html.includes("Commercialization requires") && !html.includes("商业化前提"), `${page} still contains the removed commercialization-premise sentence`);
 }
 
@@ -117,6 +120,7 @@ for (const page of ["projects.html", "zh/projects.html"]) {
   assert(html.includes("Argus-AiTeam/ace-2"), `${page} lacks ACE-2`);
   assert(html.includes("Argus-AiTeam/ace-3"), `${page} lacks ACE-3`);
   assert(html.includes("Argus-AiTeam/minimax-h3-mac"), `${page} lacks MiniMax-H3 for Mac`);
+  assert(html.includes("Open GitHub repository") || html.includes("打开 GitHub 仓库"), `${page} lacks prominent repository actions`);
 }
 
 for (const page of ["get-started.html", "zh/get-started.html"]) {

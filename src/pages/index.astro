@@ -20,11 +20,19 @@ const copy = locale === "zh" ? {
   projects: "浏览团队项目 →",
   results: "查看量化成绩",
   evolutionLink: "看自进化飞轮 ↓",
-  projectLinksLabel: "项目链接",
   conceptLabel: "Argus 核心能力",
   heroConcepts: [["Life 学习", "7×24 工作，也从工作中学习"], ["OOD 扩展", "陌生任务触发新 Skill 与新工具"], ["上限不锁死", "横向跨域，纵向持续深入"]],
   metricLabel: "核心成绩",
   metrics: [["#6", "NVIDIA 全球排名"], ["2× #1", "B200 kernel"], ["H100 + B200", "超过 human SOTA"], ["79.77s", "8×H100 speedrun"], ["10", "精选研究论文"]],
+  resourcesEyebrow: "核心入口",
+  resourcesTitle: "代码、技术报告与团队项目，一步直达。",
+  resourcesBody: "这些不是附属链接，而是理解、使用和验证 Argus 的主要入口。",
+  resourceLinks: [
+    ["CODE", "Argus 核心仓库", "源码、安装文档、Issue 与最新 Preview 都集中在这里。", "打开 GitHub 仓库 ↗", "https://github.com/lbx154/Argus"],
+    ["REPORT", "Argus 技术报告", "系统理解 Driver–Harness 模型、四角色边界与跨领域实证结果。", "阅读 arXiv:2608.05144 ↗", "https://arxiv.org/abs/2608.05144"],
+    ["OFFICIAL", "官方发行仓库", "访问 Microsoft 维护的 ArgusAgent 官方发行与同步更新。", "打开 microsoft/ArgusAgent ↗", "https://github.com/microsoft/ArgusAgent"],
+    ["TEAM", "Argus AI Team", "浏览团队公开的 Agent、芯片、模型部署与自主研究项目。", "访问团队 GitHub ↗", "https://github.com/Argus-AiTeam"],
+  ],
   reportEyebrow: "Technical Report · arXiv:2608.05144",
   reportTitle: "Argus：面向长程任务的通用 Agentic Reasoning Runtime。",
   reportBody: "这份说明性技术报告系统介绍 Argus 的 Driver–Harness 模型、四角色权责边界、持久化运行机制与跨软件工程、GPU、模型训练、芯片和科学任务的实证结果。",
@@ -95,11 +103,19 @@ const copy = locale === "zh" ? {
   projects: "Explore team projects →",
   results: "Measured results",
   evolutionLink: "See the evolution loop ↓",
-  projectLinksLabel: "Project links",
   conceptLabel: "Core Argus capabilities",
   heroConcepts: [["Life learning", "Works 24/7 and learns from the work"], ["OOD expansion", "Novel tasks trigger new skills and tools"], ["Unfixed ceiling", "Expand across fields and deeper within them"]],
   metricLabel: "Selected results",
   metrics: [["#6", "NVIDIA global ranking"], ["2× #1", "B200 kernels"], ["H100 + B200", "Beyond human SOTA"], ["79.77s", "8×H100 speedrun"], ["10", "Selected papers"]],
+  resourcesEyebrow: "Primary destinations",
+  resourcesTitle: "Code, technical report, and team projects—one step away.",
+  resourcesBody: "These are not secondary links. They are the main paths for understanding, using, and verifying Argus.",
+  resourceLinks: [
+    ["CODE", "Argus core repository", "Source, installation docs, issues, and the latest preview live here.", "Open the GitHub repository ↗", "https://github.com/lbx154/Argus"],
+    ["REPORT", "Argus technical report", "Understand the Driver–Harness model, four-role boundaries, and cross-domain evidence.", "Read arXiv:2608.05144 ↗", "https://arxiv.org/abs/2608.05144"],
+    ["OFFICIAL", "Official release repository", "Open the Microsoft-maintained ArgusAgent release and synchronized updates.", "Open microsoft/ArgusAgent ↗", "https://github.com/microsoft/ArgusAgent"],
+    ["TEAM", "Argus AI Team", "Explore the team's public agent, chip, model-deployment, and research projects.", "Visit the team on GitHub ↗", "https://github.com/Argus-AiTeam"],
+  ],
   reportEyebrow: "Technical report · arXiv:2608.05144",
   reportTitle: "Argus: A General-Purpose Agentic Reasoning Runtime for Long-Horizon Tasks.",
   reportBody: "The explanatory report presents the Driver–Harness model, the authority boundaries between four roles, the persistent runtime, and measured results across software engineering, GPUs, model training, chips, and scientific work.",
@@ -178,17 +194,31 @@ const copy = locale === "zh" ? {
           <a class="button primary" href={href("/get-started.html")}>{copy.startNow}</a>
           <a class="button" href={href("/projects.html")}>{copy.projects}</a>
         </div>
-        <nav class="hero-project-links" aria-label={copy.projectLinksLabel}>
-          <a href="https://arxiv.org/abs/2608.05144" target="_blank" rel="noopener noreferrer">📄 Technical report · arXiv:2608.05144 ↗</a>
-          <a href="https://www.youtube.com/watch?v=i8Qy9HCboQE" target="_blank" rel="noopener noreferrer">🎬 Demo ↗</a>
-          <a href="https://github.com/lbx154/Argus" target="_blank" rel="noopener noreferrer">💻 Code ↗</a>
-          <a href={href("/results.html")}>↗ {copy.results}</a>
-        </nav>
         <div class="hero-thesis" aria-label={copy.conceptLabel}>
           {copy.heroConcepts.map(([title, body]) => <div><strong>{title}</strong><span>{body}</span></div>)}
         </div>
       </div>
       <ResearchField locale={locale} />
+    </div>
+  </section>
+
+  <section class="section resource-gateway">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">{copy.resourcesEyebrow}</p>
+        <h2>{copy.resourcesTitle}</h2>
+        <p>{copy.resourcesBody}</p>
+      </div>
+      <div class="resource-gateway__grid">
+        {copy.resourceLinks.map(([badge, title, body, action, target], index) => (
+          <a class={`resource-link-card tone-${index % 2}`} href={target} target="_blank" rel="noopener noreferrer">
+            <span>{badge}</span>
+            <h3>{title}</h3>
+            <p>{body}</p>
+            <strong>{action}</strong>
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 

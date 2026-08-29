@@ -324,6 +324,12 @@ input {
   color: var(--ink);
 }
 
+.site-nav .site-nav__external {
+  color: var(--blue);
+  font-family: var(--mono);
+  font-size: 11px;
+}
+
 .site-start {
   color: var(--blue);
   font-size: 12px;
@@ -1334,6 +1340,85 @@ main {
   padding-top: 72px;
 }
 
+.resource-gateway {
+  padding-top: 58px;
+  padding-bottom: 42px;
+}
+
+.resource-gateway__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.resource-link-card {
+  position: relative;
+  display: flex;
+  min-height: 275px;
+  flex-direction: column;
+  padding: 28px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--blue) 38%, var(--line));
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 100% 0, color-mix(in srgb, var(--blue) 18%, transparent), transparent 19rem),
+    var(--surface-raised);
+  box-shadow: var(--shadow);
+  text-decoration: none;
+}
+
+.resource-link-card.tone-1 {
+  border-color: color-mix(in srgb, var(--gold) 46%, var(--line));
+  background:
+    radial-gradient(circle at 100% 0, color-mix(in srgb, var(--gold) 22%, transparent), transparent 19rem),
+    var(--surface-raised);
+}
+
+.resource-link-card > span {
+  color: var(--blue);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.resource-link-card.tone-1 > span {
+  color: var(--gold-dark);
+}
+
+.resource-link-card h3 {
+  max-width: 460px;
+  margin: 45px 0 10px;
+  font-family: var(--serif);
+  font-size: clamp(25px, 3vw, 34px);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.resource-link-card p {
+  max-width: 520px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.resource-link-card strong {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 24px;
+  color: var(--blue);
+  font-family: var(--mono);
+  font-size: 11px;
+}
+
+.resource-link-card:hover {
+  border-color: var(--blue);
+  transform: translateY(-2px);
+}
+
 .technical-report-section {
   padding-bottom: 24px;
 }
@@ -1529,18 +1614,6 @@ main {
   font-size: 14px;
 }
 
-.project-card__credit {
-  width: fit-content;
-  margin: 13px 0 -5px;
-  padding: 4px 7px;
-  border-radius: 5px;
-  background: var(--gold-soft);
-  color: var(--gold-dark);
-  font-family: var(--mono);
-  font-size: 9px;
-  font-weight: 700;
-}
-
 .project-card__outcome {
   margin-top: 22px;
   padding: 16px;
@@ -1588,19 +1661,42 @@ main {
 }
 
 .project-card__links {
-  display: flex;
-  gap: 16px;
+  display: grid;
+  gap: 8px;
   margin-top: auto;
   padding-top: 22px;
-  flex-wrap: wrap;
 }
 
 .project-card__links a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 13px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
   color: var(--blue);
+  background: var(--surface-soft);
   font-family: var(--mono);
   font-size: 10px;
   font-weight: 700;
-  text-underline-offset: 3px;
+  text-decoration: none;
+}
+
+.project-card__links a.primary {
+  border-color: var(--blue);
+  background: var(--blue);
+  color: var(--on-accent);
+}
+
+.project-card__links a:hover {
+  border-color: var(--gold);
+  transform: translateX(2px);
+}
+
+.project-card__links i {
+  font-size: 14px;
+  font-style: normal;
 }
 
 .team-band {
@@ -3332,6 +3428,7 @@ main {
   .card-grid,
   .card-grid.four,
   .hub-grid,
+  .resource-gateway__grid,
   .project-grid,
   .platform-grid,
   .technical-report-card,

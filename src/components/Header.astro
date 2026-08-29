@@ -10,14 +10,14 @@ const copy = locale === "zh" ? {
   light: "切换到白天模式",
   dark: "切换到黑夜模式",
   start: "开始使用",
-  links: ["首页", "项目", "成绩", "研究", "原理", "演示"],
+  links: ["首页", "项目", "成绩", "研究", "原理", "演示", "GitHub ↗"],
 } : {
   home: "Argus home",
   nav: "Main navigation",
   light: "Switch to light mode",
   dark: "Switch to dark mode",
   start: "Get started",
-  links: ["Home", "Projects", "Results", "Research", "How it works", "Demo"],
+  links: ["Home", "Projects", "Results", "Research", "How it works", "Demo", "GitHub ↗"],
 };
 const links = [
   { href: "/", label: copy.links[0] },
@@ -26,6 +26,7 @@ const links = [
   { href: "/research.html", label: copy.links[3] },
   { href: "/how.html", label: copy.links[4] },
   { href: "/start.html", label: copy.links[5] },
+  { href: "https://github.com/Argus-AiTeam", label: copy.links[6], external: true },
 ];
 const localized = (href: string) => pathForLocale(href, locale);
 const currentBase = pathForLocale(path, "en");
@@ -39,7 +40,13 @@ const currentBase = pathForLocale(path, "en");
     </a>
     <nav class="site-nav" aria-label={copy.nav}>
       {links.map((link) => (
-        <a href={localized(link.href)} aria-current={currentBase === link.href ? "page" : undefined}>
+        <a
+          href={link.external ? link.href : localized(link.href)}
+          aria-current={!link.external && currentBase === link.href ? "page" : undefined}
+          target={link.external ? "_blank" : undefined}
+          rel={link.external ? "noopener noreferrer" : undefined}
+          class={link.external ? "site-nav__external" : undefined}
+        >
           {link.label}
         </a>
       ))}
