@@ -59,8 +59,8 @@ export const projects: Project[] = [
       zh: "13,914/13,914 条命令通过，0.614 mm²、62,283 cells，SKY130 100 MHz。",
     },
     credit: {
-      en: "Personally led by lbx154",
-      zh: "由 lbx154 个人主导",
+      en: "Led by aHappend",
+      zh: "由 aHappend 主导",
     },
     technologies: ["SystemVerilog", "W4A8", "SKY130", "RTL"],
     links: [
@@ -81,8 +81,8 @@ export const projects: Project[] = [
       zh: "已验证 24 层级联，并持续推进混合精度加速器路线。",
     },
     credit: {
-      en: "Personally led by lbx154",
-      zh: "由 lbx154 个人主导",
+      en: "Led by aHappend",
+      zh: "由 aHappend 主导",
     },
     technologies: ["Python", "SystemVerilog", "AWQ W4A16", "Hybrid RTL"],
     links: [
