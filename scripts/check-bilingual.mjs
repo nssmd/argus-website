@@ -4,6 +4,7 @@ import path from "node:path";
 const dist = path.resolve("dist");
 const pairs = [
   ["index.html", "zh.html"],
+  ["contact.html", "zh/contact.html"],
   ["how.html", "zh/how.html"],
   ["projects.html", "zh/projects.html"],
   ["results.html", "zh/results.html"],
@@ -39,9 +40,15 @@ for (const [englishPath, chinesePath] of pairs) {
   assert(english.includes("data-theme-toggle"), `${englishPath} lacks theme toggle`);
   assert(chinese.includes("data-theme-toggle"), `${chinesePath} lacks theme toggle`);
   assert(english.includes("argus-site-theme"), `${englishPath} lacks theme persistence`);
-  const visibleEnglish = english
+  let visibleEnglish = english
     .replace(/<script[\s\S]*?<\/script>/g, "")
     .replace(/中/g, "");
+  if (englishPath === "contact.html") {
+    visibleEnglish = visibleEnglish.replace(
+      /<article class="team-member-card">[\s\S]*?<\/article>/g,
+      "",
+    );
+  }
   assert(!/[\u3400-\u9fff]/.test(visibleEnglish), `${englishPath} leaks Chinese visible copy`);
   assert(/[\u3400-\u9fff]/.test(chinese), `${chinesePath} lacks Chinese copy`);
   assert(!english.includes("argus-mark-gold.png"), `${englishPath} still uses the legacy mark`);
@@ -100,7 +107,7 @@ assert(fs.existsSync(path.join(dist, "assets/demos/argus-overview-90s.mp4")), "m
 assert(fs.existsSync(path.join(dist, "assets/demos/argus-overview-90s-poster.webp")), "missing overview poster");
 
 const sitemap = read("sitemap.xml");
-assert((sitemap.match(/<url>/g) || []).length === 16, "sitemap.xml must list all 16 public pages");
+assert((sitemap.match(/<url>/g) || []).length === 18, "sitemap.xml must list all 18 public pages");
 assert(sitemap.includes("https://argusbot.cn/zh/start.html"), "sitemap.xml lacks the Chinese Get Started page");
 assert(!sitemap.includes("release.html"), "sitemap.xml still lists a release page");
 
@@ -129,6 +136,17 @@ for (const page of ["get-started.html", "zh/get-started.html"]) {
   assert(html.includes("argus doctor --deep --advisor auto"), `${page} lacks active diagnosis`);
   assert(html.includes("GitHub Copilot CLI"), `${page} lacks the Copilot backend`);
   assert(html.includes("microsoft/ArgusAgent"), `${page} lacks the official distribution link`);
+}
+
+for (const page of ["contact.html", "zh/contact.html"]) {
+  const html = read(page);
+  assert((html.match(/class="team-member-card"/g) || []).length === 8, `${page} must show all eight team members`);
+  for (const login of ["aHappend", "Chenxxxxxx06", "lbx154", "nssmd", "racoonykc", "Silentmoonlight", "waltstephen", "zhxianlucky"]) {
+    assert(html.includes(`github.com/${login}`), `${page} lacks ${login}`);
+  }
+  assert(html.includes("mailto:sufeng_guo@smail.nju.edu.cn"), `${page} lacks aHappend's public email`);
+  assert(html.includes("mailto:chenxxxxxx@mail.nwpu.edu.cn"), `${page} lacks Chenxxxxxx06's public email`);
+  assert(html.includes("mailto:lbxhaixing154@sjtu.edu.cn"), `${page} lacks lbx154's public email`);
 }
 
 for (const page of ["start.html", "zh/start.html"]) {
