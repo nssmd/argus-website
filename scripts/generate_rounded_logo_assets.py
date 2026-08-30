@@ -35,10 +35,7 @@ def extract_svg_sources(archive: Path, output_dir: Path) -> dict[str, Path]:
         for key, relative in mapping.items():
             source = bundle.read(f"{ARCHIVE_ROOT}/{relative}").decode("utf-8")
             target = output_dir / f"argus-{key}.svg"
-            if key == "mark-rounded-small":
-                target.write_text(source.replace("#000000", "#073e8c"), encoding="utf-8")
-            else:
-                recolor_svg(source, target)
+            recolor_svg(source, target)
             result[key] = target
     return result
 
@@ -54,26 +51,11 @@ def _recolor(image: Image.Image, color: tuple[int, int, int]) -> Image.Image:
     return result
 
 
-def _gradient_mark(image: Image.Image) -> Image.Image:
-    width, height = image.size
-    alpha = image.getchannel("A")
-    start = (7, 95, 228)
-    end = (217, 154, 22)
-    gradient = Image.new("RGBA", image.size)
-    pixels = gradient.load()
-    for y in range(height):
-        for x in range(width):
-            amount = (x + y) / max(1, width + height - 2)
-            color = tuple(round(a + (b - a) * amount) for a, b in zip(start, end))
-            pixels[x, y] = (*color, alpha.getpixel((x, y)))
-    return gradient
-
-
 def _og_image(base: Image.Image, mark: Image.Image) -> Image.Image:
     canvas = base.convert("RGB").copy()
     draw = ImageDraw.Draw(canvas)
     draw.rectangle((78, 62, 142, 126), fill="#ffffff")
-    rounded_mark = _gradient_mark(mark.resize((52, 52), Image.Resampling.LANCZOS))
+    rounded_mark = _recolor(mark.resize((52, 52), Image.Resampling.LANCZOS), (0, 0, 0))
     canvas.paste(rounded_mark, (84, 68), rounded_mark)
     return canvas
 
@@ -84,13 +66,13 @@ def generate_assets(archive: Path, sidecar: Path, output_dir: Path) -> None:
     extract_svg_sources(archive, output_dir)
     with zipfile.ZipFile(archive) as bundle:
         mark_256 = _read_png(bundle, "png/marks/argus-mark-256.png")
-        gradient = _gradient_mark(mark_256)
-        gradient.save(output_dir / "argus-mark-gold.png", optimize=True)
+        monochrome = _recolor(mark_256, (0, 0, 0))
+        monochrome.save(output_dir / "argus-mark-gold.png", optimize=True)
 
         favicon_layers = []
         for size in (16, 32, 48):
             layer = _read_png(bundle, f"png/marks/argus-mark-{size}.png")
-            favicon_layers.append(_recolor(layer, (7, 62, 140)))
+            favicon_layers.append(_recolor(layer, (0, 0, 0)))
         favicon_path = output_dir / "argus-mark-rounded-favicon.ico"
         favicon_layers[-1].save(
             favicon_path,
