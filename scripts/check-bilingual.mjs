@@ -7,6 +7,10 @@ const pairs = [
   ["contact.html", "zh/contact.html"],
   ["how.html", "zh/how.html"],
   ["projects.html", "zh/projects.html"],
+  ["projects/runtime.html", "zh/projects/runtime.html"],
+  ["projects/hardware.html", "zh/projects/hardware.html"],
+  ["projects/model.html", "zh/projects/model.html"],
+  ["projects/research.html", "zh/projects/research.html"],
   ["results.html", "zh/results.html"],
   ["research.html", "zh/research.html"],
   ["get-started.html", "zh/get-started.html"],
@@ -107,7 +111,7 @@ assert(fs.existsSync(path.join(dist, "assets/demos/argus-overview-90s.mp4")), "m
 assert(fs.existsSync(path.join(dist, "assets/demos/argus-overview-90s-poster.webp")), "missing overview poster");
 
 const sitemap = read("sitemap.xml");
-assert((sitemap.match(/<url>/g) || []).length === 18, "sitemap.xml must list all 18 public pages");
+assert((sitemap.match(/<url>/g) || []).length === 26, "sitemap.xml must list all 26 public pages");
 assert(sitemap.includes("https://argusbot.cn/zh/start.html"), "sitemap.xml lacks the Chinese Get Started page");
 assert(!sitemap.includes("release.html"), "sitemap.xml still lists a release page");
 
@@ -123,11 +127,20 @@ for (const page of pairs.flat()) {
 for (const page of ["projects.html", "zh/projects.html"]) {
   const html = read(page);
   assert(html.includes("Argus AI Team"), `${page} lacks the team identity`);
-  assert(html.includes("microsoft/ArgusAgent"), `${page} lacks the official Argus repository`);
-  assert(html.includes("Argus-AiTeam/ace-2"), `${page} lacks ACE-2`);
-  assert(html.includes("Argus-AiTeam/ace-3"), `${page} lacks ACE-3`);
-  assert(html.includes("Argus-AiTeam/minimax-h3-mac"), `${page} lacks MiniMax-H3 for Mac`);
-  assert(html.includes("Open GitHub repository") || html.includes("打开 GitHub 仓库"), `${page} lacks prominent repository actions`);
+  for (const domain of ["runtime", "hardware", "model", "research"]) {
+    assert(html.includes(`/projects/${domain}.html`), `${page} lacks the ${domain} domain entry`);
+  }
+  assert((html.match(/class="project-domain-card /g) || []).length === 4, `${page} must show four domain cards`);
+}
+
+for (const domain of ["runtime", "hardware", "model", "research"]) {
+  for (const page of [`projects/${domain}.html`, `zh/projects/${domain}.html`]) {
+    const html = read(page);
+    assert(html.includes("project-domain-hero"), `${page} lacks the domain hero`);
+    assert(html.includes("project-domain-capability-grid"), `${page} lacks domain capabilities`);
+    assert(html.includes("project-card"), `${page} lacks project cards`);
+    assert(html.includes("/projects.html"), `${page} lacks a route back to all projects`);
+  }
 }
 
 for (const page of ["get-started.html", "zh/get-started.html"]) {

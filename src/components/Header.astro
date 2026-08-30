@@ -32,6 +32,7 @@ const links = [
 ];
 const localized = (href: string) => pathForLocale(href, locale);
 const currentBase = pathForLocale(path, "en");
+const isCurrent = (href: string) => currentBase === href || (href === "/projects.html" && currentBase.startsWith("/projects/"));
 ---
 
 <header class="site-header">
@@ -44,7 +45,7 @@ const currentBase = pathForLocale(path, "en");
       {links.map((link) => (
         <a
           href={localized(link.href)}
-          aria-current={currentBase === link.href ? "page" : undefined}
+          aria-current={isCurrent(link.href) ? "page" : undefined}
         >
           {link.label}
         </a>

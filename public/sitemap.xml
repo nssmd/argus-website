@@ -24,6 +24,46 @@
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/projects.html" />
   </url>
   <url>
+    <loc>https://argusbot.cn/projects/runtime.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/projects/runtime.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/projects/runtime.html" />
+  </url>
+  <url>
+    <loc>https://argusbot.cn/zh/projects/runtime.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/projects/runtime.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/projects/runtime.html" />
+  </url>
+  <url>
+    <loc>https://argusbot.cn/projects/hardware.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/projects/hardware.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/projects/hardware.html" />
+  </url>
+  <url>
+    <loc>https://argusbot.cn/zh/projects/hardware.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/projects/hardware.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/projects/hardware.html" />
+  </url>
+  <url>
+    <loc>https://argusbot.cn/projects/model.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/projects/model.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/projects/model.html" />
+  </url>
+  <url>
+    <loc>https://argusbot.cn/zh/projects/model.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/projects/model.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/projects/model.html" />
+  </url>
+  <url>
+    <loc>https://argusbot.cn/projects/research.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/projects/research.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/projects/research.html" />
+  </url>
+  <url>
+    <loc>https://argusbot.cn/zh/projects/research.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/projects/research.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/projects/research.html" />
+  </url>
+  <url>
     <loc>https://argusbot.cn/results.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/results.html" />
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/results.html" />
