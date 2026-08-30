@@ -59,7 +59,7 @@ const labels = locale === "zh" ? {
   <section class={`project-domain-hero project-domain-hero--${domain.id}`}>
     <div class="shell project-domain-hero__grid">
       <div class="project-domain-hero__copy">
-        <a class="project-domain-back" href={href("/projects.html")}><span aria-hidden="true">←</span>{labels.back}</a>
+        <a class="project-domain-back" href={href("/projects/")}><span aria-hidden="true">←</span>{labels.back}</a>
         <p class="eyebrow">{domain.eyebrow[locale]}</p>
         <h1>{domain.headline[locale]}</h1>
         <p class="lede">{domain.description[locale]}</p>
@@ -167,7 +167,7 @@ const labels = locale === "zh" ? {
       </div>
       <div class="project-domain-next__grid">
         {otherDomains.map((item) => (
-          <a href={href(`/projects/${item.id}.html`)}>
+          <a href={href(`/projects/${item.id}/`)}>
             <span>{item.eyebrow[locale]}</span>
             <strong>{item.label[locale]}</strong>
             <i aria-hidden="true">→</i>

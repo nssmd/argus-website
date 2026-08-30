@@ -5,8 +5,10 @@ export function localeFromPath(pathname: string): Locale {
 }
 
 export function pathForLocale(pathname: string, locale: Locale): string {
-  const base = pathname === "/zh.html"
+  const withoutLocale = pathname === "/zh.html"
     ? "/"
     : pathname.replace(/^\/zh(?=\/|$)/, "") || "/";
-  return locale === "zh" ? (base === "/" ? "/zh.html" : `/zh${base}`) : base;
+  const withoutFileSuffix = withoutLocale.replace(/(?:\/index)?\.html$/, "");
+  const base = withoutFileSuffix === "" || withoutFileSuffix === "/" ? "/" : `${withoutFileSuffix.replace(/\/$/, "")}/`;
+  return locale === "zh" ? (base === "/" ? "/zh/" : `/zh${base}`) : base;
 }

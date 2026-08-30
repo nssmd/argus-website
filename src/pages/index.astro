@@ -42,7 +42,7 @@ const copy = locale === "zh" ? {
   hubEyebrow: "Argus AI Team · Hub",
   hubTitle: "使用系统、浏览项目、追溯证据。",
   hubBody: "网站将团队的 runtime、工程项目、benchmark 与研究成果连接在一起。你可以从一次安装开始，也可以直接进入已经交付的项目和证据。",
-  hubCards: [["RUN", "开始使用 Argus", "沿用已有 Agent CLI，完成安装、doctor 检查和第一次真实运行。", "/get-started.html"], ["PROJECTS", "浏览团队项目", "查看 Argus、ACE、MiniMax-H3 与自主研究项目。", "/projects.html"], ["EVIDENCE", "查看成果与证据", "从 benchmark 数字进入代码、技术报告和研究材料。", "/results.html"]],
+  hubCards: [["RUN", "开始使用 Argus", "沿用已有 Agent CLI，完成安装、doctor 检查和第一次真实运行。", "/get-started/"], ["PROJECTS", "浏览团队项目", "查看 Argus、ACE、MiniMax-H3 与自主研究项目。", "/projects/"], ["EVIDENCE", "查看成果与证据", "从 benchmark 数字进入代码、技术报告和研究材料。", "/results/"]],
   overviewEyebrow: "90 秒概览",
   overviewTitle: "Argus 怎样持续做研究、验证结果并积累能力。",
   overviewBody: "从一个研究目标出发，Manager、Planner、Engineer 与 Reviewer 围绕证据持续协作；每轮结果再进入长期记忆、Skills 与评测。",
@@ -125,7 +125,7 @@ const copy = locale === "zh" ? {
   hubEyebrow: "Argus AI Team · Hub",
   hubTitle: "Use the system. Explore the projects. Trace the evidence.",
   hubBody: "The site connects the team's runtime, engineering projects, benchmarks, and research. Start with an installation or move directly into delivered projects and their evidence.",
-  hubCards: [["RUN", "Get started with Argus", "Reuse an Agent CLI, complete setup and doctor, then launch a first real run.", "/get-started.html"], ["PROJECTS", "Explore team projects", "Open Argus, ACE, MiniMax-H3, and autonomous research projects.", "/projects.html"], ["EVIDENCE", "Inspect results and evidence", "Move from benchmark claims to code, technical reports, and research artifacts.", "/results.html"]],
+  hubCards: [["RUN", "Get started with Argus", "Reuse an Agent CLI, complete setup and doctor, then launch a first real run.", "/get-started/"], ["PROJECTS", "Explore team projects", "Open Argus, ACE, MiniMax-H3, and autonomous research projects.", "/projects/"], ["EVIDENCE", "Inspect results and evidence", "Move from benchmark claims to code, technical reports, and research artifacts.", "/results/"]],
   overviewEyebrow: "90-second overview",
   overviewTitle: "How Argus sustains research, verifies results, and accumulates capability.",
   overviewBody: "Starting from one research objective, the Manager, Planner, Engineer, and Reviewer collaborate around evidence; each run then updates durable memory, skills, and evaluations.",
@@ -191,8 +191,8 @@ const copy = locale === "zh" ? {
         <h2 class="hero-title">{copy.heroLead}<br /><em>{copy.heroEm}</em></h2>
         <p class="lede">{copy.lede}</p>
         <div class="hero-actions">
-          <a class="button primary" href={href("/get-started.html")}>{copy.startNow}</a>
-          <a class="button" href={href("/projects.html")}>{copy.projects}</a>
+          <a class="button primary" href={href("/get-started/")}>{copy.startNow}</a>
+          <a class="button" href={href("/projects/")}>{copy.projects}</a>
         </div>
         <div class="hero-thesis" aria-label={copy.conceptLabel}>
           {copy.heroConcepts.map(([title, body]) => <div><strong>{title}</strong><span>{body}</span></div>)}
@@ -464,8 +464,8 @@ const copy = locale === "zh" ? {
         <h2>{copy.ctaTitle}</h2>
         <p>{copy.ctaBody}</p>
         <div class="hero-actions">
-          <a class="button primary" href={href("/get-started.html")}>{copy.cta}</a>
-          <a class="button" href={href("/projects.html")}>{copy.ctaProjects}</a>
+          <a class="button primary" href={href("/get-started/")}>{copy.cta}</a>
+          <a class="button" href={href("/projects/")}>{copy.ctaProjects}</a>
         </div>
       </div>
     </div>
