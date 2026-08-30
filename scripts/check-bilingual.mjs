@@ -137,7 +137,7 @@ for (const domain of ["runtime", "hardware", "model", "mathematics"]) {
   for (const page of [`projects/${domain}/index.html`, `zh/projects/${domain}/index.html`]) {
     const html = read(page);
     assert(html.includes("project-domain-hero"), `${page} lacks the domain hero`);
-    assert(html.includes("project-domain-capability-grid"), `${page} lacks domain capabilities`);
+    assert(!html.includes("project-domain-capability-grid"), `${page} still includes domain capabilities`);
     assert(html.includes("project-detail-card"), `${page} lacks detailed project profiles`);
     assert(html.includes("project-detail-card__problem"), `${page} lacks project problem statements`);
     assert(html.includes("project-detail-card__evidence"), `${page} lacks project evidence`);

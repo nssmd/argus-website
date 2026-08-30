@@ -16,10 +16,6 @@ export type ProjectDomain = {
   eyebrow: LocalizedText;
   headline: LocalizedText;
   description: LocalizedText;
-  highlights: {
-    title: LocalizedText;
-    body: LocalizedText;
-  }[];
 };
 
 export type Project = {
@@ -60,20 +56,6 @@ export const projectDomains: ProjectDomain[] = [
       en: "This domain develops the runtime, interfaces, memory, and independent review needed for long-horizon agents to operate reliably.",
       zh: "这一领域构建长程 Agent 所需的运行时、交互界面、记忆系统与独立验收机制。",
     },
-    highlights: [
-      {
-        title: { en: "Long-horizon operation", zh: "长程运行" },
-        body: { en: "Carry objectives across sessions, failures, and changing environments.", zh: "让目标跨越会话、故障与环境变化持续推进。" },
-      },
-      {
-        title: { en: "Independent review", zh: "独立验收" },
-        body: { en: "Separate execution from evidence-based acceptance.", zh: "将任务执行与基于证据的验收明确分离。" },
-      },
-      {
-        title: { en: "Reusable capability", zh: "能力沉淀" },
-        body: { en: "Turn trajectories into memory, skills, tools, and evaluations.", zh: "把工作轨迹沉淀为记忆、Skill、工具与评测。" },
-      },
-    ],
   },
   {
     id: "hardware",
@@ -87,20 +69,6 @@ export const projectDomains: ProjectDomain[] = [
       en: "The ACE line connects model semantics, quantization, cycle-accurate validation, RTL implementation, and physical evidence.",
       zh: "ACE 系列连接模型语义、量化、周期级验证、RTL 实现与物理实现证据。",
     },
-    highlights: [
-      {
-        title: { en: "Model-faithful execution", zh: "模型一致执行" },
-        body: { en: "Preserve quantized model behavior from software reference to RTL.", zh: "从软件参考到 RTL 保持量化模型行为一致。" },
-      },
-      {
-        title: { en: "Evidence-first RTL", zh: "证据优先 RTL" },
-        body: { en: "Treat commands, layers, synthesis, and timing as auditable evidence.", zh: "把命令、网络层、综合与时序作为可审计证据。" },
-      },
-      {
-        title: { en: "Precision roadmap", zh: "精度路线" },
-        body: { en: "Expand from fixed quantization toward mixed-precision acceleration.", zh: "从固定量化持续扩展到混合精度加速。" },
-      },
-    ],
   },
   {
     id: "model",
@@ -114,20 +82,6 @@ export const projectDomains: ProjectDomain[] = [
       en: "These projects adapt, accelerate, and package demanding model stacks for Apple Silicon, desktop GPUs, and visual workflows.",
       zh: "这些项目面向 Apple Silicon、桌面 GPU 与可视化工作流适配、加速并封装高要求模型栈。",
     },
-    highlights: [
-      {
-        title: { en: "Local execution", zh: "本地运行" },
-        body: { en: "Move capable models from datacenter assumptions to personal hardware.", zh: "把依赖数据中心的模型带到个人硬件环境。" },
-      },
-      {
-        title: { en: "Measured acceleration", zh: "可测量加速" },
-        body: { en: "Optimize memory, kernels, and attention with reproducible results.", zh: "以可复现结果优化内存、Kernel 与 Attention。" },
-      },
-      {
-        title: { en: "Usable workflows", zh: "可用工作流" },
-        body: { en: "Expose complex stacks through direct and visual interfaces.", zh: "通过直接接口与可视化界面提供复杂模型能力。" },
-      },
-    ],
   },
   {
     id: "mathematics",
@@ -141,20 +95,6 @@ export const projectDomains: ProjectDomain[] = [
       en: "This domain applies Argus to open mathematical problems while preserving conjectures, failed paths, revisions, and public research artifacts.",
       zh: "这一领域将 Argus 用于开放数学问题，并保留猜想、失败路线、修正过程与公开研究产物。",
     },
-    highlights: [
-      {
-        title: { en: "Parallel inquiry", zh: "并行探索" },
-        body: { en: "Let isolated research processes test distinct paths independently.", zh: "让相互隔离的研究进程独立检验不同路线。" },
-      },
-      {
-        title: { en: "Visible trajectories", zh: "公开轨迹" },
-        body: { en: "Preserve hypotheses, pivots, failures, and intermediate evidence.", zh: "保留假设、改道、失败与中间证据。" },
-      },
-      {
-        title: { en: "Cumulative knowledge", zh: "知识积累" },
-        body: { en: "Turn each investigation into reusable context for the next one.", zh: "把每次研究转化为下一次可以复用的上下文。" },
-      },
-    ],
   },
 ];
 
