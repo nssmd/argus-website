@@ -10,14 +10,16 @@ const copy = locale === "zh" ? {
   light: "切换到白天模式",
   dark: "切换到黑夜模式",
   start: "开始使用",
-  links: ["首页", "项目", "成绩", "研究", "原理", "演示", "联系我们", "GitHub ↗"],
+  github: "GitHub",
+  links: ["首页", "项目", "成绩", "研究", "原理", "演示", "联系我们"],
 } : {
   home: "Argus home",
   nav: "Main navigation",
   light: "Switch to light mode",
   dark: "Switch to dark mode",
   start: "Get started",
-  links: ["Home", "Projects", "Results", "Research", "How it works", "Demo", "Contact", "GitHub ↗"],
+  github: "GitHub",
+  links: ["Home", "Projects", "Results", "Research", "How it works", "Demo", "Contact"],
 };
 const links = [
   { href: "/", label: copy.links[0] },
@@ -27,7 +29,6 @@ const links = [
   { href: "/how.html", label: copy.links[4] },
   { href: "/start.html", label: copy.links[5] },
   { href: "/contact.html", label: copy.links[6] },
-  { href: "https://github.com/Argus-AiTeam", label: copy.links[7], external: true },
 ];
 const localized = (href: string) => pathForLocale(href, locale);
 const currentBase = pathForLocale(path, "en");
@@ -42,17 +43,20 @@ const currentBase = pathForLocale(path, "en");
     <nav class="site-nav" aria-label={copy.nav}>
       {links.map((link) => (
         <a
-          href={link.external ? link.href : localized(link.href)}
-          aria-current={!link.external && currentBase === link.href ? "page" : undefined}
-          target={link.external ? "_blank" : undefined}
-          rel={link.external ? "noopener noreferrer" : undefined}
-          class={link.external ? "site-nav__external" : undefined}
+          href={localized(link.href)}
+          aria-current={currentBase === link.href ? "page" : undefined}
         >
           {link.label}
         </a>
       ))}
     </nav>
-    <a class="site-start" href={localized("/get-started.html")} aria-current={currentBase === "/get-started.html" ? "page" : undefined}>{copy.start}</a>
+    <div class="site-actions">
+      <a class="site-action site-action--secondary" href="https://github.com/Argus-AiTeam" target="_blank" rel="noopener noreferrer">
+        {copy.github}
+        <span aria-hidden="true">↗</span>
+      </a>
+      <a class="site-action site-action--primary" href={localized("/get-started.html")} aria-current={currentBase === "/get-started.html" ? "page" : undefined}>{copy.start}</a>
+    </div>
     <nav class="language-switcher" aria-label="Language">
       <a href={pathForLocale(path, "en")} hreflang="en" lang="en" aria-current={locale === "en" ? "page" : undefined}>EN</a>
       <span aria-hidden="true">/</span>
