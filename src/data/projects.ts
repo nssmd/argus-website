@@ -3,7 +3,7 @@ export type ProjectLink = {
   href: string;
 };
 
-export type ProjectCategory = "runtime" | "hardware" | "model" | "research";
+export type ProjectCategory = "runtime" | "hardware" | "model" | "mathematics";
 
 type LocalizedText = {
   en: string;
@@ -122,16 +122,16 @@ export const projectDomains: ProjectDomain[] = [
     ],
   },
   {
-    id: "research",
-    label: { en: "Autonomous research", zh: "自主研究" },
-    eyebrow: { en: "Research as an observable process", zh: "可观察的自主研究过程" },
+    id: "mathematics",
+    label: { en: "Mathematics", zh: "数学研究" },
+    eyebrow: { en: "Autonomous mathematical inquiry", zh: "自主数学探索" },
     headline: {
-      en: "Make long-running investigations inspectable, auditable, and cumulative.",
-      zh: "让长程研究过程可以被观察、审查并持续积累。",
+      en: "Explore difficult mathematical questions through parallel, inspectable reasoning.",
+      zh: "通过并行、可观察的推理过程探索困难数学问题。",
     },
     description: {
-      en: "This domain opens the full path from question and failed attempts to evidence, revision, and public research artifacts.",
-      zh: "这一领域公开从问题、失败尝试到证据、修正与研究产物的完整路径。",
+      en: "This domain applies Argus to open mathematical problems while preserving conjectures, failed paths, revisions, and public research artifacts.",
+      zh: "这一领域将 Argus 用于开放数学问题，并保留猜想、失败路线、修正过程与公开研究产物。",
     },
     highlights: [
       {
@@ -263,7 +263,7 @@ export const projects: Project[] = [
   },
   {
     id: "hilbert16",
-    category: "research",
+    category: "mathematics",
     status: "research",
     title: "Hilbert16 Dual Argus Observatory",
     description: {

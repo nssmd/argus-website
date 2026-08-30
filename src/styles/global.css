@@ -1768,7 +1768,7 @@ main {
   --domain-accent: var(--violet);
 }
 
-.project-domain-card--research {
+.project-domain-card--mathematics {
   --domain-accent: var(--cyan);
 }
 
@@ -1903,7 +1903,7 @@ main {
   --domain-accent: var(--violet);
 }
 
-.project-domain-hero--research {
+.project-domain-hero--mathematics {
   --domain-accent: var(--cyan);
 }
 

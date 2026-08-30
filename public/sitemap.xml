@@ -54,14 +54,14 @@
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/projects/model/" />
   </url>
   <url>
-    <loc>https://argusbot.cn/projects/research/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/projects/research/" />
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/projects/research/" />
+    <loc>https://argusbot.cn/projects/mathematics/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/projects/mathematics/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/projects/mathematics/" />
   </url>
   <url>
-    <loc>https://argusbot.cn/zh/projects/research/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/projects/research/" />
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/projects/research/" />
+    <loc>https://argusbot.cn/zh/projects/mathematics/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://argusbot.cn/projects/mathematics/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://argusbot.cn/zh/projects/mathematics/" />
   </url>
   <url>
     <loc>https://argusbot.cn/results/</loc>
