@@ -211,11 +211,49 @@ const copy = locale === "zh" ? {
       </div>
       <div class="resource-gateway__grid">
         {copy.resourceLinks.map(([badge, title, body, action, target], index) => (
-          <a class={`resource-link-card tone-${index % 2}`} href={target} target="_blank" rel="noopener noreferrer">
-            <span>{badge}</span>
-            <h3>{title}</h3>
-            <p>{body}</p>
-            <strong>{action}</strong>
+          <a class={`resource-link-card resource-link-card--${index}`} href={target} target="_blank" rel="noopener noreferrer">
+            <div class="resource-link-card__top">
+              <span class="resource-link-card__index">{String(index + 1).padStart(2, "0")}</span>
+              <span class="resource-link-card__badge">{badge}</span>
+              <span class="resource-link-card__arrow" aria-hidden="true">↗</span>
+            </div>
+            <div class="resource-link-card__visual" aria-hidden="true">
+              {index === 0 && (
+                <svg viewBox="0 0 240 160">
+                  <path d="M28 36h184v98H28z" />
+                  <path d="m57 73 24 19-24 19M98 112h49" />
+                  <circle cx="47" cy="53" r="4" /><circle cx="61" cy="53" r="4" /><circle cx="75" cy="53" r="4" />
+                </svg>
+              )}
+              {index === 1 && (
+                <svg viewBox="0 0 240 160">
+                  <circle cx="120" cy="80" r="56" />
+                  <circle cx="120" cy="80" r="35" />
+                  <path d="M120 9v142M49 80h142M70 30l100 100M170 30 70 130" />
+                  <circle cx="120" cy="80" r="7" />
+                </svg>
+              )}
+              {index === 2 && (
+                <svg viewBox="0 0 240 160">
+                  <path d="M39 44h72v72H39zM129 44h72v72h-72z" />
+                  <path d="M111 80h18M75 116v20h90v-20" />
+                  <circle cx="75" cy="80" r="13" /><circle cx="165" cy="80" r="13" />
+                </svg>
+              )}
+              {index === 3 && (
+                <svg viewBox="0 0 240 160">
+                  <circle cx="120" cy="45" r="21" />
+                  <circle cx="69" cy="111" r="21" />
+                  <circle cx="171" cy="111" r="21" />
+                  <path d="m107 62-25 31M133 62l25 31M90 111h60" />
+                </svg>
+              )}
+            </div>
+            <div class="resource-link-card__copy">
+              <h3>{title}</h3>
+              <p>{body}</p>
+            </div>
+            <strong class="resource-link-card__action">{action}</strong>
           </a>
         ))}
       </div>
