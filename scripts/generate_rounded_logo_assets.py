@@ -34,6 +34,11 @@ def extract_svg_sources(archive: Path, output_dir: Path) -> dict[str, Path]:
     with zipfile.ZipFile(archive) as bundle:
         for key, relative in mapping.items():
             source = bundle.read(f"{ARCHIVE_ROOT}/{relative}").decode("utf-8")
+            if key == "logo-rounded-horizontal":
+                source = source.replace(
+                    'viewBox="0 0 1400 480"',
+                    'viewBox="190 105 1100 345"',
+                )
             target = output_dir / f"argus-{key}.svg"
             recolor_svg(source, target)
             result[key] = target
