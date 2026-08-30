@@ -2005,41 +2005,6 @@ main {
   font-weight: 700;
 }
 
-.project-domain-capability-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: var(--line);
-}
-
-.project-domain-capability-grid article {
-  min-height: 230px;
-  padding: 26px;
-  background: var(--surface-raised);
-}
-
-.project-domain-capability-grid span {
-  color: var(--gold-dark);
-  font-family: var(--mono);
-  font-size: 10px;
-}
-
-.project-domain-capability-grid h3 {
-  margin: 62px 0 10px;
-  font-family: var(--serif);
-  font-size: 23px;
-  font-weight: 500;
-}
-
-.project-domain-capability-grid p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 12px;
-}
-
 .project-domain-next__grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -4446,7 +4411,6 @@ main {
     margin: 0 auto;
   }
 
-  .project-domain-capability-grid,
   .project-domain-next__grid {
     grid-template-columns: 1fr;
   }

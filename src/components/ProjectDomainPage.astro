@@ -23,7 +23,6 @@ const labels = locale === "zh" ? {
   back: "返回全部领域",
   portfolio: "领域项目",
   portfolioBody: "查看这一领域已经公开的系统、实现、证据与研究成果。",
-  capabilities: "领域能力",
   projects: "个公开项目",
   problem: "解决的问题",
   evidence: "关键成果与证据",
@@ -46,7 +45,6 @@ const labels = locale === "zh" ? {
   back: "Back to all domains",
   portfolio: "Domain projects",
   portfolioBody: "Explore the public systems, implementations, evidence, and research produced in this domain.",
-  capabilities: "Domain capabilities",
   projects: "public projects",
   problem: "The problem",
   evidence: "Key results and evidence",
@@ -113,24 +111,6 @@ const labels = locale === "zh" ? {
             <circle cx="287" cy="112" r="11" /><circle cx="147" cy="211" r="11" />
           </svg>
         )}
-      </div>
-    </div>
-  </section>
-
-  <section class="section project-domain-capabilities">
-    <div class="shell">
-      <div class="section-head">
-        <p class="eyebrow">{labels.capabilities}</p>
-        <h2>{domain.label[locale]}</h2>
-      </div>
-      <div class="project-domain-capability-grid">
-        {domain.highlights.map((highlight, index) => (
-          <article>
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <h3>{highlight.title[locale]}</h3>
-            <p>{highlight.body[locale]}</p>
-          </article>
-        ))}
       </div>
     </div>
   </section>
