@@ -1,0 +1,179 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { projectDomains, projects, type ProjectCategory } from "../data/projects";
+import { localeFromPath, pathForLocale } from "../i18n";
+
+type Props = {
+  domain: ProjectCategory;
+};
+
+const { domain: domainId } = Astro.props;
+const locale = localeFromPath(Astro.url.pathname);
+const href = (path: string) => pathForLocale(path, locale);
+const domain = projectDomains.find((item) => item.id === domainId);
+
+if (!domain) {
+  throw new Error(`Unknown project domain: ${domainId}`);
+}
+
+const domainProjects = projects.filter((project) => project.category === domainId);
+const otherDomains = projectDomains.filter((item) => item.id !== domainId);
+const labels = locale === "zh" ? {
+  titleSuffix: "Projects · Argus AI Team",
+  back: "返回全部领域",
+  portfolio: "领域项目",
+  portfolioBody: "查看这一领域已经公开的系统、实现、证据与研究成果。",
+  capabilities: "领域能力",
+  projects: "个公开项目",
+  outcome: "已交付",
+  stack: "技术",
+  statuses: { preview: "Preview", active: "Active", research: "Research" },
+  linkLabels: {
+    repository: "打开 GitHub 仓库",
+    official: "打开官方发行仓库",
+    report: "阅读技术报告",
+  },
+  explore: "继续探索",
+  allProjects: "查看全部项目",
+} : {
+  titleSuffix: "Projects · Argus AI Team",
+  back: "Back to all domains",
+  portfolio: "Domain projects",
+  portfolioBody: "Explore the public systems, implementations, evidence, and research produced in this domain.",
+  capabilities: "Domain capabilities",
+  projects: "public projects",
+  outcome: "Delivered",
+  stack: "Built with",
+  statuses: { preview: "Preview", active: "Active", research: "Research" },
+  linkLabels: {
+    repository: "Open GitHub repository",
+    official: "Open official release",
+    report: "Read technical report",
+  },
+  explore: "Explore next",
+  allProjects: "View all projects",
+};
+---
+
+<SiteLayout title={`${domain.label[locale]} · ${labels.titleSuffix}`} description={domain.description[locale]}>
+  <section class={`project-domain-hero project-domain-hero--${domain.id}`}>
+    <div class="shell project-domain-hero__grid">
+      <div class="project-domain-hero__copy">
+        <a class="project-domain-back" href={href("/projects.html")}><span aria-hidden="true">←</span>{labels.back}</a>
+        <p class="eyebrow">{domain.eyebrow[locale]}</p>
+        <h1>{domain.headline[locale]}</h1>
+        <p class="lede">{domain.description[locale]}</p>
+        <div class="project-domain-hero__meta">
+          <strong>{String(domainProjects.length).padStart(2, "0")}</strong>
+          <span>{labels.projects}</span>
+        </div>
+      </div>
+      <div class="project-domain-hero__visual" aria-hidden="true">
+        <span class="project-domain-hero__code">0{projectDomains.findIndex((item) => item.id === domain.id) + 1}</span>
+        {domain.id === "runtime" && (
+          <svg viewBox="0 0 420 320">
+            <circle cx="210" cy="160" r="92" /><circle cx="210" cy="160" r="54" />
+            <path d="M210 30v76M210 214v76M80 160h76M264 160h76" />
+            <circle cx="210" cy="30" r="12" /><circle cx="210" cy="290" r="12" />
+            <circle cx="80" cy="160" r="12" /><circle cx="340" cy="160" r="12" />
+          </svg>
+        )}
+        {domain.id === "hardware" && (
+          <svg viewBox="0 0 420 320">
+            <rect x="120" y="70" width="180" height="180" rx="12" />
+            <rect x="158" y="108" width="104" height="104" rx="5" />
+            <path d="M150 36v34M190 36v34M230 36v34M270 36v34M150 250v34M190 250v34M230 250v34M270 250v34M86 100h34M86 140h34M86 180h34M86 220h34M300 100h34M300 140h34M300 180h34M300 220h34" />
+            <path d="M180 132h60v56h-60zM158 160h22M240 160h22" />
+          </svg>
+        )}
+        {domain.id === "model" && (
+          <svg viewBox="0 0 420 320">
+            <path d="M80 230 145 90h130l65 140z" />
+            <path d="M122 230 168 130h84l46 100z" />
+            <circle cx="210" cy="180" r="28" />
+            <path d="M210 48v42M65 250h290M92 265h236" />
+          </svg>
+        )}
+        {domain.id === "research" && (
+          <svg viewBox="0 0 420 320">
+            <circle cx="210" cy="160" r="106" /><path d="M104 160h212M210 54c45 42 45 170 0 212M210 54c-45 42-45 170 0 212" />
+            <path d="M125 96c44 26 126 26 170 0M125 224c44-26 126-26 170 0" />
+            <circle cx="287" cy="112" r="11" /><circle cx="147" cy="211" r="11" />
+          </svg>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <section class="section project-domain-capabilities">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">{labels.capabilities}</p>
+        <h2>{domain.label[locale]}</h2>
+      </div>
+      <div class="project-domain-capability-grid">
+        {domain.highlights.map((highlight, index) => (
+          <article>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <h3>{highlight.title[locale]}</h3>
+            <p>{highlight.body[locale]}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section surface">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">{labels.portfolio}</p>
+        <h2>{domain.label[locale]}</h2>
+        <p>{labels.portfolioBody}</p>
+      </div>
+      <div class="project-grid">
+        {domainProjects.map((project) => (
+          <article class="project-card">
+            <div class="project-card__head">
+              <h3>{project.title}</h3>
+              <span class={`project-status ${project.status}`}>{labels.statuses[project.status]}</span>
+            </div>
+            <p class="project-card__description">{project.description[locale]}</p>
+            <div class="project-card__outcome">
+              <span>{labels.outcome}</span>
+              <strong>{project.outcome[locale]}</strong>
+            </div>
+            <div class="project-card__stack">
+              <span>{labels.stack}</span>
+              <div>{project.technologies.map((technology) => <small>{technology}</small>)}</div>
+            </div>
+            <div class="project-card__links">
+              {project.links.map((link) => (
+                <a class={link.kind === "repository" ? "primary" : ""} href={link.href} target="_blank" rel="noopener noreferrer">
+                  <span>{labels.linkLabels[link.kind]}</span><i aria-hidden="true">↗</i>
+                </a>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section project-domain-next">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">{labels.explore}</p>
+        <h2>{labels.allProjects}</h2>
+      </div>
+      <div class="project-domain-next__grid">
+        {otherDomains.map((item) => (
+          <a href={href(`/projects/${item.id}.html`)}>
+            <span>{item.eyebrow[locale]}</span>
+            <strong>{item.label[locale]}</strong>
+            <i aria-hidden="true">→</i>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</SiteLayout>
