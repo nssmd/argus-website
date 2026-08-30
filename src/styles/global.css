@@ -275,8 +275,8 @@ input {
 }
 
 .argus-logo--header {
-  width: 118px;
-  height: 41px;
+  width: 132px;
+  height: 42px;
 }
 
 .argus-logo--footer {
@@ -291,7 +291,7 @@ input {
 
 @media (max-width: 680px) {
   .argus-logo--header {
-    width: 82px;
+    width: 88px;
     height: 29px;
   }
 }

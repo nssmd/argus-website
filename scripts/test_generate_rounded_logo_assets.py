@@ -4,7 +4,7 @@ from pathlib import Path
 
 from PIL import Image
 
-from generate_rounded_logo_assets import _og_image, recolor_svg, verify_archive
+from generate_rounded_logo_assets import _og_image, extract_svg_sources, recolor_svg, verify_archive
 
 
 class RoundedLogoGeneratorTest(unittest.TestCase):
@@ -30,6 +30,14 @@ class RoundedLogoGeneratorTest(unittest.TestCase):
         self.assertEqual(output.getpixel((0, 0)), base.getpixel((0, 0)))
         self.assertEqual(output.getpixel((600, 315)), base.getpixel((600, 315)))
         self.assertNotEqual(output.getpixel((100, 90)), base.getpixel((100, 90)))
+
+    def test_horizontal_logo_crops_internal_whitespace(self):
+        archive = Path("/home/argustest/argustest2/argus-logo-final-02-rounded.zip")
+        with tempfile.TemporaryDirectory() as temp:
+            assets = extract_svg_sources(archive, Path(temp))
+            horizontal = assets["logo-rounded-horizontal"].read_text()
+            self.assertIn('viewBox="190 105 1100 345"', horizontal)
+            self.assertNotIn('viewBox="0 0 1400 480"', horizontal)
 
 
 if __name__ == "__main__":
