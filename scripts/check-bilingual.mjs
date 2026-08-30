@@ -10,7 +10,7 @@ const pairs = [
   ["projects/runtime/index.html", "zh/projects/runtime/index.html"],
   ["projects/hardware/index.html", "zh/projects/hardware/index.html"],
   ["projects/model/index.html", "zh/projects/model/index.html"],
-  ["projects/research/index.html", "zh/projects/research/index.html"],
+  ["projects/mathematics/index.html", "zh/projects/mathematics/index.html"],
   ["results/index.html", "zh/results/index.html"],
   ["research/index.html", "zh/research/index.html"],
   ["get-started/index.html", "zh/get-started/index.html"],
@@ -127,13 +127,13 @@ for (const page of pairs.flat()) {
 for (const page of ["projects/index.html", "zh/projects/index.html"]) {
   const html = read(page);
   assert(html.includes("Argus AI Team"), `${page} lacks the team identity`);
-  for (const domain of ["runtime", "hardware", "model", "research"]) {
+  for (const domain of ["runtime", "hardware", "model", "mathematics"]) {
     assert(html.includes(`/projects/${domain}/`), `${page} lacks the ${domain} domain entry`);
   }
   assert((html.match(/class="project-domain-card /g) || []).length === 4, `${page} must show four domain cards`);
 }
 
-for (const domain of ["runtime", "hardware", "model", "research"]) {
+for (const domain of ["runtime", "hardware", "model", "mathematics"]) {
   for (const page of [`projects/${domain}/index.html`, `zh/projects/${domain}/index.html`]) {
     const html = read(page);
     assert(html.includes("project-domain-hero"), `${page} lacks the domain hero`);
