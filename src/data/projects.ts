@@ -384,6 +384,45 @@ export const projects: Project[] = [
     ],
   },
   {
+    id: "argus-mathematics",
+    category: "mathematics",
+    status: "active",
+    title: "Argus Mathematics",
+    description: {
+      en: "The public archive for completed Argus mathematical results, technical reports, certificates, and reproducible verification packages.",
+      zh: "集中归档 Argus 已完成数学成果、技术报告、证书与可复现验证材料的公开成果库。",
+    },
+    problem: {
+      en: "Mathematical research produced by autonomous agents needs more than a result announcement. Claims must remain connected to their exact scope, reports, source interpretation, machine-checkable evidence, review status, and unresolved neighboring statements.",
+      zh: "自主 Agent 产生的数学研究不能只发布一个结论。每项成果都需要持续关联其精确命题范围、技术报告、来源解释、机器可检查证据、审查状态，以及仍未解决的相邻问题。",
+    },
+    highlights: {
+      en: [
+        "Archives three public result packages spanning weighted digraphs, braid-group algebra, and smooth four-manifold topology.",
+        "Includes two independently runnable computational verifiers, a Lean-checked logical composition, technical reports, certificates, and artifact checksums.",
+        "Connects completed results to the live Argus Open program, which tracks 757 historical problem records and 30 active research targets.",
+        "Separates independently verified results, internally reviewed work, scope observations, active research, and claims whose novelty is not yet certified.",
+      ],
+      zh: [
+        "归档三个公开成果包，覆盖加权有向图、辫群代数与光滑四维流形拓扑。",
+        "包含两个可独立运行的计算验证程序、一项 Lean 逻辑组合检查，以及技术报告、证书和产物校验值。",
+        "将已完成成果与 Argus Open 实时研究体系连接；该体系当前覆盖 757 条历史问题记录和 30 个研究目标。",
+        "明确区分独立验证、内部审查、范围修正、研究中项目，以及尚未完成新颖性认证的结论。",
+      ],
+    },
+    outcome: {
+      en: "Three completed mathematical result packages preserved with explicit boundaries and reviewable evidence.",
+      zh: "三个已完成数学成果包以明确边界和可审查证据长期公开保存。",
+    },
+    technologies: ["Mathematics", "Lean", "Python", "Reproducible research"],
+    links: [
+      { kind: "repository", href: "https://github.com/Argus-AiTeam/argus-mathematics" },
+      { kind: "status", href: "https://open.argusbot.cn/" },
+      { kind: "evidence", href: "https://github.com/Argus-AiTeam/argus-mathematics/blob/main/data/results.json" },
+      { kind: "documentation", href: "https://open.argusbot.cn/catalog" },
+    ],
+  },
+  {
     id: "hilbert16",
     category: "mathematics",
     status: "research",

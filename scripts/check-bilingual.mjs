@@ -146,6 +146,14 @@ for (const domain of ["runtime", "hardware", "model", "mathematics"]) {
   }
 }
 
+for (const page of ["projects/mathematics/index.html", "zh/projects/mathematics/index.html"]) {
+  const html = read(page);
+  assert(html.includes("Argus Mathematics"), `${page} lacks the Argus Mathematics project`);
+  assert(html.includes("github.com/Argus-AiTeam/argus-mathematics"), `${page} lacks the mathematics result repository`);
+  assert(html.includes("https://open.argusbot.cn/"), `${page} lacks the live mathematics portal`);
+  assert((html.match(/class="project-detail-card project-detail-card--mathematics"/g) || []).length === 2, `${page} must show both mathematics projects`);
+}
+
 for (const page of ["get-started/index.html", "zh/get-started/index.html"]) {
   const html = read(page);
   assert(html.includes("docs/agent-install.md"), `${page} lacks the agent installation contract`);
