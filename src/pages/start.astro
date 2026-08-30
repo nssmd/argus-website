@@ -4,7 +4,7 @@ import SiteLayout from "../layouts/SiteLayout.astro";
 import { localeFromPath, pathForLocale } from "../i18n";
 
 const locale = localeFromPath(Astro.url.pathname);
-const publicResearchHref = pathForLocale("/research.html", locale);
+const publicResearchHref = pathForLocale("/research/", locale);
 const copy = locale === "zh" ? {
   title: "Get Started · Argus",
   description: "观看 Argus 从研究方向、创作要求或数学问题出发，经真实执行、Reviewer 多轮打回到论文、文学成稿与计算验收的完整轨迹。",

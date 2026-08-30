@@ -23,16 +23,16 @@ const copy = locale === "zh" ? {
 };
 const links = [
   { href: "/", label: copy.links[0] },
-  { href: "/projects.html", label: copy.links[1] },
-  { href: "/results.html", label: copy.links[2] },
-  { href: "/research.html", label: copy.links[3] },
-  { href: "/how.html", label: copy.links[4] },
-  { href: "/start.html", label: copy.links[5] },
-  { href: "/contact.html", label: copy.links[6] },
+  { href: "/projects/", label: copy.links[1] },
+  { href: "/results/", label: copy.links[2] },
+  { href: "/research/", label: copy.links[3] },
+  { href: "/how/", label: copy.links[4] },
+  { href: "/start/", label: copy.links[5] },
+  { href: "/contact/", label: copy.links[6] },
 ];
 const localized = (href: string) => pathForLocale(href, locale);
 const currentBase = pathForLocale(path, "en");
-const isCurrent = (href: string) => currentBase === href || (href === "/projects.html" && currentBase.startsWith("/projects/"));
+const isCurrent = (href: string) => currentBase === href || (href === "/projects/" && currentBase.startsWith("/projects/"));
 ---
 
 <header class="site-header">
@@ -56,7 +56,7 @@ const isCurrent = (href: string) => currentBase === href || (href === "/projects
         {copy.github}
         <span aria-hidden="true">↗</span>
       </a>
-      <a class="site-action site-action--primary" href={localized("/get-started.html")} aria-current={currentBase === "/get-started.html" ? "page" : undefined}>{copy.start}</a>
+      <a class="site-action site-action--primary" href={localized("/get-started/")} aria-current={currentBase === "/get-started/" ? "page" : undefined}>{copy.start}</a>
     </div>
     <nav class="language-switcher" aria-label="Language">
       <a href={pathForLocale(path, "en")} hreflang="en" lang="en" aria-current={locale === "en" ? "page" : undefined}>EN</a>

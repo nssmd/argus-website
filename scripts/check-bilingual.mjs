@@ -3,19 +3,19 @@ import path from "node:path";
 
 const dist = path.resolve("dist");
 const pairs = [
-  ["index.html", "zh.html"],
-  ["contact.html", "zh/contact.html"],
-  ["how.html", "zh/how.html"],
-  ["projects.html", "zh/projects.html"],
-  ["projects/runtime.html", "zh/projects/runtime.html"],
-  ["projects/hardware.html", "zh/projects/hardware.html"],
-  ["projects/model.html", "zh/projects/model.html"],
-  ["projects/research.html", "zh/projects/research.html"],
-  ["results.html", "zh/results.html"],
-  ["research.html", "zh/research.html"],
-  ["get-started.html", "zh/get-started.html"],
-  ["start.html", "zh/start.html"],
-  ["use-cases.html", "zh/use-cases.html"],
+  ["index.html", "zh/index.html"],
+  ["contact/index.html", "zh/contact/index.html"],
+  ["how/index.html", "zh/how/index.html"],
+  ["projects/index.html", "zh/projects/index.html"],
+  ["projects/runtime/index.html", "zh/projects/runtime/index.html"],
+  ["projects/hardware/index.html", "zh/projects/hardware/index.html"],
+  ["projects/model/index.html", "zh/projects/model/index.html"],
+  ["projects/research/index.html", "zh/projects/research/index.html"],
+  ["results/index.html", "zh/results/index.html"],
+  ["research/index.html", "zh/research/index.html"],
+  ["get-started/index.html", "zh/get-started/index.html"],
+  ["start/index.html", "zh/start/index.html"],
+  ["use-cases/index.html", "zh/use-cases/index.html"],
 ];
 
 function assert(condition, message) {
@@ -47,7 +47,7 @@ for (const [englishPath, chinesePath] of pairs) {
   let visibleEnglish = english
     .replace(/<script[\s\S]*?<\/script>/g, "")
     .replace(/中/g, "");
-  if (englishPath === "contact.html") {
+  if (englishPath === "contact/index.html") {
     visibleEnglish = visibleEnglish.replace(
       /<article class="team-member-card">[\s\S]*?<\/article>/g,
       "",
@@ -65,7 +65,7 @@ for (const [englishPath, chinesePath] of pairs) {
   assert(chinese.includes('class="footer-brand"') && chinese.includes('aria-label="Argus 首页"'), `${chinesePath} footer logo is unnamed`);
 }
 
-for (const page of ["index.html", "zh.html"]) {
+for (const page of ["index.html", "zh/index.html"]) {
   const html = read(page);
   assert(html.includes('data-argus-logo="horizontal"'), `${page} lacks the rounded horizontal logo`);
   assert(html.includes("data-brand-universe"), `${page} lacks the kinetic BrandUniverse opening`);
@@ -112,38 +112,40 @@ assert(fs.existsSync(path.join(dist, "assets/demos/argus-overview-90s-poster.web
 
 const sitemap = read("sitemap.xml");
 assert((sitemap.match(/<url>/g) || []).length === 26, "sitemap.xml must list all 26 public pages");
-assert(sitemap.includes("https://argusbot.cn/zh/start.html"), "sitemap.xml lacks the Chinese Get Started page");
+assert(sitemap.includes("https://argusbot.cn/zh/start/"), "sitemap.xml lacks the Chinese Get Started page");
 assert(!sitemap.includes("release.html"), "sitemap.xml still lists a release page");
+assert(!sitemap.includes(".html</loc>"), "sitemap.xml still publishes .html page URLs");
 
 for (const page of pairs.flat()) {
   const html = read(page);
   assert(!html.includes("/release.html"), `${page} still links to a release page`);
+  assert(!/href="\/(?!chipbench-dashboard\.html|process-dashboard\.html|razavi-dashboard\.html)[^"]*\.html(?:[#?"][^>]*)/.test(html), `${page} still contains a public .html route`);
   assert(!/\bnpm\b|npmjs|@argusevolve\/argus/i.test(html), `${page} still exposes npm content`);
   assert(html.includes("https://arxiv.org/abs/2608.05144"), `${page} lacks the Argus paper link`);
   assert(html.includes("https://www.youtube.com/watch?v=i8Qy9HCboQE"), `${page} lacks the YouTube demo link`);
   assert(html.includes("https://github.com/lbx154/Argus"), `${page} lacks the Argus code link`);
 }
 
-for (const page of ["projects.html", "zh/projects.html"]) {
+for (const page of ["projects/index.html", "zh/projects/index.html"]) {
   const html = read(page);
   assert(html.includes("Argus AI Team"), `${page} lacks the team identity`);
   for (const domain of ["runtime", "hardware", "model", "research"]) {
-    assert(html.includes(`/projects/${domain}.html`), `${page} lacks the ${domain} domain entry`);
+    assert(html.includes(`/projects/${domain}/`), `${page} lacks the ${domain} domain entry`);
   }
   assert((html.match(/class="project-domain-card /g) || []).length === 4, `${page} must show four domain cards`);
 }
 
 for (const domain of ["runtime", "hardware", "model", "research"]) {
-  for (const page of [`projects/${domain}.html`, `zh/projects/${domain}.html`]) {
+  for (const page of [`projects/${domain}/index.html`, `zh/projects/${domain}/index.html`]) {
     const html = read(page);
     assert(html.includes("project-domain-hero"), `${page} lacks the domain hero`);
     assert(html.includes("project-domain-capability-grid"), `${page} lacks domain capabilities`);
     assert(html.includes("project-card"), `${page} lacks project cards`);
-    assert(html.includes("/projects.html"), `${page} lacks a route back to all projects`);
+    assert(html.includes("/projects/"), `${page} lacks a route back to all projects`);
   }
 }
 
-for (const page of ["get-started.html", "zh/get-started.html"]) {
+for (const page of ["get-started/index.html", "zh/get-started/index.html"]) {
   const html = read(page);
   assert(html.includes("docs/agent-install.md"), `${page} lacks the agent installation contract`);
   assert(html.includes("argus doctor --deep --advisor auto"), `${page} lacks active diagnosis`);
@@ -151,7 +153,7 @@ for (const page of ["get-started.html", "zh/get-started.html"]) {
   assert(html.includes("microsoft/ArgusAgent"), `${page} lacks the official distribution link`);
 }
 
-for (const page of ["contact.html", "zh/contact.html"]) {
+for (const page of ["contact/index.html", "zh/contact/index.html"]) {
   const html = read(page);
   assert((html.match(/class="team-member-card"/g) || []).length === 8, `${page} must show all eight team members`);
   for (const login of ["aHappend", "Chenxxxxxx06", "lbx154", "nssmd", "racoonykc", "Silentmoonlight", "waltstephen", "zhxianlucky"]) {
@@ -172,7 +174,7 @@ for (const page of ["contact.html", "zh/contact.html"]) {
 
 assert(fs.existsSync(path.join(dist, "assets/argus-wechat-group-2.jpg")), "missing WeChat community QR code");
 
-for (const page of ["start.html", "zh/start.html"]) {
+for (const page of ["start/index.html", "zh/start/index.html"]) {
   const html = read(page);
   const pickerIndex = html.indexOf("data-run-picker");
   const frameIndex = html.indexOf("demo-frame");
@@ -231,8 +233,8 @@ assert(
 );
 const smallFavicon = fs.readFileSync(path.resolve("public/assets/argus-mark-rounded-small.svg"), "utf8");
 assert(smallFavicon.includes('fill="#073e8c"'), "small SVG favicon lacks explicit deep-blue fill");
-const englishHow = read("how.html");
-const chineseHow = read("zh/how.html");
+const englishHow = read("how/index.html");
+const chineseHow = read("zh/how/index.html");
 assert(englishHow.includes("/assets/nanochat-b200-trajectory.en.svg"), "English How page lacks English nanochat chart");
 assert(chineseHow.includes("/assets/nanochat-b200-trajectory.svg"), "Chinese How page lacks Chinese nanochat chart");
 const englishTrajectory = fs.readFileSync(path.resolve("public/assets/nanochat-b200-trajectory.en.svg"), "utf8");

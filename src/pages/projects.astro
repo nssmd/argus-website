@@ -53,8 +53,8 @@ const labels = locale === "zh" ? {
       <p class="lede">{labels.lede}</p>
       <div class="hero-actions">
         <a class="button primary" href="https://github.com/Argus-AiTeam" target="_blank" rel="noopener noreferrer">{labels.organization}</a>
-        <a class="button" href={href("/get-started.html")}>{labels.start}</a>
-        <a class="button" href={href("/results.html")}>{labels.results}</a>
+        <a class="button" href={href("/get-started/")}>{labels.start}</a>
+        <a class="button" href={href("/results/")}>{labels.results}</a>
       </div>
     </div>
   </section>
@@ -70,7 +70,7 @@ const labels = locale === "zh" ? {
         {projectDomains.map((domain, index) => {
           const domainProjects = projects.filter((project) => project.category === domain.id);
           return (
-            <a class={`project-domain-card project-domain-card--${domain.id}`} href={href(`/projects/${domain.id}.html`)}>
+            <a class={`project-domain-card project-domain-card--${domain.id}`} href={href(`/projects/${domain.id}/`)}>
               <div class="project-domain-card__top">
                 <span>0{index + 1}</span>
                 <small>{domain.eyebrow[locale]}</small>
@@ -111,7 +111,7 @@ const labels = locale === "zh" ? {
       <div class="cta-band">
         <h2>{labels.startTitle}</h2>
         <p>{labels.startBody}</p>
-        <a class="button primary" href={href("/get-started.html")}>{labels.start}</a>
+        <a class="button primary" href={href("/get-started/")}>{labels.start}</a>
       </div>
     </div>
   </section>
