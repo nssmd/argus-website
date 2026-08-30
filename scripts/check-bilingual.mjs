@@ -57,10 +57,8 @@ for (const [englishPath, chinesePath] of pairs) {
   assert(/[\u3400-\u9fff]/.test(chinese), `${chinesePath} lacks Chinese copy`);
   assert(!english.includes("argus-mark-gold.png"), `${englishPath} still uses the legacy mark`);
   assert(!chinese.includes("argus-mark-gold.png"), `${chinesePath} still uses the legacy mark`);
-  assert(english.includes('gradientUnits="userSpaceOnUse"'), `${englishPath} logo gradient restarts per path`);
-  assert(chinese.includes('gradientUnits="userSpaceOnUse"'), `${chinesePath} logo gradient restarts per path`);
-  assert(english.includes('x1="180" y1="0" x2="1280" y2="0"'), `${englishPath} horizontal logo gradient misses the visible artwork`);
-  assert(chinese.includes('x1="180" y1="0" x2="1280" y2="0"'), `${chinesePath} horizontal logo gradient misses the visible artwork`);
+  assert(english.includes('data-logo-tone="monochrome"'), `${englishPath} lacks monochrome logos`);
+  assert(chinese.includes('data-logo-tone="monochrome"'), `${chinesePath} lacks monochrome logos`);
   assert(english.includes('class="footer-brand"') && english.includes('aria-label="Argus home"'), `${englishPath} footer logo is unnamed`);
   assert(chinese.includes('class="footer-brand"') && chinese.includes('aria-label="Argus 首页"'), `${chinesePath} footer logo is unnamed`);
 }
@@ -229,10 +227,13 @@ const home = read("index.html");
 assert(home.includes('href="/favicon.ico"'), "root favicon.ico link tag missing from HTML");
 assert(
   home.indexOf('href="/favicon.ico"') < home.indexOf('href="/assets/argus-mark-rounded-small.svg"'),
-  "root favicon.ico is not the primary icon declaration",
+  "root monochrome favicon.ico is not the primary icon declaration",
 );
 const smallFavicon = fs.readFileSync(path.resolve("public/assets/argus-mark-rounded-small.svg"), "utf8");
-assert(smallFavicon.includes('fill="#073e8c"'), "small SVG favicon lacks explicit deep-blue fill");
+assert(
+  smallFavicon.includes('fill="currentColor"') || smallFavicon.includes('fill="#000000"'),
+  "small SVG favicon is not monochrome",
+);
 const englishHow = read("how/index.html");
 const chineseHow = read("zh/how/index.html");
 assert(englishHow.includes("/assets/nanochat-b200-trajectory.en.svg"), "English How page lacks English nanochat chart");
