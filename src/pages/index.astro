@@ -4,6 +4,7 @@ import ResearchField from "../components/ResearchField.astro";
 import BrandUniverse from "../components/BrandUniverse.astro";
 import DenseIntelligence from "../components/DenseIntelligence.astro";
 import MathematicalManifesto from "../components/MathematicalManifesto.astro";
+import { desktopRelease } from "../data/desktopRelease";
 import { localeFromPath, pathForLocale } from "../i18n";
 
 const locale = localeFromPath(Astro.url.pathname);
@@ -17,6 +18,7 @@ const copy = locale === "zh" ? {
   heroEm: "它会边工作，边学习。",
   lede: "Argus 的 Life 7×24 持续运行：读资料、写代码、跑实验、检查证据，也从每一次成功、失败与改道中学习。经验会沉淀为 Memory、Skill、评测和过程数据，让系统不断进化，并扩展到从未见过的 OOD 任务。",
   startNow: "开始使用 Argus →",
+  downloadWindows: "下载 Windows 版",
   projects: "浏览团队项目 →",
   results: "查看量化成绩",
   evolutionLink: "看自进化飞轮 ↓",
@@ -100,6 +102,7 @@ const copy = locale === "zh" ? {
   heroEm: "It learns while it works.",
   lede: "Argus Life runs 24/7: reading, building, experimenting, and checking evidence—while learning from every success, failure, and pivot. Experience becomes memory, skills, evaluations, and process data, so the system keeps evolving into OOD work it has never seen before.",
   startNow: "Get started with Argus →",
+  downloadWindows: "Download for Windows",
   projects: "Explore team projects →",
   results: "Measured results",
   evolutionLink: "See the evolution loop ↓",
@@ -191,7 +194,8 @@ const copy = locale === "zh" ? {
         <h2 class="hero-title">{copy.heroLead}<br /><em>{copy.heroEm}</em></h2>
         <p class="lede">{copy.lede}</p>
         <div class="hero-actions">
-          <a class="button primary" href={href("/get-started/")}>{copy.startNow}</a>
+          <a class="button primary" href={desktopRelease.downloadUrl}>{copy.downloadWindows} ↓</a>
+          <a class="button" href={href("/get-started/")}>{copy.startNow}</a>
           <a class="button" href={href("/projects/")}>{copy.projects}</a>
         </div>
         <div class="hero-thesis" aria-label={copy.conceptLabel}>

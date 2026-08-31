@@ -2486,6 +2486,109 @@ main {
   max-width: 980px;
 }
 
+.desktop-download-section {
+  padding-top: 42px;
+  padding-bottom: 42px;
+  background:
+    radial-gradient(circle at 90% 10%, color-mix(in srgb, var(--blue) 14%, transparent), transparent 24rem),
+    var(--surface);
+}
+
+.desktop-download-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 28px 48px;
+  padding: 34px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--blue) 34%, var(--line));
+  border-radius: 20px;
+  background: var(--surface-raised);
+  box-shadow: var(--shadow);
+}
+
+.desktop-download-card h2 {
+  max-width: 620px;
+  margin: 10px 0 12px;
+  font-family: var(--serif);
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 500;
+  line-height: 1.08;
+}
+
+.desktop-download-card__copy > p:not(.eyebrow) {
+  max-width: 650px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.desktop-download-card__meta,
+.desktop-download-card__links {
+  display: flex;
+  gap: 8px 16px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.desktop-download-card__meta span {
+  padding: 6px 9px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.desktop-download-card__action {
+  display: flex;
+  min-width: 250px;
+  align-items: flex-end;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.desktop-download-card__action .button {
+  min-width: 250px;
+}
+
+.desktop-download-card__links {
+  justify-content: flex-end;
+}
+
+.desktop-download-card__links a {
+  color: var(--blue);
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.desktop-download-card__checksum {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.desktop-download-card__checksum span {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.desktop-download-card__checksum code {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 10px;
+}
+
 .agent-install-card {
   position: relative;
   margin-top: 26px;
@@ -4409,6 +4512,22 @@ main {
   .project-domain-hero__visual {
     width: min(440px, 100%);
     margin: 0 auto;
+  }
+
+  .desktop-download-card {
+    grid-template-columns: 1fr;
+  }
+
+  .desktop-download-card__action {
+    align-items: flex-start;
+  }
+
+  .desktop-download-card__links {
+    justify-content: flex-start;
+  }
+
+  .desktop-download-card__checksum {
+    grid-template-columns: 1fr;
   }
 
   .project-domain-next__grid {

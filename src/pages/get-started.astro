@@ -1,5 +1,6 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import { desktopRelease } from "../data/desktopRelease";
 import { localeFromPath, pathForLocale } from "../i18n";
 
 const locale = localeFromPath(Astro.url.pathname);
@@ -12,15 +13,23 @@ const copy = locale === "zh" ? {
   eyebrow: "Argus · Get Started",
   hero: "沿用你已经在用的 Agent CLI。",
   lede: "Argus 不要求新的模型账户。让 Copilot、Codex、Claude、Pi 或其他受支持的 CLI 成为执行后端，再由 Manager、Planner、Engineer 与 Reviewer 接管长程工作。",
+  download: "下载 Windows 安装程序",
+  desktopTitle: "Windows 桌面版，一键安装。",
+  desktopBody: "直接下载 Argus 0.1.1 的 Tauri Desktop 安装程序。安装后即可配置已有的 Agent CLI，并通过桌面界面启动和查看长程任务。",
+  desktopMeta: "Windows 10/11 · x64 · 41.7 MiB",
+  desktopAction: "下载 Argus 0.1.1",
+  checksum: "SHA-256 校验值",
+  releaseNotes: "查看 Release Notes",
+  signature: "下载签名",
   assisted: "推荐：让 Agent 帮你安装",
   assistedBody: "把下面的提示词发送给当前正在使用的 Code Agent。它会读取与你的操作系统对应的安装契约，完成安装、配置和真实 smoke test，并在需要登录、sudo 或全局修改前征求确认。",
   copy: "复制提示词",
   copied: "已复制",
   prompt: "阅读 https://github.com/lbx154/Argus/blob/main/docs/agent-install.md，并使用其中适合当前操作系统的章节安装 Argus。优先使用正在进行本次对话的 Agent CLI 作为 Argus 后端。完成真实 Agent-turn smoke test，然后运行 `argus doctor --deep --advisor auto`。在登录账户、使用 sudo 或修改全局配置前，说明原因并等待确认。不要要求我在对话中粘贴密码、Token 或 API Key。",
   platformsTitle: "选择你的平台",
-  platformsBody: "平台采用不同的安装方式，避免把 Windows、macOS 与 Linux 命令混在一起。所有平台都需要 Python 3.11+、Node.js 22.12+，以及一个已登录的 Agent CLI。",
+  platformsBody: "Windows 用户可以直接安装桌面版；macOS、Linux 与需要源码环境的高级用户可使用对应的命令行安装方式。所有平台都需要一个已登录的 Agent CLI。",
   platforms: [
-    ["Windows 10/11", "Direct Python install", "通过 Python 直接安装，不创建虚拟环境；支持 Manager chat、Web/TUI 和原生 durable subagents。"],
+    ["Windows 10/11", "Desktop installer", "推荐使用上方的一键桌面安装程序；需要源码环境时也可按安装指南使用 Python 直接安装。"],
     ["macOS", "Managed uv tool", "由 uv 管理独立环境，无需手工创建 venv；适合 Apple Silicon 与日常桌面使用。"],
     ["Linux", "Isolated source venv", "在明确的 venv 中保留 Python、CUDA 工具和长期进程的可复现所有权。"],
   ],
@@ -52,15 +61,23 @@ const copy = locale === "zh" ? {
   eyebrow: "Argus · Get Started",
   hero: "Bring the Agent CLI you already use.",
   lede: "Argus does not require another model account. Use Copilot, Codex, Claude, Pi, or another supported CLI as the execution backend, then let the Manager, Planner, Engineer, and Reviewer sustain the work.",
+  download: "Download the Windows installer",
+  desktopTitle: "Argus Desktop for Windows, ready in one download.",
+  desktopBody: "Download the Argus 0.1.1 Tauri Desktop installer directly. After installation, connect an Agent CLI you already use and launch or inspect long-horizon work from the desktop application.",
+  desktopMeta: "Windows 10/11 · x64 · 41.7 MiB",
+  desktopAction: "Download Argus 0.1.1",
+  checksum: "SHA-256 checksum",
+  releaseNotes: "View release notes",
+  signature: "Download signature",
   assisted: "Recommended: let your Agent install it",
   assistedBody: "Send the prompt below to the Code Agent you are using now. It will read the installation contract for your operating system, install and configure Argus, run a real smoke test, and pause before login, sudo, or global configuration changes.",
   copy: "Copy prompt",
   copied: "Copied",
   prompt: "Read https://github.com/lbx154/Argus/blob/main/docs/agent-install.md and install Argus using the section for this operating system. Prefer the Agent CLI running this conversation as the Argus backend. Run setup through its real Agent-turn smoke test, then run `argus doctor --deep --advisor auto`. Before account login, sudo, or global configuration changes, explain why and wait for approval. Never ask me to paste a password, token, or API key into the conversation.",
   platformsTitle: "Choose your platform",
-  platformsBody: "Each platform has its own installation path; do not mix Windows, macOS, and Linux commands. All platforms require Python 3.11+, Node.js 22.12+, and one authenticated Agent CLI.",
+  platformsBody: "Windows users can install the desktop application directly. macOS, Linux, and advanced users who need a source environment can follow the corresponding command-line path. Every platform needs one authenticated Agent CLI.",
   platforms: [
-    ["Windows 10/11", "Direct Python install", "Install directly through Python without creating a virtual environment. Manager chat, Web/TUI, and native durable subagents are supported."],
+    ["Windows 10/11", "Desktop installer", "Use the one-click desktop installer above, or follow the installation guide for a direct Python setup when you need a source environment."],
     ["macOS", "Managed uv tool", "Let uv own the isolated environment instead of creating a venv manually. This is the clean desktop path for Apple Silicon."],
     ["Linux", "Isolated source venv", "Keep Python, CUDA tooling, and long-running process ownership reproducible inside an explicit venv."],
   ],
@@ -96,8 +113,36 @@ const copy = locale === "zh" ? {
       <h1>{copy.hero}</h1>
       <p class="lede">{copy.lede}</p>
       <div class="hero-actions">
-        <a class="button primary" href="#agent-install">{copy.assisted}</a>
+        <a class="button primary" href={desktopRelease.downloadUrl}>{copy.download} ↓</a>
+        <a class="button" href="#agent-install">{copy.assisted}</a>
         <a class="button" href={href("/start/")}>{copy.demo}</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="windows-download" class="section desktop-download-section">
+    <div class="shell onboarding-shell">
+      <div class="desktop-download-card">
+        <div class="desktop-download-card__copy">
+          <p class="eyebrow">01 · Windows desktop</p>
+          <h2>{copy.desktopTitle}</h2>
+          <p>{copy.desktopBody}</p>
+          <div class="desktop-download-card__meta">
+            <span>{copy.desktopMeta}</span>
+            <span>Tauri 2</span>
+          </div>
+        </div>
+        <div class="desktop-download-card__action">
+          <a class="button primary" href={desktopRelease.downloadUrl}>{copy.desktopAction} ↓</a>
+          <div class="desktop-download-card__links">
+            <a href={desktopRelease.releaseUrl} target="_blank" rel="noopener noreferrer">{copy.releaseNotes} ↗</a>
+            <a href={desktopRelease.signatureUrl}>{copy.signature} ↓</a>
+          </div>
+        </div>
+        <div class="desktop-download-card__checksum">
+          <span>{copy.checksum}</span>
+          <code>{desktopRelease.sha256}</code>
+        </div>
       </div>
     </div>
   </section>
@@ -105,7 +150,7 @@ const copy = locale === "zh" ? {
   <section id="agent-install" class="section">
     <div class="shell onboarding-shell">
       <div class="section-head">
-        <p class="eyebrow">01 · Agent-assisted</p>
+        <p class="eyebrow">02 · Agent-assisted</p>
         <h2>{copy.assisted}</h2>
         <p>{copy.assistedBody}</p>
       </div>
@@ -119,7 +164,7 @@ const copy = locale === "zh" ? {
   <section class="section surface">
     <div class="shell onboarding-shell">
       <div class="section-head">
-        <p class="eyebrow">02 · Platform</p>
+        <p class="eyebrow">03 · Platform</p>
         <h2>{copy.platformsTitle}</h2>
         <p>{copy.platformsBody}</p>
       </div>
@@ -139,7 +184,7 @@ const copy = locale === "zh" ? {
   <section class="section">
     <div class="shell onboarding-shell">
       <div class="section-head">
-        <p class="eyebrow">03 · First run</p>
+        <p class="eyebrow">04 · First run</p>
         <h2>{copy.firstTitle}</h2>
         <p>{copy.firstBody}</p>
       </div>
@@ -157,7 +202,7 @@ const copy = locale === "zh" ? {
   <section class="section surface">
     <div class="shell onboarding-shell">
       <div class="section-head">
-        <p class="eyebrow">04 · Backends</p>
+        <p class="eyebrow">05 · Backends</p>
         <h2>{copy.backendsTitle}</h2>
         <p>{copy.backendsBody}</p>
       </div>
