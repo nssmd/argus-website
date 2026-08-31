@@ -158,10 +158,18 @@ for (const page of ["projects/mathematics/index.html", "zh/projects/mathematics/
 
 for (const page of ["get-started/index.html", "zh/get-started/index.html"]) {
   const html = read(page);
+  assert(html.includes("Argus-0.1.1-setup.exe"), `${page} lacks the direct Windows installer`);
+  assert(html.includes("6ad1048329bbdfa3c9594f0ba7aa667a864df4b5e5919f31366b6116fedc8923"), `${page} lacks the installer checksum`);
+  assert(html.includes("Argus-0.1.1-setup.exe.sig"), `${page} lacks the installer signature`);
   assert(html.includes("docs/agent-install.md"), `${page} lacks the agent installation contract`);
   assert(html.includes("argus doctor --deep --advisor auto"), `${page} lacks active diagnosis`);
   assert(html.includes("GitHub Copilot CLI"), `${page} lacks the Copilot backend`);
   assert(html.includes("microsoft/ArgusAgent"), `${page} lacks the official distribution link`);
+}
+
+for (const page of ["index.html", "zh/index.html"]) {
+  const html = read(page);
+  assert(html.includes("Argus-0.1.1-setup.exe"), `${page} lacks the direct Windows installer action`);
 }
 
 for (const page of ["contact/index.html", "zh/contact/index.html"]) {
