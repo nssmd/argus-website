@@ -164,6 +164,26 @@ for (const page of ["get-started/index.html", "zh/get-started/index.html"]) {
   assert(html.includes("docs/agent-install.md"), `${page} lacks the agent installation contract`);
   assert(html.includes("argus doctor --deep --advisor auto"), `${page} lacks active diagnosis`);
   assert(html.includes("GitHub Copilot CLI"), `${page} lacks the Copilot backend`);
+  for (const [name, id] of [
+    ["OpenAI Codex CLI", "codex"],
+    ["Claude Code", "claude"],
+    ["Cursor CLI", "cursor"],
+    ["Pi", "pi"],
+    ["OpenCode", "opencode"],
+    ["xAI Grok Build", "grok"],
+    ["Qoder CLI", "qoder"],
+    ["DeepSeek Harness", "dsh"],
+  ]) {
+    assert(html.includes(name), `${page} lacks the ${name} backend`);
+    assert(html.includes(`<code>${id}</code>`), `${page} lacks the ${id} backend identifier`);
+  }
+  assert((html.match(/class="backend-card(?: |")/g) || []).length === 9, `${page} must show nine backend cards`);
+  assert(html.includes("docs/backend-providers.md"), `${page} lacks the backend provider guide`);
+  assert(
+    html.includes("Windows 0.1.1 installer shipped with eight backends") ||
+      html.includes("Windows 0.1.1 安装包发布时包含八个后端"),
+    `${page} lacks the desktop/source backend version boundary`,
+  );
   assert(html.includes("microsoft/ArgusAgent"), `${page} lacks the official distribution link`);
 }
 
