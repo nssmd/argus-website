@@ -6,6 +6,7 @@ import { localeFromPath, pathForLocale } from "../i18n";
 const locale = localeFromPath(Astro.url.pathname);
 const href = (path: string) => pathForLocale(path, locale);
 const installGuide = "https://github.com/lbx154/Argus/blob/main/docs/agent-install.md";
+const backendGuide = "https://github.com/lbx154/Argus/blob/main/docs/backend-providers.md";
 const pluginGuide = "https://github.com/lbx154/Argus/blob/main/docs/plugin.md";
 const copy = locale === "zh" ? {
   title: "开始使用 · Argus",
@@ -43,9 +44,21 @@ const copy = locale === "zh" ? {
     ["04", "确认状态", "argus --status"],
     ["05", "进入 cockpit", "argus"],
   ],
-  backendsTitle: "使用你已有的模型与账户",
-  backendsBody: "Argus 负责组织、记忆、执行与独立验收；实际推理由你选择的 CLI 提供。安装前先完成对应 CLI 的登录。",
-  backends: ["GitHub Copilot CLI", "Pi", "OpenAI Codex CLI", "Claude Code", "OpenCode", "Grok Build", "Qoder", "DeepSeek Harness"],
+  backendsTitle: "九个原生后端，共用一个 Argus Runtime",
+  backendsBody: "当前源码版可直接驱动九种 Agent CLI。Argus 负责组织、记忆、执行与独立验收；实际推理由你选择并已登录的 CLI 提供。",
+  backendReleaseNote: "版本说明：Windows 0.1.1 安装包发布时包含八个后端；Cursor CLI 支持已进入当前 main，将随后续桌面版本提供。现在需要 Cursor 时，请使用源码安装。",
+  backends: [
+    ["GitHub Copilot CLI", "copilot", "使用已登录的 GitHub Copilot 会话"],
+    ["OpenAI Codex CLI", "codex", "沿用 Codex 自己的模型目录与登录"],
+    ["Claude Code", "claude", "沿用 Claude Code 登录与模型选择"],
+    ["Cursor CLI", "cursor", "当前源码版新增；支持 agent login"],
+    ["Pi", "pi", "可连接多个 Provider 的模型目录"],
+    ["OpenCode", "opencode", "按 Provider 与模型 ID 选择"],
+    ["xAI Grok Build", "grok", "支持 grok login 或 XAI_API_KEY"],
+    ["Qoder CLI", "qoder", "支持浏览器登录或 Personal Access Token"],
+    ["DeepSeek Harness", "dsh", "通过 DeepSeek 的 Headless Runner 执行"],
+  ],
+  backendGuide: "查看后端、Provider 与模型配置",
   linksTitle: "接下来去哪里",
   report: "阅读 Argus 技术报告",
   demo: "观看四条真实运行",
@@ -91,9 +104,21 @@ const copy = locale === "zh" ? {
     ["04", "Confirm status", "argus --status"],
     ["05", "Enter the cockpit", "argus"],
   ],
-  backendsTitle: "Use the models and accounts you already have",
-  backendsBody: "Argus provides organization, memory, execution, and independent review. The CLI you select provides model inference; authenticate that CLI before setup.",
-  backends: ["GitHub Copilot CLI", "Pi", "OpenAI Codex CLI", "Claude Code", "OpenCode", "Grok Build", "Qoder", "DeepSeek Harness"],
+  backendsTitle: "Nine native backends. One Argus runtime.",
+  backendsBody: "The current source build drives nine Agent CLIs directly. Argus provides organization, memory, execution, and independent review; the authenticated CLI you select provides model inference.",
+  backendReleaseNote: "Version note: the Windows 0.1.1 installer shipped with eight backends. Cursor CLI support is now on main and will enter a subsequent desktop release. Use the source installation when you need Cursor today.",
+  backends: [
+    ["GitHub Copilot CLI", "copilot", "Uses your authenticated GitHub Copilot session"],
+    ["OpenAI Codex CLI", "codex", "Keeps Codex's native catalog and authentication"],
+    ["Claude Code", "claude", "Keeps Claude Code authentication and model selection"],
+    ["Cursor CLI", "cursor", "New on main; supports agent login"],
+    ["Pi", "pi", "Resolves models across multiple provider catalogs"],
+    ["OpenCode", "opencode", "Selects a provider-qualified model ID"],
+    ["xAI Grok Build", "grok", "Supports grok login or XAI_API_KEY"],
+    ["Qoder CLI", "qoder", "Supports browser login or a Personal Access Token"],
+    ["DeepSeek Harness", "dsh", "Runs through DeepSeek's headless runner"],
+  ],
+  backendGuide: "Open backend, provider, and model setup",
   linksTitle: "Where to go next",
   report: "Read the Argus technical report",
   demo: "Watch four real runs",
@@ -206,8 +231,22 @@ const copy = locale === "zh" ? {
         <h2>{copy.backendsTitle}</h2>
         <p>{copy.backendsBody}</p>
       </div>
-      <div class="backend-cloud">
-        {copy.backends.map((backend) => <span>{backend}</span>)}
+      <div class="backend-grid">
+        {copy.backends.map(([name, id, detail], index) => (
+          <article class={`backend-card${id === "cursor" ? " backend-card--new" : ""}`}>
+            <div class="backend-card__head">
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <code>{id}</code>
+            </div>
+            <h3>{name}</h3>
+            <p>{detail}</p>
+            {id === "cursor" && <strong>NEW</strong>}
+          </article>
+        ))}
+      </div>
+      <div class="backend-version-note">
+        <p>{copy.backendReleaseNote}</p>
+        <a href={backendGuide} target="_blank" rel="noopener noreferrer">{copy.backendGuide} ↗</a>
       </div>
     </div>
   </section>

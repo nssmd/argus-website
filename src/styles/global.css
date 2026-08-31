@@ -2729,6 +2729,105 @@ main {
   font-size: 10px;
 }
 
+.backend-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.backend-card {
+  position: relative;
+  min-height: 158px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: var(--surface-raised);
+}
+
+.backend-card--new {
+  border-color: color-mix(in srgb, var(--blue) 52%, var(--line));
+  background:
+    radial-gradient(circle at 100% 0, color-mix(in srgb, var(--blue) 13%, transparent), transparent 10rem),
+    var(--surface-raised);
+}
+
+.backend-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.backend-card__head span,
+.backend-card__head code {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.backend-card__head span {
+  color: var(--faint);
+}
+
+.backend-card__head code {
+  padding: 4px 7px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  color: var(--blue);
+  background: var(--surface-soft);
+}
+
+.backend-card h3 {
+  margin: 22px 0 7px;
+  font-family: var(--serif);
+  font-size: 19px;
+  font-weight: 500;
+}
+
+.backend-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.backend-card > strong {
+  position: absolute;
+  right: 18px;
+  bottom: 16px;
+  color: var(--gold-dark);
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.12em;
+}
+
+.backend-version-note {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 14px;
+  padding: 16px 18px;
+  border-left: 2px solid var(--gold);
+  background: var(--surface-soft);
+}
+
+.backend-version-note p {
+  max-width: 700px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.backend-version-note a {
+  flex: none;
+  color: var(--blue);
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 700;
+}
+
 .onboarding-links {
   padding: 28px;
   border: 1px solid var(--line);
@@ -4489,6 +4588,7 @@ main {
   .project-domain-grid,
   .project-grid,
   .platform-grid,
+  .backend-grid,
   .technical-report-card,
   .team-member-grid,
   .architecture,
@@ -4528,6 +4628,11 @@ main {
 
   .desktop-download-card__checksum {
     grid-template-columns: 1fr;
+  }
+
+  .backend-version-note {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .project-domain-next__grid {
