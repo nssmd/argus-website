@@ -1,6 +1,7 @@
 <script>
   const root = document.documentElement;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const restoringLanguage = root.dataset.languageRestore === "true";
   const revealSelector = [
     ".section-head",
     ".card",
@@ -32,8 +33,9 @@
     });
   };
 
-  if (reduceMotion) {
+  if (reduceMotion || restoringLanguage) {
     root.classList.remove("motion-prep");
+    resetMotionStyles();
   } else {
     void import("gsap").then(({ gsap }) => {
       const heroTargets = gsap.utils.toArray<HTMLElement>(
