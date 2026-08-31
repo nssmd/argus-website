@@ -41,6 +41,12 @@ for (const [englishPath, chinesePath] of pairs) {
   assert(chinese.includes('<html lang="zh-CN">'), `${chinesePath} is not Simplified Chinese`);
   assert(english.includes('hreflang="zh-Hans"'), `${englishPath} lacks zh-Hans alternate`);
   assert(chinese.includes('hreflang="en"'), `${chinesePath} lacks English alternate`);
+  assert((english.match(/data-language-switch/g) || []).length >= 2, `${englishPath} lacks in-place language switching`);
+  assert((chinese.match(/data-language-switch/g) || []).length >= 2, `${chinesePath} lacks in-place language switching`);
+  assert(english.includes("argus-language-switch"), `${englishPath} lacks language scroll restoration`);
+  assert(chinese.includes("argus-language-switch"), `${chinesePath} lacks language scroll restoration`);
+  assert(english.includes("location.replace"), `${englishPath} adds language changes to browser history`);
+  assert(chinese.includes("location.replace"), `${chinesePath} adds language changes to browser history`);
   assert(english.includes("data-theme-toggle"), `${englishPath} lacks theme toggle`);
   assert(chinese.includes("data-theme-toggle"), `${chinesePath} lacks theme toggle`);
   assert(english.includes("argus-site-theme"), `${englishPath} lacks theme persistence`);

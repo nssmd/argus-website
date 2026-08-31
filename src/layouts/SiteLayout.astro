@@ -80,7 +80,42 @@ const fontStylesheet = "https://fonts.googleapis.com/css2?family=Fraunces:opsz,w
       }
     </script>
     <script is:inline>
-      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      {
+        try {
+          const raw = sessionStorage.getItem("argus-language-switch");
+          const state = raw ? JSON.parse(raw) : null;
+          if (
+            state &&
+            state.path === window.location.pathname &&
+            Number.isFinite(state.x) &&
+            Number.isFinite(state.y) &&
+            Date.now() - Number(state.at) < 10000
+          ) {
+            document.documentElement.dataset.languageRestore = "true";
+            window.addEventListener("load", () => {
+              window.requestAnimationFrame(() => {
+                window.scrollTo({
+                  left: Number(state.x),
+                  top: Number(state.y),
+                  behavior: "instant",
+                });
+                sessionStorage.removeItem("argus-language-switch");
+                document.documentElement.removeAttribute("data-language-restore");
+              });
+            }, { once: true });
+          } else if (raw) {
+            sessionStorage.removeItem("argus-language-switch");
+          }
+        } catch {
+          // Language switching remains available without scroll restoration.
+        }
+      }
+    </script>
+    <script is:inline>
+      if (
+        document.documentElement.dataset.languageRestore !== "true" &&
+        !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ) {
         document.documentElement.classList.add("motion-prep");
         window.setTimeout(() => document.documentElement.classList.remove("motion-prep"), 3000);
       }
