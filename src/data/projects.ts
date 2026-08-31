@@ -329,8 +329,8 @@ export const projects: Project[] = [
     status: "active",
     title: "Argus Mathematics",
     description: {
-      en: "Nine public Argus mathematical result packages with technical reports, explicit claim boundaries, certificates, and reproducible verification.",
-      zh: "集中公开九项 Argus 数学成果包，包含技术报告、精确结论边界、证书与可复现验证材料。",
+      en: "Ten public Argus mathematical result packages with technical reports, explicit claim boundaries, certificates, and reproducible verification.",
+      zh: "集中公开十项 Argus 数学成果包，包含技术报告、精确结论边界、证书与可复现验证材料。",
     },
     problem: {
       en: "Mathematical research produced by autonomous agents needs more than a result announcement. Claims must remain connected to their exact scope, reports, source interpretation, machine-checkable evidence, review status, and unresolved neighboring statements.",
@@ -338,21 +338,21 @@ export const projects: Project[] = [
     },
     highlights: {
       en: [
-        "Archives nine public result packages spanning Riemannian and algebraic geometry, graph theory, convex geometry, arithmetic dynamics, braid-group algebra, and smooth four-manifold topology.",
-        "Includes five independently runnable computational verifiers, a Lean-checked logical composition, technical reports, certificates, and checksums for 45 public artifacts.",
+        "Archives ten public result packages spanning low-dimensional topology and foliations, Riemannian and algebraic geometry, graph theory, convex geometry, arithmetic dynamics, and braid-group algebra.",
+        "Includes six independently replayable computational certificates, a Lean-checked logical composition, technical reports, certificates, and checksums for 59 public artifacts.",
         "Connects completed results to the live Argus Open program, which tracks 757 historical problem records and 30 active research targets.",
         "Separates original constructions from literature reconstructions, historical negative results, scope corrections, active research, and claims whose novelty is not yet certified.",
       ],
       zh: [
-        "归档九个公开成果包，覆盖黎曼与代数几何、图论、凸几何、算术动力系统、辫群代数和光滑四维流形拓扑。",
-        "包含五个可独立运行的计算验证程序、一项 Lean 逻辑组合检查，以及技术报告、证书和 45 个公开产物的校验值。",
+        "归档十个公开成果包，覆盖低维拓扑与叶状结构、黎曼与代数几何、图论、凸几何、算术动力系统和辫群代数。",
+        "包含六个可独立重放的计算证书、一项 Lean 逻辑组合检查，以及技术报告、证书和 59 个公开产物的校验值。",
         "将已完成成果与 Argus Open 实时研究体系连接；该体系当前覆盖 757 条历史问题记录和 30 个研究目标。",
         "明确区分原创构造、文献重建、历史负面结论、范围修正、研究中项目，以及尚未完成新颖性认证的结论。",
       ],
     },
     outcome: {
-      en: "Nine mathematical result packages preserved with explicit scope, review status, and public evidence.",
-      zh: "九个数学成果包以明确命题范围、审查状态和公开证据长期保存。",
+      en: "Ten mathematical result packages preserved with explicit scope, review status, and public evidence.",
+      zh: "十个数学成果包以明确命题范围、审查状态和公开证据长期保存。",
     },
     technologies: ["Mathematics", "Lean", "Python", "Reproducible research"],
     links: [
