@@ -1,5 +1,5 @@
 export type ProjectLink = {
-  kind: "repository" | "official" | "report" | "evidence" | "demo" | "status" | "documentation";
+  kind: "repository" | "official" | "report" | "evidence" | "demo" | "status" | "documentation" | "license";
   href: string;
 };
 
@@ -342,12 +342,14 @@ export const projects: Project[] = [
         "Includes seven independently replayable computational certificates, a Lean-checked logical composition, technical reports, certificates, and checksums for 71 public artifacts.",
         "Connects completed results to the live Argus Open program, which tracks 757 historical problem records and 30 active research targets.",
         "Separates original constructions from literature reconstructions, historical negative results, scope corrections, active research, and claims whose novelty is not yet certified.",
+        "Original archive materials are All Rights Reserved following reported authorship misuse; accurate citation remains welcome.",
       ],
       zh: [
         "归档十七个公开成果包，覆盖低维拓扑与叶状结构、黎曼与代数几何、复分析与调和测度、几何群论与 Kleinian 群、集合论、格与球面设计、图论、凸几何、β-变换与 Salem 数、算术动力系统和辫群代数。",
         "包含七个可独立重放的计算证书、一项 Lean 逻辑组合检查，以及技术报告、证书和 71 个公开产物的校验值。",
         "将已完成成果与 Argus Open 实时研究体系连接；该体系当前覆盖 757 条历史问题记录和 30 个研究目标。",
         "明确区分原创构造、文献重建、历史负面结论、范围修正、研究中项目，以及尚未完成新颖性认证的结论。",
+        "鉴于已出现公开成果材料被他人冒充署名的情况，档案原创材料现明确保留全部权利；仍欢迎规范引用。",
       ],
     },
     outcome: {
@@ -359,6 +361,7 @@ export const projects: Project[] = [
       { kind: "repository", href: "https://github.com/Argus-AiTeam/argus-mathematics" },
       { kind: "status", href: "https://open.argusbot.cn/" },
       { kind: "evidence", href: "https://github.com/Argus-AiTeam/argus-mathematics/blob/main/data/results.json" },
+      { kind: "license", href: "https://github.com/Argus-AiTeam/argus-mathematics/blob/main/LICENSE" },
       { kind: "documentation", href: "https://open.argusbot.cn/catalog" },
     ],
   },
