@@ -158,7 +158,7 @@ for (const page of ["projects/mathematics/index.html", "zh/projects/mathematics/
   assert(html.includes("github.com/Argus-AiTeam/argus-mathematics"), `${page} lacks the mathematics result repository`);
   assert(html.includes("https://open.argusbot.cn/"), `${page} lacks the live mathematics portal`);
   assert(html.includes("Seventeen mathematical result packages") || html.includes("十七个数学成果包"), `${page} lacks the current mathematics result count`);
-  assert(html.includes("71 public artifacts") || html.includes("71 个公开产物"), `${page} lacks the current evidence count`);
+  assert(html.includes("81 public artifacts") || html.includes("81 个公开产物"), `${page} lacks the current evidence count`);
   assert((html.match(/class="project-detail-card project-detail-card--mathematics"/g) || []).length === 2, `${page} must show both mathematics projects`);
 }
 
