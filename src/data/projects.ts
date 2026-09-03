@@ -339,14 +339,14 @@ export const projects: Project[] = [
     highlights: {
       en: [
         "Archives seventeen public result packages spanning low-dimensional topology and foliations, Riemannian and algebraic geometry, complex analysis and harmonic measure, geometric group theory and Kleinian groups, set theory, lattices and spherical designs, graph theory, convex geometry, beta-transformations and Salem numbers, arithmetic dynamics, and braid-group algebra.",
-        "Includes seven independently replayable computational certificates, a Lean-checked logical composition, technical reports, certificates, and checksums for 71 public artifacts.",
+        "Includes nine independently replayable computational certificates, a Lean-checked logical composition, technical reports, and checksums for 81 public artifacts. The latest package answers Stephen Bigelow's zipper-algebra twist question at the representation level.",
         "Connects completed results to the live Argus Open program, which tracks 757 historical problem records and 30 active research targets.",
         "Separates original constructions from literature reconstructions, historical negative results, scope corrections, active research, and claims whose novelty is not yet certified.",
         "Original archive materials are All Rights Reserved following reported authorship misuse; accurate citation remains welcome.",
       ],
       zh: [
         "归档十七个公开成果包，覆盖低维拓扑与叶状结构、黎曼与代数几何、复分析与调和测度、几何群论与 Kleinian 群、集合论、格与球面设计、图论、凸几何、β-变换与 Salem 数、算术动力系统和辫群代数。",
-        "包含七个可独立重放的计算证书、一项 Lean 逻辑组合检查，以及技术报告、证书和 71 个公开产物的校验值。",
+        "包含九个可独立重放的计算证书、一项 Lean 逻辑组合检查，以及技术报告和 81 个公开产物的校验值。最新成果包在表示层回答了 Stephen Bigelow 提出的 zipper algebra twist 问题。",
         "将已完成成果与 Argus Open 实时研究体系连接；该体系当前覆盖 757 条历史问题记录和 30 个研究目标。",
         "明确区分原创构造、文献重建、历史负面结论、范围修正、研究中项目，以及尚未完成新颖性认证的结论。",
         "鉴于已出现公开成果材料被他人冒充署名的情况，档案原创材料现明确保留全部权利；仍欢迎规范引用。",
