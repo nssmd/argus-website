@@ -1,7 +1,10 @@
 ---
 import horizontalSource from "../../public/assets/argus-logo-rounded-horizontal.svg?raw";
+import horizontalDarkSource from "../../public/assets/argus-logo-rounded-horizontal-dark.svg?raw";
 import markSource from "../../public/assets/argus-mark-rounded.svg?raw";
+import markDarkSource from "../../public/assets/argus-mark-rounded-dark.svg?raw";
 import smallSource from "../../public/assets/argus-mark-rounded-small.svg?raw";
+import smallDarkSource from "../../public/assets/argus-mark-rounded-small-dark.svg?raw";
 
 type Props = {
   variant?: "horizontal" | "mark" | "small";
@@ -17,19 +20,27 @@ const {
   decorative = false,
 } = Astro.props;
 const sources = { horizontal: horizontalSource, mark: markSource, small: smallSource };
-const svg = sources[variant]
+const darkSources = {
+  horizontal: horizontalDarkSource,
+  mark: markDarkSource,
+  small: smallDarkSource,
+};
+const prepare = (source: string) => source
   .replace(/<title>[\s\S]*?<\/title>/, "")
   .replace(/\srole="img"/, "")
-  .replace("<svg ", `<svg class="argus-logo__svg" aria-hidden="true" focusable="false" `)
-  .replaceAll("#000000", "currentColor");
+  .replace("<svg ", `<svg class="argus-logo__svg" aria-hidden="true" focusable="false" `);
+const lightSvg = prepare(sources[variant]);
+const darkSvg = prepare(darkSources[variant]);
 ---
 
 <span
   class:list={["argus-logo", className]}
   data-argus-logo={variant}
-  data-logo-tone="monochrome"
+  data-logo-tone="adaptive"
   role={decorative ? undefined : "img"}
   aria-label={decorative ? undefined : label}
   aria-hidden={decorative ? "true" : undefined}
-  set:html={svg}
-></span>
+>
+  <span class="argus-logo__theme argus-logo__theme--light" set:html={lightSvg}></span>
+  <span class="argus-logo__theme argus-logo__theme--dark" set:html={darkSvg}></span>
+</span>

@@ -274,6 +274,24 @@ input {
   overflow: visible;
 }
 
+.argus-logo__theme {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.argus-logo__theme--dark {
+  display: none;
+}
+
+:root[data-theme="dark"] .argus-logo__theme--light {
+  display: none;
+}
+
+:root[data-theme="dark"] .argus-logo__theme--dark {
+  display: block;
+}
+
 .argus-logo--header {
   width: 132px;
   height: 42px;
@@ -297,8 +315,12 @@ input {
 }
 
 @media (forced-colors: active) {
-  .argus-logo {
-    color: CanvasText;
+  .argus-logo__theme--dark {
+    display: none;
+  }
+
+  .argus-logo__theme--light {
+    display: block;
   }
 }
 
