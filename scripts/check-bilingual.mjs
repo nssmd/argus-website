@@ -63,8 +63,8 @@ for (const [englishPath, chinesePath] of pairs) {
   assert(/[\u3400-\u9fff]/.test(chinese), `${chinesePath} lacks Chinese copy`);
   assert(!english.includes("argus-mark-gold.png"), `${englishPath} still uses the legacy mark`);
   assert(!chinese.includes("argus-mark-gold.png"), `${chinesePath} still uses the legacy mark`);
-  assert(english.includes('data-logo-tone="monochrome"'), `${englishPath} lacks monochrome logos`);
-  assert(chinese.includes('data-logo-tone="monochrome"'), `${chinesePath} lacks monochrome logos`);
+  assert(english.includes('data-logo-tone="adaptive"'), `${englishPath} lacks adaptive logos`);
+  assert(chinese.includes('data-logo-tone="adaptive"'), `${chinesePath} lacks adaptive logos`);
   assert(english.includes('class="footer-brand"') && english.includes('aria-label="Argus home"'), `${englishPath} footer logo is unnamed`);
   assert(chinese.includes('class="footer-brand"') && chinese.includes('aria-label="Argus 首页"'), `${chinesePath} footer logo is unnamed`);
 }
@@ -274,13 +274,21 @@ const home = read("index.html");
 assert(home.includes('href="/favicon.ico"'), "root favicon.ico link tag missing from HTML");
 assert(
   home.indexOf('href="/favicon.ico"') < home.indexOf('href="/assets/argus-mark-rounded-small.svg"'),
-  "root monochrome favicon.ico is not the primary icon declaration",
+  "dark-compatible favicon.ico is not the primary icon declaration",
 );
 const smallFavicon = fs.readFileSync(path.resolve("public/assets/argus-mark-rounded-small.svg"), "utf8");
 assert(
-  smallFavicon.includes('fill="currentColor"') || smallFavicon.includes('fill="#000000"'),
+  smallFavicon.includes('fill="#000000"'),
   "small SVG favicon is not monochrome",
 );
+const darkFavicon = fs.readFileSync(path.resolve("public/assets/argus-mark-rounded-dark-favicon.svg"), "utf8");
+assert(
+  home.includes('href="/assets/argus-mark-rounded-dark-favicon.svg" media="(prefers-color-scheme: dark)"'),
+  "dark SVG favicon link missing",
+);
+for (const color of ["#d7d9dc", "#ffffff", "#202326", "#080a0b"]) {
+  assert(darkFavicon.includes(`fill="${color}"`), `dark SVG favicon lacks ${color}`);
+}
 const englishHow = read("how/index.html");
 const chineseHow = read("zh/how/index.html");
 assert(englishHow.includes("/assets/nanochat-b200-trajectory.en.svg"), "English How page lacks English nanochat chart");
