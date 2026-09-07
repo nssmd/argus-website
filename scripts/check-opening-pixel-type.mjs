@@ -31,10 +31,10 @@ assert.ok(pixelIndexes.length / fonts.length >= 0.2 && pixelIndexes.length / fon
 assert.ok(pixelIndexes.every((index, offset) => offset === 0 || index - pixelIndexes[offset - 1] > 1));
 
 const getRule = (selector) => {
-  const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const rule = css.match(new RegExp(`(?:^|\\n)\\s*${escaped}\\s*\\{([\\s\\S]*?)\\n\\}`, "m"));
+  const rule = [...css.matchAll(/([^{}]+)\{([^{}]*)\}/g)]
+    .find((match) => match[1].split(",").some((item) => item.trim() === selector));
   assert.ok(rule, `${selector} rule missing`);
-  return rule[1];
+  return rule[2];
 };
 
 for (const selector of [".section-head h2", ".page-hero h1", "body"]) {

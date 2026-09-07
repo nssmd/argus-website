@@ -124,8 +124,9 @@ const fontStylesheet = "https://fonts.googleapis.com/css2?family=Fraunces:opsz,w
     <title>{title}</title>
   </head>
   <body>
+    <a class="skip-link" href="#main-content">{locale === "zh" ? "跳转到正文" : "Skip to content"}</a>
     <Header />
-    <main>
+    <main id="main-content" tabindex="-1">
       <slot />
     </main>
     <Footer />

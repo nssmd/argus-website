@@ -11,6 +11,8 @@ const copy = locale === "zh" ? {
   dark: "切换到黑夜模式",
   start: "开始使用",
   github: "GitHub",
+  menu: "打开导航",
+  closeMenu: "收起导航",
   links: ["首页", "项目", "成绩", "研究", "原理", "演示", "联系我们"],
 } : {
   home: "Argus home",
@@ -19,6 +21,8 @@ const copy = locale === "zh" ? {
   dark: "Switch to dark mode",
   start: "Get started",
   github: "GitHub",
+  menu: "Open navigation",
+  closeMenu: "Close navigation",
   links: ["Home", "Projects", "Results", "Research", "How it works", "Demo", "Contact"],
 };
 const links = [
@@ -41,7 +45,7 @@ const isCurrent = (href: string) => currentBase === href || (href === "/projects
     <a class="site-brand" href={localized("/")} aria-label={copy.home}>
       <ArgusLogo variant="horizontal" class="argus-logo--header" decorative />
     </a>
-    <nav class="site-nav" aria-label={copy.nav}>
+    <nav class="site-nav" id="site-navigation" aria-label={copy.nav}>
       {links.map((link) => (
         <a
           href={localized(link.href)}
@@ -50,6 +54,7 @@ const isCurrent = (href: string) => currentBase === href || (href === "/projects
           {link.label}
         </a>
       ))}
+      <a class="site-nav__github" href="https://github.com/Argus-AiTeam" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
     </nav>
     <div class="site-actions">
       <a class="site-action site-action--secondary" href="https://github.com/Argus-AiTeam" target="_blank" rel="noopener noreferrer">
@@ -80,8 +85,93 @@ const isCurrent = (href: string) => currentBase === href || (href === "/projects
         <path d="M10 1.5v2M10 16.5v2M1.5 10h2M16.5 10h2M4 4l1.4 1.4M14.6 14.6 16 16M16 4l-1.4 1.4M5.4 14.6 4 16" />
       </svg>
     </button>
+    <button class="site-menu-toggle" type="button" data-menu-toggle hidden
+      aria-controls="site-navigation" aria-expanded="false" aria-label={copy.menu}
+      data-label-open={copy.menu} data-label-close={copy.closeMenu}>
+      <span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
   </div>
 </header>
+
+<style>
+  .site-menu-toggle, .site-nav__github { display: none; }
+  .site-menu-toggle[hidden], .site-nav[hidden] { display: none !important; }
+  @media (max-width: 1100px) {
+    .site-header[data-menu-ready] .site-header__inner {
+      min-height: 62px; width: 100%; padding: 10px 14px; gap: 8px; flex-wrap: nowrap;
+    }
+    .site-header[data-menu-ready] .site-brand { margin-right: auto; }
+    .site-header[data-menu-ready] .theme-toggle { flex: 0 0 40px; width: 40px; height: 40px; }
+    .site-header[data-menu-ready] .site-action--secondary { display: none; }
+    .site-header[data-menu-ready] .site-nav {
+      position: absolute; top: 100%; right: 14px; width: min(480px, calc(100% - 28px));
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin: 0; padding: 14px;
+      background: var(--surface); border: 1px solid var(--line); border-radius: 0 0 12px 12px;
+      box-shadow: 0 18px 36px -26px var(--ink); overflow: visible;
+    }
+    .site-header[data-menu-ready] .site-nav a {
+      display: flex; align-items: center; min-height: 44px; padding: 8px 12px; border-radius: 5px;
+    }
+    .site-header[data-menu-ready] .site-nav a:hover,
+    .site-header[data-menu-ready] .site-nav a[aria-current="page"] { background: var(--blue-soft); color: var(--blue); }
+    .site-menu-toggle {
+      display: flex; flex: 0 0 40px; min-height: 40px; padding: 10px;
+      flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+      color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 6px; cursor: pointer;
+    }
+    .site-menu-toggle span { width: 17px; height: 1px; background: currentColor; transition: transform 160ms; }
+    .site-menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(3px) rotate(45deg); }
+    .site-menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-3px) rotate(-45deg); }
+  }
+  @media (max-width: 360px) {
+    .site-header[data-menu-ready] .site-header__inner { gap: 6px; }
+    .site-header[data-menu-ready] .site-brand :global(.argus-logo--header) { width: 64px; }
+  }
+</style>
+
+<script>
+  const header = document.querySelector<HTMLElement>(".site-header");
+  const menu = header?.querySelector<HTMLButtonElement>("[data-menu-toggle]");
+  const nav = header?.querySelector<HTMLElement>("#site-navigation");
+  if (header && menu && nav) {
+    const compact = window.matchMedia("(max-width: 1100px)");
+    const setMenu = (open: boolean, restoreFocus = false) => {
+      nav.hidden = compact.matches && !open;
+      menu.setAttribute("aria-expanded", String(open));
+      menu.setAttribute("aria-label", (open ? menu.dataset.labelClose : menu.dataset.labelOpen) ?? "");
+      if (open) nav.querySelector<HTMLAnchorElement>('[aria-current="page"], a')?.focus();
+      else if (restoreFocus) menu.focus();
+    };
+    const updateLayout = () => {
+      const menuHadFocus = document.activeElement === menu;
+      menu.hidden = !compact.matches;
+      setMenu(false, compact.matches && nav.contains(document.activeElement));
+      if (!compact.matches && menuHadFocus) nav.querySelector<HTMLAnchorElement>("a")?.focus();
+    };
+    header.dataset.menuReady = "true";
+    updateLayout();
+    menu.addEventListener("click", () => setMenu(menu.getAttribute("aria-expanded") !== "true"));
+    compact.addEventListener("change", updateLayout);
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && menu.getAttribute("aria-expanded") === "true") setMenu(false, true);
+    });
+    document.addEventListener("click", (event) => {
+      if (event.target instanceof Node && !header.contains(event.target)) setMenu(false);
+    });
+    header.addEventListener("focusout", (event) => {
+      if (event.relatedTarget instanceof Node && !header.contains(event.relatedTarget)) setMenu(false);
+    });
+    nav.addEventListener("click", (event) => {
+      if (event.target instanceof Element && event.target.closest("a")) setMenu(false);
+    });
+    const measureHeader = () => document.documentElement.style.setProperty(
+      "--site-header-height", `${header.getBoundingClientRect().height}px`,
+    );
+    measureHeader();
+    if (typeof ResizeObserver === "function") new ResizeObserver(measureHeader).observe(header);
+    else window.addEventListener("resize", measureHeader, { passive: true });
+  }
+</script>
 
 <script is:inline>
   if (!window.__argusLanguageSwitchReady) {
