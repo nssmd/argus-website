@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="120" viewBox="0 0 240 120" shape-rendering="crispEdges" role="img" aria-labelledby="ac-title ac-desc">
+  <title id="ac-title">The traveling archive cart</title>
+  <desc id="ac-desc">A small archivist tends a timber trolley packed with books and rolled papers beside a reading lamp and a path of worn stepping stones.</desc>
+  <defs>
+    <g id="ac-book">
+      <path fill="#244b68" d="M0 0h8v18H0z"/>
+      <path fill="#5686a6" d="M0 0h2v18H0z"/>
+      <path fill="#efc66f" d="M2 2h6v2H2zm0 10h6v2H2z"/>
+    </g>
+    <g id="ac-book-gold">
+      <path fill="#bb8855" d="M0 0h6v16H0z"/>
+      <path fill="#efc66f" d="M0 0h2v16H0z"/>
+      <path fill="#f3ead6" d="M2 4h4v2H2zm0 8h4v2H2z"/>
+    </g>
+  </defs>
+  <path fill="#244b68" d="M10 90h20v-8h28v4h24v-8h34v6h30v-4h28v8h26v-6h24v8h24v22H4V98h6z"/>
+  <path fill="#386484" d="M6 96h28v-8h24v4h28v-8h28v6h34v-4h28v8h28v-6h22v8h28v12H6z"/>
+  <path fill="#526c72" d="M8 104h46v-6h38v6h44v-8h40v8h38v-6h30v12H8z"/>
+  <path fill="#779498" d="M18 106h34v-4h38v6h44v-8h40v8h36v-6h24v8H18z"/>
+  <path fill="#97bbca" d="M24 108h28v2H24zm76-2h32v2h-32zm78 2h28v2h-28z"/>
+  <path fill="#102c46" d="M66 34h102v58H66z"/>
+  <path fill="#715743" d="M62 30h104v56H62z"/>
+  <path fill="#bb8855" d="M58 26h108v12H58z"/>
+  <path fill="#efc66f" d="M62 26h100v4H62z"/>
+  <path fill="#493e3c" d="M68 40h90v18H68zm0 22h90v18H68z"/>
+  <path fill="#97704f" d="M70 40h86v4H70zm0 22h86v4H70z"/>
+  <use href="#ac-book" x="72" y="40"/>
+  <use href="#ac-book-gold" x="82" y="42"/>
+  <path fill="#496f69" d="M90 44h8v14h-8z"/>
+  <path fill="#6b9180" d="M90 44h2v14h-2z"/>
+  <use href="#ac-book" x="100" y="40"/>
+  <use href="#ac-book-gold" x="110" y="42"/>
+  <path fill="#f3ead6" d="M120 44h28v12h-28z"/>
+  <path fill="#d4e6e7" d="M124 42h26v4h-26z"/>
+  <path fill="#386484" d="M120 54h30v4h-30z"/>
+  <path fill="#496f69" d="M72 64h8v16h-8z"/>
+  <path fill="#6b9180" d="M72 64h2v16h-2z"/>
+  <use href="#ac-book-gold" x="82" y="64"/>
+  <use href="#ac-book" x="90" y="62"/>
+  <path fill="#925b49" d="M100 66h8v14h-8z"/>
+  <path fill="#bb8855" d="M100 66h2v14h-2z"/>
+  <path fill="#f3ead6" d="M112 66h32v12h-32z"/>
+  <path fill="#d4e6e7" d="M116 64h30v4h-30z"/>
+  <path fill="#386484" d="M112 76h34v4h-34z"/>
+  <path fill="#102c46" d="M54 84h116v8H54z"/>
+  <path fill="#715743" d="M64 86h8v12h-8zm82 0h8v12h-8z"/>
+  <path fill="#102c46" d="M60 96h18v10H60zm82 0h18v10h-18z"/>
+  <path fill="#5686a6" d="M64 98h10v6H64zm82 0h10v6h-10z"/>
+  <path fill="#97bbca" d="M66 100h6v2h-6zm82 0h6v2h-6z"/>
+  <path fill="#102c46" d="M164 30h10v10h-10z"/>
+  <path fill="#bb8855" d="M166 32h8v6h-8z"/>
+  <path fill="#efc66f" d="M168 32h6v2h-6z"/>
+  <path fill="#102c46" d="M174 34h18v6h-18z"/>
+  <path fill="#715743" d="M178 36h14v4h-14z"/>
+  <path fill="#102c46" d="M34 34h4v48h-4z"/>
+  <path fill="#bb8855" d="M36 34h4v48h-4z"/>
+  <path fill="#715743" d="M28 80h20v6H28z"/>
+  <path fill="#102c46" d="M20 18h32v8H20z"/>
+  <path fill="#496f69" d="M24 14h24v8H24z"/>
+  <path fill="#6b9180" d="M28 12h16v6H28z"/>
+  <path fill="#efc66f" d="M32 18h8v4h-8z"/>
+  <path fill="#f7dfa0" d="M34 18h4v4h-4z"/>
+  <path fill="#bb8855" d="M34 24h4v12h-4z"/>
+  <path fill="#102c46" d="M184 62h16v8h4v20h-24V70h4z"/>
+  <path fill="#386484" d="M184 64h12v22h-16V70h4z"/>
+  <path fill="#5686a6" d="M184 66h6v18h-10V70h4z"/>
+  <path fill="#efc66f" d="M186 50h12v12h-2v4h-10z"/>
+  <path fill="#f7dfa0" d="M188 52h8v10h-8z"/>
+  <path fill="#493e3c" d="M184 48h14v6h-10v4h-4z"/>
+  <path fill="#102c46" d="M180 86h10v14h-6v10h-6V94h2zm16 0h8v12h-4v12h-6V94h2z"/>
+  <path fill="#bb8855" d="M176 70h8v6h-8z"/>
+  <path fill="#f7dfa0" d="M174 72h6v4h-6z"/>
+  <path fill="#102c46" d="M16 100h24v8H16zm32-10h24v8H48zm120 14h28v8h-28zm42-10h22v8h-22z"/>
+  <path fill="#779498" d="M20 98h16v6H20zm32-10h16v6H52zm120 14h20v6h-20zm42-10h14v6h-14z"/>
+  <path fill="#97bbca" d="M22 98h12v2H22zm32-10h12v2H54zm120 14h16v2h-16zm42-10h10v2h-10z"/>
+  <path fill="#496f69" d="M4 102h8V92h8v10h8v18H4zm208 4h8V96h8v8h10v16h-26z"/>
+  <path fill="#6b9180" d="M8 104h6v-8h4v10h8v10H8zm208 2h6v-8h4v10h8v8h-18z"/>
+</svg>

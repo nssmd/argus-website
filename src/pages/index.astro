@@ -1,5 +1,6 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import PixelIllustration from "../components/PixelIllustration";
 import ResearchField from "../components/ResearchField.astro";
 import BrandUniverse from "../components/BrandUniverse.astro";
 import DenseIntelligence from "../components/DenseIntelligence.astro";
@@ -261,6 +262,7 @@ const copy = locale === "zh" ? {
         </div>
         <div class="technical-report-card__facts">
           {copy.reportFacts.map(([value, label]) => <div><strong>{value}</strong><span>{label}</span></div>)}
+          <PixelIllustration scene="archive-cart" />
         </div>
       </article>
     </div>
@@ -324,6 +326,7 @@ const copy = locale === "zh" ? {
         <p class="eyebrow">{copy.whatEyebrow}</p>
         <h2>{copy.whatTitle}</h2>
         <p>{copy.whatBody}</p>
+        <PixelIllustration scene="memory-garden" />
       </div>
       <div class="card-grid">
         {copy.pillars.map(([title, body], index) => <article class="card"><span class="number">{String(index + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{body}</p></article>)}
@@ -349,6 +352,7 @@ const copy = locale === "zh" ? {
         <p class="eyebrow">{copy.architectureEyebrow}</p>
         <h2>{copy.architectureTitle}</h2>
         <p>{copy.architectureBody}</p>
+        <PixelIllustration scene="relay-bridge" />
       </div>
       <div class="card-grid">
         {copy.architecturePoints.map(([title, body], index) => <article class="card"><span class="number">{String(index + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{body}</p></article>)}
@@ -370,6 +374,7 @@ const copy = locale === "zh" ? {
         <p class="eyebrow">{copy.dataEyebrow}</p>
         <h2>{copy.dataTitle}</h2>
         <p>{copy.dataBody}</p>
+        <PixelIllustration scene="field-kit" />
       </div>
       <div class="process-data-grid">
         <article class="trajectory-ledger">
@@ -417,6 +422,7 @@ const copy = locale === "zh" ? {
         <p class="eyebrow">{copy.oodEyebrow}</p>
         <h2>{copy.unknownTitle}</h2>
         <p>{copy.unknownBody}</p>
+        <PixelIllustration scene="launch-dock" />
       </div>
       <article class="card depth-principle">
         <div class="depth-principle__copy">

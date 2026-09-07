@@ -1,6 +1,7 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
 import PageHero from "../components/PageHero.astro";
+import PixelIllustration from "../components/PixelIllustration";
 import { desktopRelease } from "../data/desktopRelease";
 import { localeFromPath, pathForLocale } from "../i18n";
 
@@ -177,6 +178,7 @@ const copy = locale === "zh" ? {
         <p class="eyebrow">02 · Agent-assisted</p>
         <h2>{copy.assisted}</h2>
         <p>{copy.assistedBody}</p>
+        <PixelIllustration scene="field-kit" />
       </div>
       <div class="agent-install-card">
         <pre id="agent-install-prompt"><code>{copy.prompt}</code></pre>
@@ -211,6 +213,7 @@ const copy = locale === "zh" ? {
         <p class="eyebrow">04 · First run</p>
         <h2>{copy.firstTitle}</h2>
         <p>{copy.firstBody}</p>
+        <PixelIllustration scene="launch-dock" />
       </div>
       <div class="first-run-list">
         {copy.steps.map(([number, title, command]) => (
@@ -229,6 +232,7 @@ const copy = locale === "zh" ? {
         <p class="eyebrow">05 · Backends</p>
         <h2>{copy.backendsTitle}</h2>
         <p>{copy.backendsBody}</p>
+        <PixelIllustration scene="relay-bridge" />
       </div>
       <div class="backend-grid">
         {copy.backends.map(([name, id, detail], index) => (
@@ -266,6 +270,7 @@ const copy = locale === "zh" ? {
         <h2>{copy.helpTitle}</h2>
         <p>{copy.helpBody}</p>
         <a class="button primary" href="https://github.com/microsoft/ArgusAgent/issues" target="_blank" rel="noopener noreferrer">{copy.issues}</a>
+        <PixelIllustration scene="memory-garden" />
       </div>
     </div>
   </section>

@@ -1,6 +1,7 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
 import PageHero from "../components/PageHero.astro";
+import PixelIllustration from "../components/PixelIllustration";
 import { results, verticalResults } from "../data/results";
 import { localeFromPath, pathForLocale } from "../i18n";
 
@@ -78,6 +79,7 @@ const copy = locale === "zh" ? {
         <p class="eyebrow">{copy.verticalEyebrow}</p>
         <h2>{copy.verticalTitle}</h2>
         <p>{copy.verticalBody}</p>
+        <PixelIllustration scene="sample-bench" />
       </div>
       <div class="scoreboard">
         {verticalResults.map((item) => (
@@ -100,6 +102,7 @@ const copy = locale === "zh" ? {
         <h2>{copy.ctaTitle}</h2>
         <p>{copy.ctaBody}</p>
         <a class="button primary" href={href("/research/")}>{copy.cta}</a>
+        <PixelIllustration scene="archive-cart" />
       </div>
     </div>
   </section>

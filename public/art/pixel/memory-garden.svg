@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="120" viewBox="0 0 240 120" shape-rendering="crispEdges" role="img" aria-labelledby="mg-title mg-desc">
+  <title id="mg-title">The memory garden</title>
+  <desc id="mg-desc">Raised beds show seedlings, young plants and mature growth beside seed drawers, a bright water channel and a small gardening robot.</desc>
+  <defs>
+    <g id="mg-sprout">
+      <path fill="#496f69" d="M4 4h2v10H4z"/>
+      <path fill="#6b9180" d="M0 2h6v4H0zm6-2h6v4H6z"/>
+      <path fill="#97bbca" d="M2 2h4v2H2zm6 0h2v2H8z"/>
+    </g>
+    <g id="mg-bloom">
+      <path fill="#496f69" d="M6 6h2v12H6z"/>
+      <path fill="#6b9180" d="M0 8h6v4H0zm8-4h6v4H8z"/>
+      <path fill="#efc66f" d="M2 0h8v8H2z"/>
+      <path fill="#f7dfa0" d="M4 2h4v4H4z"/>
+    </g>
+  </defs>
+  <path fill="#244b68" d="M14 88h18v-8h22v4h20v-8h30v4h28v-6h26v6h28v-4h24v8h18v-4h18v8h14v24H8V96h6z"/>
+  <path fill="#386484" d="M10 94h26v-8h20v4h24v-8h24v4h32v-6h22v6h30v-4h20v8h22v-4h20v8h10v14H10z"/>
+  <path fill="#5686a6" d="M8 102h44v-6h36v6h42v-8h34v8h38v-6h38v14H8z"/>
+  <path fill="#97bbca" d="M16 104h34v-4h38v6h40v-8h36v8h38v-6h30v8H16z"/>
+  <path fill="#d4e6e7" d="M20 108h44v2H20zm78-2h30v2H98zm78 2h42v2h-42z"/>
+  <path fill="#102c46" d="M26 62h54v24H26z"/>
+  <path fill="#715743" d="M22 58h62v24H22z"/>
+  <path fill="#bb8855" d="M20 54h66v10H20z"/>
+  <path fill="#efc66f" d="M24 54h58v4H24z"/>
+  <path fill="#493e3c" d="M28 64h50v14H28z"/>
+  <path fill="#97704f" d="M30 64h46v6H30z"/>
+  <path fill="#f3ead6" d="M34 50h8v4h-8zm16-4h8v8h-8zm18 2h8v6h-8z"/>
+  <use href="#mg-sprout" x="32" y="38"/>
+  <use href="#mg-sprout" x="48" y="34"/>
+  <use href="#mg-sprout" x="66" y="36"/>
+  <path fill="#102c46" d="M92 52h58v32H92z"/>
+  <path fill="#715743" d="M88 48h66v32H88z"/>
+  <path fill="#bb8855" d="M86 44h70v10H86z"/>
+  <path fill="#efc66f" d="M90 44h62v4H90z"/>
+  <path fill="#493e3c" d="M94 54h54v22H94z"/>
+  <path fill="#97704f" d="M96 54h50v8H96z"/>
+  <path fill="#496f69" d="M100 42h4V28h6v14zm18 2h4V24h6v20zm20-2h4V30h6v12z"/>
+  <path fill="#6b9180" d="M96 30h14v6H96zm8-8h12v6h-12zm10 8h14v6h-14zm6-12h14v6h-14zm14 10h14v6h-14z"/>
+  <path fill="#97bbca" d="M100 30h8v2h-8zm18 0h8v2h-8zm18-2h10v2h-10z"/>
+  <path fill="#102c46" d="M162 46h54v38h-54z"/>
+  <path fill="#715743" d="M158 42h62v38h-62z"/>
+  <path fill="#bb8855" d="M156 38h66v10h-66z"/>
+  <path fill="#efc66f" d="M160 38h58v4h-58z"/>
+  <path fill="#493e3c" d="M164 48h50v28h-50z"/>
+  <path fill="#97704f" d="M166 48h46v8h-46z"/>
+  <use href="#mg-bloom" x="166" y="20"/>
+  <use href="#mg-bloom" x="184" y="16"/>
+  <use href="#mg-bloom" x="202" y="22"/>
+  <path fill="#496f69" d="M170 42h4V28h4v14zm18 0h4V24h4v18zm18 0h4V30h4v12z"/>
+  <path fill="#102c46" d="M18 82h204v8H18z"/>
+  <path fill="#5686a6" d="M22 80h196v8H22z"/>
+  <path fill="#97bbca" d="M26 80h188v4H26z"/>
+  <path fill="#d4e6e7" d="M34 82h28v2H34zm48 2h34v2H82zm58-2h30v2h-30zm48 2h22v2h-22z"/>
+  <path fill="#102c46" d="M6 46h20v36H6z"/>
+  <path fill="#715743" d="M8 42h18v36H8z"/>
+  <path fill="#bb8855" d="M10 44h14v8H10zm0 10h14v8H10zm0 10h14v8H10z"/>
+  <path fill="#f3ead6" d="M12 46h10v4H12zm0 10h10v4H12zm0 10h10v4H12z"/>
+  <path fill="#244b68" d="M16 48h4v2h-4zm0 10h4v2h-4zm0 10h4v2h-4z"/>
+  <path fill="#102c46" d="M110 82h18v10h4v12h-26V92h4z"/>
+  <path fill="#5686a6" d="M110 84h14v16h-18v-8h4z"/>
+  <path fill="#97bbca" d="M112 86h10v8h-10z"/>
+  <path fill="#efc66f" d="M114 78h8v6h-8z"/>
+  <path fill="#f7dfa0" d="M116 80h4v4h-4z"/>
+  <path fill="#244b68" d="M112 76h12v4h-12z"/>
+  <path fill="#102c46" d="M106 90h-8v10h8zm22 0h8v10h-8z"/>
+  <path fill="#bb8855" d="M98 98h8v4h-8zm30 0h8v4h-8z"/>
+  <path fill="#102c46" d="M110 102h6v8h-6zm12 0h6v8h-6z"/>
+  <path fill="#496f69" d="M2 104h10v-8h8v10h10v14H2zm208 2h8v-10h8v8h12v16h-28z"/>
+  <path fill="#6b9180" d="M6 104h8v-6h4v10h10v8H6zm208 2h6v-8h4v10h10v8h-20z"/>
+</svg>

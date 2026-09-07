@@ -1,11 +1,18 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
 import PageHero from "../components/PageHero.astro";
-import { projectDomains, projects } from "../data/projects";
+import PixelIllustration, { type PixelScene } from "../components/PixelIllustration";
+import { projectDomains, projects, type ProjectCategory } from "../data/projects";
 import { localeFromPath, pathForLocale } from "../i18n";
 
 const locale = localeFromPath(Astro.url.pathname);
 const href = (path: string) => pathForLocale(path, locale);
+const domainIllustrations = {
+  runtime: "field-kit",
+  hardware: "sample-bench",
+  model: "memory-garden",
+  mathematics: "archive-cart",
+} as const satisfies Record<ProjectCategory, PixelScene>;
 const labels = locale === "zh" ? {
   title: "Projects · Argus AI Team",
   description: "浏览 Argus AI Team 的 Agent runtime、芯片、模型部署和数学研究项目。",
@@ -81,6 +88,7 @@ const labels = locale === "zh" ? {
               <div class="project-domain-card__projects">
                 {domainProjects.map((project) => <span>{project.title}</span>)}
               </div>
+              <PixelIllustration scene={domainIllustrations[domain.id]} />
               <div class="project-domain-card__foot">
                 <span><strong>{String(domainProjects.length).padStart(2, "0")}</strong> {labels.projects}</span>
                 <b>{labels.enter}<i aria-hidden="true">→</i></b>
@@ -111,6 +119,7 @@ const labels = locale === "zh" ? {
         <h2>{labels.startTitle}</h2>
         <p>{labels.startBody}</p>
         <a class="button primary" href={href("/get-started/")}>{labels.start}</a>
+        <PixelIllustration scene="launch-dock" />
       </div>
     </div>
   </section>

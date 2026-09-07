@@ -1,6 +1,7 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
 import PageHero from "../components/PageHero.astro";
+import PixelIllustration from "../components/PixelIllustration";
 import { localeFromPath } from "../i18n";
 
 const locale = localeFromPath(Astro.url.pathname);
@@ -65,6 +66,7 @@ const copy = locale === "zh" ? {
       <div class="section-head">
         <p class="eyebrow">Paper pipeline</p>
         <h2>{copy.pipeline}</h2>
+        <PixelIllustration scene="archive-cart" />
       </div>
       <div class="pipeline">
         {stages.map((stage, index) => (
@@ -80,11 +82,13 @@ const copy = locale === "zh" ? {
         <p class="eyebrow">A real run</p>
         <h2>{copy.run}</h2>
         <p>{copy.runBody}</p>
+        <PixelIllustration scene="sample-bench" />
       </div>
       <figure class="figure">
         <img src={trajectoryChart} alt={copy.alt} />
         <figcaption>{copy.caption}</figcaption>
       </figure>
+      <PixelIllustration scene="launch-dock" />
     </div>
   </section>
 </SiteLayout>

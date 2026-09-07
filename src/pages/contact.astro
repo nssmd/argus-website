@@ -1,6 +1,7 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
 import PageHero from "../components/PageHero.astro";
+import PixelIllustration from "../components/PixelIllustration";
 import { teamMembers } from "../data/team";
 import { localeFromPath, pathForLocale } from "../i18n";
 
@@ -72,7 +73,8 @@ const copy = locale === "zh" ? {
         <p>{copy.membersBody}</p>
       </div>
       <div class="team-member-grid">
-        {teamMembers.map((member) => (
+        {teamMembers.map((member, index) => (
+          <>
           <article class="team-member-card">
             <a class="team-member-card__identity" href={member.profile} target="_blank" rel="noopener noreferrer">
               <img src={member.avatar} width="72" height="72" loading="lazy" alt="" />
@@ -90,6 +92,8 @@ const copy = locale === "zh" ? {
               <span>{copy.github}</span><i aria-hidden="true">↗</i>
             </a>
           </article>
+          {index === 3 && <PixelIllustration scene="memory-garden" />}
+          </>
         ))}
       </div>
     </div>
@@ -103,6 +107,7 @@ const copy = locale === "zh" ? {
           <h2>{copy.communityTitle}</h2>
           <p>{copy.communityBody}</p>
           <a class="button" href="https://github.com/microsoft/ArgusAgent/issues" target="_blank" rel="noopener noreferrer">{copy.communityIssue}</a>
+          <PixelIllustration scene="relay-bridge" />
         </div>
         <a class="wechat-community__qr" href="/assets/argus-wechat-group-2.jpg?v=5fd55d09" target="_blank" rel="noopener noreferrer">
           <img src="/assets/argus-wechat-group-2.jpg?v=5fd55d09" width="939" height="1455" loading="lazy" alt={copy.communityAlt} />
@@ -120,6 +125,7 @@ const copy = locale === "zh" ? {
           <a class="button primary" href="https://github.com/microsoft/ArgusAgent/issues" target="_blank" rel="noopener noreferrer">{copy.issues}</a>
           <a class="button" href={href("/get-started/")}>{copy.start}</a>
         </div>
+        <PixelIllustration scene="launch-dock" />
       </div>
     </div>
   </section>
