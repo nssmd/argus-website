@@ -1,0 +1,182 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="180" viewBox="0 0 320 180" shape-rendering="crispEdges" role="img" aria-labelledby="ms-title ms-desc">
+  <title id="ms-title">The high-pass measurement station</title>
+  <desc id="ms-desc">An alpine researcher records observations at a field workbench beneath a tall calibration mast. A weather vane, square-cup wind sensor, louvered instrument shelter and marked survey stakes stand among snow patches and mountain rock. Notebooks, a portable balance and a gold wind flag tell the story of careful measurements in the open air.</desc>
+  <defs>
+    <g id="ms-survey-stake">
+      <path fill="#244b68" d="M0 0h4v26H0z"/>
+      <path fill="#f3ead6" d="M0 0h2v24H0z"/>
+      <path fill="#efc66f" d="M2 2h10v6H2z"/>
+      <path fill="#bb8855" d="M2 6h8v2H2z"/>
+      <path fill="#386484" d="M0 8h4v2H0zm0 8h4v2H0z"/>
+    </g>
+  </defs>
+
+  <!-- Clear alpine air and snow ridges with distinctly stepped profiles. -->
+  <path fill="#5686a6" d="M0 0h320v180H0z"/>
+  <path fill="#97bbca" d="M0 60h320v74H0z"/>
+  <path fill="#d4e6e7" d="M0 14h22v-4h24v4h18v4h28v4H0zm110 16h20v-6h30v4h28v4h22v4H110zm154-18h16V8h22v4h18v8h-56z"/>
+  <path fill="#f3ead6" d="M6 12h16V8h22v4h-20v4H6zm126 12h26v2h-26zm150-16h20v2h-20z"/>
+  <path fill="#779498" d="M0 92h10V78h12V64h12V54h10V42h10V30h10V20h10v10h10v12h10v12h10v12h12v12h12v12h18v12h24V88h14V76h12V64h12V52h12V40h10V28h12V16h12v12h12v12h10v14h12v12h12v12h14v18h16v40H0z"/>
+  <path fill="#97bbca" d="M0 92h10V78h12V64h12V54h10V42h10V30h10V20h10v10h-6v12H58v14H48v12H38v14H24v16H0zm174-4h14V76h12V64h12V52h12V40h10V28h12V16h12v12h-8v14h-12v14h-12v14h-14v14h-16v14h-22z"/>
+  <path fill="#d4e6e7" d="M34 54h10V42h10V30h10V20h10v10h10v12h10v12h10v10H90v-8H78V44H66v12H54v8H42v6H32v-8h2zm180-2h10V40h10V28h12V16h12v12h12v12h10v14h12v10h-14v-8h-14V44h-12v10h-10v10h-14v8h-14V60h-8v-4h8z"/>
+  <path fill="#f3ead6" d="M54 30h10V20h10v10h-8v12H56v12H44V44h10zm180-2h12V16h12v12h-8v12h-10v10h-12V40h6z"/>
+  <path fill="#526c72" d="M72 42h6v14h10v14h10v14h16v18h18v14h-20V98H98V84H86V70h-8V56h-6zm184 0h8v14h12v14h12v12h14v18h18v16h-22v-12h-14V90h-12V76h-10V62h-6z"/>
+  <path fill="#d4e6e7" d="M50 80h8V70h8v8h-6v12h-8v10H42v-8h8zm184 0h6V68h6v10h-4v12h-8v10h-12v-8h12z"/>
+  <path fill="#386484" d="M0 116h18v-10h18V94h14v12h14v10h22v10h28v-8h18v-12h14V94h12V82h12v12h12v14h16v12h22v10h26v-8h20v-12h18v-8h14v12h22v66H0z"/>
+  <path fill="#5686a6" d="M126 114h6v-8h14V94h12V82h12v12h-6v14h-14v14h-24z"/>
+  <path fill="#97bbca" d="M158 84h10v10h10v10h-12V94h-8z"/>
+  <path fill="#244b68" d="M0 132h22v-10h22v8h28v10h32v-10h28v10h34v-8h24v-10h20v10h26v10h28v-10h20v-10h16v12h20v46H0z"/>
+
+  <!-- The station occupies an irregular rock shelf, not a platform in space. -->
+  <path fill="#526c72" d="M0 134h22v-10h42v-6h32v10h32v-4h32v6h34v-10h30v8h26v-8h36v10h34v50H0z"/>
+  <path fill="#779498" d="M0 134h22v-10h42v-6h32v10h32v-4h32v6h34v-10h30v8h26v-8h36v10h34v24h-24v10h-36v-4h-38v10h-56v-8h-28v-4h-34v4H60v-6H28v-8H0z"/>
+  <path fill="#97bbca" d="M0 134h22v-10h42v-6h30v4H66v8H26v8H0zm128-10h32v6h34v-10h28v4h-26v10h-38v-6h-30zm124-4h34v10h34v4h-38v-10h-30z"/>
+  <path fill="#d4e6e7" d="M2 138h24v-8h24v6h-8v6H24v6H0v-6h2zm62-18h30v8h18v6h-28v-4H68v-4h-4zm164 10h22v-8h34v10h14v6h-18v-4h-32v6h-22v-6h2z"/>
+  <path fill="#f3ead6" d="M4 136h22v-8h20v4H28v8H4zm64-16h24v4H68zm184 2h30v4h-30z"/>
+  <path fill="#526c72" d="M14 150h30v4H14zm42-4h18v2H56zm30 12h22v4H86zm40-8h30v4h-30zm64 14h36v4h-36zm54-12h34v4h-34zm52-10h24v4h-24z"/>
+  <path fill="#386484" d="M0 166h26v8h32v6H0zm102 6h24v8h-24zm130 0h34v8h-34zm54-10h34v18h-48v-8h14z"/>
+  <path fill="#779498" d="M10 170h16v4H10zm50 0h28v4H60zm88 4h30v4h-30zm116-6h22v4h-22z"/>
+  <path fill="#97bbca" d="M38 162h24v2H38zm70 2h20v2h-20zm58 8h26v2h-26zm110-16h26v2h-26z"/>
+
+  <!-- A low stone refuge shelters supplies at the edge of the field site. -->
+  <path fill="#244b68" d="M4 126h66v12H4z"/>
+  <path fill="#526c72" d="M6 92h54v36H6z"/>
+  <path fill="#779498" d="M6 92h42v36H6z"/>
+  <path fill="#97bbca" d="M8 94h32v4H8zm0 14h32v2H8zm0 14h32v2H8z"/>
+  <path fill="#526c72" d="M18 98h2v10h-2zm10 12h2v12h-2z"/>
+  <path fill="#183951" d="M42 100h14v28H42z"/>
+  <path fill="#386484" d="M44 102h10v26H44z"/>
+  <path fill="#efc66f" d="M46 104h6v10h-6z"/>
+  <path fill="#f7dfa0" d="M46 104h2v8h-2z"/>
+  <path fill="#bb8855" d="M52 118h2v2h-2z"/>
+  <path fill="#244b68" d="M14 100h14v18H14z"/>
+  <path fill="#5686a6" d="M16 102h10v14H16z"/>
+  <path fill="#f7dfa0" d="M16 102h4v10h-4z"/>
+  <path fill="#d4e6e7" d="M20 102h2v14h-2zm-4 6h10v2H16z"/>
+  <path fill="#102c46" d="M0 90h8v-6h12v-6h28v6h10v6h8v6H0z"/>
+  <path fill="#386484" d="M0 88h8v-6h12v-6h28v6h10v6h8v6H0z"/>
+  <path fill="#5686a6" d="M8 84h12v-6h26v4H24v6H8z"/>
+  <path fill="#d4e6e7" d="M8 80h12v-6h28v6h10v4H44v-4H24v6H8z"/>
+  <path fill="#f3ead6" d="M20 74h26v2H22v6H8v-2h12z"/>
+  <path fill="#bb8855" d="M0 94h64v2H0z"/>
+  <path fill="#779498" d="M38 128h24v6H38z"/>
+  <path fill="#d4e6e7" d="M38 128h24v2H38z"/>
+  <path fill="#496f69" d="M4 130h12v8H4z"/>
+  <path fill="#6b9180" d="M6 126h8v6H6z"/>
+
+  <!-- The louvered weather screen stands clear of the warm refuge wall. -->
+  <path fill="#526c72" d="M66 136h28v6H66z"/>
+  <path fill="#779498" d="M64 116h4v20h-4zm22 0h4v22h-4z"/>
+  <path fill="#d4e6e7" d="M64 116h2v20h-2zm22 0h2v20h-2z"/>
+  <path fill="#779498" d="M68 124h18v2H68z"/>
+  <path fill="#97bbca" d="M62 98h28v22H62z"/>
+  <path fill="#d4e6e7" d="M62 98h22v22H62z"/>
+  <path fill="#f3ead6" d="M62 98h22v4H62z"/>
+  <path fill="#779498" d="M66 104h16v2H66zm0 4h16v2H66zm0 4h16v2H66zm0 4h16v2H66zm20-12h4v2h-4zm0 4h4v2h-4zm0 4h4v2h-4z"/>
+  <path fill="#f3ead6" d="M62 104h2v14h-2zm18 0h2v14h-2z"/>
+  <path fill="#386484" d="M58 98h4v-4h6v-4h14v4h8v4h4v4H58z"/>
+  <path fill="#d4e6e7" d="M60 96h4v-4h6v-4h12v4h8v4h2v2H60z"/>
+  <path fill="#f3ead6" d="M64 92h6v-4h12v2H72v4h-8z"/>
+  <path fill="#efc66f" d="M62 100h28v2H62z"/>
+
+  <!-- Twin uprights, calibration bars and guy anchors make a real field mast. -->
+  <path fill="#526c72" d="M200 138h26v4h14v4h14v4h12v4h-26v-4h-14v-4h-24z"/>
+  <path fill="#526c72" d="M202 42h4v94h-4zm10 0h4v94h-4z"/>
+  <path fill="#d4e6e7" d="M202 42h2v92h-2zm10 0h2v92h-2z"/>
+  <path fill="#97bbca" d="M202 48h14v2h-14zm0 12h14v2h-14zm0 12h14v2h-14zm0 12h14v2h-14zm0 12h14v2h-14zm0 12h14v2h-14zm0 12h14v2h-14zm0 12h14v2h-14z"/>
+  <path fill="#779498" d="M204 50h2v4h4v4h2v2h-4v-4h-4zm8 12h2v2h-4v4h-4v4h-2v-6h4v-4zm-8 12h2v4h4v4h2v2h-4v-4h-4zm8 12h2v2h-4v4h-4v4h-2v-6h4v-4zm-8 12h2v4h4v4h2v2h-4v-4h-4zm8 12h2v2h-4v4h-4v4h-2v-6h4v-4z"/>
+  <path fill="#244b68" d="M200 134h8v6h-8zm10 0h10v6h-10z"/>
+  <path fill="#bb8855" d="M198 134h10v2h-10zm12 0h12v2h-12z"/>
+  <path fill="#efc66f" d="M202 52h2v6h-2zm0 24h2v6h-2zm0 24h2v6h-2zm0 24h2v6h-2z"/>
+  <path fill="#779498" d="M214 76h2v12h4v12h4v12h4v12h4v12h-2v-10h-4v-12h-4v-12h-4V90h-4z"/>
+  <path fill="#244b68" d="M228 136h8v4h-8z"/>
+  <path fill="#efc66f" d="M230 136h4v2h-4z"/>
+  <path fill="#97bbca" d="M200 76h2v14h-4v12h-4v12h-4v12h-4v10h-2v-12h4v-12h4v-12h4V88h4z"/>
+  <path fill="#244b68" d="M180 136h8v4h-8z"/>
+
+  <!-- Pixel-cup anemometer, weather vane and a small solar-powered logger. -->
+  <path fill="#244b68" d="M206 22h4v24h-4zm-18 10h40v4h-40z"/>
+  <path fill="#d4e6e7" d="M206 22h2v22h-2zm-16 10h36v2h-36z"/>
+  <path fill="#244b68" d="M182 28h10v8h-8v-2h-2zm42 0h12v6h-2v2h-10z"/>
+  <path fill="#f3ead6" d="M182 28h10v2h-10zm42 0h12v2h-12z"/>
+  <path fill="#97bbca" d="M184 30h8v4h-6v-2h-2zm40 0h10v2h-2v2h-8z"/>
+  <path fill="#bb8855" d="M192 18h10v-4h4v4h16v-4h4v4h4v4h-4v4h-4v-4h-16v4h-4v-4h-10z"/>
+  <path fill="#efc66f" d="M194 18h10v-2h2v4h16v-4h2v4h4v2h-24v2h-2v-4h-8z"/>
+  <path fill="#f7dfa0" d="M222 18h2v2h-2z"/>
+  <path fill="#244b68" d="M196 64h26v6h-26z"/>
+  <path fill="#97bbca" d="M198 62h22v6h-22z"/>
+  <path fill="#386484" d="M200 62h6v4h-6zm8 0h6v4h-6zm8 0h4v4h-4z"/>
+  <path fill="#f7dfa0" d="M198 66h22v2h-22z"/>
+  <path fill="#d4e6e7" d="M216 86h10v16h-10z"/>
+  <path fill="#779498" d="M222 86h4v16h-4z"/>
+  <path fill="#244b68" d="M218 90h4v4h-4z"/>
+  <path fill="#efc66f" d="M218 98h2v2h-2z"/>
+
+  <!-- A wind flag and survey stakes establish the measured field. -->
+  <path fill="#244b68" d="M250 56h4v78h-4z"/>
+  <path fill="#d4e6e7" d="M250 56h2v76h-2z"/>
+  <path fill="#efc66f" d="M252 58h10v2h12v4h12v8h-12v-4h-12v-2h-10z"/>
+  <path fill="#f7dfa0" d="M252 58h10v2h12v2h-14v-2h-8z"/>
+  <path fill="#bb8855" d="M262 64h12v2h12v6h-12v-4h-12z"/>
+  <path fill="#f3ead6" d="M272 62h4v8h-4z"/>
+  <path fill="#526c72" d="M246 134h12v4h-12z"/>
+  <use href="#ms-survey-stake" x="288" y="112"/>
+  <use href="#ms-survey-stake" x="274" y="138"/>
+  <path fill="#c8bea0" d="M278 160h4v-8h4v-8h4v-8h2v10h-4v8h-4v8h-6z"/>
+  <path fill="#f3ead6" d="M280 154h2v2h-2zm4-8h2v2h-2zm4-8h2v2h-2z"/>
+
+  <!-- A portable workbench, open notes and a balance for calibration. -->
+  <path fill="#526c72" d="M96 146h76v6H96z"/>
+  <path fill="#493e3c" d="M100 128h8v18h-8zm52 0h8v20h-8zm-48 12h50v4h-50z"/>
+  <path fill="#bb8855" d="M100 130h4v14h-4zm52 0h4v16h-4z"/>
+  <path fill="#715743" d="M96 126h68v6H96z"/>
+  <path fill="#bb8855" d="M94 124h72v4H94z"/>
+  <path fill="#efc66f" d="M94 122h72v4H94z"/>
+  <path fill="#f7dfa0" d="M96 122h68v2H96z"/>
+  <path fill="#386484" d="M102 118h18v4h-18z"/>
+  <path fill="#d4e6e7" d="M104 118h14v2h-14z"/>
+  <path fill="#f7dfa0" d="M102 116h6v2h4v-2h10v4h-20z"/>
+  <path fill="#f3ead6" d="M102 114h6v2h4v2h-10zm10 2h4v-2h8v4h-12z"/>
+  <path fill="#97bbca" d="M104 114h4v2h-4zm14 0h4v2h-4z"/>
+  <path fill="#244b68" d="M134 118h22v4h-22zm10-16h4v16h-4z"/>
+  <path fill="#d4e6e7" d="M144 102h2v16h-2z"/>
+  <path fill="#bb8855" d="M132 104h26v2h-26z"/>
+  <path fill="#efc66f" d="M134 102h22v2h-22z"/>
+  <path fill="#779498" d="M134 106h2v8h-2zm20 0h2v8h-2z"/>
+  <path fill="#d4e6e7" d="M130 112h10v2h-2v2h-6v-2h-2zm20 0h10v2h-2v2h-6v-2h-2z"/>
+  <path fill="#386484" d="M126 118h6v4h-6z"/>
+  <path fill="#f3ead6" d="M126 116h6v2h-6z"/>
+  <path fill="#97704f" d="M112 136h22v10h-22z"/>
+  <path fill="#bb8855" d="M112 134h22v4h-22z"/>
+  <path fill="#f7dfa0" d="M120 136h6v4h-6z"/>
+
+  <!-- A bundled observer writes a reading on a clipboard. -->
+  <path fill="#526c72" d="M168 148h20v6h-20z"/>
+  <path fill="#244b68" d="M170 134h12v14h-4v-8h-4v8h-4z"/>
+  <path fill="#102c46" d="M166 148h8v4h-8zm12 0h8v4h-8z"/>
+  <path fill="#bb8855" d="M168 116h12v4h4v16h-18v-16h2z"/>
+  <path fill="#efc66f" d="M168 118h6v14h-8v-12h2z"/>
+  <path fill="#f7dfa0" d="M170 108h10v8h-4v4h-6z"/>
+  <path fill="#bb8855" d="M178 110h4v4h-4z"/>
+  <path fill="#244b68" d="M168 104h12v2h2v4h-16v-4h2z"/>
+  <path fill="#5686a6" d="M168 104h12v2h-12z"/>
+  <path fill="#d4e6e7" d="M168 108h14v2h-14z"/>
+  <path fill="#386484" d="M170 118h8v4h-8zm4 4h4v8h-4z"/>
+  <path fill="#bb8855" d="M180 120h4v6h-4z"/>
+  <path fill="#715743" d="M182 120h10v14h-10z"/>
+  <path fill="#f3ead6" d="M184 122h6v10h-6z"/>
+  <path fill="#97bbca" d="M184 124h4v2h-4zm0 4h4v2h-4z"/>
+  <path fill="#f7dfa0" d="M178 124h6v4h-6z"/>
+  <path fill="#244b68" d="M184 120h4v2h-4z"/>
+  <path fill="#efc66f" d="M188 118h2v6h-2z"/>
+
+  <!-- Foreground cairns, alpine plants and broken snow complete the terrain. -->
+  <path fill="#526c72" d="M36 158h26v6H36zm188-12h18v6h-18z"/>
+  <path fill="#779498" d="M38 152h22v8H38zm4-6h14v6H42zm4-6h8v6h-8zm180 2h14v6h-14zm4-6h8v6h-8z"/>
+  <path fill="#97bbca" d="M38 152h22v2H38zm4-6h14v2H42zm4-6h8v2h-8zm180 2h14v2h-14zm4-6h8v2h-8z"/>
+  <path fill="#d4e6e7" d="M0 154h16v4h16v6H14v-4H0zm82 12h16v4h20v6H96v-4H82zm118 8h20v-4h22v4h14v6h-56zm104-20h16v10h-12v-4h-4z"/>
+  <path fill="#f3ead6" d="M0 154h14v2H0zm84 12h12v2H84zm138 4h18v2h-18zm84-16h14v2h-14z"/>
+  <path fill="#496f69" d="M4 148h6v-8h4v8h8v6H4zm60 14h4v-8h4v6h6v6H64zm78 4h6v-6h4v6h8v6h-18zm154 6h6v-6h6v4h12v10h-24z"/>
+  <path fill="#6b9180" d="M6 148h6v-6h2v8H6zm60 12h4v-6h2v8h-6zm80 6h4v-6h2v8h-6zm152 6h8v-4h4v6h-12z"/>
+  <path fill="#efc66f" d="M10 144h4v4h-4zm58 12h4v4h-4zm80 6h4v4h-4zm156 8h4v4h-4z"/>
+</svg>

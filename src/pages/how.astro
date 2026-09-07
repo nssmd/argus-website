@@ -1,5 +1,6 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import PageHero from "../components/PageHero.astro";
 import { localeFromPath } from "../i18n";
 
 const locale = localeFromPath(Astro.url.pathname);
@@ -40,13 +41,11 @@ const copy = locale === "zh" ? {
   title={copy.title}
   description={copy.description}
 >
-  <section class="page-hero compact">
-    <div class="shell">
+  <PageHero scene="clockwork-workshop">
       <p class="eyebrow">How it works</p>
       <h1>{copy.hero}</h1>
       <p class="lede">{copy.lede}</p>
-    </div>
-  </section>
+  </PageHero>
 
   <section class="section tight">
     <div class="shell architecture">

@@ -1,5 +1,6 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import PageHero from "../components/PageHero.astro";
 import { results, verticalResults } from "../data/results";
 import { localeFromPath, pathForLocale } from "../i18n";
 
@@ -41,16 +42,14 @@ const copy = locale === "zh" ? {
   title={copy.title}
   description={copy.description}
 >
-  <section class="page-hero compact">
-    <div class="shell">
+  <PageHero scene="measurement-station">
       <p class="eyebrow">Argus · Results</p>
       <h1>{copy.hero}</h1>
       <p class="lede">{copy.lede}</p>
       <p class="result-source">
         {copy.sourcePrefix} <a href={reportHref} target="_blank" rel="noopener noreferrer">{copy.sourceTitle}</a>{copy.sourceSuffix}
       </p>
-    </div>
-  </section>
+  </PageHero>
 
   <section class="section tight">
     <div class="shell">

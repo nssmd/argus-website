@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="180" viewBox="0 0 320 180" shape-rendering="crispEdges" role="img" aria-labelledby="gg-title gg-desc">
+  <title id="gg-title">The garden of quiet proofs</title>
+  <desc id="gg-desc">A scholar works at a chalk slate among terraced gardens, weathered stepped stone arches and geometric instruments. A brass-tipped sundial casts a precise shadow across its stone face. Paths wind between flower beds and a small rill that spills into a pool below the mountain gardens.</desc>
+  <defs>
+    <g id="gg-flowers">
+      <path fill="#496f69" d="M0 8h4V4h4v4h4V2h4v8h4V6h4v8H0z"/>
+      <path fill="#6b9180" d="M2 8h4v4H2zm10-2h2v6h-2zm8 2h4v4h-4z"/>
+      <path fill="#efc66f" d="M2 2h4v4H2zm10-2h4v4h-4z"/>
+      <path fill="#f3ead6" d="M20 4h4v4h-4z"/>
+    </g>
+  </defs>
+
+  <!-- Layered hills surround a garden built into the slope. -->
+  <path fill="#d4e6e7" d="M0 0h320v180H0z"/>
+  <path fill="#f3ead6" d="M0 14h18v-4h24v4h20v4h18v4H0zm132 6h18v-6h30v4h20v4h28v4h-96zm130-12h22V4h20v4h16v10h-58z"/>
+  <path fill="#97bbca" d="M0 70h12V58h14V48h12v10h14v8h20v10h22v-8h16V58h14V48h14V40h12v10h14v10h18v12h20v-8h14V54h14V46h14v12h18v12h22v8h20V68h16V58h10v46H0z"/>
+  <path fill="#779498" d="M0 88h18V78h18V68h16v10h14v12h28V80h20V70h18v8h14v12h28v-8h24V72h18V62h12v12h16v12h18v10h22V84h18v-8h18v44H0z"/>
+  <path fill="#6b9180" d="M0 92h20v-8h22v4h20v10h34v-6h22V84h22v8h24v8h24v-8h22V82h20v6h22v12h32v-8h20V86h16v44H0z"/>
+  <path fill="#496f69" d="M0 110h12V98h10v8h18v12h32v-8h28v-8h18v12h34v8h22v-10h22v-8h22v10h34v6h24v-8h20v-10h12v10h12v68H0z"/>
+  <path fill="#97bb9a" d="M0 98h18v-6h20v4h22v4H20v4H0zm192-6h16v-8h18v4h-14v8h-20zm88 8h16v-8h24v4h-22v8h-18z"/>
+  <path fill="#f3ead6" d="M136 48h8v-8h6v10h10v4h-16v-6z"/>
+  <path fill="#5686a6" d="M190 42h4v2h4v2h4v-2h4v-2h4v2h-4v2h-4v2h-4v-2h-4v-2h-4z"/>
+
+  <!-- Three retaining terraces and a descending stone path. -->
+  <path fill="#526c72" d="M16 96h106v22H94v10H16zm202-6h86v26h-20v12h-66z"/>
+  <path fill="#779498" d="M16 94h106v14H94v10H16zm202-6h86v18h-20v12h-66z"/>
+  <path fill="#97bb9a" d="M16 88h106v10H94v10H16zm202-6h86v12h-20v12h-66z"/>
+  <path fill="#97bbca" d="M18 100h30v2H18zm56 0h20v2H74zm-46 10h32v2H28zm68-8h24v2H96zm126-4h30v2h-30zm44 0h34v2h-34zm-36 12h30v2h-30z"/>
+  <path fill="#526c72" d="M42 100h2v8h-2zm26 8h2v10h-2zm32-10h2v10h-2zm140 0h2v8h-2zm36 10h2v10h-2z"/>
+  <path fill="#526c72" d="M66 122h52v-14h92v8h60v14h24v24h-20v8H102v-8H66z"/>
+  <path fill="#779498" d="M66 118h52v-12h92v8h60v14h24v16h-20v8H102v-8H66z"/>
+  <path fill="#97bb9a" d="M66 116h52v-12h92v8h60v14h24v10h-22v10H104v-10H66z"/>
+  <path fill="#6b9180" d="M66 130h38v10h168v-8h22v6h-20v12H102v-10H66z"/>
+  <path fill="#97bbca" d="M72 138h28v2H72zm36 10h24v2h-24zm40 6h30v2h-30zm44-4h26v2h-26zm52-2h24v2h-24zm34-6h14v2h-14z"/>
+  <path fill="#526c72" d="M118 144h2v8h-2zm50 8h2v8h-2zm38-8h2v8h-2zm54 0h2v8h-2z"/>
+  <path fill="#779498" d="M0 144h60v-6h24v14h20v10h174v-10h26v-8h16v36H0z"/>
+  <path fill="#97bb9a" d="M0 138h60v-6h22v16h20v10h176v-12h26v-8h16v30h-34v8H96v-8H68v-8H0z"/>
+  <path fill="#6b9180" d="M0 156h68v8h30v8h188v-8h34v6h-32v8H96v-8H66v-8H0z"/>
+  <path fill="#c8bea0" d="M58 88h24v18h14v16h30v14h58v8h-62v-8H84v-14H72v-16H58zm192-4h18v24h-20v18h-24v8h-18v-12h32v-20h12z"/>
+  <path fill="#f3ead6" d="M58 86h22v16h14v16h30v14h60v6h-62v-6H86v-14H74v-16H58zm192-4h16v22h-20v18h-24v8h-14v-6h32v-22h10z"/>
+  <path fill="#779498" d="M60 98h20v2H60zm14 6h20v2H74zm0 6h20v2H74zm12 10h36v2H86zm0 6h36v2H86zm156-24h22v2h-22zm-2 6h22v2h-22zm-4 6h20v2h-20z"/>
+  <path fill="#d4e6e7" d="M134 134h18v4h-18zm28 0h18v4h-18zm50-8h12v4h-12z"/>
+
+  <!-- A freestanding stepped arch, its light face and cool inner reveal. -->
+  <path fill="#526c72" d="M30 52h8V40h10V30h14v-6h28v6h14v10h10v12h8v48H98V58h-6V46h-8v-6H68v6h-8v12h-6v42H30z"/>
+  <path fill="#779498" d="M28 50h8V38h10V28h14v-6h28v6h14v10h10v12h8v46H96V56h-6V44h-8v-6H66v6h-8v12h-6v40H28z"/>
+  <path fill="#c8bea0" d="M28 50h8V38h10V28h14v-6h28v6h14v10h10v12h4v44H98V54h-6V42H82v-6H64v6H54v12h-6v40H28z"/>
+  <path fill="#f3ead6" d="M28 50h8V38h10V28h14v-6h28v4H62v6H48v10H38v12h-6v40h-4z"/>
+  <path fill="#d4e6e7" d="M66 26h14v8H66zm-26 18h10v10H40zm60 0h8v10h-8zm2 16h12v10h-12zm-70 4h14v10H32z"/>
+  <path fill="#779498" d="M60 26h2v10h-2zm26 2h2v10h-2zM36 54h14v2H36zm-4 20h16v2H32zm0 12h16v2H32zm68-16h16v2h-16zm0 14h16v2h-16z"/>
+  <path fill="#97704f" d="M50 40h4v2h-4zm44 0h4v2h-4zm-28-4h14v2H66z"/>
+  <path fill="#496f69" d="M28 66h4v8h4v12h-4v8h-8v-6h4zm78 14h4v8h6v8h-10z"/>
+  <path fill="#6b9180" d="M28 68h6v4h-6zm2 10h8v4h-8zm-4 12h8v4h-8zm78-6h8v4h-8z"/>
+  <path fill="#efc66f" d="M32 78h2v2h-2zm-2 10h2v2h-2z"/>
+  <path fill="#779498" d="M24 94h30v6H24zm70 0h28v6H94z"/>
+  <path fill="#f3ead6" d="M24 94h28v2H24zm70 0h26v2H94z"/>
+
+  <!-- A smaller distant arch opens onto the hills rather than a wall. -->
+  <path fill="#526c72" d="M236 62h6V50h8v-8h18v8h8v12h6v34h-16V64h-4V54h-8v10h-4v32h-14z"/>
+  <path fill="#779498" d="M234 60h6V48h8v-8h18v8h8v12h6v32h-16V62h-4V52h-8v10h-4v30h-14z"/>
+  <path fill="#c8bea0" d="M234 60h6V48h8v-8h18v8h8v12h2v30h-10V60h-4V50h-12v10h-4v30h-12z"/>
+  <path fill="#f3ead6" d="M234 60h6V48h8v-8h18v2h-16v8h-8v12h-6v28h-2z"/>
+  <path fill="#779498" d="M236 74h10v2h-10zm32 0h8v2h-8zm-32 12h10v2h-10zm32 0h8v2h-8z"/>
+  <path fill="#6b9180" d="M270 82h6v6h4v6h-10z"/>
+  <path fill="#f7dfa0" d="M248 38h18v2h-18z"/>
+
+  <!-- Shade trees and low flower beds soften the mathematical stonework. -->
+  <path fill="#715743" d="M8 76h4v38H8zm286-6h6v46h-6z"/>
+  <path fill="#bb8855" d="M8 80h2v30H8zm278-22h4v18h8v4h-12V64h-8zm10 12h2v42h-2z"/>
+  <path fill="#496f69" d="M0 48h8V38h10v6h6v12h6v18h-8v10H6v-4H0zm270 0h8V38h14v-8h14v6h14v48h-14v6h-22v-8h-12V70h-8V56h6z"/>
+  <path fill="#6b9180" d="M0 46h8v-8h10v8h4v14H12v8H0zm270 2h8V38h14v-8h14v6h14v20h-14v8h-20v8h-14V62h-8v-8h6z"/>
+  <path fill="#97bb9a" d="M0 48h8v-8h8v6H8v8H0zm280-8h12v-8h12v6h-8v8h-16zm-12 14h12v6h-12zm36-8h16v6h-16z"/>
+  <path fill="#779498" d="M8 72h12v6H8zm280 4h10v6h-10zm22-14h10v12h-10z"/>
+  <path fill="#97704f" d="M8 124h42v8H8zm158-26h40v10h-40zm96 48h36v8h-36z"/>
+  <path fill="#c8bea0" d="M6 122h46v4H6zm158-26h44v4h-44zm96 48h40v4h-40z"/>
+  <use href="#gg-flowers" x="12" y="110"/>
+  <use href="#gg-flowers" x="28" y="112"/>
+  <use href="#gg-flowers" x="170" y="84"/>
+  <use href="#gg-flowers" x="268" y="136"/>
+  <path fill="#6b9180" d="M76 82h4v6h-4zm6 4h4v4h-4zm204 26h8v4h-8zm-170 38h6v4h-6zm40 6h8v2h-8z"/>
+  <path fill="#f7dfa0" d="M80 82h2v2h-2zm206 28h2v2h-2zm-170 40h2v2h-2z"/>
+
+  <!-- Chalk, an easel and a scholar testing a geometric construction. -->
+  <path fill="#496f69" d="M120 118h26v6h-26zm32 10h18v4h-18z"/>
+  <path fill="#715743" d="M122 88h4v34h-4zm20-2h4v36h-4zm-14 26h14v4h-14z"/>
+  <path fill="#bb8855" d="M122 88h2v32h-2zm20-2h2v34h-2z"/>
+  <path fill="#715743" d="M116 70h34v42h-34z"/>
+  <path fill="#bb8855" d="M116 70h34v4h-34zm0 4h2v36h-2z"/>
+  <path fill="#183951" d="M120 74h26v32h-26z"/>
+  <path fill="#244b68" d="M122 76h22v28h-22z"/>
+  <path fill="#d4e6e7" d="M124 82h2v4h4v4h4v4h4v4h4v4h-18zm12-4h8v8h-8z"/>
+  <path fill="#244b68" d="M126 88h2v4h4v4h4v4h-10zm12-8h4v4h-4z"/>
+  <path fill="#efc66f" d="M126 96h4v4h-2v-2h-2zm10-8h2v2h-2z"/>
+  <path fill="#f3ead6" d="M118 108h30v2h-30z"/>
+  <path fill="#97bbca" d="M122 108h6v2h-6z"/>
+  <path fill="#244b68" d="M156 116h10v12h-4v-8h-2v8h-6v-4h2z"/>
+  <path fill="#102c46" d="M152 128h8v2h-8zm10 0h8v2h-8z"/>
+  <path fill="#386484" d="M154 98h12v2h2v18h-16v-16h2z"/>
+  <path fill="#5686a6" d="M154 100h4v16h-6v-12h2z"/>
+  <path fill="#f3ead6" d="M158 100h4v10h-4zm-4 14h12v4h-12z"/>
+  <path fill="#f7dfa0" d="M156 90h10v8h-4v4h-6z"/>
+  <path fill="#bb8855" d="M164 92h4v4h-4z"/>
+  <path fill="#493e3c" d="M154 88h12v4h-8v4h-4z"/>
+  <path fill="#386484" d="M150 100h4v6h-8v-6h-4v-4h6v4z"/>
+  <path fill="#f7dfa0" d="M140 92h4v8h-4z"/>
+  <path fill="#f3ead6" d="M138 90h2v6h-2z"/>
+  <path fill="#bb8855" d="M166 104h4v8h-4z"/>
+  <path fill="#f7dfa0" d="M166 110h4v4h-4z"/>
+
+  <!-- A large octagonal sundial, entirely assembled from pixel steps. -->
+  <path fill="#496f69" d="M206 136h20v4h28v4h12v4h-38v-4h-22z"/>
+  <path fill="#526c72" d="M204 130h28v12h-28z"/>
+  <path fill="#779498" d="M202 128h30v12h-30z"/>
+  <path fill="#c8bea0" d="M202 128h14v10h-14z"/>
+  <path fill="#f3ead6" d="M202 128h30v2h-30z"/>
+  <path fill="#526c72" d="M192 120h6v-6h10v-4h20v4h10v6h6v10h-6v4h-40v-4h-6z"/>
+  <path fill="#779498" d="M190 118h6v-6h10v-4h20v4h10v6h6v10h-6v4h-40v-4h-6z"/>
+  <path fill="#c8bea0" d="M190 116h6v-6h10v-4h20v4h10v6h6v8h-6v4h-40v-4h-6z"/>
+  <path fill="#f3ead6" d="M192 116h6v-6h10v-2h16v4h10v6h6v4h-6v4h-36v-4h-6z"/>
+  <path fill="#d4e6e7" d="M208 112h18v4h10v6h-8v4h-22v-4h-8v-6h10z"/>
+  <path fill="#779498" d="M214 116h6v4h6v4h8v2h-16v-4h-4z"/>
+  <path fill="#bb8855" d="M214 108h2v-8h2v16h-8v-4h4z"/>
+  <path fill="#efc66f" d="M214 108h2v-8h2v4h-2v8h-6v4h-2v-4h6z"/>
+  <path fill="#97704f" d="M214 108h4v2h-4zm-14 4h4v2h-4zm-6 6h4v2h-4zm10 6h4v2h-4zm16 0h4v2h-4zm12-6h4v2h-4zm-6-6h4v2h-4z"/>
+
+  <!-- A stepped stone solid, a bench and a small copper watering can. -->
+  <path fill="#496f69" d="M24 146h36v6H24z"/>
+  <path fill="#526c72" d="M24 138h28v10H24z"/>
+  <path fill="#779498" d="M22 136h30v10H22z"/>
+  <path fill="#c8bea0" d="M22 136h30v4H22z"/>
+  <path fill="#779498" d="M26 130h4v-6h4v-6h4v-6h4v8h4v6h4v8H26z"/>
+  <path fill="#f3ead6" d="M26 130h4v-6h4v-6h4v-6h2v8h-4v8h-4v6h-6z"/>
+  <path fill="#c8bea0" d="M40 120h4v6h4v8H34v-6h4v-6h2z"/>
+  <path fill="#efc66f" d="M38 112h4v4h-4z"/>
+  <path fill="#496f69" d="M270 122h28v4h-28z"/>
+  <path fill="#715743" d="M272 110h4v12h-4zm18 0h4v12h-4z"/>
+  <path fill="#bb8855" d="M268 104h30v6h-30zm0 10h30v4h-30z"/>
+  <path fill="#f7dfa0" d="M268 104h30v2h-30zm0 10h30v2h-30z"/>
+  <path fill="#97704f" d="M286 128h10v10h-10zm10 2h6v-6h4v6h-4v4h-6z"/>
+  <path fill="#bb8855" d="M286 126h10v10h-10zm0-4h8v4h-2v-2h-4v2h-2z"/>
+  <path fill="#efc66f" d="M288 128h2v6h-2z"/>
+
+  <!-- A little rill tumbles between terraces and through stepping stones. -->
+  <path fill="#526c72" d="M54 126h14v16h30v16h24v10h-10v12H70v-6H42v-8H0v-14h42v-8h12z"/>
+  <path fill="#5686a6" d="M56 126h8v20h30v14h24v6h-10v10H72v-6H44v-8H0v-6h46v-8h10z"/>
+  <path fill="#97bbca" d="M56 128h4v20h30v14h20v2H86v-12H54v-8h2z"/>
+  <path fill="#d4e6e7" d="M58 128h2v14h-2zm28 24h2v8h-2zm-16 16h16v2H70zm24 4h10v2H94z"/>
+  <path fill="#386484" d="M0 160h28v2H0zm48 4h14v2H48zm40 10h12v2H88z"/>
+  <path fill="#779498" d="M16 154h14v8H16zm20 4h14v10H36zm22 6h14v8H58z"/>
+  <path fill="#f3ead6" d="M16 154h14v2H16zm20 4h14v2H36zm22 6h14v2H58z"/>
+  <path fill="#6b9180" d="M120 170h8v4h-8zm30-4h6v4h-6zm76-8h6v4h-6zm40 14h10v2h-10z"/>
+  <path fill="#f7dfa0" d="M136 172h12v2h-12zm54-4h16v2h-16zm54 4h10v2h-10z"/>
+  <path fill="#496f69" d="M0 174h6v-8h4v10h8v-4h6v8H0zm288 6v-8h8v-6h6v8h6v-12h4v8h8v10z"/>
+  <path fill="#6b9180" d="M0 172h4v6h8v2H0zm298 2h4v6h-4zm10-10h4v8h8v4h-12z"/>
+  <path fill="#efc66f" d="M8 172h4v4H8zm294 2h4v4h-4zm18-6h4v4h-4z"/>
+</svg>

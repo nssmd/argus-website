@@ -1,5 +1,6 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import PageHero from "../components/PageHero.astro";
 import PaperExplorer from "../components/PaperExplorer";
 import type { Paper } from "../components/PaperExplorer";
 import papers from "../data/papers.json";
@@ -68,13 +69,11 @@ const copy = locale === "zh" ? {
   title={copy.title}
   description={copy.description}
 >
-  <section class="page-hero compact">
-    <div class="shell">
+  <PageHero scene="research-library">
       <p class="eyebrow">Argus · Research</p>
       <h1>{copy.hero}</h1>
       <p class="lede">{copy.lede}</p>
-    </div>
-  </section>
+  </PageHero>
 
   <div class="shell">
     <PaperExplorer papers={typedPapers} locale={locale} client:load />

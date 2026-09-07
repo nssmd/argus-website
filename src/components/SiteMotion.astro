@@ -59,8 +59,6 @@
       const canObserve = "IntersectionObserver" in window;
       const pointerCleanups: Array<() => void> = [];
       const finePointer = window.matchMedia("(pointer: fine) and (hover: hover)").matches;
-      const coarsePointer = window.matchMedia("(pointer: coarse), (hover: none)").matches;
-      const pointerSurfaces = new WeakSet<Element>();
 
       if (brandUniverse && brandCore) {
         const forms = [
@@ -157,65 +155,7 @@
         }
       }
 
-      const attachPointerSurface = (surface: HTMLElement) => {
-        if (!finePointer || pointerSurfaces.has(surface)) return;
-        pointerSurfaces.add(surface);
-        const move = (event: PointerEvent) => {
-          const rect = surface.getBoundingClientRect();
-          surface.style.setProperty("--pointer-x", `${event.clientX - rect.left}px`);
-          surface.style.setProperty("--pointer-y", `${event.clientY - rect.top}px`);
-          if (surface.matches(".card, .paper-card, .role, .launch-command")) {
-            rotateYTo(((event.clientX - rect.left) / rect.width - 0.5) * 4.5);
-            rotateXTo(-((event.clientY - rect.top) / rect.height - 0.5) * 3.5);
-          }
-        };
-        const rotateXTo = gsap.quickTo(surface, "rotationX", {
-          duration: 0.38,
-          ease: "power3.out",
-        });
-        const rotateYTo = gsap.quickTo(surface, "rotationY", {
-          duration: 0.38,
-          ease: "power3.out",
-        });
-        const enter = () => gsap.to(surface, {
-          "--spotlight-opacity": 1,
-          duration: 0.2,
-          ease: "power1.out",
-          overwrite: "auto",
-        });
-        const leave = () => {
-          gsap.to(surface, {
-            "--spotlight-opacity": 0,
-            rotationX: 0,
-            rotationY: 0,
-            duration: 0.42,
-            ease: "power2.out",
-            overwrite: "auto",
-            clearProps: "transform",
-          });
-        };
-        surface.addEventListener("pointermove", move);
-        surface.addEventListener("pointerenter", enter);
-        surface.addEventListener("pointerleave", leave);
-        pointerCleanups.push(() => {
-          surface.removeEventListener("pointermove", move);
-          surface.removeEventListener("pointerenter", enter);
-          surface.removeEventListener("pointerleave", leave);
-        });
-      };
-
       if (finePointer) {
-        const ambientMove = (event: PointerEvent) => {
-          document.body.style.setProperty("--ambient-x", `${event.clientX}px`);
-          document.body.style.setProperty("--ambient-y", `${event.clientY}px`);
-        };
-        window.addEventListener("pointermove", ambientMove, { passive: true });
-        pointerCleanups.push(() => {
-          window.removeEventListener("pointermove", ambientMove);
-        });
-        document.querySelectorAll<HTMLElement>(
-          ".page-hero, .card, .score-row, .role, .launch-command, .paper-card",
-        ).forEach(attachPointerSurface);
         if (brandUniverse && brandWordLayer && brandCore) {
           const layerX = gsap.quickTo(brandWordLayer, "x", { duration: 0.9, ease: "power3.out" });
           const layerY = gsap.quickTo(brandWordLayer, "y", { duration: 0.9, ease: "power3.out" });
@@ -233,55 +173,6 @@
           brandUniverse.addEventListener("pointermove", brandMove, { passive: true });
           pointerCleanups.push(() => brandUniverse.removeEventListener("pointermove", brandMove));
         }
-        document.querySelectorAll<HTMLElement>(".button, .site-start").forEach((element) => {
-          const xTo = gsap.quickTo(element, "x", { duration: 0.3, ease: "power3.out" });
-          const yTo = gsap.quickTo(element, "y", { duration: 0.3, ease: "power3.out" });
-          const move = (event: PointerEvent) => {
-            const rect = element.getBoundingClientRect();
-            xTo((event.clientX - (rect.left + rect.width / 2)) * 0.12);
-            yTo((event.clientY - (rect.top + rect.height / 2)) * 0.16);
-          };
-          const leave = () => gsap.to(element, {
-            x: 0,
-            y: 0,
-            duration: 0.42,
-            ease: "elastic.out(1, 0.45)",
-            clearProps: "transform",
-          });
-          element.addEventListener("pointermove", move);
-          element.addEventListener("pointerleave", leave);
-          pointerCleanups.push(() => {
-            element.removeEventListener("pointermove", move);
-            element.removeEventListener("pointerleave", leave);
-          });
-        });
-      }
-      if (coarsePointer) {
-        const touchPress = (event: PointerEvent) => {
-          if (event.pointerType === "mouse") return;
-          const target = (event.target as Element | null)?.closest<HTMLElement>(
-            ".card, .paper-card, .role, .button, .site-start, [data-research-field-plane]",
-          );
-          if (!target) return;
-          gsap.fromTo(target, { scale: 0.985 }, {
-            scale: 1,
-            duration: 0.36,
-            ease: "back.out(2.2)",
-            clearProps: "scale",
-            overwrite: "auto",
-          });
-          if (target.matches("[data-research-field-plane]")) {
-            gsap.fromTo("[data-research-field-node]", { scale: 0.9 }, {
-              scale: 1,
-              duration: 0.4,
-              stagger: 0.055,
-              ease: "back.out(2)",
-              clearProps: "scale",
-            });
-          }
-        };
-        document.addEventListener("pointerdown", touchPress, { passive: true });
-        pointerCleanups.push(() => document.removeEventListener("pointerdown", touchPress));
       }
 
       const progress = document.querySelector<HTMLElement>("[data-scroll-progress]");
@@ -404,7 +295,6 @@
         const cards = [...document.querySelectorAll<HTMLElement>(".paper-card")]
           .filter((card) => !animatedCards.has(card));
         cards.forEach((card) => animatedCards.add(card));
-        cards.forEach(attachPointerSurface);
         if (!cards.length) return;
         gsap.fromTo(cards, { autoAlpha: 0, y: 16 }, {
           autoAlpha: 1,

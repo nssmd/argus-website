@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="180" viewBox="0 0 320 180" shape-rendering="crispEdges" role="img" aria-labelledby="ra-title ra-desc">
+  <title id="ra-title">The cartographer's mountain terrace</title>
+  <desc id="ra-desc">A researcher surveys a broad relief atlas on a sunlit mountain balcony. Miniature islands rise from blue chart paper, surrounded by a brass compass, a measuring square, rolled maps and an open notebook. Layered mountain passes stretch beyond the terrace; a travel pack waits beside the table.</desc>
+  <defs>
+    <g id="ra-map-roll">
+      <path fill="#715743" d="M0 4h4V0h24v2h4v8h-4v2H4V8H0z"/>
+      <path fill="#f7dfa0" d="M0 2h4V0h24v2h4v6h-4v2H4V6H0z"/>
+      <path fill="#f3ead6" d="M4 0h24v2H6v4H4z"/>
+      <path fill="#bb8855" d="M12 0h4v10h-4z"/>
+      <path fill="#97704f" d="M26 2h4v4h-4z"/>
+      <path fill="#f3ead6" d="M26 2h2v2h-2z"/>
+    </g>
+  </defs>
+
+  <!-- A broad, open pass in early golden light. -->
+  <path fill="#97bbca" d="M0 0h320v180H0z"/>
+  <path fill="#d4e6e7" d="M0 30h320v54H0z"/>
+  <path fill="#f7dfa0" d="M0 58h320v32H0z"/>
+  <path fill="#f3ead6" d="M18 18h20v-4h30v4h18v4h22v4H18zm152-8h20V6h26v4h24v4h20v4h-90zm108 22h18v-6h24v12h-42z"/>
+  <path fill="#97bbca" d="M0 80h10V70h14V60h16V50h12V38h12V28h10v10h10v8h12v12h14v10h18v12h16v8h24V76h14V64h12V54h12V46h12v10h12v8h16v12h20v10h14V76h16V66h14V56h10v48H0z"/>
+  <path fill="#d4e6e7" d="M52 38h12V28h10v10h10v8h12v12H84v-8H72V40h-8v8H52z"/>
+  <path fill="#f3ead6" d="M64 28h10v8H64zm132 26h10v-8h12v10h12v8h-14v-8h-10v6h-10z"/>
+  <path fill="#779498" d="M0 94h18V82h16V72h16V62h12v12h12v8h16v12h24v8h20V94h18V82h14V70h12v-8h10v10h14v10h16v12h20v10h18V92h18V80h14V70h12v-8h10v12h10v30H0z"/>
+  <path fill="#5686a6" d="M0 110h22v-8h16V92h16V84h14v10h12v8h22v10h24v-8h20V96h18v-8h14v10h18v12h28v8h20v-12h22V96h18v-8h18v12h18v40H0z"/>
+  <path fill="#386484" d="M0 116h20v-8h20v8h20v8h36v-8h28v12h34v-8h22v-10h20v12h22v8h28v-8h30v-10h18v10h22v58H0z"/>
+  <path fill="#d4e6e7" d="M186 92h6v8h8v6h-10v-6h-6v-4h2zm16 16h10v4h-10zm12 8h18v4h-18z"/>
+  <path fill="#496f69" d="M0 118h8v-12h6v-8h6v12h6v12h8v12h18v46H0zm286 14h10v-18h6v-10h4v10h6v12h8v54h-34z"/>
+  <path fill="#6b9180" d="M6 114h8v-10h4v12h8v4H6zm294 12h6v-12h2v12h8v4h-22z"/>
+
+  <!-- A weathered balcony, an awning and the cartographer's supply rack. -->
+  <path fill="#526c72" d="M0 132h320v48H0z"/>
+  <path fill="#779498" d="M0 130h320v6H0z"/>
+  <path fill="#97bbca" d="M0 128h320v4H0z"/>
+  <path fill="#244b68" d="M8 100h304v6H8z"/>
+  <path fill="#bb8855" d="M6 98h308v4H6z"/>
+  <path fill="#efc66f" d="M8 98h304v2H8z"/>
+  <path fill="#244b68" d="M12 102h6v26h-6zm26 0h4v26h-4zm32 0h4v26h-4zm30 0h4v26h-4zm118 0h4v26h-4zm30 0h4v26h-4zm30 0h4v26h-4zm24 0h6v26h-6z"/>
+  <path fill="#5686a6" d="M12 102h2v26h-2zm26 0h2v26h-2zm240 0h2v26h-2zm24 0h2v26h-2z"/>
+  <path fill="#715743" d="M10 22h6v110h-6zm84-14h4v124h-4z"/>
+  <path fill="#bb8855" d="M10 24h2v108h-2zm84-14h2v122h-2z"/>
+  <path fill="#715743" d="M0 8h30V4h38V0h40v10H98v6H72v6H42v6H12v4H0z"/>
+  <path fill="#f7dfa0" d="M0 4h30V0h78v6H96v6H70v6H40v6H12v4H0z"/>
+  <path fill="#efc66f" d="M22 8h8V4h10v16h-8v4H20v-8h2zm32-8h14v16H54zm32 0h12v8H86z"/>
+  <path fill="#f3ead6" d="M0 4h30V0h78v2H32v4H0z"/>
+  <path fill="#102c46" d="M20 62h24v66H20z"/>
+  <path fill="#715743" d="M20 64h24v6H20zm0 24h24v6H20zm0 24h24v6H20z"/>
+  <path fill="#bb8855" d="M20 62h24v2H20zm0 26h24v2H20zm0 24h24v2H20zm0-48h4v64h-4zm20 0h4v64h-4z"/>
+  <path fill="#f7dfa0" d="M26 72h4v16h-4zm8-4h4v20h-4zm-8 30h4v14h-4zm8-4h4v18h-4z"/>
+  <path fill="#f3ead6" d="M26 72h2v12h-2zm8-4h2v16h-2zm-8 30h2v12h-2zm8-4h2v14h-2z"/>
+  <path fill="#97704f" d="M26 78h4v2h-4zm8-2h4v2h-4zm-8 28h4v2h-4zm8-2h4v2h-4z"/>
+  <path fill="#244b68" d="M28 118h10v10H28z"/>
+  <path fill="#efc66f" d="M30 120h6v2h-6z"/>
+
+  <!-- The researcher stands behind the great chart table. -->
+  <path fill="#244b68" d="M252 104h14v24h-6v-14h-4v14h-6v-8h2z"/>
+  <path fill="#102c46" d="M250 126h6v4h-8v-2h2zm10 0h8v4h-8z"/>
+  <path fill="#bb8855" d="M250 82h14v4h4v22h-20V86h2z"/>
+  <path fill="#efc66f" d="M250 84h6v20h-8V88h2zm14 4h4v12h-4z"/>
+  <path fill="#f7dfa0" d="M252 72h12v10h-4v4h-8z"/>
+  <path fill="#bb8855" d="M260 78h6v4h-6z"/>
+  <path fill="#493e3c" d="M250 70h12v2h4v6h-8v-2h-8z"/>
+  <path fill="#386484" d="M252 84h4v4h6v4h-10z"/>
+  <path fill="#bb8855" d="M246 90h4v8h-6v4h-10v-4h8v-4h4z"/>
+  <path fill="#f7dfa0" d="M234 96h10v4h-10z"/>
+
+  <!-- A stepped perspective makes the relief atlas a physical, generous surface. -->
+  <path fill="#244b68" d="M46 148h238v12h-18v8h-40v4H68v-8H46z"/>
+  <path fill="#493e3c" d="M56 132h12v34H56zm196 0h12v34h-12zm-144 2h8v22h-8zm104 0h8v24h-8z"/>
+  <path fill="#bb8855" d="M56 136h6v28h-6zm196 0h6v28h-6z"/>
+  <path fill="#97704f" d="M58 156h198v6H58z"/>
+  <path fill="#715743" d="M64 160h188v4H64z"/>
+  <path fill="#493e3c" d="M66 88h194v8h10v8h10v12h10v24H34v-16h8v-12h8v-12h8v-8h8z"/>
+  <path fill="#bb8855" d="M66 86h194v8h10v10h10v12h10v18H34v-10h8v-12h8v-12h8v-8h8z"/>
+  <path fill="#efc66f" d="M68 88h188v8h10v10h10v12h10v12H38v-6h8v-12h8v-10h8v-8h6z"/>
+  <path fill="#97704f" d="M34 134h256v6H34z"/>
+  <path fill="#f7dfa0" d="M38 130h248v4H38z"/>
+  <path fill="#715743" d="M48 140h226v6H48z"/>
+  <path fill="#bb8855" d="M50 140h222v2H50z"/>
+  <path fill="#f3ead6" d="M78 90h160v4h12v10h10v10h12v14H50v-8h8v-12h10v-10h10z"/>
+  <path fill="#97bbca" d="M82 92h152v6h12v8h10v10h12v8H56v-4h6v-10h10v-10h10z"/>
+  <path fill="#d4e6e7" d="M82 92h152v2H84v8H74v8H64v12h-6v-4h6v-10h10v-10h8z"/>
+  <path fill="#5686a6" d="M96 120h40v2H96zm54-24h22v2h-22zm46 18h30v2h-30zm38 8h22v2h-22zm-162-8h14v2H72z"/>
+
+  <!-- Deliberate relief islands: sandy ledges, wooded slopes and snowy summits. -->
+  <path fill="#5686a6" d="M88 104h10v-8h20v4h12v6h12v8h-8v6h-32v-4H88z"/>
+  <path fill="#f7dfa0" d="M86 102h12v-8h18v4h14v6h10v8h-10v6h-28v-4H86z"/>
+  <path fill="#496f69" d="M90 102h12v-6h12v4h12v6h10v4h-10v6h-22v-4H90z"/>
+  <path fill="#6b9180" d="M90 102h12v-6h12v4h10v4h-12v6h-10v-2H90z"/>
+  <path fill="#779498" d="M100 100h6v-8h6v-6h6v6h6v8h6v6h-24v-2h-6z"/>
+  <path fill="#97bbca" d="M100 100h6v-8h6v-6h6v6h-4v8h-6v4h-8z"/>
+  <path fill="#f3ead6" d="M112 86h6v6h6v4h-10v-4h-2z"/>
+  <path fill="#f7dfa0" d="M112 108h10v2h-10zm12-4h8v2h-8z"/>
+  <path fill="#5686a6" d="M152 108h12v-6h16v6h12v8h-10v6h-22v-4h-8z"/>
+  <path fill="#f7dfa0" d="M150 106h12v-6h16v6h12v8h-10v6h-22v-4h-8z"/>
+  <path fill="#6b9180" d="M154 106h10v-4h12v6h10v4h-8v6h-18v-4h-6z"/>
+  <path fill="#496f69" d="M160 108h6v-6h6v6h8v6h-8v4h-12z"/>
+  <path fill="#779498" d="M160 104h6v-8h6v6h6v8h-18z"/>
+  <path fill="#d4e6e7" d="M166 96h6v6h-6z"/>
+  <path fill="#f7dfa0" d="M194 100h8v-4h14v6h10v6h-18v-2h-14z"/>
+  <path fill="#6b9180" d="M198 100h8v-2h8v6h8v2h-14v-2h-10z"/>
+  <path fill="#496f69" d="M206 96h4v-4h4v8h-8z"/>
+  <path fill="#f7dfa0" d="M140 116h6v4h-6zm54-4h4v4h-4zm-48-14h4v4h-4z"/>
+  <path fill="#715743" d="M132 94h2v14h-2zm50 12h2v12h-2zm40-18h2v14h-2z"/>
+  <path fill="#efc66f" d="M132 92h10v6h-8v2h-2zm50 12h10v6h-8v2h-2zm40-18h10v6h-8v2h-2z"/>
+  <path fill="#f3ead6" d="M134 94h6v2h-6zm50 12h6v2h-6zm40-18h6v2h-6z"/>
+
+  <!-- Chart tools, a stepped brass compass and bound rolls at the near edge. -->
+  <path fill="#715743" d="M208 120h6v-4h14v4h6v8h-6v4h-14v-4h-6z"/>
+  <path fill="#bb8855" d="M208 118h6v-4h14v4h6v8h-6v4h-14v-4h-6z"/>
+  <path fill="#efc66f" d="M212 118h4v-2h10v4h6v4h-6v4h-10v-4h-4z"/>
+  <path fill="#f7dfa0" d="M216 118h10v8h-10z"/>
+  <path fill="#386484" d="M220 118h2v4h4v2h-6z"/>
+  <path fill="#f3ead6" d="M216 120h4v4h2v2h-6z"/>
+  <path fill="#715743" d="M220 112h2v4h-2zm0 14h2v4h-2zm-12-6h6v2h-6zm20 0h4v2h-4z"/>
+  <path fill="#97704f" d="M150 126h4v10h44v4h-48z"/>
+  <path fill="#efc66f" d="M150 124h4v10h44v4h-48z"/>
+  <path fill="#715743" d="M158 134h2v2h-2zm8 0h2v2h-2zm8 0h2v2h-2zm8 0h2v2h-2zm8 0h2v2h-2z"/>
+  <use href="#ra-map-roll" x="74" y="126"/>
+  <use href="#ra-map-roll" x="102" y="134"/>
+  <path fill="#715743" d="M232 96h22v10h-22z"/>
+  <path fill="#f7dfa0" d="M230 94h10v2h4v-2h12v10h-26z"/>
+  <path fill="#f3ead6" d="M232 92h8v2h4v8h-12zm12 2h4v-2h10v10h-14z"/>
+  <path fill="#97bbca" d="M234 96h6v2h-6zm14 0h6v2h-6zm0 4h8v2h-8z"/>
+  <path fill="#bb8855" d="M242 96h2v8h-2z"/>
+  <path fill="#102c46" d="M264 116h6v10h-6z"/>
+  <path fill="#386484" d="M264 114h6v6h-6z"/>
+  <path fill="#f7dfa0" d="M268 106h2v10h-2z"/>
+  <path fill="#bb8855" d="M270 104h2v6h-2z"/>
+  <path fill="#f3ead6" d="M264 114h6v2h-6z"/>
+
+  <!-- Expedition gear and warm paving carry the story beyond the table. -->
+  <path fill="#244b68" d="M272 160h28v6h-28zm-254-6h22v6H18z"/>
+  <path fill="#493e3c" d="M276 140h18v4h6v16h-28v-16h4z"/>
+  <path fill="#97704f" d="M274 142h24v16h-24z"/>
+  <path fill="#bb8855" d="M276 140h18v10h-18z"/>
+  <path fill="#efc66f" d="M278 142h14v2h-14z"/>
+  <path fill="#715743" d="M282 136h8v6h-2v-4h-4v4h-2zm-8 14h4v8h-4zm20 0h4v8h-4z"/>
+  <path fill="#f7dfa0" d="M284 148h4v6h-4z"/>
+  <path fill="#bb8855" d="M302 118h2v40h-2z"/>
+  <path fill="#f7dfa0" d="M302 118h2v10h-2z"/>
+  <path fill="#496f69" d="M18 142h22v12H18z"/>
+  <path fill="#6b9180" d="M18 138h22v8H18z"/>
+  <path fill="#97bbca" d="M20 138h18v2H20z"/>
+  <path fill="#bb8855" d="M22 138h4v16h-4zm10 0h4v16h-4z"/>
+  <path fill="#779498" d="M6 144h10v2H6zm30 20h32v2H36zm52 6h40v2H88zm56-6h20v2h-20zm52 8h42v2h-42zm78-4h36v2h-36z"/>
+  <path fill="#97bbca" d="M0 154h12v2H0zm24 18h24v2H24zm142 2h22v2h-22zm140-30h14v2h-14z"/>
+  <path fill="#bb8855" d="M70 166h28v2H70zm46-12h38v2h-38zm66 4h42v2h-42zm50 8h28v2h-28z"/>
+  <path fill="#244b68" d="M0 168h8v-6h8v6h10v12H0zm288 10h8v-8h4v4h6v-12h4v8h10v10h-32z"/>
+  <path fill="#496f69" d="M0 166h6v8h8v-4h6v10H0zm300 10h6v-8h4v8h10v4h-20z"/>
+  <path fill="#efc66f" d="M8 172h4v4H8zm304 2h4v4h-4z"/>
+</svg>
