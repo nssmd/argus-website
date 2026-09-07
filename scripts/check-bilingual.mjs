@@ -67,6 +67,19 @@ for (const [englishPath, chinesePath] of pairs) {
   assert(chinese.includes('data-logo-tone="adaptive"'), `${chinesePath} lacks adaptive logos`);
   assert(english.includes('class="footer-brand"') && english.includes('aria-label="Argus home"'), `${englishPath} footer logo is unnamed`);
   assert(chinese.includes('class="footer-brand"') && chinese.includes('aria-label="Argus 首页"'), `${chinesePath} footer logo is unnamed`);
+  const pixelScenes = [];
+  for (const [page, html] of [[englishPath, english], [chinesePath, chinese]]) {
+    const scenes = Array.from(html.matchAll(/<img\b[^>]*src="(\/art\/pixel\/[^"]+)"/g), ([, src]) => src);
+    assert(scenes.length > 0, `${page} lacks its pixel illustration`);
+    for (const src of scenes) {
+      assert(fs.existsSync(path.join(dist, src.slice(1))), `${page} references missing artwork: ${src}`);
+    }
+    if (englishPath !== "index.html") {
+      assert(html.includes("data-page-scene="), `${page} lacks its illustrated page header`);
+    }
+    pixelScenes.push(scenes.join("\n"));
+  }
+  assert(pixelScenes[0] === pixelScenes[1], `${englishPath} and ${chinesePath} show different artwork`);
 }
 
 for (const page of ["index.html", "zh/index.html"]) {

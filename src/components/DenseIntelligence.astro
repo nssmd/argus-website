@@ -100,9 +100,8 @@ const copy = locale === "zh" ? {
     align-items: center;
     margin-bottom: 16px;
     padding: 18px 21px;
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    background: linear-gradient(110deg, var(--blue-soft), var(--surface), var(--gold-soft));
+    border-left: 2px solid var(--gold);
+    background: var(--surface-soft);
   }
 
   .density-definition span {
@@ -133,7 +132,7 @@ const copy = locale === "zh" ? {
 
   .density-track--argus {
     border-color: color-mix(in srgb, var(--blue) 58%, var(--line));
-    background: linear-gradient(145deg, var(--surface), color-mix(in srgb, var(--blue-soft) 46%, var(--surface)));
+    background: transparent;
   }
 
   .density-track__head > span {
@@ -233,15 +232,14 @@ const copy = locale === "zh" ? {
     margin-top: 16px;
     padding: 17px;
     border: 1px solid var(--line);
-    border-radius: 15px;
+    border-radius: var(--panel-radius);
     background: var(--surface-raised);
-    box-shadow: var(--shadow);
   }
 
   .density-formula > div {
     min-width: 0;
     padding: 13px 14px;
-    border-radius: 10px;
+    border-radius: var(--panel-radius);
     background: var(--blue-soft);
   }
 

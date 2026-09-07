@@ -1,6 +1,7 @@
 ---
 import ResearchVideoDemo from "../components/ResearchVideoDemo.astro";
 import SiteLayout from "../layouts/SiteLayout.astro";
+import PageHero from "../components/PageHero.astro";
 import { localeFromPath, pathForLocale } from "../i18n";
 
 const locale = localeFromPath(Astro.url.pathname);
@@ -78,8 +79,7 @@ const copy = locale === "zh" ? {
   title={copy.title}
   description={copy.description}
 >
-  <section class="page-hero compact product-hero">
-    <div class="shell demo-shell">
+  <PageHero scene="signal-theater" class="product-hero" shellClass="demo-shell">
       <p class="eyebrow">Get started</p>
       <h1>{copy.heroLead}<em>{copy.heroEm}</em></h1>
       <p class="lede">{copy.lede}</p>
@@ -88,8 +88,7 @@ const copy = locale === "zh" ? {
         <a class="button" href="#webui">{copy.web}</a>
       </div>
       <p class="demo-source">{copy.source}</p>
-    </div>
-  </section>
+  </PageHero>
 
   <section class="runtime-flow" aria-label={copy.flowLabel}>
     <div class="shell demo-shell">

@@ -1,5 +1,6 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import PageHero from "../components/PageHero.astro";
 import { desktopRelease } from "../data/desktopRelease";
 import { localeFromPath, pathForLocale } from "../i18n";
 
@@ -132,8 +133,7 @@ const copy = locale === "zh" ? {
 ---
 
 <SiteLayout title={copy.title} description={copy.description}>
-  <section class="page-hero compact onboarding-hero">
-    <div class="shell onboarding-shell">
+  <PageHero scene="trailhead" class="onboarding-hero" shellClass="onboarding-shell">
       <p class="eyebrow">{copy.eyebrow}</p>
       <h1>{copy.hero}</h1>
       <p class="lede">{copy.lede}</p>
@@ -142,8 +142,7 @@ const copy = locale === "zh" ? {
         <a class="button" href="#agent-install">{copy.assisted}</a>
         <a class="button" href={href("/start/")}>{copy.demo}</a>
       </div>
-    </div>
-  </section>
+  </PageHero>
 
   <section id="windows-download" class="section desktop-download-section">
     <div class="shell onboarding-shell">

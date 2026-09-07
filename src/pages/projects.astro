@@ -1,5 +1,6 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import PageHero from "../components/PageHero.astro";
 import { projectDomains, projects } from "../data/projects";
 import { localeFromPath, pathForLocale } from "../i18n";
 
@@ -46,8 +47,7 @@ const labels = locale === "zh" ? {
 ---
 
 <SiteLayout title={labels.title} description={labels.description}>
-  <section class="page-hero compact projects-hero">
-    <div class="shell">
+  <PageHero scene="research-atlas" class="projects-hero">
       <p class="eyebrow">{labels.eyebrow}</p>
       <h1>{labels.hero}</h1>
       <p class="lede">{labels.lede}</p>
@@ -56,8 +56,7 @@ const labels = locale === "zh" ? {
         <a class="button" href={href("/get-started/")}>{labels.start}</a>
         <a class="button" href={href("/results/")}>{labels.results}</a>
       </div>
-    </div>
-  </section>
+  </PageHero>
 
   <section class="section project-domain-map">
     <div class="shell">
