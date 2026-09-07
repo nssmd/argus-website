@@ -597,6 +597,10 @@ main {
   white-space: nowrap;
 }
 
+.brand-universe__core h1.font-9 {
+  font-size: clamp(72px, 16vw, 250px);
+}
+
 .brand-universe__core h1[data-palette="1"] {
   background-image: linear-gradient(105deg, var(--rose), var(--gold-dark), var(--violet), var(--blue));
 }
@@ -979,8 +983,7 @@ main {
   font-style: italic;
 }
 
-:lang(zh-CN) .product-intro h1,
-:lang(zh-CN) .product-intro .hero-title {
+:lang(zh-CN) #intro .hero-title {
   font-size: clamp(34px, 8.8vw, 56px);
   letter-spacing: -0.045em;
   text-wrap: balance;
@@ -4509,6 +4512,10 @@ main {
     font-size: clamp(72px, 25vw, 128px);
   }
 
+  .brand-universe__core h1.font-9 {
+    font-size: clamp(56px, 19vw, 110px);
+  }
+
   .brand-universe__word {
     left: clamp(110px, var(--word-x), calc(100% - 110px));
     top: clamp(78px, var(--word-y), calc(100% - 78px));
@@ -4942,7 +4949,8 @@ main {
     display: none;
   }
 
-  .brand-universe__core h1 {
+  .brand-universe__core h1,
+  .brand-universe__core h1.font-9 {
     margin: 0;
     font-size: clamp(56px, 25vh, 110px);
   }
