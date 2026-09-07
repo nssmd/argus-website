@@ -25,7 +25,7 @@
   --browser-canvas: #f7f8fb;
   --on-accent: #ffffff;
   --on-gold: #2b1a00;
-  --pointer-glow: rgba(23, 93, 204, 0.14);
+  --pointer-glow: rgba(23, 93, 204, 0.06);
   --pointer-glow-gold: rgba(201, 149, 45, 0.12);
   --field-grid: rgba(7, 95, 228, 0.13);
   --field-surface: rgba(255, 255, 255, 0.78);
@@ -38,7 +38,7 @@
   --mono: "JetBrains Mono", ui-monospace, monospace;
   --pixel-hard: "Silkscreen", "JetBrains Mono", ui-monospace, monospace;
   --pixel-soft: "Pixelify Sans", "Plus Jakarta Sans", system-ui, sans-serif;
-  --shadow: 0 24px 64px -44px rgba(8, 27, 54, 0.45);
+  --shadow: 0 16px 38px -30px rgba(8, 27, 54, 0.32);
 }
 
 :root:lang(zh-CN) {
@@ -86,7 +86,7 @@
   --browser-canvas: #0a1320;
   --on-accent: #071426;
   --on-gold: #071426;
-  --pointer-glow: rgba(110, 168, 255, 0.18);
+  --pointer-glow: rgba(110, 168, 255, 0.08);
   --pointer-glow-gold: rgba(221, 180, 91, 0.14);
   --field-grid: rgba(110, 168, 255, 0.14);
   --field-surface: rgba(11, 20, 34, 0.84);
@@ -117,8 +117,8 @@ body {
   isolation: isolate;
   margin: 0;
   background:
-    radial-gradient(circle at 90% 0, rgba(217, 154, 22, 0.14), transparent 30rem),
-    radial-gradient(circle at 5% 12%, rgba(7, 95, 228, 0.12), transparent 34rem),
+    radial-gradient(circle at 90% 0, rgba(217, 154, 22, 0.07), transparent 30rem),
+    radial-gradient(circle at 5% 12%, rgba(7, 95, 228, 0.055), transparent 34rem),
     linear-gradient(180deg, var(--body-start), var(--canvas) 48rem);
   color: var(--ink);
   font-family: var(--sans);
@@ -139,7 +139,7 @@ body::after {
 }
 
 body::before {
-  opacity: 0.36;
+  opacity: 0.2;
   background-image:
     linear-gradient(var(--field-grid) 1px, transparent 1px),
     linear-gradient(90deg, var(--field-grid) 1px, transparent 1px);
@@ -168,6 +168,28 @@ button,
 input {
   font: inherit;
 }
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 4px;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: 8px;
+  left: 14px;
+  padding: 10px 16px;
+  color: var(--on-accent);
+  background: var(--blue);
+  border-radius: 6px;
+  transform: translateY(-160%);
+}
+
+.skip-link:focus { transform: translateY(0); }
 
 ::selection {
   background: var(--selection);
@@ -575,6 +597,10 @@ main {
   white-space: nowrap;
 }
 
+.brand-universe__core h1.font-9 {
+  font-size: clamp(72px, 16vw, 250px);
+}
+
 .brand-universe__core h1[data-palette="1"] {
   background-image: linear-gradient(105deg, var(--rose), var(--gold-dark), var(--violet), var(--blue));
 }
@@ -957,9 +983,10 @@ main {
   font-style: italic;
 }
 
-:lang(zh-CN) .product-intro h1 {
+:lang(zh-CN) #intro .hero-title {
   font-size: clamp(34px, 8.8vw, 56px);
   letter-spacing: -0.045em;
+  text-wrap: balance;
 }
 
 @keyframes hero-gradient {
@@ -1059,82 +1086,36 @@ main {
   isolation: isolate;
   overflow: hidden;
   display: inline-flex;
-  min-height: 42px;
-  padding: 0 18px;
+  min-height: 46px;
+  padding: 10px 20px;
   align-items: center;
   justify-content: center;
-  border: 2px solid transparent;
-  border-radius: 11px;
-  background: transparent;
-  color: #17131f;
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.78),
-    0 12px 34px -20px color-mix(in srgb, var(--blue) 62%, transparent),
-    0 0 18px -10px color-mix(in srgb, var(--rose) 62%, transparent);
-  backdrop-filter: blur(16px) saturate(1.25);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 2px 4px -3px var(--line);
   font-size: 13px;
   font-weight: 700;
   text-decoration: none;
-}
-
-.button::before {
-  content: "";
-  position: absolute;
-  inset: -70%;
-  z-index: -2;
-  opacity: 0.96;
-  background:
-    radial-gradient(circle at 18% 24%, #45c8ff 0 8%, transparent 19%),
-    radial-gradient(circle at 76% 18%, #9d72ff 0 9%, transparent 21%),
-    radial-gradient(circle at 82% 76%, #ff68ad 0 8%, transparent 20%),
-    radial-gradient(circle at 25% 78%, #ffd34e 0 9%, transparent 22%),
-    radial-gradient(circle at 52% 52%, #7ef0ce 0 7%, transparent 18%),
-    #d9c8ff;
-  filter: blur(4px) saturate(1.5);
-  animation: rainbow-glass 10s ease-in-out infinite alternate;
-}
-
-.button::after {
-  content: "";
-  position: absolute;
-  inset: 2px;
-  z-index: -1;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.94);
-  box-shadow:
-    inset 0 1px 0 #fff,
-    inset 0 -1px 0 rgba(40, 28, 72, 0.06);
+  transition: background 180ms, border-color 180ms, box-shadow 180ms;
 }
 
 .button.primary {
-  color: #17131f;
-  box-shadow:
-    0 16px 42px -20px color-mix(in srgb, var(--violet) 62%, transparent),
-    0 0 22px -10px color-mix(in srgb, var(--gold) 72%, transparent);
-}
-
-.button.primary::before {
-  opacity: 0.88;
+  color: var(--on-accent);
+  background: var(--blue);
+  border-color: var(--blue);
 }
 
 .button:hover {
-  box-shadow:
-    0 18px 48px -18px color-mix(in srgb, var(--violet) 72%, transparent),
-    0 0 24px -8px color-mix(in srgb, var(--gold) 70%, transparent);
+  border-color: var(--blue);
+  background: var(--blue-soft);
+  box-shadow: 0 8px 20px -14px color-mix(in srgb, var(--blue) 60%, transparent);
 }
 
-:root[data-theme="dark"] .button::before {
-  opacity: 0.78;
-}
-
-:root[data-theme="dark"] .button.primary::before {
-  opacity: 0.9;
-}
-
-@keyframes rainbow-glass {
-  0% { transform: translate3d(-4%, -2%, 0) rotate(-4deg) scale(0.98); }
-  50% { transform: translate3d(4%, 2%, 0) rotate(3deg) scale(1.04); }
-  100% { transform: translate3d(-1%, 5%, 0) rotate(-1deg) scale(1.01); }
+.button.primary:hover {
+  background: var(--blue-dark);
+  border-color: var(--blue-dark);
 }
 
 .metric-strip {
@@ -1412,15 +1393,13 @@ main {
   --resource-accent-soft: color-mix(in srgb, var(--blue) 16%, transparent);
   position: relative;
   display: flex;
-  min-height: 310px;
+  min-height: 270px;
   flex-direction: column;
   padding: 26px 28px 28px;
   overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--resource-accent) 40%, var(--line));
-  border-radius: 24px;
-  background:
-    linear-gradient(135deg, transparent 0 58%, var(--resource-accent-soft) 100%),
-    var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface-raised);
   box-shadow: var(--shadow);
   isolation: isolate;
   text-decoration: none;
@@ -1435,7 +1414,7 @@ main {
   position: absolute;
   inset: 0;
   z-index: -1;
-  opacity: 0.42;
+  opacity: 0.18;
   background-image:
     linear-gradient(color-mix(in srgb, var(--resource-accent) 13%, transparent) 1px, transparent 1px),
     linear-gradient(90deg, color-mix(in srgb, var(--resource-accent) 13%, transparent) 1px, transparent 1px);
@@ -1446,32 +1425,29 @@ main {
 .resource-link-card::after {
   content: "";
   position: absolute;
-  width: 220px;
-  height: 220px;
-  right: -105px;
-  bottom: -125px;
+  height: 2px;
+  inset: auto 0 0;
   z-index: -1;
-  border: 1px solid color-mix(in srgb, var(--resource-accent) 46%, transparent);
-  border-radius: 50%;
-  box-shadow:
-    0 0 0 26px color-mix(in srgb, var(--resource-accent) 6%, transparent),
-    0 0 0 58px color-mix(in srgb, var(--resource-accent) 4%, transparent);
+  background: var(--resource-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 250ms ease;
 }
 
 .resource-link-card--0 {
   grid-column: span 7;
-  min-height: 390px;
+  min-height: 300px;
 }
 
 .resource-link-card--1 {
-  --resource-accent: var(--gold);
+  --resource-accent: var(--gold-dark);
   --resource-accent-soft: color-mix(in srgb, var(--gold) 20%, transparent);
   grid-column: span 5;
-  min-height: 390px;
+  min-height: 300px;
 }
 
 .resource-link-card--2 {
-  --resource-accent: var(--violet);
+  --resource-accent: var(--blue-dark);
   --resource-accent-soft: color-mix(in srgb, var(--violet) 15%, transparent);
   grid-column: span 5;
 }
@@ -1523,11 +1499,11 @@ main {
 
 .resource-link-card__visual {
   position: absolute;
-  top: 58px;
-  right: 22px;
-  width: min(42%, 240px);
+  top: 18px;
+  right: 76px;
+  width: 48px;
   color: var(--resource-accent);
-  opacity: 0.34;
+  opacity: 0.5;
   transition: opacity 0.3s ease, transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -1545,19 +1521,19 @@ main {
 .resource-link-card__copy {
   position: relative;
   z-index: 1;
-  width: min(68%, 520px);
-  margin-top: auto;
+  width: 100%;
+  margin-top: 38px;
 }
 
 .resource-link-card--1 .resource-link-card__copy,
 .resource-link-card--2 .resource-link-card__copy {
-  width: min(78%, 430px);
+  width: 100%;
 }
 
 .resource-link-card h3 {
   margin: 0 0 12px;
   font-family: var(--serif);
-  font-size: clamp(27px, 3.4vw, 42px);
+  font-size: clamp(26px, 2.6vw, 34px);
   font-weight: 500;
   letter-spacing: -0.025em;
   line-height: 1.15;
@@ -1585,21 +1561,21 @@ main {
 
 .resource-link-card:hover {
   border-color: color-mix(in srgb, var(--resource-accent) 78%, var(--line));
-  box-shadow:
-    0 32px 80px -42px color-mix(in srgb, var(--resource-accent) 46%, transparent),
-    inset 0 1px 0 color-mix(in srgb, var(--paper) 80%, transparent);
-  transform: translateY(-6px);
+  box-shadow: 0 16px 36px -28px color-mix(in srgb, var(--resource-accent) 46%, transparent);
+  transform: translateY(-3px);
 }
+
+.resource-link-card:hover::after, .resource-link-card:focus-visible::after { transform: scaleX(1); }
 
 .resource-link-card:hover .resource-link-card__arrow {
   background: var(--resource-accent);
   color: var(--surface);
-  transform: rotate(8deg) scale(1.08);
+  transform: translate(2px, -2px);
 }
 
 .resource-link-card:hover .resource-link-card__visual {
   opacity: 0.58;
-  transform: translate3d(-5px, 5px, 0) scale(1.04);
+  transform: translateY(-2px);
 }
 
 .technical-report-section {
@@ -4536,6 +4512,10 @@ main {
     font-size: clamp(72px, 25vw, 128px);
   }
 
+  .brand-universe__core h1.font-9 {
+    font-size: clamp(56px, 19vw, 110px);
+  }
+
   .brand-universe__word {
     left: clamp(110px, var(--word-x), calc(100% - 110px));
     top: clamp(78px, var(--word-y), calc(100% - 78px));
@@ -4689,19 +4669,19 @@ main {
   .resource-link-card--2,
   .resource-link-card--3 {
     grid-column: auto;
-    min-height: 320px;
+    min-height: 270px;
   }
 
   .resource-link-card__copy,
   .resource-link-card--1 .resource-link-card__copy,
   .resource-link-card--2 .resource-link-card__copy {
-    width: 82%;
+    width: 100%;
   }
 
   .resource-link-card__visual {
-    top: 62px;
-    right: 8px;
-    width: 44%;
+    top: 18px;
+    right: 76px;
+    width: 48px;
   }
 
   .wechat-community {
@@ -4969,7 +4949,8 @@ main {
     display: none;
   }
 
-  .brand-universe__core h1 {
+  .brand-universe__core h1,
+  .brand-universe__core h1.font-9 {
     margin: 0;
     font-size: clamp(56px, 25vh, 110px);
   }

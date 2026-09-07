@@ -1,0 +1,78 @@
+---
+type Props = { locale: "en" | "zh" };
+const { locale } = Astro.props;
+const labels = locale === "zh"
+  ? ["概览", "代码与资料", "实证成绩", "自进化", "系统架构", "研究过程"]
+  : ["Overview", "Resources", "Evidence", "Evolution", "Architecture", "Research process"];
+const targets = ["intro", "resources", "results-summary", "evolution", "multi-agent", "process-data"];
+---
+
+<nav class="page-index" data-page-index aria-label={locale === "zh" ? "本页导览" : "On this page"}>
+  <div class="page-index__track">
+    <span class="page-index__label" aria-hidden="true">{locale === "zh" ? "探索 ARGUS" : "EXPLORE ARGUS"}</span>
+    {targets.map((target, index) => <a href={`#${target}`}>{labels[index]}</a>)}
+  </div>
+</nav>
+
+<style>
+  :global(html:has([data-page-index])) { scroll-padding-top: calc(var(--site-header-height, 64px) + 68px); }
+  .page-index {
+    position: sticky; top: var(--site-header-height, 64px); z-index: 25;
+    border-block: 1px solid var(--line); background: var(--header-bg); backdrop-filter: blur(12px);
+  }
+  .page-index__track {
+    display: flex; align-items: center; gap: 26px; width: min(1080px, calc(100% - 40px));
+    min-height: 52px; margin: auto; overflow-x: auto; scrollbar-width: thin;
+  }
+  .page-index__label { margin-right: auto; font: 9px var(--mono); color: var(--faint); white-space: nowrap; letter-spacing: .08em; }
+  a {
+    position: relative; display: flex; align-items: center; min-height: 50px;
+    flex-shrink: 0; color: var(--muted); text-decoration: none; font-size: 11px; font-weight: 600;
+  }
+  a::after { content: ""; position: absolute; bottom: 0; inset-inline: 0; height: 2px; background: var(--gold); transform: scaleX(0); transition: transform 180ms; }
+  a:hover, a[aria-current="location"] { color: var(--ink); }
+  a[aria-current="location"]::after { transform: scaleX(1); }
+  @media (max-width: 820px) {
+    .page-index__track { gap: 22px; width: 100%; padding-inline: 18px; min-height: 46px; }
+    .page-index__label { display: none; }
+    a { min-height: 44px; font-size: 11px; }
+  }
+  @media print { .page-index { display: none; } }
+</style>
+
+<script>
+  const index = document.querySelector<HTMLElement>("[data-page-index]");
+  if (index) {
+    const track = index.querySelector<HTMLElement>(".page-index__track");
+    const links = [...index.querySelectorAll<HTMLAnchorElement>('a[href^="#"]')];
+    const sections = links.map((link) => document.getElementById(link.hash.slice(1)));
+    let frame: number | null = null;
+    let current = -1;
+    const update = () => {
+      frame = null;
+      let active = 0;
+      const edge = index.getBoundingClientRect().bottom + 32;
+      sections.forEach((section, position) => {
+        if (section && section.getBoundingClientRect().top <= edge) active = position;
+      });
+      if (active === current) return;
+      current = active;
+      links.forEach((link, position) => {
+        if (position === active) link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
+      });
+      if (track && track.scrollWidth > track.clientWidth) {
+        const box = links[active].getBoundingClientRect();
+        const viewport = track.getBoundingClientRect();
+        track.scrollTo({ left: track.scrollLeft + box.left - viewport.left - (viewport.width - box.width) / 2, behavior: "instant" });
+      }
+    };
+    const schedule = () => { if (frame === null) frame = requestAnimationFrame(update); };
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule, { passive: true });
+    window.addEventListener("pageshow", schedule);
+    document.fonts.ready.then(schedule);
+    if ("ResizeObserver" in window) new ResizeObserver(schedule).observe(document.body);
+    update();
+  }
+</script>

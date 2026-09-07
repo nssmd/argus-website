@@ -15,6 +15,9 @@ const words = Array.from({ length: 38 }, (_, index) => ({
 const scrollLabel = locale === "zh" ? "进入 Argus" : "Enter Argus";
 const eyebrow = locale === "zh" ? "由 Life 驱动的科研运行时" : "Life-powered research runtime";
 const signature = locale === "zh" ? "7×24 工作，也从每次工作中学习" : "works 24/7 and learns from every run";
+const pause = locale === "zh" ? "暂停开场动画" : "Pause opening motion";
+const resume = locale === "zh" ? "继续开场动画" : "Resume opening motion";
+const next = locale === "zh" ? "切换字形" : "Next typeface";
 ---
 
 <section class="brand-universe" data-brand-universe aria-labelledby="brand-universe-title">
@@ -35,6 +38,11 @@ const signature = locale === "zh" ? "7×24 工作，也从每次工作中学习"
       <p>{eyebrow}</p>
       <h1 id="brand-universe-title" data-brand-core data-palette="0" class="font-0">ARGUS</h1>
       <span data-brand-signature>{signature}</span>
+      <div class="brand-type-controls" data-brand-controls hidden>
+        <span data-brand-type-index aria-hidden="true">01 / 10</span>
+        <button type="button" data-brand-next>{next}<span aria-hidden="true">↗</span></button>
+        <button type="button" data-brand-pause data-label-pause={pause} data-label-resume={resume}>{pause}</button>
+      </div>
     </div>
   </div>
   <a class="brand-universe__enter" href="#intro">
@@ -42,3 +50,15 @@ const signature = locale === "zh" ? "7×24 工作，也从每次工作中学习"
     <i aria-hidden="true">↓</i>
   </a>
 </section>
+
+<style>
+  .brand-type-controls[hidden] { display: none; }
+  .brand-type-controls { display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 22px; pointer-events: auto; }
+  .brand-type-controls > span { color: var(--faint); font: 9px var(--mono); font-variant-numeric: tabular-nums; }
+  button { display: inline-flex; min-height: 40px; align-items: center; gap: 10px; padding: 6px 2px; color: var(--muted); font: 10px var(--mono); background: transparent; border: 0; border-bottom: 1px solid var(--line); cursor: pointer; transition: color 160ms, border-color 160ms; }
+  button:hover { color: var(--ink); border-color: var(--gold); }
+  button > span { color: var(--gold-dark); }
+  :global([data-brand-paused="true"] [data-brand-core]) { animation-play-state: paused; }
+  @media (max-width: 480px) { .brand-type-controls { gap: 12px; } button { font-size: 9px; } }
+  @media (max-height: 500px) and (orientation: landscape) { .brand-type-controls { margin-top: 4px; } }
+</style>

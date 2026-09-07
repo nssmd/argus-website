@@ -4,6 +4,7 @@ import ResearchField from "../components/ResearchField.astro";
 import BrandUniverse from "../components/BrandUniverse.astro";
 import DenseIntelligence from "../components/DenseIntelligence.astro";
 import MathematicalManifesto from "../components/MathematicalManifesto.astro";
+import PageIndex from "../components/PageIndex.astro";
 import { desktopRelease } from "../data/desktopRelease";
 import { localeFromPath, pathForLocale } from "../i18n";
 
@@ -16,7 +17,7 @@ const copy = locale === "zh" ? {
   heroEyebrow: "自进化科研运行时",
   heroLead: "给它一个研究目标。",
   heroEm: "它会边工作，边学习。",
-  lede: "Argus 的 Life 7×24 持续运行：读资料、写代码、跑实验、检查证据，也从每一次成功、失败与改道中学习。经验会沉淀为 Memory、Skill、评测和过程数据，让系统不断进化，并扩展到从未见过的 OOD 任务。",
+  lede: "读资料、写代码、跑实验，再让独立的 Reviewer 检查结果。Argus 以 7×24 的 Life 持续推进研究，把成功、失败与改道记录为可复用的记忆和 Skills，供下一轮任务调用。",
   startNow: "开始使用 Argus →",
   downloadWindows: "下载 Windows 版",
   projects: "浏览团队项目 →",
@@ -27,7 +28,7 @@ const copy = locale === "zh" ? {
   metricLabel: "核心成绩",
   metrics: [["#6", "NVIDIA 全球排名"], ["2× #1", "B200 kernel"], ["H100 + B200", "超过 human SOTA"], ["79.77s", "8×H100 speedrun"], ["10", "精选研究论文"]],
   resourcesEyebrow: "核心入口",
-  resourcesTitle: "代码、技术报告与团队项目，一步直达。",
+  resourcesTitle: "从源码开始，沿证据深入。",
   resourcesBody: "从源码、技术报告、正式发行和团队项目开始探索 Argus。",
   resourceLinks: [
     ["CODE", "Argus 核心仓库", "源码、安装文档、Issue 与最新 Preview 都集中在这里。", "打开 GitHub 仓库 ↗", "https://github.com/lbx154/Argus"],
@@ -57,7 +58,7 @@ const copy = locale === "zh" ? {
   whatBody: "大模型只是可替换的推理组件。Argus 的 Life 在长期运行中持续吸收任务、环境与反馈，更新 Harness、Skills、Memory、工具和评测。在线进化不依赖参数训练，但由此积累的高密度过程数据可以用于训练模型。",
   pillars: [["Life：边工作边学习", "系统不只 7×24 执行任务，也持续读取结果、归因失败、更新记忆，并决定下一步应该学会什么。"], ["轻易扩展 OOD", "遇到分布外任务时，Argus 组合已有能力、生成新 Skill、接入新工具并创建新评测。"], ["上限与宽度保持开放", "Harness、Skills、Memory、工具与评测持续扩展；底层模型可以按任务选择和替换，在线演进无需训练自有模型。"]],
   loopTitle: "一次工作，怎样进入 Life 并变成下一次能力",
-  loopNote: "每一轮都抬高能力上限、拓宽任务面，并加深长期记忆。",
+  loopNote: "留下判断依据、失败记录与可复用的方法，不让下一轮从零开始。",
   loopReturn: "Life 持续运行：工作、学习、再工作",
   loopSteps: [["01", "未知目标", "目标可以分布外，答案甚至可以尚不存在。"], ["02", "计划与执行", "组合模型、工具、记忆与已有 Skills。"], ["03", "证据与失败", "记录实验、反例、卡点和每次决策依据。"], ["04", "能力蒸馏", "生成可复用 Skill、Verifier、记忆与新任务。"], ["05", "Life 更新", "将证据写入长期记忆，更新路由、工作流、工具配置与评测。"], ["06", "扩展新边界", "下一类 OOD 任务不再从零开始。"]],
   architectureEyebrow: "Why multi-agent",
@@ -100,7 +101,7 @@ const copy = locale === "zh" ? {
   heroEyebrow: "Self-evolving research runtime",
   heroLead: "Give it a research objective.",
   heroEm: "It learns while it works.",
-  lede: "Argus Life runs 24/7: reading, building, experimenting, and checking evidence—while learning from every success, failure, and pivot. Experience becomes memory, skills, evaluations, and process data, so the system keeps evolving into OOD work it has never seen before.",
+  lede: "Read the literature. Build and run experiments. Have an independent reviewer check the result. Argus Life keeps research moving 24/7, preserving successes, failures, and pivots as memory and skills the next run can use.",
   startNow: "Get started with Argus →",
   downloadWindows: "Download for Windows",
   projects: "Explore team projects →",
@@ -111,7 +112,7 @@ const copy = locale === "zh" ? {
   metricLabel: "Selected results",
   metrics: [["#6", "NVIDIA global ranking"], ["2× #1", "B200 kernels"], ["H100 + B200", "Beyond human SOTA"], ["79.77s", "8×H100 speedrun"], ["10", "Selected papers"]],
   resourcesEyebrow: "Primary destinations",
-  resourcesTitle: "Code, technical report, and team projects—one step away.",
+  resourcesTitle: "Start with the source. Follow the evidence.",
   resourcesBody: "Explore Argus through its source, technical report, official release, and team projects.",
   resourceLinks: [
     ["CODE", "Argus core repository", "Source, installation docs, issues, and the latest preview live here.", "Open the GitHub repository ↗", "https://github.com/lbx154/Argus"],
@@ -141,7 +142,7 @@ const copy = locale === "zh" ? {
   whatBody: "Models are swappable reasoning components. Argus Life continuously absorbs missions, environment changes, and feedback, updating the harness, skills, memory, tools, and evaluations. Online evolution does not depend on parameter training, but the dense process data it creates can be used to train models.",
   pillars: [["Life: learning while working", "The system does more than execute 24/7. It reads outcomes, attributes failures, updates memory, and decides what it should learn next."], ["Fast OOD expansion", "When a task falls outside the distribution, Argus composes existing capabilities, creates a new skill, connects a new tool, and builds a new evaluation."], ["An open ceiling and task surface", "The harness, skills, memory, tools, and evaluations keep expanding while underlying models remain selectable and swappable; online evolution does not require model-parameter training."]],
   loopTitle: "How one run enters Life and becomes the next capability",
-  loopNote: "Every cycle raises the ceiling, widens the task surface, and deepens durable memory.",
+  loopNote: "Keep the reasoning, failed attempts, and reusable methods, so the next run does not start from zero.",
   loopReturn: "Life keeps running: work, learn, and work again",
   loopSteps: [["01", "Unknown objective", "The task may be OOD and the answer may not exist yet."], ["02", "Plan and execute", "Compose models, tools, memory, and existing skills."], ["03", "Evidence and failure", "Record experiments, counterexamples, bottlenecks, and decisions."], ["04", "Distill capability", "Create reusable skills, verifiers, memory, and new tasks."], ["05", "Life update", "Write evidence into durable memory and update routing, workflows, tools, and evaluations."], ["06", "Expand the frontier", "The next class of OOD work no longer starts from zero."]],
   architectureEyebrow: "Why multi-agent",
@@ -187,6 +188,7 @@ const copy = locale === "zh" ? {
 >
   <BrandUniverse locale={locale} />
 
+  <PageIndex locale={locale} />
   <section id="intro" class="page-hero">
     <div class="shell hero-system-grid">
       <div class="hero-system-copy">
@@ -206,7 +208,7 @@ const copy = locale === "zh" ? {
     </div>
   </section>
 
-  <section class="section resource-gateway">
+  <section id="resources" class="section resource-gateway">
     <div class="shell">
       <div class="section-head">
         <p class="eyebrow">{copy.resourcesEyebrow}</p>
@@ -267,7 +269,7 @@ const copy = locale === "zh" ? {
   <DenseIntelligence locale={locale} />
   <MathematicalManifesto locale={locale} />
 
-  <section class="metric-strip" aria-label={copy.metricLabel}>
+  <section id="results-summary" class="metric-strip" aria-label={copy.metricLabel}>
     <div class="metric-grid">
       {copy.metrics.map(([value, label]) => <div class="metric"><strong>{value}</strong><span>{label}</span></div>)}
     </div>

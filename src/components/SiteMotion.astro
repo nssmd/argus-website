@@ -33,11 +33,13 @@
     });
   };
 
-  if (reduceMotion || restoringLanguage) {
+  if (reduceMotion) {
     root.classList.remove("motion-prep");
     resetMotionStyles();
   } else {
     void import("gsap").then(({ gsap }) => {
+      const media = gsap.matchMedia();
+      media.add("(prefers-reduced-motion: no-preference)", () => {
       const heroTargets = gsap.utils.toArray<HTMLElement>(
         ".page-hero .eyebrow, .page-hero h1, .page-hero .hero-title, .page-hero .lede, .page-hero .hero-actions, .page-hero .hero-thesis > div, .page-hero .demo-source, [data-research-field]",
       );
@@ -52,6 +54,7 @@
       const brandHalo = document.querySelector<HTMLElement>(".brand-universe__halo");
       const brandEnter = document.querySelector<HTMLElement>(".brand-universe__enter");
       const brandAnimations: gsap.core.Animation[] = [];
+      const brandControls = document.querySelector<HTMLElement>("[data-brand-controls]");
       let brandVisibilityObserver: IntersectionObserver | null = null;
       const canObserve = "IntersectionObserver" in window;
       const pointerCleanups: Array<() => void> = [];
@@ -65,6 +68,25 @@
           ["argus", 7], ["ARGUS", 1], ["Argus", 9], ["argus", 4], ["ARGUS", 6],
         ] as const;
         let formIndex = 0;
+        brandCore.textContent = forms[0][0];
+        brandCore.className = "font-0";
+        brandCore.dataset.palette = "0";
+        const typeIndex = brandControls?.querySelector("[data-brand-type-index]");
+        if (typeIndex) typeIndex.textContent = "01 / 10";
+        let brandPaused = false;
+        let brandVisible = true;
+        const syncBrandPlayback = () => {
+          brandAnimations.forEach((animation) => animation.paused(brandPaused || !brandVisible || document.hidden));
+        };
+        const nextForm = () => {
+          formIndex = (formIndex + 1) % forms.length;
+          const [text, font] = forms[formIndex];
+          brandCore.textContent = text;
+          brandCore.className = `font-${font}`;
+          brandCore.dataset.palette = String(formIndex % 4);
+          const counter = brandControls?.querySelector("[data-brand-type-index]");
+          if (counter) counter.textContent = `${String(formIndex + 1).padStart(2, "0")} / ${forms.length}`;
+        };
         activeBrandWords.forEach((word, index) => {
           brandAnimations.push(gsap.to(word, {
             x: `random(${-20 - index % 3 * 4}, ${20 + index % 4 * 3})`,
@@ -77,22 +99,46 @@
             repeatRefresh: true,
           }));
         });
-        brandAnimations.push(gsap.timeline({ repeat: -1, repeatDelay: 1.45, delay: 1.5 })
+        const typeCycle = gsap.timeline({ repeat: -1, repeatDelay: 1.45, delay: 1.5 })
           .to(brandCore, { autoAlpha: 0, scale: 0.965, duration: 0.22, ease: "power2.in" })
-          .call(() => {
-            formIndex = (formIndex + 1) % forms.length;
-            const [text, font] = forms[formIndex];
-            brandCore.textContent = text;
-            brandCore.className = `font-${font}`;
-            brandCore.dataset.palette = String(formIndex % 4);
-          })
+          .call(nextForm)
           .to(brandCore, {
             autoAlpha: 1,
             scale: 1,
             duration: 0.42,
             ease: "back.out(1.8)",
             transformOrigin: "50% 50%",
-          }));
+          });
+        brandAnimations.push(typeCycle);
+        if (brandControls) {
+          const next = brandControls.querySelector<HTMLButtonElement>("[data-brand-next]");
+          const pause = brandControls.querySelector<HTMLButtonElement>("[data-brand-pause]");
+          if (pause?.dataset.labelPause) pause.textContent = pause.dataset.labelPause;
+          const selectNext = () => {
+            typeCycle.pause();
+            nextForm();
+            gsap.set(brandCore, { autoAlpha: 1, scale: 1 });
+            if (!brandPaused && brandVisible) typeCycle.restart(true);
+          };
+          const togglePause = () => {
+            brandPaused = !brandPaused;
+            brandUniverse.dataset.brandPaused = String(brandPaused);
+            if (pause) pause.textContent = (brandPaused ? pause.dataset.labelResume : pause.dataset.labelPause) ?? "";
+            syncBrandPlayback();
+            if (brandPaused) gsap.set(brandCore, { autoAlpha: 1, scale: 1 });
+          };
+          next?.addEventListener("click", selectNext);
+          pause?.addEventListener("click", togglePause);
+          document.addEventListener("visibilitychange", syncBrandPlayback);
+          brandControls.hidden = false;
+          pointerCleanups.push(() => {
+            next?.removeEventListener("click", selectNext);
+            pause?.removeEventListener("click", togglePause);
+            document.removeEventListener("visibilitychange", syncBrandPlayback);
+            brandControls.hidden = true;
+            delete brandUniverse.dataset.brandPaused;
+          });
+        }
         if (brandEnter) {
             brandAnimations.push(gsap.to(brandEnter.querySelector("i"), {
             y: 6,
@@ -104,7 +150,8 @@
         }
         if ("IntersectionObserver" in window) {
           brandVisibilityObserver = new IntersectionObserver(([entry]) => {
-            brandAnimations.forEach((animation) => animation.paused(!entry?.isIntersecting));
+            brandVisible = Boolean(entry?.isIntersecting);
+            syncBrandPlayback();
           }, { threshold: 0.02 });
           brandVisibilityObserver.observe(brandUniverse);
         }
@@ -363,17 +410,17 @@
         });
       }
 
-      if (brandUniverse) {
+      if (brandUniverse && !restoringLanguage) {
         gsap.set(heroTargets, { autoAlpha: 0, y: 24 });
         gsap.set(activeBrandWords, { autoAlpha: 0 });
         gsap.set(".brand-universe__core, .brand-universe__enter", { autoAlpha: 0 });
-      } else {
+      } else if (!restoringLanguage) {
         gsap.set(heroTargets, { y: 12 });
       }
-      if (canObserve) gsap.set(revealTargets, { autoAlpha: 0, y: 20 });
+      if (canObserve && !restoringLanguage) gsap.set(revealTargets, { autoAlpha: 0, y: 20 });
       root.classList.remove("motion-prep");
 
-      gsap.timeline({ defaults: { ease: "power3.out" } })
+      if (!restoringLanguage) gsap.timeline({ defaults: { ease: "power3.out" } })
         .fromTo(".site-header", { autoAlpha: 0, y: -12 }, { autoAlpha: 1, y: 0, duration: 0.42 })
         .to(activeBrandWords, {
           autoAlpha: (index) => brandWordOpacities[index] ?? 0.2,
@@ -410,14 +457,7 @@
               overwrite: "auto",
               clearProps: "transform,opacity,visibility",
             });
-          } else {
-            gsap.to(targets, {
-              autoAlpha: 0,
-              y: entry.boundingClientRect.top < 0 ? -14 : 14,
-              duration: 0.28,
-              ease: "power1.out",
-              overwrite: "auto",
-            });
+            observer?.unobserve(entry.target);
           }
         }
       }, { rootMargin: "-6% 0px -10% 0px", threshold: 0.08 }) : null;
@@ -455,15 +495,22 @@
       };
       document.addEventListener("argus:paper-explorer-ready", startPaperCardMotion, { once: true });
       if (root.dataset.paperExplorerReady === "true") startPaperCardMotion();
-      window.addEventListener("pagehide", (event) => {
-        if (event.persisted) return;
+      const cleanup = () => {
         observer?.disconnect();
         mutationObserver?.disconnect();
         brandVisibilityObserver?.disconnect();
         document.removeEventListener("argus:paper-explorer-ready", startPaperCardMotion);
         pointerCleanups.forEach((cleanup) => cleanup());
+        gsap.killTweensOf(document.querySelectorAll("body *"));
+        resetMotionStyles();
+      };
+      return cleanup;
+      });
+      window.addEventListener("pagehide", (event) => {
+        if (!event.persisted) media.revert();
       }, { once: true });
-    }).catch(() => {
+    }).catch((error) => {
+      console.warn("Argus motion could not initialize; showing the static page.", error);
       root.classList.remove("motion-prep");
       resetMotionStyles();
     });
