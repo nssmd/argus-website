@@ -1,15 +1,11 @@
 ---
 type Props = { locale: "en" | "zh" };
-import ArgusLogo from "./ArgusLogo.astro";
 const { locale } = Astro.props;
 const zh = locale === "zh";
 const fieldId = `research-roles-${locale}`;
-const caption = zh
-  ? "选择角色，查看职责与交付物。这是系统示意，并非实时任务。"
-  : "Select a role to explore its responsibility and output. A system illustration, not a live run.";
 const roles = [
   {
-    id: "manager", letter: "M", name: "Manager", position: "north-west",
+    id: "manager", letter: "M", name: "Manager", x: 55, y: 36,
     action: zh ? "统筹目标" : "Direct",
     description: zh
       ? "接收目标，确定任务领域与阶段，让后续工作始终围绕同一个目标展开。"
@@ -17,7 +13,7 @@ const roles = [
     output: zh ? "明确范围的任务与阶段方向。" : "A scoped mission and stage direction.",
   },
   {
-    id: "planner", letter: "P", name: "Planner", position: "north-east",
+    id: "planner", letter: "P", name: "Planner", x: 25, y: 49,
     action: zh ? "规划下一步" : "Plan",
     description: zh
       ? "结合目标与已有证据，提出下一批值得推进、可以执行的任务。"
@@ -25,7 +21,7 @@ const roles = [
     output: zh ? "按优先级排列的待办任务。" : "An ordered backlog of next steps.",
   },
   {
-    id: "engineer", letter: "E", name: "Engineer", position: "south-west",
+    id: "engineer", letter: "E", name: "Engineer", x: 32, y: 70,
     action: zh ? "执行与产出" : "Build",
     description: zh
       ? "真正执行任务：阅读资料、编写代码、运行实验，留下可检查的结果。"
@@ -33,7 +29,7 @@ const roles = [
     output: zh ? "成果文件、实验结果与执行证据。" : "Artifacts, results, and execution evidence.",
   },
   {
-    id: "reviewer", letter: "R", name: "Reviewer", position: "south-east",
+    id: "reviewer", letter: "R", name: "Reviewer", x: 75, y: 73,
     action: zh ? "独立验收" : "Verify",
     description: zh
       ? "对照验收标准检查成果；证据不足时，给出具体的返工指引。"
@@ -47,82 +43,35 @@ const roles = [
 
 <figure class="research-field" data-research-field>
   <fieldset class="research-field__explorer">
-    <legend class="research-field__sr-only">
-      {zh ? "探索 Argus 的四个角色" : "Explore the four Argus roles"}
-    </legend>
+    <legend class="research-field__sr-only">{zh ? "探索 Argus 的四个角色" : "Explore the four Argus roles"}</legend>
     {roles.map((role, index) => (
-      <input
-        class="research-field__choice"
-        type="radio"
-        name={fieldId}
-        id={`${fieldId}-${role.id}`}
-        value={role.id}
-        checked={index === 0}
+      <input class="research-field__choice" type="radio" name={fieldId}
+        id={`${fieldId}-${role.id}`} value={role.id} checked={index === 0}
+        aria-labelledby={`${fieldId}-${role.id}-label`}
         aria-controls={`${fieldId}-${role.id}-detail`}
-        aria-describedby={`${fieldId}-${role.id}-description ${fieldId}-${role.id}-output`}
-      />
+        aria-describedby={`${fieldId}-${role.id}-description ${fieldId}-${role.id}-output`} />
     ))}
-  <div class="research-field__plane" data-research-field-plane>
-    <span class="research-field__telemetry top-left">{zh ? "系统 / 角色示意" : "SYSTEM / ROLE MAP"}</span>
-    <span class="research-field__telemetry bottom-right">{zh ? "四个角色 · 一个目标" : "04 ROLES · ONE OBJECTIVE"}</span>
-    <span class="research-field__corner top-left" aria-hidden="true"></span>
-    <span class="research-field__corner top-right" aria-hidden="true"></span>
-    <span class="research-field__corner bottom-left" aria-hidden="true"></span>
-    <span class="research-field__corner bottom-right" aria-hidden="true"></span>
-    {[
-      [14, 32, 4], [23, 74, 3], [34, 18, 5], [42, 84, 3],
-      [57, 12, 3], [63, 73, 5], [76, 25, 4], [86, 62, 3],
-    ].map(([x, y, size], index) => (
-      <span
-        class="research-field__particle"
-        data-research-field-particle
-        style={`--particle-x:${x}%;--particle-y:${y}%;--particle-size:${size}px;--particle-index:${index}`}
-        aria-hidden="true"
-      ></span>
-    ))}
-    <svg class="research-field__links" viewBox="0 0 520 360" aria-hidden="true">
-      <defs>
-        <linearGradient id="field-blue-gold" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="var(--blue)" />
-          <stop offset="0.5" stop-color="var(--gold)" />
-          <stop offset="1" stop-color="var(--blue)" />
-        </linearGradient>
-      </defs>
-      <path class="research-field__link" data-role="manager" d="M260 180C196 112 144 88 82 86" />
-      <path class="research-field__link" data-role="planner" d="M260 180C324 112 376 88 438 86" />
-      <path class="research-field__link" data-role="engineer" d="M260 180C196 248 144 272 82 274" />
-      <path class="research-field__link" data-role="reviewer" d="M260 180C324 248 376 272 438 274" />
-      <circle cx="260" cy="180" r="112" class="research-field__orbit" />
-      <circle cx="260" cy="180" r="72" class="research-field__orbit secondary" />
-    </svg>
-    <div class="research-field__scan" data-research-field-scan aria-hidden="true"></div>
-    <div class="research-field__core" data-research-field-core>
-      <ArgusLogo variant="mark" class="argus-logo--research" decorative />
-      <strong>ARGUS</strong>
-      <span>{zh ? "共同的目标" : "Shared objective"}</span>
+    <div class="research-field__landscape">
+      <img src="/art/pixel/night-observatory.svg" width="384" height="288" alt="" fetchpriority="low" />
+      {roles.map((role) => (
+        <label class="research-field__station" for={`${fieldId}-${role.id}`} data-role={role.id}
+          style={`--station-x:${role.x}%;--station-y:${role.y}%`} title={`${role.name} · ${role.action}`}>
+          <span aria-hidden="true">{role.letter}</span>
+        </label>
+      ))}
     </div>
-    {roles.map((role, index) => (
-      <label
-        class={`research-field__node ${role.position}`}
-        for={`${fieldId}-${role.id}`}
-        data-research-field-node
-        data-role={role.id}
-        style={`--node-index:${index}`}
-      >
-        <i aria-hidden="true">{role.letter}</i>
-        <span>{role.name}<small>{role.action}</small></span>
-        <b class="research-field__selected" aria-hidden="true">✓</b>
-      </label>
-    ))}
-  </div>
+    <div class="research-field__roles">
+      {roles.map((role) => (
+        <label class="research-field__node" for={`${fieldId}-${role.id}`} data-role={role.id}
+          id={`${fieldId}-${role.id}-label`}>
+          <span>{role.name}</span><small>{role.action}</small>
+        </label>
+      ))}
+    </div>
     <div class="research-field__details">
       {roles.map((role, index) => (
-        <section
-          class="research-field__detail"
-          data-role={role.id}
-          id={`${fieldId}-${role.id}-detail`}
-          aria-labelledby={`${fieldId}-${role.id}-title`}
-        >
+        <section class="research-field__detail" data-role={role.id}
+          id={`${fieldId}-${role.id}-detail`} aria-labelledby={`${fieldId}-${role.id}-title`}>
           <div class="research-field__detail-heading">
             <span class="research-field__index" aria-hidden="true">0{index + 1} / 04</span>
             <h3 id={`${fieldId}-${role.id}-title`}>{role.name}</h3>
@@ -130,369 +79,87 @@ const roles = [
           </div>
           <p id={`${fieldId}-${role.id}-description`}>{role.description}</p>
           <dl id={`${fieldId}-${role.id}-output`}>
-            <dt>{zh ? "交付物" : "Deliverable"}</dt>
-            <dd>{role.output}</dd>
+            <dt>{zh ? "交付物" : "Deliverable"}</dt><dd>{role.output}</dd>
           </dl>
         </section>
       ))}
     </div>
   </fieldset>
-  <figcaption>{caption}</figcaption>
+  <figcaption>{zh
+    ? "像素研究站 · 点选地标探索角色，并非实时运行画面。"
+    : "The pixel research station. Select a landmark to explore a role; not a live run."}</figcaption>
 </figure>
 
 <style>
-  .research-field {
-    --role-accent: var(--blue);
-    --role-tint: var(--blue-soft);
-    --role-badge: var(--blue);
-    --role-on-badge: var(--on-accent);
-    min-width: 0;
+  .research-field { margin: 0; min-width: 0; }
+  .research-field__explorer { position: relative; min-inline-size: 0; margin: 0; padding: 0; border: 0; }
+  .research-field__sr-only, .research-field__choice {
+    position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden;
+    clip-path: inset(50%); white-space: nowrap; border: 0;
   }
-
-  .research-field__explorer {
-    position: relative;
-    min-inline-size: 0;
-    margin: 0;
-    padding: 0;
-    border: 0;
+  .research-field__landscape { position: relative; isolation: isolate; }
+  .research-field__landscape img { display: block; width: 100%; height: auto; image-rendering: pixelated; }
+  .research-field__station {
+    position: absolute; left: var(--station-x); top: var(--station-y);
+    display: grid; place-items: center; width: 44px; height: 44px;
+    transform: translate(-50%, -50%); cursor: pointer; touch-action: manipulation;
   }
-
-  .research-field__sr-only,
-  .research-field__choice {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-    border: 0;
+  .research-field__station span {
+    display: grid; place-items: center; width: 26px; height: 30px; padding-bottom: 4px;
+    color: #f7dfa0; background: #183951; font: 700 12px var(--mono);
+    clip-path: polygon(4px 0,22px 0,22px 4px,26px 4px,26px 22px,18px 22px,13px 28px,8px 22px,0 22px,0 4px,4px 4px);
+    transition: transform 160ms steps(2, end), background-color 160ms;
   }
-
-  .research-field__plane {
-    min-height: 354px;
-    border-radius: 20px 20px 0 0;
-    box-shadow: inset 0 1px 0 color-mix(in srgb, var(--paper) 75%, transparent);
+  .research-field__station:hover span { transform: translateY(-4px); background: #386484; }
+  .research-field__roles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-bottom: 1px solid var(--line); }
+  .research-field__node {
+    display: grid; gap: 3px; padding: 10px 2px 12px; text-align: center;
+    color: var(--muted); border-bottom: 2px solid transparent;
+    cursor: pointer; user-select: none; touch-action: manipulation;
   }
-
-  .research-field__plane::before {
-    opacity: 0.5;
+  .research-field__node span { font-size: 11px; font-weight: 600; }
+  .research-field__node small { font-size: 9px; }
+  .research-field__node:hover { color: var(--blue); }
+  .research-field__choice[value="manager"]:checked ~ .research-field__landscape [data-role="manager"] span,
+  .research-field__choice[value="planner"]:checked ~ .research-field__landscape [data-role="planner"] span,
+  .research-field__choice[value="engineer"]:checked ~ .research-field__landscape [data-role="engineer"] span,
+  .research-field__choice[value="reviewer"]:checked ~ .research-field__landscape [data-role="reviewer"] span {
+    color: #102c46; background: #f7dfa0; transform: translateY(-4px);
   }
-
-  .research-field__plane .research-field__telemetry {
-    padding: 0;
-    border: 0;
-    border-radius: 0;
-    background: none;
-    color: var(--ink-2);
-    font-size: 8px;
-    letter-spacing: 0.08em;
+  .research-field__choice[value="manager"]:checked ~ .research-field__roles [data-role="manager"],
+  .research-field__choice[value="planner"]:checked ~ .research-field__roles [data-role="planner"],
+  .research-field__choice[value="engineer"]:checked ~ .research-field__roles [data-role="engineer"],
+  .research-field__choice[value="reviewer"]:checked ~ .research-field__roles [data-role="reviewer"] {
+    color: var(--ink); border-bottom-color: var(--gold);
   }
-
-  .research-field__plane .research-field__telemetry.top-left {
-    top: 22px;
-    left: 23px;
+  .research-field__choice[value="manager"]:focus-visible ~ .research-field__roles [data-role="manager"],
+  .research-field__choice[value="planner"]:focus-visible ~ .research-field__roles [data-role="planner"],
+  .research-field__choice[value="engineer"]:focus-visible ~ .research-field__roles [data-role="engineer"],
+  .research-field__choice[value="reviewer"]:focus-visible ~ .research-field__roles [data-role="reviewer"] {
+    outline: 2px solid var(--blue); outline-offset: 2px;
   }
-
-  .research-field__plane .research-field__telemetry.bottom-right {
-    right: 23px;
-    bottom: 22px;
-  }
-
-  .research-field__scan {
-    opacity: 0.18;
-    pointer-events: none;
-  }
-
-  .research-field__core {
-    width: 110px;
-    height: 110px;
-    border-radius: 25px;
-    pointer-events: none;
-  }
-
-  .research-field__core > span:last-child {
-    margin-top: 4px;
-    color: var(--ink-2);
-    font-size: 8px;
-  }
-
-  [data-role="planner"],
-  [data-role="reviewer"] {
-    --role-accent: var(--gold-dark);
-    --role-tint: var(--gold-soft);
-    --role-badge: var(--gold);
-    --role-on-badge: var(--on-gold);
-  }
-
-  .research-field__plane .research-field__node {
-    width: 120px;
-    min-height: 58px;
-    gap: 8px;
-    padding: 9px;
-    border-color: color-mix(in srgb, var(--role-accent) 28%, var(--line));
-    border-radius: 10px;
-    background: var(--surface);
-    cursor: pointer;
-    user-select: none;
-    touch-action: manipulation;
-    transition: border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
-  }
-
-  .research-field__plane .research-field__node.north-west,
-  .research-field__plane .research-field__node.north-east {
-    top: 17%;
-  }
-
-  .research-field__plane .research-field__node.south-west,
-  .research-field__plane .research-field__node.south-east {
-    bottom: 17%;
-  }
-
-  .research-field__plane .research-field__node i {
-    width: 27px;
-    height: 29px;
-    border-radius: 6px;
-    background: var(--role-badge);
-    color: var(--role-on-badge);
-    font-size: 12px;
-  }
-
-  .research-field__plane .research-field__node span {
-    color: var(--ink);
-    font-size: 11px;
-    line-height: 1.35;
-  }
-
-  .research-field__node small {
-    display: block;
-    margin-top: 3px;
-    color: var(--ink-2);
-    font-size: 9px;
-    font-weight: 400;
-  }
-
-  .research-field__selected {
-    position: absolute;
-    top: -7px;
-    right: -6px;
-    display: grid;
-    width: 17px;
-    height: 17px;
-    place-items: center;
-    border-radius: 50%;
-    background: var(--role-accent);
-    color: var(--paper);
-    font: 700 10px/1 system-ui, sans-serif;
-    visibility: hidden;
-    transition-property: none;
-  }
-
-  .research-field__node:hover {
-    border-color: var(--role-accent);
-    background: var(--role-tint);
-  }
-
-  .research-field__choice[value="manager"]:checked ~ .research-field__plane .research-field__node[data-role="manager"],
-  .research-field__choice[value="planner"]:checked ~ .research-field__plane .research-field__node[data-role="planner"],
-  .research-field__choice[value="engineer"]:checked ~ .research-field__plane .research-field__node[data-role="engineer"],
-  .research-field__choice[value="reviewer"]:checked ~ .research-field__plane .research-field__node[data-role="reviewer"] {
-    border-color: var(--role-accent);
-    background: var(--role-tint);
-    box-shadow: 0 0 0 1px var(--role-accent), 0 8px 24px -16px var(--role-accent);
-  }
-
-  .research-field__choice[value="manager"]:checked ~ .research-field__plane [data-role="manager"] .research-field__selected,
-  .research-field__choice[value="planner"]:checked ~ .research-field__plane [data-role="planner"] .research-field__selected,
-  .research-field__choice[value="engineer"]:checked ~ .research-field__plane [data-role="engineer"] .research-field__selected,
-  .research-field__choice[value="reviewer"]:checked ~ .research-field__plane [data-role="reviewer"] .research-field__selected {
-    visibility: visible;
-  }
-
-  .research-field__choice[value="manager"]:focus-visible ~ .research-field__plane .research-field__node[data-role="manager"],
-  .research-field__choice[value="planner"]:focus-visible ~ .research-field__plane .research-field__node[data-role="planner"],
-  .research-field__choice[value="engineer"]:focus-visible ~ .research-field__plane .research-field__node[data-role="engineer"],
-  .research-field__choice[value="reviewer"]:focus-visible ~ .research-field__plane .research-field__node[data-role="reviewer"] {
-    outline: 3px solid var(--blue);
-    outline-offset: 5px;
-  }
-
-  .research-field__link {
-    stroke: var(--role-accent);
-    opacity: 0.25;
-    transition: opacity 160ms ease, stroke-width 160ms ease;
-  }
-
-  .research-field__choice[value="manager"]:checked ~ .research-field__plane .research-field__link[data-role="manager"],
-  .research-field__choice[value="planner"]:checked ~ .research-field__plane .research-field__link[data-role="planner"],
-  .research-field__choice[value="engineer"]:checked ~ .research-field__plane .research-field__link[data-role="engineer"],
-  .research-field__choice[value="reviewer"]:checked ~ .research-field__plane .research-field__link[data-role="reviewer"] {
-    stroke-width: 3;
-    stroke-dasharray: none;
-    opacity: 1;
-  }
-
-  .research-field__details {
-    display: grid;
-    border: 1px solid color-mix(in srgb, var(--blue) 38%, var(--line));
-    border-top: 0;
-    border-radius: 0 0 16px 16px;
-    background: var(--surface);
-  }
-
-  /* Inactive panels reserve space without entering the accessibility tree. */
-  .research-field__detail {
-    grid-area: 1 / 1;
-    min-width: 0;
-    padding: 20px 22px;
-    visibility: hidden;
-    transition-property: none;
-  }
-
+  .research-field__details { display: grid; }
+  /* Overlapping hidden panels keep the scene steady when a role changes. */
+  .research-field__detail { grid-area: 1 / 1; min-width: 0; padding: 20px 4px 0; visibility: hidden; }
   .research-field__choice[value="manager"]:checked ~ .research-field__details [data-role="manager"],
   .research-field__choice[value="planner"]:checked ~ .research-field__details [data-role="planner"],
   .research-field__choice[value="engineer"]:checked ~ .research-field__details [data-role="engineer"],
-  .research-field__choice[value="reviewer"]:checked ~ .research-field__details [data-role="reviewer"] {
-    visibility: visible;
-  }
-
-  .research-field__detail-heading {
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .research-field__index {
-    color: var(--role-accent);
-    font-family: var(--mono);
-    font-size: 9px;
-    white-space: nowrap;
-  }
-
-  .research-field__detail-heading h3 {
-    margin: 0;
-    color: var(--ink);
-    font-family: var(--serif);
-    font-size: 25px;
-    font-weight: 500;
-    line-height: 1.25;
-    letter-spacing: -0.025em;
-  }
-
-  .research-field__action {
-    margin-left: auto;
-    color: var(--role-accent);
-    font-size: 11px;
-    font-weight: 600;
-  }
-
-  .research-field__detail p {
-    margin: 12px 0 16px;
-    color: var(--ink-2);
-    font-size: 13px;
-    line-height: 1.7;
-  }
-
-  .research-field__detail dl {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 10px;
-    margin: 0;
-    padding-top: 12px;
-    border-top: 1px solid var(--line);
-    font-size: 12px;
-    line-height: 1.6;
-  }
-
-  .research-field__detail dt {
-    color: var(--role-accent);
-    font-weight: 600;
-  }
-
-  .research-field__detail dd {
-    margin: 0;
-    color: var(--ink);
-    overflow-wrap: anywhere;
-  }
-
-  .research-field figcaption {
-    max-width: 440px;
-    margin: 12px auto 0;
-    padding-inline: 10px;
-    color: var(--ink-2);
-    font-size: 11px;
-    line-height: 1.7;
-    text-wrap: pretty;
-  }
-
+  .research-field__choice[value="reviewer"]:checked ~ .research-field__details [data-role="reviewer"] { visibility: visible; }
+  .research-field__detail-heading { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .research-field__index { color: var(--gold-dark); font: 9px var(--mono); white-space: nowrap; }
+  .research-field__detail-heading h3 { margin: 0; color: var(--ink); font: 500 25px/1.25 var(--serif); letter-spacing: -.025em; }
+  .research-field__action { margin-left: auto; color: var(--blue); font-size: 11px; font-weight: 600; }
+  .research-field__detail p { margin: 12px 0 16px; color: var(--ink-2); font-size: 13px; line-height: 1.7; }
+  .research-field__detail dl { display: grid; grid-template-columns: auto 1fr; gap: 10px; margin: 0; font-size: 12px; line-height: 1.6; }
+  .research-field__detail dt { color: var(--blue); font-weight: 600; }
+  .research-field__detail dd { margin: 0; color: var(--ink); overflow-wrap: anywhere; }
+  figcaption { margin: 18px auto 0; color: var(--faint); font-size: 10px; text-align: center; text-wrap: pretty; }
   @media (max-width: 480px) {
-    .research-field__plane {
-      min-height: 334px;
-    }
-
-    .research-field__plane .research-field__node {
-      width: 110px;
-      gap: 6px;
-      padding: 8px;
-    }
-
-    .research-field__plane .research-field__node.north-west,
-    .research-field__plane .research-field__node.south-west {
-      left: 5%;
-    }
-
-    .research-field__plane .research-field__node.north-east,
-    .research-field__plane .research-field__node.south-east {
-      right: 5%;
-    }
-
-    .research-field__core {
-      width: 100px;
-      height: 100px;
-      border-radius: 22px;
-    }
-
-    .research-field__detail {
-      padding: 18px 16px;
-    }
-
-    .research-field__detail-heading {
-      gap: 9px;
-    }
-
-    .research-field__detail-heading h3 {
-      font-size: 23px;
-    }
-
-    .research-field__detail dl {
-      grid-template-columns: 1fr;
-      gap: 3px;
-    }
+    .research-field__detail-heading { gap: 9px; }
+    .research-field__detail dl { grid-template-columns: 1fr; gap: 3px; }
   }
-
-  @media (prefers-reduced-motion: reduce) {
-    .research-field__plane::before {
-      animation: none;
-    }
-
-    .research-field__node,
-    .research-field__link {
-      transition: none;
-    }
-
-    .research-field__scan {
-      display: none;
-    }
-  }
-
+  @media (prefers-reduced-motion: reduce) { .research-field__station span { transition: none; } }
   @media (forced-colors: active) {
-    .research-field__selected {
-      border: 1px solid CanvasText;
-    }
-
-    .research-field__link {
-      stroke: CanvasText;
-    }
+    .research-field__station span { clip-path: none; border: 1px solid CanvasText; }
   }
 </style>

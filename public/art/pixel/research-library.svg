@@ -1,0 +1,216 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="180" viewBox="0 0 320 180" shape-rendering="crispEdges" role="img" aria-labelledby="rl-title rl-desc">
+  <title id="rl-title">The evening research archive</title>
+  <desc id="rl-desc">An open, golden-lit library beneath a blue tiled roof. A researcher studies an open book between crowded archive shelves and a telescope. Beyond a mullioned window, a stepped crescent rises over distant mountains. Garden planters flank the worn stone entrance steps.</desc>
+  <defs>
+    <g id="rl-book-blue">
+      <path fill="#386484" d="M0 0h6v16H0z"/>
+      <path fill="#5686a6" d="M0 0h2v16H0z"/>
+      <path fill="#efc66f" d="M2 2h4v2H2zm0 10h4v2H2z"/>
+    </g>
+    <g id="rl-book-gold">
+      <path fill="#bb8855" d="M0 0h4v12H0z"/>
+      <path fill="#efc66f" d="M0 0h2v12H0z"/>
+      <path fill="#715743" d="M2 2h2v2H2zm0 6h2v2H2z"/>
+    </g>
+    <g id="rl-book-green">
+      <path fill="#496f69" d="M0 0h6v14H0z"/>
+      <path fill="#6b9180" d="M0 0h2v14H0z"/>
+      <path fill="#d4e6e7" d="M2 2h4v2H2zm0 8h4v2H2z"/>
+    </g>
+    <g id="rl-book-rust">
+      <path fill="#925b49" d="M0 0h4v16H0z"/>
+      <path fill="#bb8855" d="M0 0h2v16H0z"/>
+      <path fill="#f7dfa0" d="M0 2h4v2H0zm0 10h4v2H0z"/>
+    </g>
+  </defs>
+
+  <!-- A quiet blue-hour valley surrounds the cutaway. -->
+  <path fill="#183951" d="M0 0h320v180H0z"/>
+  <path fill="#244b68" d="M0 58h16v-8h14v-6h22v6h22v12h18v10h32v-8h20v-8h22v8h20v-4h24v-8h18v6h20v-8h20v-6h16v8h18v12h18v116H0z"/>
+  <path fill="#386484" d="M0 82h10V72h10v-8h12v10h10v6h18v16h22v8h32v-6h20v-8h22v8h26v10h28V94h16V82h16V72h12v12h18V74h16v8h16v14h16v84H0z"/>
+  <path fill="#5686a6" d="M18 72h6v-8h8v10h8v4H28v-4H18zm234 0h2v12h8v4h-16v-8h6z"/>
+  <path fill="#97bbca" d="M16 20h2v2h-2zm20-10h2v2h-2zm38 12h2v2h-2zm214-8h2v2h-2zm20 20h2v2h-2z"/>
+  <path fill="#5686a6" d="M4 42h2v2H4zm58-34h2v2h-2zm196 2h2v2h-2zm38 38h2v2h-2z"/>
+  <path fill="#386484" d="M0 28h14v-4h20v4h22v4H0zm276-4h12v-4h20v4h12v4h-44z"/>
+  <path fill="#244b68" d="M0 112h10V98h10V86h8v-8h4v8h8v12h10v14h10v14h24v54H0zm282 2h10V94h8V84h4v10h6v12h10v74h-38z"/>
+  <path fill="#496f69" d="M0 128h8v-12h8v-14h8V90h6v14h8v14h8v18h16v44H0zm286 4h8v-18h6v-12h6v16h8v10h6v52h-34z"/>
+  <path fill="#6b9180" d="M14 116h8v-12h4v12h8v4H14zm282 8h6v-12h2v12h6v4h-14z"/>
+  <path fill="#102c46" d="M0 148h24v-8h30v4h36v-4h148v-2h28v8h30v-6h24v40H0z"/>
+  <path fill="#526c72" d="M0 164h24v-6h24v-8h222v8h26v6h24v16H0z"/>
+  <path fill="#779498" d="M0 164h24v-6h26v4H28v6H0zm270-8h22v4h28v4h-32v-4h-18z"/>
+
+  <!-- Thick masonry, exposed timber and a stepped slate roof. -->
+  <path fill="#102c46" d="M26 58h270v12h-8v80H34V70h-8z"/>
+  <path fill="#526c72" d="M34 60h14v82h228V60h12v92H34z"/>
+  <path fill="#779498" d="M34 62h8v78h-8zm244 0h10v80h-10z"/>
+  <path fill="#97bbca" d="M34 68h8v4h-8zm0 22h8v4h-8zm0 24h8v4h-8zm244-38h10v4h-10zm0 26h10v4h-10zm0 24h10v4h-10z"/>
+  <path fill="#493e3c" d="M46 58h232v80H46z"/>
+  <path fill="#97704f" d="M48 60h226v64H48z"/>
+  <path fill="#bb8855" d="M48 60h226v6H48z"/>
+  <path fill="#c59a62" d="M150 70h42v44h-42zm-2 46h48v8h-48z"/>
+  <path fill="#715743" d="M148 64h4v60h-4zm42 0h4v60h-4z"/>
+  <path fill="#bb8855" d="M152 66h38v4h-38zm42 0h4v58h-4z"/>
+  <path fill="#715743" d="M46 124h230v16H46z"/>
+  <path fill="#97704f" d="M48 126h226v10H48z"/>
+  <path fill="#c59a62" d="M148 126h78v2h-78zm14 4h80v2h-80zm-54 4h58v2h-58z"/>
+  <path fill="#493e3c" d="M68 126h2v4h38v2H70v4h-2zm62 0h2v8h-2zm84 0h2v8h-2zm36 0h2v6h22v2h-24z"/>
+  <path fill="#102c46" d="M20 52h12v-6h12v-6h14v-6h18v-6h24v-6h30v-4h58v4h30v6h24v6h18v6h14v6h14v6h12v10H20z"/>
+  <path fill="#244b68" d="M30 50h14v-6h14v-6h18v-6h24v-6h30v-4h58v4h30v6h24v6h18v6h14v6h14v6H30z"/>
+  <path fill="#386484" d="M44 46h14v-6h18v-6h24v-6h30v-4h58v4h30v6h24v6h18v6h14v4H44z"/>
+  <path fill="#5686a6" d="M60 40h16v-6h24v-6h30v-4h58v4h-54v4h-30v6H80v6H60z"/>
+  <path fill="#244b68" d="M100 32h26v2h-26zm34-4h30v2h-30zm40 2h26v2h-26zm-86 8h28v2H88zm34-2h26v2h-26zm34 0h28v2h-28zm36 2h26v2h-26zm-116 6h28v2H76zm34-2h30v2h-30zm38 0h28v2h-28zm34 2h28v2h-28zm34 0h24v2h-24z"/>
+  <path fill="#5686a6" d="M52 48h28v2H52zm36 0h28v2H88zm38-2h26v2h-26zm64 2h28v2h-28zm36 2h28v2h-28z"/>
+  <path fill="#bb8855" d="M24 56h272v4H24z"/>
+  <path fill="#efc66f" d="M34 56h244v2H34z"/>
+  <path fill="#715743" d="M34 60h254v4H34z"/>
+  <path fill="#493e3c" d="M52 60h8v8h-8zm28 0h8v8h-8zm30 0h8v8h-8zm30 0h8v8h-8zm30 0h8v8h-8zm30 0h8v8h-8zm30 0h8v8h-8zm30 0h8v8h-8z"/>
+
+  <!-- Three bays of individually arranged, well-used books. -->
+  <path fill="#493e3c" d="M46 70h100v60H46z"/>
+  <path fill="#715743" d="M48 70h96v4H48zm0 18h96v4H48zm0 18h96v4H48zm0 18h96v6H48z"/>
+  <path fill="#bb8855" d="M46 68h100v4H46zm0 20h100v2H46zm0 18h100v2H46zm0 18h100v4H46z"/>
+  <path fill="#efc66f" d="M50 68h92v2H50zm0 20h92v2H50zm0 18h92v2H50zm0 18h92v2H50z"/>
+  <path fill="#97704f" d="M46 70h4v54h-4zm30 0h4v56h-4zm34 0h4v56h-4zm28 0h6v58h-6z"/>
+  <path fill="#c59a62" d="M46 70h2v54h-2zm30 0h2v54h-2zm34 0h2v54h-2zm28 0h2v58h-2z"/>
+  <use href="#rl-book-blue" x="50" y="72"/>
+  <use href="#rl-book-gold" x="56" y="76"/>
+  <use href="#rl-book-rust" x="60" y="72"/>
+  <use href="#rl-book-green" x="64" y="74"/>
+  <path fill="#d4e6e7" d="M72 74h2v14h-2z"/>
+  <use href="#rl-book-rust" x="80" y="72"/>
+  <use href="#rl-book-green" x="84" y="74"/>
+  <use href="#rl-book-blue" x="90" y="72"/>
+  <use href="#rl-book-gold" x="98" y="76"/>
+  <path fill="#97bbca" d="M104 76h4v12h-4z"/>
+  <path fill="#f7dfa0" d="M104 78h4v2h-4z"/>
+  <use href="#rl-book-gold" x="114" y="76"/>
+  <use href="#rl-book-blue" x="118" y="72"/>
+  <use href="#rl-book-rust" x="126" y="72"/>
+  <use href="#rl-book-green" x="132" y="74"/>
+  <use href="#rl-book-green" x="50" y="92"/>
+  <use href="#rl-book-blue" x="56" y="90"/>
+  <use href="#rl-book-gold" x="62" y="94"/>
+  <path fill="#f3ead6" d="M68 92h4v14h-4z"/>
+  <path fill="#bb8855" d="M68 94h4v2h-4zm0 8h4v2h-4z"/>
+  <path fill="#386484" d="M82 102h24v4H82z"/>
+  <path fill="#d4e6e7" d="M84 102h20v2H84z"/>
+  <path fill="#925b49" d="M82 98h20v4H82z"/>
+  <path fill="#f7dfa0" d="M84 98h16v2H84z"/>
+  <path fill="#bb8855" d="M86 94h20v4H86z"/>
+  <path fill="#f3ead6" d="M88 94h16v2H88z"/>
+  <use href="#rl-book-rust" x="114" y="90"/>
+  <use href="#rl-book-gold" x="118" y="94"/>
+  <use href="#rl-book-green" x="122" y="92"/>
+  <use href="#rl-book-blue" x="128" y="90"/>
+  <path fill="#bb8855" d="M136 94h2v12h-2z"/>
+  <use href="#rl-book-gold" x="50" y="112"/>
+  <use href="#rl-book-rust" x="54" y="108"/>
+  <use href="#rl-book-blue" x="60" y="108"/>
+  <use href="#rl-book-green" x="66" y="110"/>
+  <use href="#rl-book-blue" x="80" y="108"/>
+  <path fill="#d4e6e7" d="M86 112h4v12h-4z"/>
+  <path fill="#779498" d="M88 114h2v8h-2z"/>
+  <use href="#rl-book-rust" x="92" y="108"/>
+  <use href="#rl-book-gold" x="96" y="112"/>
+  <use href="#rl-book-green" x="102" y="110"/>
+  <path fill="#bb8855" d="M114 114h22v10h-22z"/>
+  <path fill="#97704f" d="M114 114h22v2h-22zm0 6h22v4h-22z"/>
+  <path fill="#f7dfa0" d="M120 116h10v4h-10z"/>
+  <path fill="#715743" d="M122 118h6v2h-6z"/>
+
+  <!-- The window is a second, miniature landscape. -->
+  <path fill="#715743" d="M198 70h72v50h-72z"/>
+  <path fill="#f7dfa0" d="M198 70h72v2h-72z"/>
+  <path fill="#102c46" d="M202 72h64v42h-64z"/>
+  <path fill="#244b68" d="M204 74h60v38h-60z"/>
+  <path fill="#386484" d="M204 98h6v-4h6v-6h6v6h6v6h6v-4h8v-8h6v-6h6v6h4v8h6v16h-60z"/>
+  <path fill="#97bbca" d="M216 94v-6h6v6h6v4h-8v-4zm26-6h6v-6h6v6h4v4h-8v-4z"/>
+  <path fill="#5686a6" d="M204 106h8v-6h8v4h6v6h10v-6h8v-4h8v6h12v6h-60z"/>
+  <path fill="#f7dfa0" d="M252 76h6v2h-4v2h-2v6h2v2h4v2h-8v-2h-2v-2h-2v-6h2v-2h4z"/>
+  <path fill="#f3ead6" d="M252 76h4v2h-4zm-4 4h2v6h-2z"/>
+  <path fill="#d4e6e7" d="M212 78h2v2h-2zm22 6h2v2h-2z"/>
+  <path fill="#493e3c" d="M202 72h2v42h-2zm28 0h4v42h-4zm32 0h4v42h-4zm-60 22h64v4h-64z"/>
+  <path fill="#bb8855" d="M198 70h4v46h-4zm32 2h2v42h-2zm34-2h6v46h-6zm-62 24h62v2h-62z"/>
+  <path fill="#efc66f" d="M196 114h76v4h-76z"/>
+  <path fill="#97704f" d="M198 118h72v4h-72z"/>
+
+  <!-- A pinned sky chart and a movable archive ladder. -->
+  <path fill="#715743" d="M158 76h28v30h-28z"/>
+  <path fill="#f7dfa0" d="M160 76h24v28h-24z"/>
+  <path fill="#f3ead6" d="M162 78h20v22h-20z"/>
+  <path fill="#97bbca" d="M166 82h2v2h-2zm8-2h2v2h-2zm4 8h2v2h-2zm-12 8h2v2h-2z"/>
+  <path fill="#5686a6" d="M166 88h2v-2h4v2h-2v4h4v-2h4v2h-2v2h-8v-2h-2z"/>
+  <path fill="#bb8855" d="M160 76h2v2h-2zm22 0h2v2h-2zm-20 24h18v2h-18z"/>
+  <path fill="#493e3c" d="M114 96h4v12h-2v12h-2v14h-2v4h-4v-4h2v-14h2v-12h2zm14 0h4v12h-2v12h-2v14h-2v4h-4v-4h2v-14h2v-12h2z"/>
+  <path fill="#bb8855" d="M114 96h2v12h-2v12h-2v14h-2v4h-2v-6h2v-14h2v-12h2zm14 0h2v12h-2v12h-2v14h-2v4h-2v-6h2v-14h2v-12h2z"/>
+  <path fill="#efc66f" d="M114 100h14v2h-14zm-2 10h14v2h-14zm-2 10h14v2h-14zm-2 10h14v2h-14z"/>
+
+  <!-- A tiny scholar, an amber desk lamp, tea, and an open folio. -->
+  <path fill="#493e3c" d="M174 118h16v20h-4v-6h-8v6h-4z"/>
+  <path fill="#bb8855" d="M172 114h4v16h-4zm4 0h14v4h-14z"/>
+  <path fill="#102c46" d="M180 102h10v2h4v10h-2v4h-12v-4h-2v-8h2z"/>
+  <path fill="#f7dfa0" d="M182 106h10v8h-4v4h-6z"/>
+  <path fill="#bb8855" d="M190 108h4v4h-4zm-8 6h6v4h-6z"/>
+  <path fill="#493e3c" d="M180 104h12v4h-8v4h-4z"/>
+  <path fill="#386484" d="M180 116h10v4h4v8h-16v-10h2z"/>
+  <path fill="#5686a6" d="M180 118h4v8h-6v-4h2zm10 2h4v4h8v4h-12z"/>
+  <path fill="#f7dfa0" d="M198 122h6v4h-6z"/>
+  <path fill="#102c46" d="M176 128h16v8h-4v-4h-8v4h-6v-4h2z"/>
+  <path fill="#493e3c" d="M148 128h86v6h-6v8h-6v-8h-62v8h-6v-8h-6z"/>
+  <path fill="#bb8855" d="M148 126h86v4h-86z"/>
+  <path fill="#efc66f" d="M148 124h86v2h-86z"/>
+  <path fill="#97704f" d="M154 130h6v12h-6zm68 0h4v12h-4z"/>
+  <path fill="#f7dfa0" d="M198 120h12v2h4v-2h12v6h-28z"/>
+  <path fill="#f3ead6" d="M200 118h10v2h4v4h-14zm14 2h4v-2h10v6h-14z"/>
+  <path fill="#bb8855" d="M212 122h2v4h-2z"/>
+  <path fill="#97bbca" d="M202 120h6v2h-6zm18 0h6v2h-6z"/>
+  <path fill="#715743" d="M158 122h14v2h-14zm6-14h2v14h-2z"/>
+  <path fill="#efc66f" d="M164 104h2v16h-2z"/>
+  <path fill="#496f69" d="M158 100h14v2h4v6h-22v-4h4z"/>
+  <path fill="#6b9180" d="M158 100h14v2h-12v2h-6v-2h4z"/>
+  <path fill="#f7dfa0" d="M154 108h22v2h-22z"/>
+  <path fill="#efc66f" d="M158 112h2v6h-2zm12 0h2v6h-2z"/>
+  <path fill="#d4e6e7" d="M150 118h6v6h-6zm6 0h4v4h-4z"/>
+  <path fill="#715743" d="M158 120h2v2h-2z"/>
+  <path fill="#f3ead6" d="M150 118h6v2h-6z"/>
+
+  <!-- The brass telescope points through the mountain window. -->
+  <path fill="#493e3c" d="M250 118h4v8h2v4h2v6h-4v-6h-2v-4h-2v6h-2v4h-4v-4h2v-6h2v-4h2zm0 8h2v12h-2z"/>
+  <path fill="#bb8855" d="M250 118h2v8h-2zm-2 8h2v6h-2zm-2 6h2v4h-2zm8-4h2v6h-2zm-4 0h2v10h-2z"/>
+  <path fill="#715743" d="M238 116h8v-4h8v-4h8v-4h6v8h-8v4h-8v4h-8v2h-6z"/>
+  <path fill="#efc66f" d="M238 114h8v-4h8v-4h8v-4h6v6h-8v4h-8v4h-8v4h-6z"/>
+  <path fill="#f7dfa0" d="M244 112h2v-2h8v-4h8v-4h4v2h-4v4h-8v4h-8v2h-2z"/>
+  <path fill="#386484" d="M264 100h4v2h2v8h-4v-2h-2z"/>
+  <path fill="#97bbca" d="M266 102h2v6h-2z"/>
+  <path fill="#102c46" d="M236 116h4v6h-4z"/>
+
+  <!-- Worn steps carry the room's light out into the cool garden. -->
+  <path fill="#102c46" d="M34 140h254v6H34zm32 6h186v6H66zm-10 6h206v8H56zm-12 8h228v8H44z"/>
+  <path fill="#779498" d="M34 138h254v4H34z"/>
+  <path fill="#97bbca" d="M44 138h232v2H44z"/>
+  <path fill="#c59a62" d="M96 140h144v2H96z"/>
+  <path fill="#779498" d="M66 146h186v6H66z"/>
+  <path fill="#d4e6e7" d="M68 146h46v2H68zm158 0h24v2h-24z"/>
+  <path fill="#efc66f" d="M114 146h112v2H114z"/>
+  <path fill="#bb8855" d="M116 148h108v4H116z"/>
+  <path fill="#526c72" d="M56 154h206v6H56z"/>
+  <path fill="#97bbca" d="M56 154h60v2H56zm164 0h42v2h-42z"/>
+  <path fill="#c59a62" d="M116 154h104v2H116z"/>
+  <path fill="#779498" d="M44 162h228v6H44z"/>
+  <path fill="#97bbca" d="M44 162h72v2H44zm166 0h62v2h-62z"/>
+  <path fill="#bb8855" d="M116 162h94v2h-94z"/>
+  <path fill="#526c72" d="M82 146h2v6h-2zm166 2h4v2h-4zm-160 6h2v6h-2zm144 2h2v4h-2zm-164 6h2v6h-2zm118 0h2v6h-2z"/>
+  <path fill="#97bbca" d="M38 172h26v2H38zm38 2h38v2H76zm178-2h28v2h-28z"/>
+  <path fill="#c59a62" d="M134 170h44v2h-44zm12 6h58v2h-58z"/>
+  <path fill="#244b68" d="M14 158h32v4H14zm266 0h30v4h-30z"/>
+  <path fill="#925b49" d="M18 142h24v14H22v-4h-4zm264 0h24v10h-4v4h-16v-4h-4z"/>
+  <path fill="#bb8855" d="M16 140h28v6H16zm264 0h28v6h-28z"/>
+  <path fill="#efc66f" d="M18 140h24v2H18zm264 0h24v2h-24z"/>
+  <path fill="#c59a62" d="M22 146h4v8h-4zm264 0h4v8h-4z"/>
+  <path fill="#183951" d="M14 132h4v-8h8v-4h10v4h8v8h4v8H14zm264 0h4v-10h8v-6h8v8h8v6h4v10h-32z"/>
+  <path fill="#496f69" d="M14 132h6v-8h10v2h10v6h6v6H14zm266-2h6v-8h10v2h8v8h4v6h-30v-6h-4v-4h8z"/>
+  <path fill="#6b9180" d="M18 128h8v-4h4v4h8v4h-8v4h-8v-4h-4zm262 0h8v-4h6v4h8v4h-8v4h-10v-4h-4z"/>
+  <path fill="#efc66f" d="M24 128h4v4h-4zm12 6h4v4h-4zm246-6h4v4h-4zm14 6h4v4h-4z"/>
+  <path fill="#183951" d="M0 170h8v-4h6v4h8v10H0zm286 6h6v-8h4v6h6v-10h4v8h6v-4h8v12h-34z"/>
+  <path fill="#496f69" d="M0 172h6v-4h4v8h8v4H0zm294 4h4v-4h4v4h4v-6h4v10h-16z"/>
+</svg>

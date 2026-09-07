@@ -1,0 +1,224 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="180" viewBox="0 0 320 180" shape-rendering="crispEdges" role="img" aria-labelledby="rc-title rc-desc">
+  <title id="rc-title">A riverside campus for shared discoveries</title>
+  <desc id="rc-desc">A bright, terraced research campus stands among island gardens and blue waterways. Slate-roofed laboratories, a rooftop solar array and a small antenna overlook a timber footbridge. Three researchers meet around an open notebook, with stepping paths, flowering trees and a moored little boat nearby.</desc>
+  <defs>
+    <g id="rc-window">
+      <path fill="#244b68" d="M0 0h12v16H0z"/>
+      <path fill="#efc66f" d="M2 2h8v12H2z"/>
+      <path fill="#f7dfa0" d="M2 2h4v10H2z"/>
+      <path fill="#386484" d="M6 2h2v12H6z"/>
+      <path fill="#bb8855" d="M0 16h14v2H0z"/>
+      <path fill="#f3ead6" d="M0 0h12v2H0z"/>
+    </g>
+    <g id="rc-tree">
+      <path fill="#496f69" d="M6 30h22v4H6z"/>
+      <path fill="#715743" d="M14 16h4v16h-4z"/>
+      <path fill="#bb8855" d="M14 18h2v12h-2z"/>
+      <path fill="#496f69" d="M2 10h4V4h8V0h10v4h6v8h4v10h-6v4H10v-2H2z"/>
+      <path fill="#6b9180" d="M2 10h4V4h8V0h10v4h4v8h-6v6H10v2H2z"/>
+      <path fill="#97bb9a" d="M6 6h8V2h8v4h-8v4H6zm-2 6h8v4H4z"/>
+      <path fill="#779498" d="M24 14h6v6h-6z"/>
+    </g>
+    <g id="rc-shrub">
+      <path fill="#496f69" d="M0 4h4V0h10v4h6v8H0z"/>
+      <path fill="#6b9180" d="M2 4h4V2h8v4H8v4H2z"/>
+      <path fill="#efc66f" d="M6 4h4v4H6zm8 4h4v4h-4z"/>
+    </g>
+  </defs>
+
+  <!-- Clear sky, long clouds and an inhabited distant shore. -->
+  <path fill="#d4e6e7" d="M0 0h320v180H0z"/>
+  <path fill="#f3ead6" d="M0 10h16V6h24v4h16v4h20v4H0zm102 12h12v-6h24v-4h32v4h20v6h20v4H102zm146-12h14V6h26v4h18v4h14v6h-72z"/>
+  <path fill="#97bbca" d="M0 54h12v-6h18v-6h18v4h18v8h18v6h24v-4h22v-8h18v4h16v8h26v-6h20v-8h18v-6h18v8h16v8h24v-8h18v4h16v30H0z"/>
+  <path fill="#779498" d="M0 68h24v-6h28v-8h16v8h22v6h26v4h22v-8h20v4h24v8h22v-8h22v-6h16v6h28v-4h22v4h28v20H0z"/>
+  <path fill="#6b9180" d="M0 76h10v-8h6v-4h8v4h4v8h22v-6h6v-6h6v6h6v8h62v-6h6v-4h6v6h6v6h62v-8h6v-6h8v6h6v8h56v-8h6v-6h6v6h6v6h16v10H0z"/>
+  <path fill="#d4e6e7" d="M20 62h12v14H20zm78 4h10v12H98zm182-6h12v16h-12z"/>
+  <path fill="#386484" d="M18 60h16v4H18zm78 4h14v4H96zm182-6h16v4h-16z"/>
+  <path fill="#efc66f" d="M24 68h4v6h-4zm78 2h2v4h-2zm182-2h4v4h-4z"/>
+  <path fill="#386484" d="M52 28h4v2h4v2h4v-2h4v-2h4v2h-4v2h-4v2h-4v-2h-4v-2h-4zm186 0h4v2h4v-2h4v2h-4v2h-4v-2h-4z"/>
+
+  <!-- The river wraps two terraced islands, not a diagrammatic network. -->
+  <path fill="#5686a6" d="M0 82h320v98H0z"/>
+  <path fill="#97bbca" d="M0 84h64v2H0zm78-2h76v2H78zm100 4h48v2h-48zm68-4h74v2h-74z"/>
+  <path fill="#386484" d="M0 104h12v-4h18v6h38v8h54v10h14v10h18v10h58v-6h20v-12h50v-6h38v60H0z"/>
+  <path fill="#5686a6" d="M0 114h20v4h42v8h56v10h24v12h46v4h46v-8h26v-12h30v-6h30v54H0z"/>
+  <path fill="#244b68" d="M18 108h26v-8h58v4h38v10h18v12h18v12h26v6h-8v8h-32v-4h-24v-12h-32v-10H52v-8H18zm200 26h24v-12h30v-14h30v-8h18v38h-12v8h-42v6h-48z"/>
+  <path fill="#779498" d="M20 90h24V76h30v-8h40v6h24v14h16v18h18v18h20v10h-12v8h-38v-6h-22v-14H64v-10H34v-10H20z"/>
+  <path fill="#526c72" d="M20 96h14v10h30v10h56v14h22v6h38v-2h12v8h-12v6h-40v-6h-24v-14H62v-10H32v-10H20z"/>
+  <path fill="#97bb9a" d="M20 90h24V76h30v-8h40v6h24v14h16v18h18v18h20v10h-14v4h-34v-8h-22v-14H66v-10H36V96H20z"/>
+  <path fill="#6b9180" d="M20 90h24v4H24zm16 12h30v8h54v4H64v-6H36zm84 12h6v14h22v6h32v4h-36v-8h-24zm20-24h14v14h-4v-10h-10z"/>
+  <path fill="#779498" d="M210 92h24V74h28v-8h32v10h26v64h-14v8h-52v-6h-30v-10h-14z"/>
+  <path fill="#526c72" d="M210 120h14v14h30v6h52v-6h14v12h-12v8h-56v-6h-30v-10h-12z"/>
+  <path fill="#97bb9a" d="M210 92h24V74h28v-8h32v10h26v56h-14v8h-52v-6h-30v-12h-14z"/>
+  <path fill="#6b9180" d="M210 118h14v12h30v6h52v-6h14v4h-12v8h-56v-6h-30v-12h-12zm84-42h26v6h-26z"/>
+  <path fill="#97bbca" d="M22 100h10v2H22zm14 12h22v2H36zm30 10h18v2H66zm70 18h6v2h-6zm18 4h22v2h-22zm72-6h12v2h-12zm34 10h22v2h-22zm46-6h12v2h-12z"/>
+  <path fill="#386484" d="M44 116h12v2H44zm60 10h10v2h-10zm42 20h10v2h-10zm90-6h10v2h-10zm50 10h12v2h-12z"/>
+
+  <!-- A pale path links the labs, courtyard and bridge landing. -->
+  <path fill="#c8bea0" d="M58 82h56v10H98v12h34v14h38v16h-18v-10h-32v-10H86v-12H58z"/>
+  <path fill="#f3ead6" d="M58 80h56v8H96v14h34v14h38v14h-14v-10h-32v-10H84V98H58z"/>
+  <path fill="#d4e6e7" d="M68 80h14v8H68zm18 22h18v4H86zm36 14h20v4h-20zm32 10h14v4h-14z"/>
+  <path fill="#c8bea0" d="M230 98h62v14h-30v10h-26v10h-22v-12h12v-10h4z"/>
+  <path fill="#f3ead6" d="M230 96h62v12h-32v10h-26v10h-20v-10h12v-10h4z"/>
+  <path fill="#d4e6e7" d="M240 98h18v6h-18zm30 4h18v4h-18zm-46 18h8v4h-8z"/>
+
+  <!-- Rear reading pavilion and the covered connecting walk. -->
+  <path fill="#526c72" d="M96 78h50v8h-50z"/>
+  <path fill="#97bbca" d="M98 44h44v36H98z"/>
+  <path fill="#d4e6e7" d="M98 44h34v34H98z"/>
+  <path fill="#779498" d="M132 44h10v36h-10z"/>
+  <path fill="#244b68" d="M90 46h8v-6h8v-6h26v6h8v4h8v6H90z"/>
+  <path fill="#386484" d="M98 40h8v-6h26v6h8v4H98z"/>
+  <path fill="#5686a6" d="M106 34h26v2h-22v4H98v-2h8z"/>
+  <path fill="#efc66f" d="M96 48h48v2H96z"/>
+  <use href="#rc-window" x="104" y="54"/>
+  <path fill="#244b68" d="M122 54h8v24h-8z"/>
+  <path fill="#5686a6" d="M124 56h4v20h-4z"/>
+  <path fill="#f7dfa0" d="M124 56h4v8h-4z"/>
+  <path fill="#f3ead6" d="M100 76h32v2h-32z"/>
+  <path fill="#bb8855" d="M126 78h6v24h-6zm20 0h4v26h-4z"/>
+  <path fill="#715743" d="M130 80h2v22h-2zm18 0h2v24h-2z"/>
+  <path fill="#244b68" d="M126 74h26v6h-26z"/>
+  <path fill="#386484" d="M124 74h28v4h-28z"/>
+  <path fill="#97bbca" d="M126 74h24v2h-24z"/>
+  <path fill="#d4e6e7" d="M130 98h16v4h-16z"/>
+
+  <!-- The larger riverside laboratory, open windows and solar roof. -->
+  <path fill="#526c72" d="M40 94h56v8H40z"/>
+  <path fill="#97bbca" d="M42 54h54v40H42z"/>
+  <path fill="#d4e6e7" d="M42 54h44v40H42z"/>
+  <path fill="#779498" d="M86 54h10v40H86z"/>
+  <path fill="#f3ead6" d="M44 56h40v4H44zm0 34h40v4H44z"/>
+  <path fill="#97bbca" d="M44 82h40v2H44z"/>
+  <use href="#rc-window" x="48" y="64"/>
+  <use href="#rc-window" x="68" y="64"/>
+  <path fill="#386484" d="M88 64h4v16h-4z"/>
+  <path fill="#efc66f" d="M90 66h2v12h-2z"/>
+  <path fill="#102c46" d="M34 52h8v-6h8v-6h10v-6h20v6h10v6h8v6h6v6H34z"/>
+  <path fill="#244b68" d="M38 52h6v-6h8v-6h10v-4h18v6h10v6h8v6H38z"/>
+  <path fill="#386484" d="M42 50h6v-6h10v-6h20v4h10v6h8v4H42z"/>
+  <path fill="#5686a6" d="M48 46h10v-6h20v2H62v6H48z"/>
+  <path fill="#efc66f" d="M36 56h66v2H36z"/>
+  <path fill="#183951" d="M50 48h30v2h8v6H48v-4h2z"/>
+  <path fill="#97bbca" d="M56 42h24v4h6v4h6v4H46v-4h4v-4h6z"/>
+  <path fill="#244b68" d="M58 44h8v4H54v2h12v2H50v-2h4v-4h4zm10 0h10v4H68zm0 6h12v2H68zm12-2h4v2h4v2h-6v-2h-2z"/>
+  <path fill="#5686a6" d="M58 44h8v2h-8zm12 0h8v2h-8zm-16 6h10v2H54zm16 0h10v2H70z"/>
+  <path fill="#bb8855" d="M38 94h62v4H38z"/>
+  <path fill="#f3ead6" d="M40 94h58v2H40z"/>
+  <path fill="#779498" d="M58 98h24v6H58z"/>
+  <path fill="#d4e6e7" d="M56 98h26v2H56z"/>
+  <path fill="#f3ead6" d="M54 104h28v2H54z"/>
+
+  <!-- Opposite-bank instrument house, with a slender stepped antenna. -->
+  <path fill="#526c72" d="M236 98h62v8h-62z"/>
+  <path fill="#779498" d="M278 58h20v42h-20z"/>
+  <path fill="#d4e6e7" d="M236 58h44v42h-44z"/>
+  <path fill="#f3ead6" d="M238 60h40v4h-40zm0 34h40v6h-40z"/>
+  <path fill="#97bbca" d="M238 86h40v2h-40zm42-26h16v4h-16z"/>
+  <use href="#rc-window" x="242" y="70"/>
+  <use href="#rc-window" x="262" y="70"/>
+  <path fill="#244b68" d="M286 74h8v24h-8z"/>
+  <path fill="#5686a6" d="M288 76h4v20h-4z"/>
+  <path fill="#f7dfa0" d="M288 76h4v10h-4z"/>
+  <path fill="#102c46" d="M228 58h8v-6h12v-6h36v6h10v4h10v6h-76z"/>
+  <path fill="#244b68" d="M232 56h6v-6h12v-4h32v6h10v4h8v4h-68z"/>
+  <path fill="#386484" d="M238 52h12v-6h32v6h10v4h-54z"/>
+  <path fill="#5686a6" d="M250 46h32v2h-28v4h-16v-2h12z"/>
+  <path fill="#244b68" d="M256 50h12v2h-12zm18 2h12v2h-12zm-30 2h20v2h-20z"/>
+  <path fill="#efc66f" d="M230 60h72v2h-72z"/>
+  <path fill="#386484" d="M274 26h2v20h-2zm-6 6h14v2h-14zm4-10h6v4h-6z"/>
+  <path fill="#f3ead6" d="M274 26h2v6h-2z"/>
+  <path fill="#efc66f" d="M274 22h2v2h-2z"/>
+  <path fill="#97bbca" d="M278 32h8v2h-8v2h-4v2h-4v-2h-2v-2h10z"/>
+  <path fill="#bb8855" d="M234 100h66v4h-66z"/>
+  <path fill="#f3ead6" d="M234 98h66v2h-66z"/>
+  <path fill="#779498" d="M282 104h18v6h-18z"/>
+  <path fill="#d4e6e7" d="M280 104h20v2h-20z"/>
+
+  <!-- Island plantings: high canopies, low kitchen gardens, climbing flowers. -->
+  <use href="#rc-tree" x="10" y="54"/>
+  <use href="#rc-tree" x="146" y="62"/>
+  <use href="#rc-tree" x="298" y="54"/>
+  <path fill="#496f69" d="M202 92h6v-8h6v-10h4V64h4v10h4v10h6v12h-30z"/>
+  <path fill="#6b9180" d="M204 88h6v-8h6v-8h4v12h-6v8h-10z"/>
+  <path fill="#715743" d="M216 94h4v10h-4z"/>
+  <path fill="#97bb9a" d="M210 88h8v2h-8z"/>
+  <path fill="#6b9180" d="M34 74h4v20h-4zm4-8h4v12h-4z"/>
+  <path fill="#efc66f" d="M34 74h4v4h-4zm4-6h4v4h-4zm-4 16h4v4h-4z"/>
+  <path fill="#bb8855" d="M70 112h40v10H70z"/>
+  <path fill="#f7dfa0" d="M70 112h40v2H70z"/>
+  <path fill="#715743" d="M72 114h36v6H72z"/>
+  <path fill="#496f69" d="M74 110h6v10h-6zm10 0h6v10h-6zm10 0h6v10h-6zm10 0h4v10h-4z"/>
+  <path fill="#6b9180" d="M74 108h4v6h-4zm10 0h4v6h-4zm10 0h4v6h-4zm10 0h4v6h-4z"/>
+  <path fill="#efc66f" d="M76 110h2v2h-2zm10 0h2v2h-2zm10 0h2v2h-2z"/>
+  <use href="#rc-shrub" x="110" y="78"/>
+  <use href="#rc-shrub" x="258" y="116"/>
+  <use href="#rc-shrub" x="290" y="120"/>
+  <path fill="#6b9180" d="M138 110h6v4h-6zm6 14h4v2h-4zm-96-26h4v2h-4zm216 30h6v2h-6zm42-18h4v4h-4z"/>
+  <path fill="#f3ead6" d="M134 108h2v2h-2zm6 4h2v2h-2zm148 16h2v2h-2zm22-12h2v2h-2z"/>
+
+  <!-- A slightly rising footbridge crosses the deep, narrow channel. -->
+  <path fill="#244b68" d="M166 134h12v4h40v-2h14v8h-12v4h-48v-4h-6z"/>
+  <path fill="#715743" d="M168 124h8v-4h12v-4h24v4h14v4h8v10h-10v-4h-12v-4h-24v4h-12v4h-8z"/>
+  <path fill="#bb8855" d="M166 122h10v-4h12v-4h24v4h14v4h10v6h-12v-4h-12v-4h-24v4h-12v4h-10z"/>
+  <path fill="#f7dfa0" d="M166 122h10v-4h12v-4h24v4h14v4h10v2h-12v-4h-12v-4h-24v4h-12v4h-10z"/>
+  <path fill="#97704f" d="M170 122h2v6h-2zm10-4h2v6h-2zm12-4h2v6h-2zm10 0h2v6h-2zm12 4h2v6h-2zm14 4h2v6h-2z"/>
+  <path fill="#715743" d="M170 110h4v28h-4zm14-8h4v26h-4zm24 0h4v28h-4zm20 8h4v28h-4z"/>
+  <path fill="#bb8855" d="M170 110h2v24h-2zm14-8h2v22h-2zm24 0h2v24h-2zm20 8h2v26h-2z"/>
+  <path fill="#efc66f" d="M168 108h8v4h-8zm14-8h8v4h-8zm24 0h8v4h-8zm20 8h8v4h-8z"/>
+  <path fill="#715743" d="M172 112h8v-4h10v-4h18v4h12v4h10v4h-12v-4h-12v-4h-16v4h-8v4h-10z"/>
+  <path fill="#f7dfa0" d="M172 110h8v-4h10v-4h18v4h12v4h10v2h-12v-4h-12v-4h-16v4h-8v4h-10z"/>
+  <path fill="#779498" d="M172 138h2v8h-2zm12-10h2v14h-2zm24 2h2v12h-2zm20 8h2v6h-2z"/>
+
+  <!-- Three colleagues pause over a notebook in the courtyard. -->
+  <path fill="#6b9180" d="M102 104h14v4h-14zm20 8h16v4h-16zm14-14h14v4h-14z"/>
+  <path fill="#244b68" d="M106 94h8v10h-2v2h-4v-6h-2v6h-4v-4h4z"/>
+  <path fill="#386484" d="M104 86h10v2h2v10h-14V88h2z"/>
+  <path fill="#5686a6" d="M104 86h4v10h-6v-8h2z"/>
+  <path fill="#efc66f" d="M106 80h8v6h-2v2h-6z"/>
+  <path fill="#102c46" d="M104 78h8v2h4v4h-6v-2h-6z"/>
+  <path fill="#f7dfa0" d="M114 90h4v2h4v4h-8z"/>
+  <path fill="#244b68" d="M126 102h8v10h-4v-6h-2v6h-4v-8h2z"/>
+  <path fill="#f3ead6" d="M124 94h10v2h2v8h-14v-8h2z"/>
+  <path fill="#d4e6e7" d="M130 96h4v8h-4z"/>
+  <path fill="#bb8855" d="M126 88h8v6h-8zm-6 10h4v4h-4z"/>
+  <path fill="#715743" d="M124 86h10v4h-8v4h-2z"/>
+  <path fill="#244b68" d="M140 88h6v8h2v2h-6v-4h-2v4h-4v-4h4z"/>
+  <path fill="#bb8855" d="M136 80h10v2h2v10h-12z"/>
+  <path fill="#efc66f" d="M136 80h6v10h-6z"/>
+  <path fill="#f7dfa0" d="M138 74h8v6h-8zm-6 12h4v4h-4z"/>
+  <path fill="#493e3c" d="M136 72h10v4h-6v4h-4z"/>
+  <path fill="#bb8855" d="M114 98h14v2h-14z"/>
+  <path fill="#f3ead6" d="M116 92h6v2h6v4h-14v-4h2z"/>
+  <path fill="#97bbca" d="M120 94h2v4h-2zm4 2h4v2h-4z"/>
+  <path fill="#496f69" d="M152 102h12v4h-12z"/>
+  <path fill="#715743" d="M154 94h2v8h-2zm8 0h2v8h-2z"/>
+  <path fill="#bb8855" d="M150 90h18v4h-18zm0 6h18v2h-18z"/>
+  <path fill="#f7dfa0" d="M150 90h18v2h-18z"/>
+
+  <!-- Reflections are broken into horizontal, hand-placed pixel marks. -->
+  <path fill="#97bbca" d="M0 92h12v2H0zm2 20h14v2H2zm18 12h24v2H20zm28 8h34v2H48zm36 4h22v2H84zm18 10h26v2h-26zm32 12h20v2h-20zm28 8h44v2h-44zm74-8h28v2h-28zm46-4h28v2h-28zm24-6h18v2h-18z"/>
+  <path fill="#d4e6e7" d="M4 100h10v2H4zm24 30h18v2H28zm44 10h22v2H72zm44 12h16v2h-16zm82 12h18v2h-18zm52 0h14v2h-14zm52-8h18v2h-18z"/>
+  <path fill="#386484" d="M8 146h26v2H8zm42 10h36v2H50zm38 10h26v2H88zm42 8h42v2h-42zm56 0h24v2h-24zm36-2h28v2h-28zm54-8h30v2h-30z"/>
+  <path fill="#efc66f" d="M50 118h8v2h-8zm10 4h12v2H60zm178 30h10v2h-10zm10 4h18v2h-18z"/>
+  <path fill="#779498" d="M118 138h4v2h-4zm60 12h4v6h-4zm34-4h2v6h-2zm70-2h6v2h-6z"/>
+  <path fill="#97bbca" d="M12 160h16v2H12zm28 12h28v2H40zm64 4h14v2h-14zm182-4h22v2h-22z"/>
+
+  <!-- A moored punt, a short landing and foreground reeds finish the shore. -->
+  <path fill="#244b68" d="M24 138h34v4h-6v4H30v-4h-6z"/>
+  <path fill="#715743" d="M22 130h38v6h-4v4H28v-4h-6z"/>
+  <path fill="#bb8855" d="M22 130h6v4h28v-4h6v4h-4v4H26v-4h-4z"/>
+  <path fill="#f7dfa0" d="M24 128h36v2H24zm2 6h30v2H26z"/>
+  <path fill="#97704f" d="M30 128h4v6h-4zm18 0h4v6h-4z"/>
+  <path fill="#d4e6e7" d="M28 140h26v2H28z"/>
+  <path fill="#bb8855" d="M52 120h2v12h-2zm-2-10h4v12h-4z"/>
+  <path fill="#efc66f" d="M48 110h8v2h-8z"/>
+  <path fill="#715743" d="M42 114h18v4H42z"/>
+  <path fill="#bb8855" d="M42 112h18v4H42z"/>
+  <path fill="#f7dfa0" d="M42 112h18v2H42z"/>
+  <path fill="#496f69" d="M0 166h8v-6h10v4h12v6h8v10H0zm260 12h8v-6h14v-6h12v4h16v-4h10v14h-60z"/>
+  <path fill="#6b9180" d="M0 166h8v-6h10v4h12v4H14v4H0zm272 6h12v-6h10v4h16v-4h10v6h-12v4h-36z"/>
+  <path fill="#97bb9a" d="M0 164h4v-10h2v10h4v-14h2v16h-2v4H0zm292 10h2v-18h2v10h4v-6h2v14h-4v4h-6zm18-4h2v-18h2v12h4v6z"/>
+  <path fill="#bb8855" d="M10 148h2v6h-2zm284 6h2v6h-2zm18-4h2v6h-2z"/>
+  <path fill="#efc66f" d="M18 170h4v4h-4zm264 6h4v4h-4zm40-4h4v4h-4z"/>
+</svg>
