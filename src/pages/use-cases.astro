@@ -1,6 +1,7 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
 import PageHero from "../components/PageHero.astro";
+import PixelIllustration from "../components/PixelIllustration";
 import { localeFromPath, pathForLocale } from "../i18n";
 
 const locale = localeFromPath(Astro.url.pathname);
@@ -53,6 +54,7 @@ const copy = locale === "zh" ? {
       <div class="section-head">
         <p class="eyebrow">Where to deploy it</p>
         <h2>{copy.deploy}</h2>
+        <PixelIllustration scene="sample-bench" />
       </div>
       <div class="card-grid four">
         {copy.domains.map(([title, body]) => <article class="card"><h3>{title}</h3><p>{body}</p></article>)}
@@ -66,6 +68,7 @@ const copy = locale === "zh" ? {
         <h2>{copy.ctaTitle}</h2>
         <p>{copy.ctaBody}</p>
         <a class="button primary" href={href("/start/")}>{copy.cta}</a>
+        <PixelIllustration scene="field-kit" />
       </div>
     </div>
   </section>

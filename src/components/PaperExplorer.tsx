@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
+import PixelIllustration from "./PixelIllustration";
 
 export type Paper = {
   id: string;
@@ -107,25 +108,29 @@ export default function PaperExplorer({ papers, locale = "en" }: Props) {
       </div>
 
       <div className="paper-grid">
-        {filtered.map((paper) => (
-          <a
-            className="paper-card"
-            href={paper.href}
-            target="_blank"
-            rel="noreferrer"
-            key={paper.id}
-          >
-            <div className="paper-card__meta">
-              <span className={`paper-status ${paper.status === "Draft" ? "draft" : ""}`}>
-                {paper.status}
-              </span>
-              <span>{paper.pages} pp</span>
-            </div>
-            <h2>{paper.title}</h2>
-            <p className="paper-card__category">{paper.categoryLabel}</p>
-            <p className="paper-card__summary">{paper.summary}</p>
-            <span className="paper-open">PDF ↗</span>
-          </a>
+        {filtered.map((paper, index) => (
+          <Fragment key={paper.id}>
+            <a
+              className="paper-card"
+              href={paper.href}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div className="paper-card__meta">
+                <span className={`paper-status ${paper.status === "Draft" ? "draft" : ""}`}>
+                  {paper.status}
+                </span>
+                <span>{paper.pages} pp</span>
+              </div>
+              <h2>{paper.title}</h2>
+              <p className="paper-card__category">{paper.categoryLabel}</p>
+              <p className="paper-card__summary">{paper.summary}</p>
+              <span className="paper-open">PDF ↗</span>
+            </a>
+            {index < filtered.length - 1 && (index === 3 || index === 7) && (
+              <PixelIllustration scene={index === 3 ? "archive-cart" : "memory-garden"} />
+            )}
+          </Fragment>
         ))}
       </div>
 

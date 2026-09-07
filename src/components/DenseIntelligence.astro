@@ -1,4 +1,6 @@
 ---
+import PixelIllustration from "./PixelIllustration";
+
 type Props = { locale: "en" | "zh" };
 const { locale } = Astro.props;
 
@@ -45,6 +47,7 @@ const copy = locale === "zh" ? {
       <p class="eyebrow">{copy.eyebrow}</p>
       <h2>{copy.title}</h2>
       <p>{copy.body}</p>
+      <PixelIllustration scene="sample-bench" />
     </div>
 
     <div class="density-definition">

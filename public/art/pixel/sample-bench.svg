@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="120" viewBox="0 0 240 120" shape-rendering="crispEdges" role="img" aria-labelledby="sb-title sb-desc">
+  <title id="sb-title">Open-air sample measurement bench</title>
+  <desc id="sb-desc">A researcher calibrates a balance beside specimen trays, a notebook and glass samples on a timber field bench surrounded by grass and stepped stones.</desc>
+  <defs>
+    <g id="sb-vial">
+      <path fill="#102c46" d="M2 0h8v4h2v14H0V4h2z"/>
+      <path fill="#d4e6e7" d="M2 4h8v12H2z"/>
+      <path fill="#97bbca" d="M2 10h8v6H2z"/>
+      <path fill="#efc66f" d="M2 0h8v4H2z"/>
+    </g>
+    <g id="sb-grass">
+      <path fill="#496f69" d="M0 14h4V4h4v8h4V0h4v12h4V6h4v12H0z"/>
+      <path fill="#6b9180" d="M4 14h4V6h2v10h6V8h2v8h6v2H4z"/>
+    </g>
+  </defs>
+  <path fill="#244b68" d="M12 98h20v-6h24v4h30v-6h34v4h30v-4h34v6h28v-4h24v6h12v14H12z"/>
+  <path fill="#386484" d="M20 100h34v-4h28v4h42v-4h34v4h36v-4h28v8H20z"/>
+  <path fill="#5686a6" d="M28 106h44v-4h38v4h42v-4h36v4h28v6H28z"/>
+  <path fill="#779498" d="M18 112h52v-4h42v4h50v-4h50v4h14v6H18z"/>
+  <path fill="#97bbca" d="M30 112h34v2H30zm56 2h46v2H86zm86-2h38v2h-38z"/>
+  <path fill="#f3ead6" d="M42 94h18v-4h18v4h12v6H42z"/>
+  <path fill="#d4e6e7" d="M46 94h12v-2h16v2h10v2H46z"/>
+  <path fill="#779498" d="M154 96h18v-6h20v4h14v6h-52z"/>
+  <path fill="#97bbca" d="M160 96h12v-4h16v4h10v2h-38z"/>
+  <path fill="#102c46" d="M48 48h142v8H48z"/>
+  <path fill="#715743" d="M44 44h150v8H44z"/>
+  <path fill="#bb8855" d="M46 42h146v6H46z"/>
+  <path fill="#efc66f" d="M50 42h138v2H50z"/>
+  <path fill="#715743" d="M54 50h8v48h-8zm120 0h8v48h-8z"/>
+  <path fill="#bb8855" d="M56 50h4v44h-4zm120 0h4v44h-4z"/>
+  <path fill="#102c46" d="M62 54h112v8H62z"/>
+  <path fill="#386484" d="M66 54h104v4H66z"/>
+  <path fill="#5686a6" d="M72 54h38v2H72zm58 0h34v2h-34z"/>
+  <path fill="#102c46" d="M92 18h10v26H92z"/>
+  <path fill="#779498" d="M94 20h6v22h-6z"/>
+  <path fill="#97bbca" d="M96 20h2v18h-2z"/>
+  <path fill="#102c46" d="M76 16h42v6H76z"/>
+  <path fill="#386484" d="M80 14h34v4H80z"/>
+  <path fill="#5686a6" d="M86 12h22v4H86z"/>
+  <path fill="#d4e6e7" d="M90 12h14v2H90z"/>
+  <path fill="#102c46" d="M76 24h8v16h-8zm34 0h8v16h-8z"/>
+  <path fill="#779498" d="M78 26h4v12h-4zm34 0h4v12h-4z"/>
+  <path fill="#bb8855" d="M70 38h20v4H70zm34 0h20v4h-20z"/>
+  <path fill="#efc66f" d="M72 36h16v4H72zm34 0h16v4h-16z"/>
+  <path fill="#f7dfa0" d="M76 36h8v2h-8zm34 0h8v2h-8z"/>
+  <path fill="#102c46" d="M94 26h6v12h-6z"/>
+  <path fill="#efc66f" d="M92 24h10v4H92z"/>
+  <path fill="#f7dfa0" d="M94 24h6v2h-6z"/>
+  <path fill="#102c46" d="M126 26h30v16h-30z"/>
+  <path fill="#386484" d="M130 30h22v10h-22z"/>
+  <path fill="#5686a6" d="M132 32h18v6h-18z"/>
+  <path fill="#97bbca" d="M134 34h8v2h-8zm10 0h4v2h-4z"/>
+  <path fill="#bb8855" d="M124 40h34v4h-34z"/>
+  <path fill="#f3ead6" d="M128 38h26v2h-26z"/>
+  <path fill="#f3ead6" d="M160 30h22v12h-22z"/>
+  <path fill="#efc66f" d="M162 28h20v4h-20z"/>
+  <path fill="#bb8855" d="M160 40h24v4h-24z"/>
+  <path fill="#386484" d="M164 32h2v6h12v2h-14z"/>
+  <use href="#sb-vial" x="62" y="24"/>
+  <use href="#sb-vial" x="186" y="24"/>
+  <path fill="#496f69" d="M64 36h8v6h-8zm124 0h8v6h-8z"/>
+  <path fill="#efc66f" d="M66 34h4v4h-4zm124 0h4v4h-4z"/>
+  <path fill="#102c46" d="M28 66h12v24H28zm-4 22h20v6H24z"/>
+  <path fill="#f3ead6" d="M26 54h10v2h4v12H26z"/>
+  <path fill="#efc66f" d="M28 56h8v10h-8z"/>
+  <path fill="#183951" d="M26 52h10v2h4v4H26z"/>
+  <path fill="#386484" d="M26 68h16v14H26z"/>
+  <path fill="#5686a6" d="M28 68h6v12h-6z"/>
+  <path fill="#f7dfa0" d="M40 62h6v4h-6zm-18 10h6v4h-6z"/>
+  <path fill="#102c46" d="M28 82h6v12h-8v-4h2zm8 0h6v12h-8v-4h2z"/>
+  <path fill="#496f69" d="M4 102h22v10H4zm204-4h28v14h-28z"/>
+  <use href="#sb-grass" x="10" y="84"/>
+  <use href="#sb-grass" x="206" y="80"/>
+  <path fill="#6b9180" d="M24 96h10v8H24zm176 4h12v8h-12z"/>
+  <path fill="#efc66f" d="M16 100h4v4h-4zm210-2h4v4h-4z"/>
+</svg>

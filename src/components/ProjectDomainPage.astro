@@ -1,6 +1,7 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
 import PageHero from "./PageHero.astro";
+import PixelIllustration, { type PixelScene } from "./PixelIllustration";
 import { projectDomains, projects, type ProjectCategory } from "../data/projects";
 import { localeFromPath, pathForLocale } from "../i18n";
 
@@ -15,6 +16,12 @@ const domainScenes = {
   model: "model-laboratory",
   mathematics: "geometry-garden",
 } as const;
+const supportingScenes = {
+  runtime: ["field-kit", "archive-cart", "relay-bridge"],
+  hardware: ["sample-bench", "field-kit", "launch-dock"],
+  model: ["memory-garden", "sample-bench", "relay-bridge"],
+  mathematics: ["archive-cart", "field-kit", "sample-bench"],
+} as const satisfies Record<ProjectCategory, readonly [PixelScene, PixelScene, PixelScene]>;
 const locale = localeFromPath(Astro.url.pathname);
 const href = (path: string) => pathForLocale(path, locale);
 const domain = projectDomains.find((item) => item.id === domainId);
@@ -127,12 +134,15 @@ const labels = locale === "zh" ? {
                 <small>{labels.outcome}</small>
                 <strong>{project.outcome[locale]}</strong>
               </div>
+              {projectIndex === 0 && <PixelIllustration scene={supportingScenes[domainId][0]} />}
+              {projectIndex === 1 && <PixelIllustration scene={supportingScenes[domainId][1]} />}
             </section>
             <section class="project-detail-card__evidence">
               <span>{labels.evidence}</span>
               <ul>
                 {project.highlights[locale].map((highlight) => <li>{highlight}</li>)}
               </ul>
+              {domainProjects.length === 1 && <PixelIllustration scene={supportingScenes[domainId][1]} />}
             </section>
             </div>
 
@@ -161,6 +171,7 @@ const labels = locale === "zh" ? {
       <div class="section-head">
         <p class="eyebrow">{labels.explore}</p>
         <h2>{labels.allProjects}</h2>
+        <PixelIllustration scene={supportingScenes[domainId][2]} />
       </div>
       <div class="project-domain-next__grid">
         {otherDomains.map((item) => (

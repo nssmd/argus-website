@@ -2,6 +2,7 @@
 import ResearchVideoDemo from "../components/ResearchVideoDemo.astro";
 import SiteLayout from "../layouts/SiteLayout.astro";
 import PageHero from "../components/PageHero.astro";
+import PixelIllustration from "../components/PixelIllustration";
 import { localeFromPath, pathForLocale } from "../i18n";
 
 const locale = localeFromPath(Astro.url.pathname);
@@ -121,6 +122,7 @@ const copy = locale === "zh" ? {
       <div class="demo-points" role="list" aria-label={copy.cliPointsLabel}>
         {copy.cliPoints.map((point) => <span role="listitem">{point}</span>)}
       </div>
+      <PixelIllustration scene="relay-bridge" />
     </div>
   </section>
 
@@ -182,6 +184,7 @@ const copy = locale === "zh" ? {
         <div class="hero-actions">
           <a class="button primary" href={publicResearchHref}>{copy.install}</a>
         </div>
+        <PixelIllustration scene="launch-dock" />
       </div>
     </div>
   </section>

@@ -71,6 +71,7 @@ for (const [englishPath, chinesePath] of pairs) {
   for (const [page, html] of [[englishPath, english], [chinesePath, chinese]]) {
     const scenes = Array.from(html.matchAll(/<img\b[^>]*src="(\/art\/pixel\/[^"]+)"/g), ([, src]) => src);
     assert(scenes.length > 0, `${page} lacks its pixel illustration`);
+    assert((html.match(/data-inline-scene="/g) || []).length >= 2, `${page} lacks middle and lower pixel illustrations`);
     for (const src of scenes) {
       assert(fs.existsSync(path.join(dist, src.slice(1))), `${page} references missing artwork: ${src}`);
     }

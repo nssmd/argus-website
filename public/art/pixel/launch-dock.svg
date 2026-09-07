@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="120" viewBox="0 0 240 120" shape-rendering="crispEdges" role="img" aria-labelledby="ld-title ld-desc">
+  <title id="ld-title">Departure from the launch dock</title>
+  <desc id="ld-desc">A researcher prepares a small research boat at a compact timber jetty, with supplies, a glowing lantern, reeds and rippling water around the irregular shore.</desc>
+  <defs>
+    <g id="ld-reed">
+      <path fill="#496f69" d="M2 2h2v18H2zm8-2h2v20h-2zm8 6h2v14h-2z"/>
+      <path fill="#6b9180" d="M0 0h6v6H0zm8 0h6v6H8zm8 4h6v6h-6z"/>
+      <path fill="#bb8855" d="M2 0h2v4H2zm8 0h2v4h-2zm8 4h2v4h-2z"/>
+    </g>
+  </defs>
+  <path fill="#244b68" d="M6 74h22v-8h28v4h24v-8h30v6h32v-4h30v8h24v-6h26v8h26v-4h12v44H4V82h2z"/>
+  <path fill="#386484" d="M4 80h30v-8h26v4h24v-8h28v6h34v-4h28v8h28v-6h24v8h30v34H4z"/>
+  <path fill="#5686a6" d="M4 88h42v-6h34v6h42v-8h38v8h38v-6h38v32H4z"/>
+  <path fill="#97bbca" d="M8 94h34v-4h38v6h40v-8h40v8h38v-6h34v18H8z"/>
+  <path fill="#d4e6e7" d="M14 98h30v2H14zm44 8h34v2H58zm54-6h30v2h-30zm44 8h40v2h-40zm54-10h20v2h-20z"/>
+  <path fill="#102c46" d="M0 54h40v8h22v14H0z"/>
+  <path fill="#496f69" d="M0 48h10V36h8v10h10v-8h8v18h16v14H0z"/>
+  <path fill="#6b9180" d="M0 52h12V42h6v10h10v-8h6v16h14v6H0z"/>
+  <path fill="#779498" d="M0 64h24v-4h24v8H0z"/>
+  <path fill="#102c46" d="M30 72h116v10H30z"/>
+  <path fill="#715743" d="M26 66h122v12H26z"/>
+  <path fill="#bb8855" d="M22 62h128v10H22z"/>
+  <path fill="#efc66f" d="M26 62h120v4H26z"/>
+  <path fill="#97704f" d="M34 72h8v30h-8zm94 0h8v30h-8zm-48 0h8v24h-8z"/>
+  <path fill="#715743" d="M36 72h4v28h-4zm94 0h4v28h-4zm-48 0h4v22h-4z"/>
+  <path fill="#102c46" d="M24 52h4v16h-4zm28 0h4v16h-4zm28 0h4v16h-4zm28 0h4v16h-4zm28 0h4v16h-4z"/>
+  <path fill="#bb8855" d="M24 50h4v14h-4zm28 0h4v14h-4zm28 0h4v14h-4zm28 0h4v14h-4zm28 0h4v14h-4z"/>
+  <path fill="#f7dfa0" d="M22 50h120v4H22z"/>
+  <path fill="#715743" d="M26 56h112v4H26z"/>
+  <path fill="#102c46" d="M150 78h78v8h-78z"/>
+  <path fill="#715743" d="M146 70h88v10h-88z"/>
+  <path fill="#bb8855" d="M142 66h96v10h-96z"/>
+  <path fill="#efc66f" d="M148 66h84v4h-84z"/>
+  <path fill="#493e3c" d="M154 76h72v12H154z"/>
+  <path fill="#244b68" d="M150 86h80v8h-6v6h-62v-6h-8z"/>
+  <path fill="#386484" d="M156 86h68v8h-8v4h-50v-4h-10z"/>
+  <path fill="#5686a6" d="M164 88h52v4h-52z"/>
+  <path fill="#f3ead6" d="M166 54h42v12h-42z"/>
+  <path fill="#d4e6e7" d="M170 50h34v16h-34z"/>
+  <path fill="#97bbca" d="M174 52h26v10h-26z"/>
+  <path fill="#102c46" d="M184 40h6v26h-6z"/>
+  <path fill="#bb8855" d="M186 42h4v24h-4z"/>
+  <path fill="#f7dfa0" d="M188 44h18v4h-18z"/>
+  <path fill="#efc66f" d="M190 48h14v4h-14z"/>
+  <path fill="#102c46" d="M158 58h10v8h-10z"/>
+  <path fill="#bb8855" d="M160 56h8v8h-8z"/>
+  <path fill="#f7dfa0" d="M162 56h4v4h-4z"/>
+  <path fill="#102c46" d="M206 56h16v10h-16z"/>
+  <path fill="#715743" d="M208 54h12v10h-12z"/>
+  <path fill="#efc66f" d="M210 54h8v4h-8z"/>
+  <path fill="#102c46" d="M92 44h16v8h4v18H88V52h4z"/>
+  <path fill="#386484" d="M92 46h12v20H88V52h4z"/>
+  <path fill="#5686a6" d="M92 48h6v16H88V52h4z"/>
+  <path fill="#efc66f" d="M94 32h12v12h-2v4H94z"/>
+  <path fill="#f7dfa0" d="M96 34h8v10h-8z"/>
+  <path fill="#493e3c" d="M92 30h14v6H96v4h-4z"/>
+  <path fill="#102c46" d="M88 66h10v14h-4v12h-6V76h-4v16h-6V74h10z"/>
+  <path fill="#bb8855" d="M106 50h8v6h-8z"/>
+  <path fill="#f7dfa0" d="M112 52h6v4h-6z"/>
+  <path fill="#102c46" d="M54 44h16v18H54z"/>
+  <path fill="#715743" d="M56 40h12v18H56z"/>
+  <path fill="#bb8855" d="M54 38h16v8H54z"/>
+  <path fill="#efc66f" d="M56 38h12v4H56z"/>
+  <path fill="#102c46" d="M58 28h8v10h-8z"/>
+  <path fill="#efc66f" d="M56 24h12v8H56z"/>
+  <path fill="#f7dfa0" d="M58 24h8v6h-8z"/>
+  <path fill="#bb8855" d="M60 32h4v6h-4z"/>
+  <use href="#ld-reed" x="4" y="82"/>
+  <use href="#ld-reed" x="214" y="82"/>
+  <path fill="#496f69" d="M0 108h12v-8h10v10h12v10H0zm202 2h10v-10h10v8h18v12h-38z"/>
+  <path fill="#6b9180" d="M4 108h10v-6h6v10h10v8H4zm202 2h8v-8h6v10h16v8h-30z"/>
+  <path fill="#efc66f" d="M18 106h4v4h-4zm202 2h4v4h-4z"/>
+  <path fill="#97bbca" d="M64 100h28v2H64zm38 8h34v2h-34zm56-4h28v2h-28z"/>
+</svg>

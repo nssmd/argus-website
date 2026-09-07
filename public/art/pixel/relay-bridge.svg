@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="120" viewBox="0 0 240 120" shape-rendering="crispEdges" role="img" aria-labelledby="rb-title rb-desc">
+  <title id="rb-title">Robot couriers meeting on a relay bridge</title>
+  <desc id="rb-desc">Two small robot couriers exchange a gold document on a stepped wooden arch bridge above a blue stream, with reeds, ripples and sturdy stone supports.</desc>
+  <defs>
+    <g id="rb-reed">
+      <path fill="#496f69" d="M0 22h4V8h4v12h4V0h4v20h4V6h4v20H0z"/>
+      <path fill="#6b9180" d="M4 22h4V10h2v14h6V6h2v18h6v2H4z"/>
+      <path fill="#bb8855" d="M10 0h8v4h-8z"/>
+    </g>
+    <g id="rb-robot">
+      <path fill="#102c46" d="M4 0h20v4h4v18h-4v4H4v-4H0V4h4z"/>
+      <path fill="#d4e6e7" d="M4 4h20v16H4z"/>
+      <path fill="#5686a6" d="M6 8h16v8H6z"/>
+      <path fill="#183951" d="M8 10h4v4H8zm8 0h4v4h-4z"/>
+      <path fill="#efc66f" d="M12 16h4v2h-4z"/>
+      <path fill="#244b68" d="M10 0h8v4h-8z"/>
+      <path fill="#102c46" d="M4 24h8v12H4zm12 0h8v12h-8z"/>
+      <path fill="#779498" d="M2 34h12v4H2zm12 0h12v4H14z"/>
+    </g>
+  </defs>
+  <path fill="#386484" d="M8 86h26v-4h28v4h30v-6h30v4h32v-4h30v6h28v-4h22v4h18v24H8z"/>
+  <path fill="#5686a6" d="M14 90h38v-4h34v6h38v-6h34v6h36v-6h32v6h8v18H14z"/>
+  <path fill="#97bbca" d="M18 96h46v-4h38v4h44v-4h40v4h40v14H18z"/>
+  <path fill="#d4e6e7" d="M28 98h34v2H28zm52 6h42v2H80zm70-6h36v2h-36zm54 6h22v2h-22z"/>
+  <path fill="#244b68" d="M12 108h42v-4h46v6h48v-6h44v4h36v10H12z"/>
+  <path fill="#386484" d="M26 112h38v2H26zm58 2h44v2H84zm74-2h46v2h-46z"/>
+  <path fill="#102c46" d="M32 74h30v34H32zm146 0h30v34h-30z"/>
+  <path fill="#779498" d="M36 78h22v26H36zm146 0h22v26h-22z"/>
+  <path fill="#97bbca" d="M38 80h18v6H38zm146 0h18v6h-18z"/>
+  <path fill="#5686a6" d="M38 90h18v4H38zm146 0h18v4h-18z"/>
+  <path fill="#244b68" d="M34 104h26v6H34zm146 0h26v6h-26z"/>
+  <path fill="#102c46" d="M48 64h16v16H48zm128 0h16v16h-16z"/>
+  <path fill="#715743" d="M50 60h14v16H50zm126 0h14v16h-14z"/>
+  <path fill="#bb8855" d="M52 58h12v16H52zm124 0h12v16h-12z"/>
+  <path fill="#102c46" d="M46 56h18v6H46zm130 0h18v6h-18z"/>
+  <path fill="#715743" d="M50 50h14v8H50zm126 0h14v8h-14z"/>
+  <path fill="#bb8855" d="M52 48h12v8H52zm124 0h12v8h-12z"/>
+  <path fill="#efc66f" d="M54 48h10v2H54zm122 0h10v2h-10z"/>
+  <path fill="#102c46" d="M58 44h12v8h12v-6h16v-4h44v4h16v6h12v-8h12v16h-14v-4h-14v-6h-16v-4h-36v4H86v6H72v4H58z"/>
+  <path fill="#715743" d="M60 40h12v8h12v-6h16v-4h40v4h16v6h12v-8h12v14h-14v-4h-14v-6h-16v-4h-32v4H88v6H74v4H60z"/>
+  <path fill="#bb8855" d="M62 38h12v8h12v-6h16v-4h36v4h16v6h12v-8h12v10h-14v-4h-14v-6h-12v-2h-36v6H88v6H74v4H62z"/>
+  <path fill="#efc66f" d="M64 38h10v6h14v-6h14v-4h36v4h16v6h12v-6h10v4h-12v4h-12v-6h-16v-4h-32v4H88v6H74v4H64z"/>
+  <path fill="#f7dfa0" d="M70 38h4v4h14v-4h14v-4h36v2h-34v4H88v4H74v4h-4z"/>
+  <path fill="#102c46" d="M66 54h108v8H66z"/>
+  <path fill="#715743" d="M70 52h100v8H70z"/>
+  <path fill="#bb8855" d="M74 50h92v6H74z"/>
+  <path fill="#efc66f" d="M78 50h84v2H78z"/>
+  <path fill="#715743" d="M80 56h6v20h-6zm74 0h6v20h-6z"/>
+  <path fill="#bb8855" d="M82 56h2v18h-2zm74 0h2v18h-2z"/>
+  <path fill="#102c46" d="M68 66h104v6H68z"/>
+  <path fill="#244b68" d="M74 64h92v4H74z"/>
+  <path fill="#5686a6" d="M82 64h76v2H82z"/>
+  <use href="#rb-robot" x="72" y="16"/>
+  <use href="#rb-robot" x="140" y="16"/>
+  <path fill="#244b68" d="M68 26h6v14h-6zm100 0h6v14h-6z"/>
+  <path fill="#d4e6e7" d="M66 28h4v8h-4zm106 0h4v8h-4z"/>
+  <path fill="#102c46" d="M100 26h12v8h-12zm28 0h12v8h-12z"/>
+  <path fill="#efc66f" d="M108 24h24v14h-24z"/>
+  <path fill="#f7dfa0" d="M110 26h20v8h-20z"/>
+  <path fill="#bb8855" d="M112 34h16v4h-16z"/>
+  <path fill="#386484" d="M114 28h12v2h-12zm0 4h8v2h-8z"/>
+  <path fill="#f3ead6" d="M104 22h8v4h-8zm24 0h8v4h-8z"/>
+  <path fill="#102c46" d="M96 20h8v6h-8zm40 0h8v6h-8z"/>
+  <use href="#rb-reed" x="6" y="68"/>
+  <use href="#rb-reed" x="210" y="66"/>
+  <path fill="#496f69" d="M0 100h30v14H0zm206 0h34v14h-34z"/>
+  <path fill="#6b9180" d="M0 102h20v-8h10v14H0zm214-2h10v-8h10v16h6v6h-26z"/>
+  <path fill="#efc66f" d="M14 98h4v4h-4zm212-2h4v4h-4z"/>
+  <path fill="#f3ead6" d="M42 84h16v4H42zm140 0h18v4h-18z"/>
+  <path fill="#d4e6e7" d="M44 84h12v2H44zm140 0h14v2h-14z"/>
+</svg>

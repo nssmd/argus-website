@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="120" viewBox="0 0 240 120" shape-rendering="crispEdges" role="img" aria-labelledby="fk-title fk-desc">
+  <title id="fk-title">Expedition field kit on a rocky path</title>
+  <desc id="fk-desc">An open field case holds a folded map, notebook, lantern and sample vials while a small companion robot waits among grasses and irregular trail stones.</desc>
+  <defs>
+    <g id="fk-vial">
+      <path fill="#102c46" d="M2 0h8v4h2v18H0V4h2z"/>
+      <path fill="#d4e6e7" d="M2 4h8v16H2z"/>
+      <path fill="#97bbca" d="M2 12h8v8H2z"/>
+      <path fill="#efc66f" d="M2 0h8v4H2z"/>
+    </g>
+    <g id="fk-grass">
+      <path fill="#496f69" d="M0 16h4V6h4v8h4V0h4v14h4V8h4v12H0z"/>
+      <path fill="#6b9180" d="M4 16h4V8h2v10h6V8h2v10h6v2H4z"/>
+    </g>
+  </defs>
+  <path fill="#244b68" d="M8 92h22v-8h24v4h24v-6h30v6h32v-4h30v6h24v-6h28v8h14v18H8z"/>
+  <path fill="#386484" d="M16 96h32v-6h30v6h40v-4h34v4h34v-6h34v8h12v12H16z"/>
+  <path fill="#5686a6" d="M24 102h42v-6h36v6h42v-4h38v4h32v8H24z"/>
+  <path fill="#779498" d="M14 108h52v-4h44v6h54v-6h46v4h18v10H14z"/>
+  <path fill="#97bbca" d="M26 108h32v2H26zm54 4h42v2H80zm88-4h34v2h-34z"/>
+  <path fill="#f3ead6" d="M36 94h20v-4h18v4h12v6H36z"/>
+  <path fill="#d4e6e7" d="M40 94h14v-2h16v2h10v2H40z"/>
+  <path fill="#779498" d="M154 94h18v-6h20v4h16v8h-54z"/>
+  <path fill="#97bbca" d="M160 94h12v-4h16v4h12v2h-40z"/>
+  <path fill="#102c46" d="M54 44h124v58H54z"/>
+  <path fill="#715743" d="M58 48h116v50H58z"/>
+  <path fill="#bb8855" d="M62 52h108v42H62z"/>
+  <path fill="#f3ead6" d="M66 56h100v34H66z"/>
+  <path fill="#102c46" d="M50 40h132v12H50z"/>
+  <path fill="#715743" d="M54 34h124v12H54z"/>
+  <path fill="#bb8855" d="M58 30h116v10H58z"/>
+  <path fill="#efc66f" d="M62 30h108v4H62z"/>
+  <path fill="#244b68" d="M68 34h36v4H68zm60 0h36v4h-36z"/>
+  <path fill="#5686a6" d="M72 34h28v2H72zm60 0h28v2h-28z"/>
+  <path fill="#102c46" d="M66 58h46v30H66z"/>
+  <path fill="#d4e6e7" d="M70 60h38v26H70z"/>
+  <path fill="#f7dfa0" d="M74 62h16v10H74zm16 10h14v12H90z"/>
+  <path fill="#efc66f" d="M90 62h14v10H90z"/>
+  <path fill="#97bbca" d="M74 72h16v12H74z"/>
+  <path fill="#386484" d="M88 62h4v22h-4zm-14 8h30v4H74z"/>
+  <path fill="#5686a6" d="M76 64h10v2H76zm18 10h8v2h-8zm-16 4h8v2h-8z"/>
+  <path fill="#102c46" d="M116 60h26v28h-26z"/>
+  <path fill="#f3ead6" d="M120 62h18v24h-18z"/>
+  <path fill="#d4e6e7" d="M122 64h14v20h-14z"/>
+  <path fill="#386484" d="M124 68h10v2h-10zm0 6h10v2h-10zm0 6h8v2h-8z"/>
+  <path fill="#efc66f" d="M120 62h18v4h-18z"/>
+  <path fill="#bb8855" d="M116 86h26v4h-26z"/>
+  <path fill="#102c46" d="M146 62h18v24h-18z"/>
+  <path fill="#386484" d="M150 58h10v4h-10z"/>
+  <path fill="#779498" d="M150 66h10v16h-10z"/>
+  <path fill="#efc66f" d="M148 70h14v10h-14z"/>
+  <path fill="#f7dfa0" d="M150 70h10v6h-10z"/>
+  <path fill="#bb8855" d="M152 54h6v6h-6z"/>
+  <path fill="#102c46" d="M148 52h14v4h-14z"/>
+  <use href="#fk-vial" x="42" y="58"/>
+  <use href="#fk-vial" x="184" y="58"/>
+  <path fill="#496f69" d="M44 76h8v8h-8zm142 0h8v8h-8z"/>
+  <path fill="#efc66f" d="M46 72h4v6h-4zm142 0h4v6h-4z"/>
+  <path fill="#102c46" d="M190 64h24v20h-24z"/>
+  <path fill="#d4e6e7" d="M194 60h16v18h-16z"/>
+  <path fill="#5686a6" d="M196 64h12v10h-12z"/>
+  <path fill="#183951" d="M196 66h4v4h-4zm8 0h4v4h-4z"/>
+  <path fill="#efc66f" d="M200 72h4v2h-4z"/>
+  <path fill="#244b68" d="M194 56h16v6h-16z"/>
+  <path fill="#386484" d="M198 54h8v4h-8z"/>
+  <path fill="#102c46" d="M188 82h8v12h-8zm18 0h8v12h-8z"/>
+  <path fill="#779498" d="M186 92h12v4h-12zm18 0h12v4h-12z"/>
+  <path fill="#efc66f" d="M186 76h6v4h-6zm26 0h6v4h-6z"/>
+  <use href="#fk-grass" x="12" y="78"/>
+  <use href="#fk-grass" x="214" y="76"/>
+  <path fill="#496f69" d="M4 98h24v12H4zm208-2h24v14h-24z"/>
+  <path fill="#6b9180" d="M18 92h12v12H18zm192 2h12v12h-12z"/>
+  <path fill="#efc66f" d="M16 98h4v4h-4zm208-2h4v4h-4z"/>
+</svg>
