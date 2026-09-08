@@ -214,10 +214,14 @@ for (const page of ["index.html", "zh/index.html"]) {
 
 for (const page of ["contact/index.html", "zh/contact/index.html"]) {
   const html = read(page);
-  assert((html.match(/class="team-member-card"/g) || []).length === 8, `${page} must show all eight team members`);
-  for (const login of ["aHappend", "Chenxxxxxx06", "lbx154", "nssmd", "racoonykc", "Silentmoonlight", "waltstephen", "zhxianlucky"]) {
+  assert((html.match(/class="team-member-card"/g) || []).length === 5, `${page} must show five members with public email`);
+  for (const login of ["aHappend", "Chenxxxxxx06", "lbx154", "nssmd", "waltstephen"]) {
     assert(html.includes(`github.com/${login}`), `${page} lacks ${login}`);
   }
+  for (const login of ["racoonykc", "Silentmoonlight", "zhxianlucky"]) {
+    assert(!html.includes(`github.com/${login}`), `${page} still lists removed contact ${login}`);
+  }
+  assert(!html.includes("team-member-card__no-email"), `${page} still displays a member without public email`);
   assert(html.includes("mailto:sufeng_guo@smail.nju.edu.cn"), `${page} lacks aHappend's public email`);
   assert(html.includes("mailto:hapouterwall@gmail.com"), `${page} lacks aHappend's public README email`);
   assert(html.includes("mailto:sufeng_guo@qq.com"), `${page} lacks aHappend's public README email`);
