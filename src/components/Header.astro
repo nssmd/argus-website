@@ -263,28 +263,24 @@ const isCurrent = (href: string) => currentBase === href || (href === "/projects
       const rect = toggle.getBoundingClientRect();
       const x = rect.left + rect.width / 2;
       const y = rect.top + rect.height / 2;
-      const radius = Math.ceil(Math.max(x, innerWidth - x) + Math.max(y, innerHeight - y)) + 1;
-      const steps = Math.ceil(radius / 48);
-      const tile = radius / steps;
-      const edge = [];
-      for (let i = 0; i < steps; i++) {
-        edge.push([i * tile, (i - steps) * tile], [(i + 1) * tile, (i - steps) * tile]);
+      const tile = 32;
+      const height = Math.ceil(innerHeight / tile) * tile;
+      const edge = [[0, 0]];
+      for (let row = 0; row < height / tile; row++) {
+        edge.push([row * tile, (row + 1) * tile], [(row + 1) * tile, (row + 1) * tile]);
       }
-      // Keep the staircase fine-grained on wide screens, not a few giant blocks.
-      const points = [
-        ...edge,
-        ...edge.map(([dx, dy]) => [-dy, dx]),
-        ...edge.map(([dx, dy]) => [-dx, -dy]),
-        ...edge.map(([dx, dy]) => [dy, -dx]),
-      ];
-      root.style.setProperty("--theme-clip-from", `polygon(${points.map(() => `${x}px ${y}px`).join(",")})`);
-      root.style.setProperty("--theme-clip-to", `polygon(${points.map(
-        ([dx, dy]) => `${(x + dx).toFixed(2)}px ${(y + dy).toFixed(2)}px`,
-      ).join(",")})`);
-      root.dataset.themeTransition = "active";
+      edge.push([innerWidth + height, height], [innerWidth + height, 0]);
+      root.style.setProperty("--theme-clip", `polygon(${edge.map(([dx, dy]) => `${dx}px ${dy}px`).join(",")})`);
+      root.style.setProperty("--theme-shift-start", `${x - Math.floor(y / tile) * tile}px`);
+      root.style.setProperty("--theme-shift-end", `${-height}px`);
+      // Separate snapshots let a fixed mask move without moving the page content.
+      root.dataset.themeTransition = "before";
       const transition = document.startViewTransition(() => {
+        // A skipped callback must not rename a newer transition's snapshot.
+        if (themeTransition !== transition) return;
         // Queued snapshots must use the latest intent, even without localStorage.
         apply(intendedTheme);
+        root.dataset.themeTransition = "after";
         // Capture final palette colors without stopping transforms or the opening.
         document.getAnimations().forEach((animation) => {
           if (animation instanceof CSSTransition && (
@@ -301,7 +297,7 @@ const isCurrent = (href: string) => currentBase === href || (href === "/projects
         if (themeTransition !== transition) return;
         themeTransition = null;
         delete root.dataset.themeTransition;
-        ["--theme-clip-from", "--theme-clip-to"]
+        ["--theme-clip", "--theme-shift-start", "--theme-shift-end"]
           .forEach((property) => root.style.removeProperty(property));
       });
     });

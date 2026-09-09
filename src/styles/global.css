@@ -98,31 +98,60 @@
   --lime: #b6dc65;
 }
 
+:root[data-theme-transition="before"] {
+  view-transition-name: argus-theme-before;
+}
+
+:root[data-theme-transition="after"] {
+  view-transition-name: argus-theme-after;
+}
+
 :root[data-theme-transition]::view-transition {
   pointer-events: none;
 }
 
-:root[data-theme-transition]::view-transition-group(root),
-:root[data-theme-transition]::view-transition-old(root) {
+:root[data-theme-transition]::view-transition-group(*),
+:root[data-theme-transition]::view-transition-old(*) {
   animation: none;
 }
 
-:root[data-theme-transition]::view-transition-old(root),
-:root[data-theme-transition]::view-transition-new(root) {
+:root[data-theme-transition]::view-transition-old(*),
+:root[data-theme-transition]::view-transition-new(*) {
   mix-blend-mode: normal;
 }
 
-:root[data-theme-transition]::view-transition-new(root) {
-  animation: theme-pixel-reveal 560ms cubic-bezier(.2, .7, .2, 1) both;
+:root[data-theme-transition]::view-transition-group(argus-theme-before) {
+  z-index: 0;
+}
+
+:root[data-theme-transition]::view-transition-group(argus-theme-after) {
+  z-index: 1;
+  clip-path: var(--theme-clip);
+  animation: theme-pixel-reveal 440ms linear both;
+}
+
+:root[data-theme-transition]::view-transition-new(argus-theme-after) {
+  animation: theme-pixel-content 440ms linear both, theme-pixel-arrive 80ms linear both;
 }
 
 @keyframes theme-pixel-reveal {
-  from { clip-path: var(--theme-clip-from); }
-  to { clip-path: var(--theme-clip-to); }
+  from { transform: translateX(var(--theme-shift-start)); }
+  to { transform: translateX(var(--theme-shift-end)); }
+}
+
+@keyframes theme-pixel-content {
+  from { transform: translateX(calc(-1 * var(--theme-shift-start))); }
+  to { transform: translateX(calc(-1 * var(--theme-shift-end))); }
+}
+
+@keyframes theme-pixel-arrive {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :root[data-theme-transition]::view-transition-new(root) { animation: none; }
+  :root[data-theme-transition]::view-transition-group(*),
+  :root[data-theme-transition]::view-transition-new(*) { animation: none; }
 }
 
 * {

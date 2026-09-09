@@ -267,6 +267,20 @@ assert(
 );
 
 const css = fs.readFileSync(path.resolve("src/styles/global.css"), "utf8");
+for (const name of ["theme-pixel-reveal", "theme-pixel-content"]) {
+  const frames = css.match(new RegExp(
+    `@keyframes ${name}\\s*\\{\\s*from\\s*\\{([^}]*)\\}\\s*to\\s*\\{([^}]*)\\}\\s*\\}`,
+  ));
+  assert(frames, `${name} keyframes are missing`);
+  assert(
+    frames.slice(1).every((frame) => /^transform:\s*translateX\([^;]+\);$/.test(frame.trim())),
+    `${name} must animate only translation, not repaint a changing pixel clip`,
+  );
+}
+const revealTiming = css.match(/animation:\s*theme-pixel-reveal\s+([^;]+);/);
+const contentTiming = css.match(/animation:\s*theme-pixel-content\s+([^,]+),/);
+assert(revealTiming && contentTiming && revealTiming[1] === contentTiming[1],
+  "theme mask and content need identical timing to keep the page stationary");
 assert(css.includes("scroll-snap-type: x mandatory"), "run rail lacks mandatory horizontal snap");
 assert(css.includes("min(82vw"), "mobile run cards are not ~82vw wide");
 assert(
