@@ -218,7 +218,11 @@ const isCurrent = (href: string) => currentBase === href || (href === "/projects
   const toggle = document.querySelector("[data-theme-toggle]");
   if (toggle instanceof HTMLButtonElement && toggle.dataset.ready !== "true") {
     toggle.dataset.ready = "true";
+    const root = document.documentElement;
     const media = window.matchMedia("(prefers-color-scheme: dark)");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let intendedTheme = root.dataset.theme === "dark" ? "dark" : "light";
+    let themeTransition = null;
     const savedTheme = () => {
       try {
         return localStorage.getItem("argus-site-theme");
@@ -227,8 +231,9 @@ const isCurrent = (href: string) => currentBase === href || (href === "/projects
       }
     };
     const apply = (theme) => {
-      document.documentElement.dataset.theme = theme;
-      document.documentElement.style.colorScheme = theme;
+      intendedTheme = theme;
+      root.dataset.theme = theme;
+      root.style.colorScheme = theme;
       document.querySelector('meta[name="theme-color"]')?.setAttribute(
         "content",
         theme === "dark" ? "#07101c" : "#ffffff",
@@ -241,15 +246,77 @@ const isCurrent = (href: string) => currentBase === href || (href === "/projects
         toggle.title = label;
       }
     };
-    apply(document.documentElement.dataset.theme === "dark" ? "dark" : "light");
+    apply(intendedTheme);
     toggle.addEventListener("click", () => {
-      const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-      apply(next);
+      intendedTheme = intendedTheme === "dark" ? "light" : "dark";
       try {
-        localStorage.setItem("argus-site-theme", next);
+        localStorage.setItem("argus-site-theme", intendedTheme);
       } catch {
         // Theme still applies for this page when persistence is unavailable.
       }
+      themeTransition?.skipTransition();
+      if (reducedMotion.matches || !document.startViewTransition) {
+        apply(intendedTheme);
+        return;
+      }
+
+      const rect = toggle.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
+      const radius = Math.ceil(Math.max(x, innerWidth - x) + Math.max(y, innerHeight - y)) + 1;
+      const steps = Math.ceil(radius / 48);
+      const tile = radius / steps;
+      const edge = [];
+      for (let i = 0; i < steps; i++) {
+        edge.push([i * tile, (i - steps) * tile], [(i + 1) * tile, (i - steps) * tile]);
+      }
+      // Keep the staircase fine-grained on wide screens, not a few giant blocks.
+      const points = [
+        ...edge,
+        ...edge.map(([dx, dy]) => [-dy, dx]),
+        ...edge.map(([dx, dy]) => [-dx, -dy]),
+        ...edge.map(([dx, dy]) => [dy, -dx]),
+      ];
+      root.style.setProperty("--theme-clip-from", `polygon(${points.map(() => `${x}px ${y}px`).join(",")})`);
+      root.style.setProperty("--theme-clip-to", `polygon(${points.map(
+        ([dx, dy]) => `${(x + dx).toFixed(2)}px ${(y + dy).toFixed(2)}px`,
+      ).join(",")})`);
+      root.dataset.themeTransition = "active";
+      const transition = document.startViewTransition(() => {
+        // Queued snapshots must use the latest intent, even without localStorage.
+        apply(intendedTheme);
+        // Capture final palette colors without stopping transforms or the opening.
+        document.getAnimations().forEach((animation) => {
+          if (animation instanceof CSSTransition && (
+            animation.transitionProperty.endsWith("color")
+            || ["box-shadow", "text-shadow", "fill", "stroke"].includes(animation.transitionProperty)
+          )) animation.finish();
+        });
+      });
+      themeTransition = transition;
+      transition.ready.catch((error) => {
+        if (error.name !== "AbortError") console.warn("Theme animation was skipped:", error);
+      });
+      transition.finished.finally(() => {
+        if (themeTransition !== transition) return;
+        themeTransition = null;
+        delete root.dataset.themeTransition;
+        ["--theme-clip-from", "--theme-clip-to"]
+          .forEach((property) => root.style.removeProperty(property));
+      });
+    });
+    // Root snapshots receive pointer clicks instead of the underlying button.
+    document.addEventListener("click", (event) => {
+      if (!themeTransition || event.target !== root) return;
+      const rect = toggle.getBoundingClientRect();
+      if (event.clientX < rect.left || event.clientX > rect.right
+        || event.clientY < rect.top || event.clientY > rect.bottom) return;
+      event.stopImmediatePropagation();
+      toggle.focus({ preventScroll: true });
+      toggle.click();
+    }, true);
+    reducedMotion.addEventListener("change", (event) => {
+      if (event.matches) themeTransition?.skipTransition();
     });
     media.addEventListener("change", (event) => {
       if (!savedTheme()) {

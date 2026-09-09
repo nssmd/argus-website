@@ -69,6 +69,7 @@ for (const [englishPath, chinesePath] of pairs) {
   assert(chinese.includes('class="footer-brand"') && chinese.includes('aria-label="Argus 首页"'), `${chinesePath} footer logo is unnamed`);
   const pixelScenes = [];
   for (const [page, html] of [[englishPath, english], [chinesePath, chinese]]) {
+    assert(html.includes("document.startViewTransition"), `${page} lacks the shared theme reveal`);
     const scenes = Array.from(html.matchAll(/<img\b[^>]*src="(\/art\/pixel\/[^"]+)"/g), ([, src]) => src);
     assert(scenes.length > 0, `${page} lacks its pixel illustration`);
     assert((html.match(/data-inline-scene="/g) || []).length >= 2, `${page} lacks middle and lower pixel illustrations`);
