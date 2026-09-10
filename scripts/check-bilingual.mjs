@@ -179,9 +179,16 @@ for (const page of ["projects/mathematics/index.html", "zh/projects/mathematics/
 
 for (const page of ["get-started/index.html", "zh/get-started/index.html"]) {
   const html = read(page);
-  assert(html.includes("Argus-0.1.1-setup.exe"), `${page} lacks the direct Windows installer`);
-  assert(html.includes("6ad1048329bbdfa3c9594f0ba7aa667a864df4b5e5919f31366b6116fedc8923"), `${page} lacks the installer checksum`);
-  assert(html.includes("Argus-0.1.1-setup.exe.sig"), `${page} lacks the installer signature`);
+  assert(html.includes("Argus-0.1.2-setup.exe"), `${page} lacks the current Windows installer`);
+  assert(html.includes("14e838884d68413c501f79f813c506c660117ec494aa8c155a559b3752df61f8"), `${page} lacks the current installer checksum`);
+  assert(html.includes("Argus-0.1.2-setup.exe.sig"), `${page} lacks the current installer signature`);
+  assert(html.includes("releases/tag/v0.1.2"), `${page} lacks current release notes`);
+  assert(html.includes("31.4 MiB"), `${page} lacks the current installer size`);
+  assert(html.includes("Microsoft Edge WebView2 Runtime"), `${page} lacks the desktop prerequisite`);
+  assert(html.includes("not a Windows Authenticode") || html.includes("不是 Windows Authenticode"),
+    `${page} must distinguish updater signatures from Windows certificate signing`);
+  assert(html.includes("stop any running Argus tasks") || html.includes("先停止正在进行的 Argus 任务"),
+    `${page} lacks the safe-upgrade reminder`);
   assert(html.includes("docs/agent-install.md"), `${page} lacks the agent installation contract`);
   assert(html.includes("argus doctor --deep --advisor auto"), `${page} lacks active diagnosis`);
   assert(html.includes("GitHub Copilot CLI"), `${page} lacks the Copilot backend`);
@@ -201,16 +208,16 @@ for (const page of ["get-started/index.html", "zh/get-started/index.html"]) {
   assert((html.match(/class="backend-card(?: |")/g) || []).length === 9, `${page} must show nine backend cards`);
   assert(html.includes("docs/backend-providers.md"), `${page} lacks the backend provider guide`);
   assert(
-    html.includes("Windows 0.1.1 installer shipped with eight backends") ||
-      html.includes("Windows 0.1.1 安装包发布时包含八个后端"),
-    `${page} lacks the desktop/source backend version boundary`,
+    html.includes("Windows 0.1.2 includes Cursor CLI backend support") ||
+      html.includes("Windows 0.1.2 已包含 Cursor CLI 后端支持"),
+    `${page} lacks the current desktop backend support note`,
   );
   assert(html.includes("microsoft/ArgusAgent"), `${page} lacks the official distribution link`);
 }
 
 for (const page of ["index.html", "zh/index.html"]) {
   const html = read(page);
-  assert(html.includes("Argus-0.1.1-setup.exe"), `${page} lacks the direct Windows installer action`);
+  assert(html.includes("Argus-0.1.2-setup.exe"), `${page} lacks the current Windows installer action`);
 }
 
 for (const page of ["contact/index.html", "zh/contact/index.html"]) {
@@ -344,6 +351,8 @@ assert(
 for (const page of fs.readdirSync(dist, { recursive: true })) {
   if (typeof page !== "string" || !page.endsWith(".html")) continue;
   const html = read(page);
+  assert(!html.includes("Argus-0.1.1-setup.exe") && !html.includes("Windows 0.1.1"),
+    `${page} still advertises the superseded desktop release`);
   for (const match of html.matchAll(/<a\b[^>]*\bhref="([^"]+)"/g)) {
     const target = localTarget(match[1]);
     if (target) assert(fs.existsSync(target), `${page} has broken link: ${match[1]}`);

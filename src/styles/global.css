@@ -2193,6 +2193,10 @@ main {
   font-size: 14px;
 }
 
+.desktop-download-card__copy > p:not(.eyebrow) + p {
+  margin-top: 12px;
+}
+
 .desktop-download-card__meta,
 .desktop-download-card__links {
   display: flex;
@@ -2258,6 +2262,13 @@ main {
   color: var(--ink);
   font-family: var(--mono);
   font-size: 10px;
+}
+
+.desktop-download-card__checksum p {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
 }
 
 .agent-install-card {
@@ -4209,11 +4220,18 @@ main {
   }
 
   .desktop-download-card {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+    padding: 24px;
   }
 
   .desktop-download-card__action {
+    min-width: 0;
     align-items: flex-start;
+  }
+
+  .desktop-download-card__action .button {
+    min-width: 0;
+    max-width: 100%;
   }
 
   .desktop-download-card__links {

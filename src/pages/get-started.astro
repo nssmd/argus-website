@@ -18,9 +18,11 @@ const copy = locale === "zh" ? {
   lede: "Argus 不要求新的模型账户。让 Copilot、Codex、Claude、Pi 或其他受支持的 CLI 成为执行后端，再由 Manager、Planner、Engineer 与 Reviewer 接管长程工作。",
   download: "下载 Windows 安装程序",
   desktopTitle: "Windows 桌面版，一键安装。",
-  desktopBody: "直接下载 Argus 0.1.1 的 Tauri Desktop 安装程序。安装后即可配置已有的 Agent CLI，并通过桌面界面启动和查看长程任务。",
-  desktopMeta: "Windows 10/11 · x64 · 41.7 MiB",
-  desktopAction: "下载 Argus 0.1.1",
+  desktopBody: `Argus ${desktopRelease.version} 改善了输入框稳定性、后端认证与恢复、首次 CLI 配置和 PDF 阅读体验。安装后即可连接已有的 Agent CLI，启动和查看长程任务。`,
+  desktopRequirements: "需要 Microsoft Edge WebView2 Runtime 和已安装、已登录的受支持 Agent CLI。安装包已包含 Python 后端，无需另装 Python。",
+  desktopUpgrade: "安装或升级前，请先停止正在进行的 Argus 任务并退出桌面端。",
+  desktopSignatureNote: ".exe.sig 用于更新器验签，不是 Windows Authenticode 证书签名；Windows 仍可能提示未知发布者。",
+  desktopAction: `下载 Argus ${desktopRelease.version}`,
   checksum: "SHA-256 校验值",
   releaseNotes: "查看 Release Notes",
   signature: "下载签名",
@@ -47,13 +49,13 @@ const copy = locale === "zh" ? {
     ["05", "进入 cockpit", "argus"],
   ],
   backendsTitle: "九个原生后端，共用一个 Argus Runtime",
-  backendsBody: "当前源码版可直接驱动九种 Agent CLI。Argus 负责组织、记忆、执行与独立验收；实际推理由你选择并已登录的 CLI 提供。",
-  backendReleaseNote: "版本说明：Windows 0.1.1 安装包发布时包含八个后端；Cursor CLI 支持已进入当前 main，将随后续桌面版本提供。现在需要 Cursor 时，请使用源码安装。",
+  backendsBody: "桌面版与当前源码版均可直接驱动九种 Agent CLI。Argus 负责组织、记忆、执行与独立验收；实际推理由你选择并已登录的 CLI 提供。",
+  backendReleaseNote: `版本说明：Windows ${desktopRelease.version} 已包含 Cursor CLI 后端支持。Agent CLI 本身仍需单独安装并登录，不随 Argus 安装包提供。`,
   backends: [
     ["GitHub Copilot CLI", "copilot", "使用已登录的 GitHub Copilot 会话"],
     ["OpenAI Codex CLI", "codex", "沿用 Codex 自己的模型目录与登录"],
     ["Claude Code", "claude", "沿用 Claude Code 登录与模型选择"],
-    ["Cursor CLI", "cursor", "当前源码版新增；支持 agent login"],
+    ["Cursor CLI", "cursor", "支持 agent login 或 CURSOR_API_KEY"],
     ["Pi", "pi", "可连接多个 Provider 的模型目录"],
     ["OpenCode", "opencode", "按 Provider 与模型 ID 选择"],
     ["xAI Grok Build", "grok", "支持 grok login 或 XAI_API_KEY"],
@@ -78,9 +80,11 @@ const copy = locale === "zh" ? {
   lede: "Argus does not require another model account. Use Copilot, Codex, Claude, Pi, or another supported CLI as the execution backend, then let the Manager, Planner, Engineer, and Reviewer sustain the work.",
   download: "Download the Windows installer",
   desktopTitle: "Argus Desktop for Windows, ready in one download.",
-  desktopBody: "Download the Argus 0.1.1 Tauri Desktop installer directly. After installation, connect an Agent CLI you already use and launch or inspect long-horizon work from the desktop application.",
-  desktopMeta: "Windows 10/11 · x64 · 41.7 MiB",
-  desktopAction: "Download Argus 0.1.1",
+  desktopBody: `Argus ${desktopRelease.version} improves input stability, backend authentication and recovery, first-run CLI setup, and PDF reading. Connect an Agent CLI you already use to launch and inspect long-horizon work.`,
+  desktopRequirements: "Requires Microsoft Edge WebView2 Runtime and a supported Agent CLI that is already installed and authenticated. The Python backend is bundled; no separate Python installation is needed.",
+  desktopUpgrade: "Before installing or upgrading, stop any running Argus tasks and exit the desktop application.",
+  desktopSignatureNote: ".exe.sig is an updater verification signature, not a Windows Authenticode certificate signature. Windows may still show an unknown-publisher warning.",
+  desktopAction: `Download Argus ${desktopRelease.version}`,
   checksum: "SHA-256 checksum",
   releaseNotes: "View release notes",
   signature: "Download signature",
@@ -107,13 +111,13 @@ const copy = locale === "zh" ? {
     ["05", "Enter the cockpit", "argus"],
   ],
   backendsTitle: "Nine native backends. One Argus runtime.",
-  backendsBody: "The current source build drives nine Agent CLIs directly. Argus provides organization, memory, execution, and independent review; the authenticated CLI you select provides model inference.",
-  backendReleaseNote: "Version note: the Windows 0.1.1 installer shipped with eight backends. Cursor CLI support is now on main and will enter a subsequent desktop release. Use the source installation when you need Cursor today.",
+  backendsBody: "The desktop and current source builds drive nine Agent CLIs directly. Argus provides organization, memory, execution, and independent review; the authenticated CLI you select provides model inference.",
+  backendReleaseNote: `Version note: Windows ${desktopRelease.version} includes Cursor CLI backend support. Agent CLIs must still be installed and authenticated separately; they are not bundled with Argus.`,
   backends: [
     ["GitHub Copilot CLI", "copilot", "Uses your authenticated GitHub Copilot session"],
     ["OpenAI Codex CLI", "codex", "Keeps Codex's native catalog and authentication"],
     ["Claude Code", "claude", "Keeps Claude Code authentication and model selection"],
-    ["Cursor CLI", "cursor", "New on main; supports agent login"],
+    ["Cursor CLI", "cursor", "Supports agent login or CURSOR_API_KEY"],
     ["Pi", "pi", "Resolves models across multiple provider catalogs"],
     ["OpenCode", "opencode", "Selects a provider-qualified model ID"],
     ["xAI Grok Build", "grok", "Supports grok login or XAI_API_KEY"],
@@ -152,8 +156,10 @@ const copy = locale === "zh" ? {
           <p class="eyebrow">01 · Windows desktop</p>
           <h2>{copy.desktopTitle}</h2>
           <p>{copy.desktopBody}</p>
+          <p>{copy.desktopRequirements}</p>
+          <p><strong>{copy.desktopUpgrade}</strong></p>
           <div class="desktop-download-card__meta">
-            <span>{copy.desktopMeta}</span>
+            <span>{desktopRelease.platform} · {desktopRelease.architecture} · {desktopRelease.size}</span>
             <span>Tauri 2</span>
           </div>
         </div>
@@ -167,6 +173,7 @@ const copy = locale === "zh" ? {
         <div class="desktop-download-card__checksum">
           <span>{copy.checksum}</span>
           <code>{desktopRelease.sha256}</code>
+          <p>{copy.desktopSignatureNote}</p>
         </div>
       </div>
     </div>
