@@ -7,40 +7,53 @@ import { localeFromPath, pathForLocale } from "../i18n";
 
 const locale = localeFromPath(Astro.url.pathname);
 const href = (path: string) => pathForLocale(path, locale);
-const installGuide = "https://github.com/lbx154/Argus/blob/main/docs/agent-install.md";
-const backendGuide = "https://github.com/lbx154/Argus/blob/main/docs/backend-providers.md";
+const installGuide = "https://github.com/microsoft/ArgusAgent/blob/main/docs/agent-install.md";
+const backendGuide = "https://github.com/microsoft/ArgusAgent/blob/main/docs/backend-providers.md";
 const pluginGuide = "https://github.com/lbx154/Argus/blob/main/docs/plugin.md";
 const copy = locale === "zh" ? {
   title: "开始使用 · Argus",
-  description: "选择已有 Agent CLI，安装并验证 Argus，然后启动第一次经过独立 Reviewer 验收的长程任务。",
+  description: `下载 Argus ${desktopRelease.version} Windows / Mac 桌面版，通过内部邀请 Key 试用或使用自己的 Agent CLI；Linux 与高级用户可选择源码安装。`,
   eyebrow: "Argus · Get Started",
-  hero: "沿用你已经在用的 Agent CLI。",
-  lede: "Argus 不要求新的模型账户。让 Copilot、Codex、Claude、Pi 或其他受支持的 CLI 成为执行后端，再由 Manager、Planner、Engineer 与 Reviewer 接管长程工作。",
-  download: "下载 Windows 安装程序",
-  desktopTitle: "Windows 桌面版，一键安装。",
-  desktopBody: `Argus ${desktopRelease.version} 改善了输入框稳定性、后端认证与恢复、首次 CLI 配置和 PDF 阅读体验。安装后即可连接已有的 Agent CLI，启动和查看长程任务。`,
-  desktopRequirements: "需要 Microsoft Edge WebView2 Runtime 和已安装、已登录的受支持 Agent CLI。安装包已包含 Python 后端，无需另装 Python。",
+  hero: "选择适合你的开始方式。",
+  lede: "Windows 与 Mac 用户可以直接安装桌面版：持有内部邀请 Key 时自动准备 Copilot 并进入工作台，也可以继续使用自己的 Agent CLI。长程工作仍由 Manager、Planner、Engineer 与独立 Reviewer 协作完成。",
+  download: "选择 Windows / Mac 下载",
+  desktopTitle: `Argus ${desktopRelease.version} · Windows 与 Mac`,
+  desktopBody: "本次桌面内部试用版新增邀请 Key 开通流程、自动准备 Copilot，以及 Apple Silicon / Intel 双架构 Mac 安装包，同时保留桌面启动、窗口和运行包完整性修复。",
+  desktopRequirements: "试用模式无需命令行、预装 Python / Node.js 或个人 Coding 账号；首次准备需联网访问 argusbot.cn 和 GitHub Releases。自带 CLI 模式仍需自行安装并登录所选 CLI。",
   desktopUpgrade: "安装或升级前，请先停止正在进行的 Argus 任务并退出桌面端。",
-  desktopSignatureNote: ".exe.sig 用于更新器验签，不是 Windows Authenticode 证书签名；Windows 仍可能提示未知发布者。",
-  desktopAction: `下载 Argus ${desktopRelease.version}`,
+  desktopSignatureNote: "更新器签名不等于 Windows Authenticode 证书签名，Windows 仍可能提示未知发布者。Mac 内部试用包尚未经过 Apple Developer ID 公证；确认下载来源后，如首次启动被阻止，可在“系统设置 → 隐私与安全性 → 仍要打开”中确认。",
+  desktopRuntimeNote: "Windows 需要 Microsoft Edge WebView2 Runtime；安装器会处理缺失的运行时。Mac 最低要求 macOS 13，请按 Apple Silicon 或 Intel 选择安装包。此 Release 不提供 Linux 桌面安装包。",
+  installWindows: "运行 EXE 安装程序，然后打开 Argus。",
+  installMac: "打开 DMG，将 Argus 拖入 Applications 后启动。",
+  downloadFile: "下载",
   checksum: "SHA-256 校验值",
+  allChecksums: "下载 SHA256SUMS",
   releaseNotes: "查看 Release Notes",
-  signature: "下载签名",
-  assisted: "推荐：让 Agent 帮你安装",
-  assistedBody: "把下面的提示词发送给当前正在使用的 Code Agent。它会读取与你的操作系统对应的安装契约，完成安装、配置和真实 smoke test，并在需要登录、sudo 或全局修改前征求确认。",
+  signature: "下载 EXE 更新器签名",
+  desktopStartTitle: "桌面首次启动：两条路径",
+  trialTitle: "内部邀请试用",
+  trialBody: "选择“使用内部测试 Key”，在桌面应用中填写邀请 Key，再点击“开始试用”。客户端会验证余额、下载官方 Copilot、验证连接并打开内置工作台；配置会保留，重启后可继续使用。",
+  trialLimit: "Key 由邀请方私下发放，每个 Key 累计 1,000,000 input + output tokens，跨设备共享余额；这不是每日额度或无限免费服务。不要在官网、公开 Issue 或聊天中提交 Key。",
+  ownTitle: "使用自己的 Agent CLI",
+  ownBody: "没有邀请 Key，或希望沿用自己的账号时，选择常规 CLI 配置，安装并登录所选后端。之后可通过“文件 → 设置”修改。无需因为安装了桌面版而另装一套 Argus 命令行。",
+  trialGuide: "查看此版本的试用说明",
+  desktopUpdate: "桌面更新请使用应用内“检查更新”或此页的完整安装包；argus update 仅用于源码 / Python 安装，不能替换桌面 EXE / App。预览与正式渠道的数据目录分开，切换渠道前先备份，不假设项目会自动迁移。",
+  assisted: "源码安装：让 Agent 帮你完成",
+  assistedBody: "以下是源码安装路径，不是桌面用户必须补做的步骤。将提示词发给已有的 Code Agent，默认安装 microsoft/ArgusAgent 官方源码；只有明确要求时才使用开发预览，并保持已有安装的渠道。",
   copy: "复制提示词",
   copied: "已复制",
-  prompt: "阅读 https://github.com/lbx154/Argus/blob/main/docs/agent-install.md，并使用其中适合当前操作系统的章节安装 Argus。优先使用正在进行本次对话的 Agent CLI 作为 Argus 后端。完成真实 Agent-turn smoke test，然后运行 `argus doctor --deep --advisor auto`。在登录账户、使用 sudo 或修改全局配置前，说明原因并等待确认。不要要求我在对话中粘贴密码、Token 或 API Key。",
-  platformsTitle: "选择你的平台",
-  platformsBody: "Windows 用户可以直接安装桌面版；macOS、Linux 与需要源码环境的高级用户可使用对应的命令行安装方式。所有平台都需要一个已登录的 Agent CLI。",
+  prompt: "阅读 https://github.com/microsoft/ArgusAgent/blob/main/docs/agent-install.md，默认安装官方源码，只有我明确要求时才改用开发预览版；升级时保持已有安装的渠道。使用当前操作系统对应的方式，优先复用当前 Agent CLI 作为 backend。完成真实 Agent-turn smoke test，然后运行 `argus doctor --deep --advisor auto`。在登录账户、使用 sudo 或修改全局配置前，说明原因并等待确认。不要要求我在对话中粘贴密码、Token 或 API Key。",
+  platformsTitle: "源码安装：三种平台路径",
+  platformsBody: "Linux 与需要源码环境的高级用户可选择以下安装方式。源码路径需要 Node.js 22.12+ 和已登录的 Agent CLI；源码 main 与已发布的桌面安装包可能包含不同的更新。",
   platforms: [
-    ["Windows 10/11", "Desktop installer", "推荐使用上方的一键桌面安装程序；需要源码环境时也可按安装指南使用 Python 直接安装。"],
-    ["macOS", "Managed uv tool", "由 uv 管理独立环境，无需手工创建 venv；适合 Apple Silicon 与日常桌面使用。"],
-    ["Linux", "Isolated source venv", "在明确的 venv 中保留 Python、CUDA 工具和长期进程的可复现所有权。"],
+    ["Windows 10/11", "Python source install", "仅需源码环境时使用：Python 3.11+ 直接安装，不创建手工 venv。普通桌面用户使用上方 EXE。", "windows-1011"],
+    ["macOS", "Managed uv tool", "源码 CLI 由 uv 管理独立环境，无需手工创建 venv；桌面用户使用上方对应芯片架构的 DMG。", "macos"],
+    ["Linux", "Isolated source venv", "使用 Python 3.11+、Git 和明确的 venv，保持依赖与长期进程的可复现所有权。", "linux"],
   ],
+  pythonPackages: `需要固定版本的 Python 包？v${desktopRelease.version} Release 也提供 wheel 和源码压缩包；这不等于已发布到 PyPI。`,
   openGuide: "打开对应安装步骤 ↗",
-  firstTitle: "第一次运行",
-  firstBody: "安装完成后，按顺序配置后端、让 doctor 主动修复环境，再进入 cockpit。首次真实运行应通过 status 和 Reviewer 结果确认，而不是只看命令是否存在。",
+  firstTitle: "源码 CLI 的第一次运行",
+  firstBody: "以下命令仅用于源码 / Python 安装，请使用安装指南确认的 Argus 可执行文件。doctor --advisor auto 会调用模型并授权 Argus 范围内的环境修复；仅需只读诊断时运行 argus doctor。",
   steps: [
     ["01", "确认版本", "argus --version"],
     ["02", "配置后端", "argus --setup"],
@@ -49,8 +62,8 @@ const copy = locale === "zh" ? {
     ["05", "进入 cockpit", "argus"],
   ],
   backendsTitle: "九个原生后端，共用一个 Argus Runtime",
-  backendsBody: "桌面版与当前源码版均可直接驱动九种 Agent CLI。Argus 负责组织、记忆、执行与独立验收；实际推理由你选择并已登录的 CLI 提供。",
-  backendReleaseNote: `版本说明：Windows ${desktopRelease.version} 已包含 Cursor CLI 后端支持。Agent CLI 本身仍需单独安装并登录，不随 Argus 安装包提供。`,
+  backendsBody: "自带账号模式可直接驱动以下九种 Agent CLI，由你安装并登录。Argus 负责组织、记忆、执行与独立验收；内部试用模式则自动准备 Copilot，通过邀请 Key 验证，无需个人 Coding 账号。",
+  backendReleaseNote: `版本说明：桌面 v${desktopRelease.version} 保留 Cursor 等自带 CLI 后端；内部 Key 试用会自动下载 Copilot，其余自带 CLI 需单独准备。`,
   backends: [
     ["GitHub Copilot CLI", "copilot", "使用已登录的 GitHub Copilot 会话"],
     ["OpenAI Codex CLI", "codex", "沿用 Codex 自己的模型目录与登录"],
@@ -66,43 +79,58 @@ const copy = locale === "zh" ? {
   linksTitle: "接下来去哪里",
   report: "阅读 Argus 技术报告",
   demo: "观看四条真实运行",
-  plugin: "接入现有 Coding Agent",
+  plugin: "Code Agent 插件（开发渠道）",
+  pluginNote: "插件安装脚本目前默认使用 lbx154/Argus 开发预览源；它不是桌面安装包，也不是官方源码安装的同一路径。安装前核对现有渠道，避免意外替换。",
   code: "查看 Preview 仓库",
-  official: "查看官方发行仓库",
+  official: "查看官方源码仓库",
+  sourceIssues: "官方源码问题 ↗",
   helpTitle: "遇到问题时，先保留诊断证据。",
-  helpBody: "运行 doctor，记录平台、Argus 版本、后端名称和失败阶段，再到 GitHub 提交可复现的问题。",
-  issues: "打开 GitHub Issues ↗",
+  helpBody: "桌面用户可从应用中导出诊断，源码用户可运行只读 argus doctor。记录系统、版本、后端和失败阶段；分享前检查脱敏结果，勿上传邀请 Key 或账号凭据。",
+  issues: "桌面版问题 ↗",
 } : {
   title: "Get Started · Argus",
-  description: "Reuse an Agent CLI you already trust, install and verify Argus, and launch a first long-horizon task with independent review.",
+  description: `Download Argus ${desktopRelease.version} for Windows / Mac: use a private trial invitation Key or your own Agent CLI. Linux and advanced users can install from source.`,
   eyebrow: "Argus · Get Started",
-  hero: "Bring the Agent CLI you already use.",
-  lede: "Argus does not require another model account. Use Copilot, Codex, Claude, Pi, or another supported CLI as the execution backend, then let the Manager, Planner, Engineer, and Reviewer sustain the work.",
-  download: "Download the Windows installer",
-  desktopTitle: "Argus Desktop for Windows, ready in one download.",
-  desktopBody: `Argus ${desktopRelease.version} improves input stability, backend authentication and recovery, first-run CLI setup, and PDF reading. Connect an Agent CLI you already use to launch and inspect long-horizon work.`,
-  desktopRequirements: "Requires Microsoft Edge WebView2 Runtime and a supported Agent CLI that is already installed and authenticated. The Python backend is bundled; no separate Python installation is needed.",
+  hero: "Choose how you want to start.",
+  lede: "Install the Windows or Mac desktop app. A private trial invitation Key prepares Copilot automatically, or you can keep using your own Agent CLI. The Manager, Planner, Engineer, and independent Reviewer still coordinate long-horizon work.",
+  download: "Choose a Windows / Mac download",
+  desktopTitle: `Argus ${desktopRelease.version} · Windows and Mac`,
+  desktopBody: "This internal-trial desktop release adds invitation-Key onboarding, automatic Copilot setup, and Mac installers for Apple Silicon and Intel, while retaining desktop startup, window and runtime-integrity fixes.",
+  desktopRequirements: "Trial mode needs no terminal, preinstalled Python / Node.js, or personal Coding account. First setup needs access to argusbot.cn and GitHub Releases. Own-account mode still requires you to install and authenticate your chosen CLI.",
   desktopUpgrade: "Before installing or upgrading, stop any running Argus tasks and exit the desktop application.",
-  desktopSignatureNote: ".exe.sig is an updater verification signature, not a Windows Authenticode certificate signature. Windows may still show an unknown-publisher warning.",
-  desktopAction: `Download Argus ${desktopRelease.version}`,
+  desktopSignatureNote: "Updater signing is not a Windows Authenticode certificate signature; Windows may still show an unknown publisher. The internal Mac build is not Apple Developer ID notarized. After confirming the download source, a blocked first launch can be approved in System Settings → Privacy & Security → Open Anyway.",
+  desktopRuntimeNote: "Windows requires Microsoft Edge WebView2 Runtime; the installer handles a missing runtime. Mac requires macOS 13 or later; choose Apple Silicon or Intel to match your Mac. This release has no Linux desktop installer.",
+  installWindows: "Run the EXE installer, then open Argus.",
+  installMac: "Open the DMG, drag Argus to Applications, then launch it.",
+  downloadFile: "Download",
   checksum: "SHA-256 checksum",
+  allChecksums: "Download SHA256SUMS",
   releaseNotes: "View release notes",
-  signature: "Download signature",
-  assisted: "Recommended: let your Agent install it",
-  assistedBody: "Send the prompt below to the Code Agent you are using now. It will read the installation contract for your operating system, install and configure Argus, run a real smoke test, and pause before login, sudo, or global configuration changes.",
+  signature: "Download EXE updater signature",
+  desktopStartTitle: "First desktop launch: two paths",
+  trialTitle: "Invitation-only internal trial",
+  trialBody: "Choose the internal trial Key option in the desktop app, enter your invitation Key, and start the trial. Argus checks the balance, downloads official Copilot, verifies the connection and opens the bundled workbench. Configuration is retained across restarts.",
+  trialLimit: "Keys are distributed privately by the inviting team. Each Key has a lifetime allowance of 1,000,000 input + output tokens shared across devices, not a daily quota or unlimited free service. Do not submit Keys to this website, public Issues or chat.",
+  ownTitle: "Bring your own Agent CLI",
+  ownBody: "Without a trial Key, or to keep using your own account, choose the regular CLI setup and install and authenticate your preferred backend. Change it later in File → Settings. Desktop installation does not require a separate Argus command-line installation.",
+  trialGuide: "Read this release's trial guide (Chinese)",
+  desktopUpdate: "Update the desktop app through Check for updates or a complete installer from this page. argus update is for source / Python installations, not desktop EXE / App replacement. Preview and regular channels have separate data directories; back up before switching and do not assume projects migrate automatically.",
+  assisted: "Source installation: let your Agent help",
+  assistedBody: "This is a source-installation path, not an extra requirement for desktop users. Send the prompt to an existing Code Agent. It defaults to microsoft/ArgusAgent official source, uses development preview only when explicitly requested, and preserves an existing installation's channel.",
   copy: "Copy prompt",
   copied: "Copied",
-  prompt: "Read https://github.com/lbx154/Argus/blob/main/docs/agent-install.md and install Argus using the section for this operating system. Prefer the Agent CLI running this conversation as the Argus backend. Run setup through its real Agent-turn smoke test, then run `argus doctor --deep --advisor auto`. Before account login, sudo, or global configuration changes, explain why and wait for approval. Never ask me to paste a password, token, or API key into the conversation.",
-  platformsTitle: "Choose your platform",
-  platformsBody: "Windows users can install the desktop application directly. macOS, Linux, and advanced users who need a source environment can follow the corresponding command-line path. Every platform needs one authenticated Agent CLI.",
+  prompt: "Read https://github.com/microsoft/ArgusAgent/blob/main/docs/agent-install.md and install official source unless I explicitly request development preview. Keep an existing installation's channel when updating. Use the section for this operating system and prefer the Agent CLI running this conversation as the backend. Run setup through its real Agent-turn smoke test, then run `argus doctor --deep --advisor auto`. Before account login, sudo, or global configuration changes, explain why and wait for approval. Never ask me to paste a password, token, or API key into the conversation.",
+  platformsTitle: "Source installation by platform",
+  platformsBody: "Linux and advanced users can choose these source-installation paths. They require Node.js 22.12+ and an authenticated Agent CLI. Source main and published desktop packages may contain different updates.",
   platforms: [
-    ["Windows 10/11", "Desktop installer", "Use the one-click desktop installer above, or follow the installation guide for a direct Python setup when you need a source environment."],
-    ["macOS", "Managed uv tool", "Let uv own the isolated environment instead of creating a venv manually. This is the clean desktop path for Apple Silicon."],
-    ["Linux", "Isolated source venv", "Keep Python, CUDA tooling, and long-running process ownership reproducible inside an explicit venv."],
+    ["Windows 10/11", "Python source install", "For a source environment: install directly with Python 3.11+, without a manual venv. Regular desktop users can use the EXE above.", "windows-1011"],
+    ["macOS", "Managed uv tool", "Use uv to manage the source CLI environment, without a manual venv. Desktop users can choose the DMG for their chip above.", "macos"],
+    ["Linux", "Isolated source venv", "Use Python 3.11+, Git and an explicit venv to keep dependencies and long-running process ownership reproducible.", "linux"],
   ],
+  pythonPackages: `Need a versioned Python package? The v${desktopRelease.version} Release also provides a wheel and source archive; this does not imply a PyPI publication.`,
   openGuide: "Open the platform instructions ↗",
-  firstTitle: "Your first run",
-  firstBody: "After installation, configure the backend, let doctor actively repair the environment, and enter the cockpit. Confirm the first real run through status and Reviewer evidence—not only the presence of a command.",
+  firstTitle: "First run for the source CLI",
+  firstBody: "These commands are only for source / Python installations. Use the Argus executable confirmed by the installation guide. doctor --advisor auto calls a model and authorizes Argus-scoped repairs; use argus doctor for read-only diagnosis.",
   steps: [
     ["01", "Confirm version", "argus --version"],
     ["02", "Configure backend", "argus --setup"],
@@ -111,8 +139,8 @@ const copy = locale === "zh" ? {
     ["05", "Enter the cockpit", "argus"],
   ],
   backendsTitle: "Nine native backends. One Argus runtime.",
-  backendsBody: "The desktop and current source builds drive nine Agent CLIs directly. Argus provides organization, memory, execution, and independent review; the authenticated CLI you select provides model inference.",
-  backendReleaseNote: `Version note: Windows ${desktopRelease.version} includes Cursor CLI backend support. Agent CLIs must still be installed and authenticated separately; they are not bundled with Argus.`,
+  backendsBody: "Own-account mode drives these nine Agent CLIs, installed and authenticated by you. Argus provides organization, memory, execution and independent review. Internal trial mode instead prepares Copilot automatically and authenticates with an invitation Key, without a personal Coding account.",
+  backendReleaseNote: `Version note: desktop v${desktopRelease.version} retains Cursor and the other own-CLI backends. Internal-Key trial mode downloads Copilot automatically; other own-account CLIs must be prepared separately.`,
   backends: [
     ["GitHub Copilot CLI", "copilot", "Uses your authenticated GitHub Copilot session"],
     ["OpenAI Codex CLI", "codex", "Keeps Codex's native catalog and authentication"],
@@ -128,12 +156,14 @@ const copy = locale === "zh" ? {
   linksTitle: "Where to go next",
   report: "Read the Argus technical report",
   demo: "Watch four real runs",
-  plugin: "Connect an existing Coding Agent",
+  plugin: "Coding-agent plugin (Chinese guide)",
+  pluginNote: "The plugin installer currently defaults to lbx154/Argus development-preview source. It is a separate path from the desktop package and official-source installation. Check your existing channel before installing to avoid an unintended replacement.",
   code: "Open the preview repository",
-  official: "Open the official release",
+  official: "Open the official source repository",
+  sourceIssues: "Official source issues ↗",
   helpTitle: "When something fails, preserve the diagnostic evidence.",
-  helpBody: "Run doctor, record the platform, Argus version, backend name, and failing stage, then open a reproducible GitHub issue.",
-  issues: "Open GitHub Issues ↗",
+  helpBody: "Desktop users can export diagnostics in the app; source users can run read-only argus doctor. Record the system, version, backend and failing stage. Review redaction before sharing; never upload invitation Keys or account credentials.",
+  issues: "Desktop issues ↗",
 };
 ---
 
@@ -143,38 +173,65 @@ const copy = locale === "zh" ? {
       <h1>{copy.hero}</h1>
       <p class="lede">{copy.lede}</p>
       <div class="hero-actions">
-        <a class="button primary" href={desktopRelease.downloadUrl}>{copy.download} ↓</a>
+        <a class="button primary" href="#desktop-download">{copy.download} ↓</a>
         <a class="button" href="#agent-install">{copy.assisted}</a>
         <a class="button" href={href("/start/")}>{copy.demo}</a>
       </div>
   </PageHero>
 
-  <section id="windows-download" class="section desktop-download-section">
+  <section id="desktop-download" class="section desktop-download-section">
     <div class="shell onboarding-shell">
       <div class="desktop-download-card">
         <div class="desktop-download-card__copy">
-          <p class="eyebrow">01 · Windows desktop</p>
+          <p class="eyebrow">01 · Desktop · v{desktopRelease.version}</p>
           <h2>{copy.desktopTitle}</h2>
           <p>{copy.desktopBody}</p>
           <p>{copy.desktopRequirements}</p>
           <p><strong>{copy.desktopUpgrade}</strong></p>
-          <div class="desktop-download-card__meta">
-            <span>{desktopRelease.platform} · {desktopRelease.architecture} · {desktopRelease.size}</span>
-            <span>Tauri 2</span>
-          </div>
         </div>
         <div class="desktop-download-card__action">
-          <a class="button primary" href={desktopRelease.downloadUrl}>{copy.desktopAction} ↓</a>
+          <a class="button" href={desktopRelease.releaseUrl} target="_blank" rel="noopener noreferrer">{copy.releaseNotes} ↗</a>
           <div class="desktop-download-card__links">
-            <a href={desktopRelease.releaseUrl} target="_blank" rel="noopener noreferrer">{copy.releaseNotes} ↗</a>
-            <a href={desktopRelease.signatureUrl}>{copy.signature} ↓</a>
+            <a href={desktopRelease.checksumsUrl}>{copy.allChecksums} ↓</a>
           </div>
         </div>
-        <div class="desktop-download-card__checksum">
-          <span>{copy.checksum}</span>
-          <code>{desktopRelease.sha256}</code>
-          <p>{copy.desktopSignatureNote}</p>
+        <div class="desktop-installer-grid">
+          {desktopRelease.installers.map((installer) => (
+            <article class="desktop-installer" id={`${installer.id}-download`}>
+              <h3>{installer.platform}</h3>
+              <p class="mono">{installer.architecture} · {installer.size}</p>
+              <p>{installer.id === "windows" ? copy.installWindows : copy.installMac}</p>
+              <a class="button primary" href={installer.downloadUrl} data-desktop-installer={installer.id}
+                aria-label={`${copy.downloadFile} Argus ${desktopRelease.version} · ${installer.platform} · ${installer.architecture}`}>
+                {copy.downloadFile} {installer.format} ↓
+              </a>
+              <details class="installer-integrity">
+                <summary>{copy.checksum}</summary>
+                <code>{installer.sha256}</code>
+                {"signatureUrl" in installer && <a href={installer.signatureUrl}>{copy.signature} ↓</a>}
+              </details>
+            </article>
+          ))}
         </div>
+        <div class="desktop-release-notes">
+          <p>{copy.desktopRuntimeNote}</p>
+          <p>{copy.desktopSignatureNote}</p>
+          <p>{copy.desktopUpdate}</p>
+        </div>
+      </div>
+      <h2 class="desktop-start-title">{copy.desktopStartTitle}</h2>
+      <div class="desktop-access-grid" id="desktop-first-run">
+        <article class="platform-card" data-desktop-mode="trial">
+          <h3>{copy.trialTitle}</h3>
+          <p>{copy.trialBody}</p>
+          <p>{copy.trialLimit}</p>
+          <a href={desktopRelease.trialGuideUrl} target="_blank" rel="noopener noreferrer">{copy.trialGuide} ↗</a>
+        </article>
+        <article class="platform-card" data-desktop-mode="own-account">
+          <h3>{copy.ownTitle}</h3>
+          <p>{copy.ownBody}</p>
+          <a href="#own-account-backends">{copy.backendGuide} ↓</a>
+        </article>
       </div>
     </div>
   </section>
@@ -202,19 +259,24 @@ const copy = locale === "zh" ? {
         <p>{copy.platformsBody}</p>
       </div>
       <div class="platform-grid">
-        {copy.platforms.map(([name, method, body]) => (
+        {copy.platforms.map(([name, method, body, anchor]) => (
           <article class="platform-card">
             <span>{method}</span>
             <h3>{name}</h3>
             <p>{body}</p>
-            <a href={installGuide} target="_blank" rel="noopener noreferrer">{copy.openGuide}</a>
+            <a href={`${installGuide}#${anchor}`} target="_blank" rel="noopener noreferrer">{copy.openGuide}</a>
           </article>
         ))}
+      </div>
+      <div class="source-package-links">
+        <p>{copy.pythonPackages}</p>
+        <a href={desktopRelease.pythonWheelUrl}>Python wheel ↓</a>
+        <a href={desktopRelease.sourceArchiveUrl}>Source .tar.gz ↓</a>
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <section id="source-first-run" class="section">
     <div class="shell onboarding-shell">
       <div class="section-head">
         <p class="eyebrow">04 · First run</p>
@@ -233,7 +295,7 @@ const copy = locale === "zh" ? {
     </div>
   </section>
 
-  <section class="section surface">
+  <section id="own-account-backends" class="section surface">
     <div class="shell onboarding-shell">
       <div class="section-head">
         <p class="eyebrow">05 · Backends</p>
@@ -243,14 +305,13 @@ const copy = locale === "zh" ? {
       </div>
       <div class="backend-grid">
         {copy.backends.map(([name, id, detail], index) => (
-          <article class={`backend-card${id === "cursor" ? " backend-card--new" : ""}`}>
+          <article class="backend-card">
             <div class="backend-card__head">
               <span>{String(index + 1).padStart(2, "0")}</span>
               <code>{id}</code>
             </div>
             <h3>{name}</h3>
             <p>{detail}</p>
-            {id === "cursor" && <strong>NEW</strong>}
           </article>
         ))}
       </div>
@@ -272,11 +333,13 @@ const copy = locale === "zh" ? {
           <a href="https://github.com/lbx154/Argus" target="_blank" rel="noopener noreferrer">{copy.code} ↗</a>
           <a href="https://github.com/microsoft/ArgusAgent" target="_blank" rel="noopener noreferrer">{copy.official} ↗</a>
         </div>
+        <p class="plugin-channel-note">{copy.pluginNote}</p>
       </div>
       <div class="cta-band onboarding-help">
         <h2>{copy.helpTitle}</h2>
         <p>{copy.helpBody}</p>
-        <a class="button primary" href="https://github.com/microsoft/ArgusAgent/issues" target="_blank" rel="noopener noreferrer">{copy.issues}</a>
+        <a class="button primary" href="https://github.com/lbx154/Argus/issues" target="_blank" rel="noopener noreferrer">{copy.issues}</a>
+        <a class="button" href="https://github.com/microsoft/ArgusAgent/issues" target="_blank" rel="noopener noreferrer">{copy.sourceIssues}</a>
         <PixelIllustration scene="memory-garden" />
       </div>
     </div>

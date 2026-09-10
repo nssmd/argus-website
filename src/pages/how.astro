@@ -2,10 +2,12 @@
 import SiteLayout from "../layouts/SiteLayout.astro";
 import PageHero from "../components/PageHero.astro";
 import PixelIllustration from "../components/PixelIllustration";
+import { desktopRelease } from "../data/desktopRelease";
 import { localeFromPath } from "../i18n";
 
 const locale = localeFromPath(Astro.url.pathname);
-const stages = ["research", "plan", "benchmark", "run", "analysis", "draft", "review", "submission"];
+const stages = ["idea", "experiment", "paper", "review"];
+const stageSource = `https://github.com/lbx154/Argus/blob/v${desktopRelease.version}/argus_skill/verticals/research/stages.py`;
 const trajectoryChart = locale === "zh"
   ? "/assets/nanochat-b200-trajectory.svg"
   : "/assets/nanochat-b200-trajectory.en.svg";
@@ -15,26 +17,30 @@ const copy = locale === "zh" ? {
   hero: "一个项目，两层循环，四个角色。",
   lede: "外层维持项目生命，内层完成一个 mission；状态、失败和下一步不会随对话消失。",
   architecture: "LifeSupervisor 让研究持续，SkillLoop 让每轮闭环。",
-  architectureBody: "backlog 空时 Planner 继续排活；Engineer 真正执行；Reviewer 根据 evidence 决定 done、continue 或 blocked。",
+  architectureBody: "backlog 空时 Planner 继续排活；Engineer 执行任务，获准的低风险工作可以自审；策略要求或主动请求时，由独立 Reviewer 核验证据并给出结构化裁决。",
   roles: [["Manager", "入口、vertical 与 stage 权威。"], ["Planner", "提出下一批值得做的工作。"], ["Engineer", "写代码、跑实验、产出 artifact。"], ["Reviewer", "验收、返工、记录 checkpoint。"]],
   pipeline: "从一个目标到一篇 PDF。",
+  pipelineBody: "当前研究主线使用四个规范阶段，更细的研究与实验步骤在阶段内组织。",
+  pipelineSource: "查看当前版本的阶段定义 ↗",
   run: "B200 上的 426 次自治搜索。",
   runBody: "每个点是一轮真实尝试，floor 从 1.0587 推到 0.9636。",
   alt: "B200 nanochat 进化曲线",
-  caption: "val BPB 越低越好；Argus 最终超过 human SOTA 0.9646。",
+  caption: "val BPB 越低越好；这次运行超过了报告中记录的 human SOTA 基线 0.9646。",
 } : {
   title: "How Argus Works",
   description: "How LifeSupervisor, four specialist roles, and SkillLoop keep an Argus research project moving.",
   hero: "One project. Two loops. Four specialist roles.",
   lede: "The outer loop keeps the project alive; the inner loop closes one mission at a time. State, failure, and the next move do not disappear when a chat ends.",
   architecture: "LifeSupervisor sustains the project. SkillLoop closes the loop.",
-  architectureBody: "When the backlog runs dry, the Planner proposes the next work. The Engineer executes it. The Reviewer decides—against the evidence—whether to finish, revise, or block.",
+  architectureBody: "When the backlog runs dry, the Planner proposes the next work. The Engineer executes and may self-review permitted low-risk work. Independent review checks the evidence and returns a structured verdict when required by policy or requested.",
   roles: [["Manager", "Owns the front door, domain selection, and stage authority."], ["Planner", "Chooses the next batch of work worth doing."], ["Engineer", "Writes code, runs experiments, and produces inspectable artifacts."], ["Reviewer", "Accepts, rejects, or sends work back, and maintains the working checkpoint."]],
   pipeline: "From one objective to a reviewable PDF.",
+  pipelineBody: "The current research workflow uses four canonical stages, with detailed research and experiment steps organized within them.",
+  pipelineSource: "Read the current release's stage definitions ↗",
   run: "426 autonomous searches on a B200.",
   runBody: "Every point is a real attempt. The floor moved from 1.0587 to 0.9636.",
   alt: "The B200 nanochat optimization trajectory",
-  caption: "Lower validation BPB is better. Argus ultimately beat the human SOTA of 0.9646.",
+  caption: "Lower validation BPB is better. This run beat the human SOTA baseline of 0.9646 recorded in the report.",
 };
 ---
 
@@ -66,6 +72,7 @@ const copy = locale === "zh" ? {
       <div class="section-head">
         <p class="eyebrow">Paper pipeline</p>
         <h2>{copy.pipeline}</h2>
+        <p>{copy.pipelineBody} <a href={stageSource} target="_blank" rel="noopener noreferrer">{copy.pipelineSource}</a></p>
         <PixelIllustration scene="archive-cart" />
       </div>
       <div class="pipeline">

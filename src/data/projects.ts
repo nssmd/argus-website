@@ -143,12 +143,12 @@ export const projects: Project[] = [
     status: "active",
     title: "ACE-2",
     description: {
-      en: "An evidence-first Qwen2.5-0.5B W4A8 accelerator with a verified 24-layer RTL cascade.",
-      zh: "面向 Qwen2.5-0.5B W4A8 的 evidence-first 加速器，完成 24 层 RTL 级联验证。",
+      en: "A Qwen2.5-0.5B W4A8 research project with preserved Alpha-2/3 RTL and SKY130 evidence.",
+      zh: "面向 Qwen2.5-0.5B W4A8 的研究项目，保留已认证的 Alpha-2/3 RTL 与 SKY130 证据。",
     },
     problem: {
-      en: "ACE-2 tests whether a resource-shared Transformer inference datapath can preserve deterministic fixed-point behavior from a software oracle through RTL simulation, mapped SKY130 synthesis, and timing analysis.",
-      zh: "ACE-2 验证资源共享的 Transformer 推理数据通路，能否从软件定点参考一路保持到 RTL 仿真、SKY130 映射综合和时序分析，并保留可审计的证据边界。",
+      en: "ACE-2's certified baseline tested whether a resource-shared Transformer inference datapath could preserve deterministic fixed-point behavior from a software oracle through RTL simulation, mapped SKY130 synthesis, and timing analysis.",
+      zh: "ACE-2 已认证的基线验证了资源共享 Transformer 推理数据通路从软件定点参考到 RTL 仿真、SKY130 映射综合和时序分析的一致性，并保留可审计的证据边界。",
     },
     highlights: {
       en: [
@@ -156,22 +156,25 @@ export const projects: Project[] = [
         "13,914/13,914 runtime commands passed across a demonstrated 24-layer, two-token path.",
         "Mapped SKY130 result: 62,283 cells, 0.614082704 mm² non-SRAM area, and a 100 MHz target with +0.6966 ns setup slack.",
         "The fused-QKV path reduced three commands to one and simulator cycles from 1,044,326 to 805,011 while matching all 1,152 output bytes.",
+        "These are preserved Alpha-2/3 results. Current work is local simulation and software research; later hardware Stage 2, FPGA, synthesis/PPA, and U280 work are cancelled.",
       ],
       zh: [
         "Layer-0 的 18/18 个定点算子边界全部通过。",
         "在已展示的 24 层、双 Token 路径上，13,914/13,914 条 runtime 命令全部通过。",
         "SKY130 映射结果为 62,283 cells、0.614082704 mm² 非 SRAM 面积，100 MHz 目标下 setup slack 为 +0.6966 ns。",
         "融合 QKV 路径把三条命令合并为一条，仿真周期由 1,044,326 降至 805,011，且 1,152 个输出字节全部匹配。",
+        "以上为保留的 Alpha-2/3 成果。当前工作聚焦本地仿真与软件研究；后续硬件 Stage 2、FPGA、综合/PPA 和 U280 工作已取消。",
       ],
     },
     outcome: {
-      en: "13,914/13,914 commands, 0.614 mm², 62,283 cells, and SKY130 at 100 MHz.",
-      zh: "13,914/13,914 条命令通过，0.614 mm²、62,283 cells，SKY130 100 MHz。",
+      en: "Certified baseline: 13,914/13,914 commands, 0.614 mm², 62,283 cells, and SKY130 at 100 MHz.",
+      zh: "已认证基线：13,914/13,914 条命令通过，0.614 mm²、62,283 cells，SKY130 100 MHz。",
     },
     technologies: ["SystemVerilog", "W4A8", "SKY130", "RTL"],
     links: [
       { kind: "repository", href: "https://github.com/Argus-AiTeam/ace-2" },
       { kind: "evidence", href: "https://github.com/Argus-AiTeam/ace-2/blob/main/CERTIFICATION.md" },
+      { kind: "status", href: "https://github.com/Argus-AiTeam/ace-2/blob/main/docs/results/PUBLICATION_BOUNDARY.md" },
     ],
   },
   {
@@ -340,14 +343,14 @@ export const projects: Project[] = [
       en: [
         "Archives seventeen public result packages spanning low-dimensional topology and foliations, Riemannian and algebraic geometry, complex analysis and harmonic measure, geometric group theory and Kleinian groups, set theory, lattices and spherical designs, graph theory, convex geometry, beta-transformations and Salem numbers, arithmetic dynamics, and braid-group algebra.",
         "Includes nine independently replayable computational certificates, a Lean-checked logical composition, technical reports, and checksums for 81 public artifacts. The latest package answers Stephen Bigelow's zipper-algebra twist question at the representation level.",
-        "Connects completed results to the live Argus Open program, which tracks 757 historical problem records and 30 active research targets.",
+        "Connects completed results to Argus Open. The published repository snapshot records 757 historical problem records and 30 active research targets; these are not live portal counts.",
         "Separates original constructions from literature reconstructions, historical negative results, scope corrections, active research, and claims whose novelty is not yet certified.",
         "Original archive materials are All Rights Reserved following reported authorship misuse; accurate citation remains welcome.",
       ],
       zh: [
         "归档十七个公开成果包，覆盖低维拓扑与叶状结构、黎曼与代数几何、复分析与调和测度、几何群论与 Kleinian 群、集合论、格与球面设计、图论、凸几何、β-变换与 Salem 数、算术动力系统和辫群代数。",
         "包含九个可独立重放的计算证书、一项 Lean 逻辑组合检查，以及技术报告和 81 个公开产物的校验值。最新成果包在表示层回答了 Stephen Bigelow 提出的 zipper algebra twist 问题。",
-        "将已完成成果与 Argus Open 实时研究体系连接；该体系当前覆盖 757 条历史问题记录和 30 个研究目标。",
+        "将已完成成果与 Argus Open 研究体系连接；公开仓库快照记录了 757 条历史问题记录和 30 个研究目标，并非门户实时计数。",
         "明确区分原创构造、文献重建、历史负面结论、范围修正、研究中项目，以及尚未完成新颖性认证的结论。",
         "鉴于已出现公开成果材料被他人冒充署名的情况，档案原创材料现明确保留全部权利；仍欢迎规范引用。",
       ],

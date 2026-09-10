@@ -7,8 +7,10 @@ import { localeFromPath, pathForLocale } from "../i18n";
 
 const locale = localeFromPath(Astro.url.pathname);
 const publicResearchHref = pathForLocale("/research/", locale);
+const downloadHref = pathForLocale("/get-started/", locale);
 const copy = locale === "zh" ? {
-  title: "Get Started · Argus",
+  title: "真实演示 · Argus",
+  eyebrow: "真实运行演示",
   description: "观看 Argus 从研究方向、创作要求或数学问题出发，经真实执行、Reviewer 多轮打回到论文、文学成稿与计算验收的完整轨迹。",
   heroLead: "打开 Argus，",
   heroEm: "直接说你要什么。",
@@ -16,13 +18,15 @@ const copy = locale === "zh" ? {
   fullCli: "看四条真实运行 →",
   web: "看 Web 研究轨迹 ↓",
   source: "真实录制 · 长程研究 19:54 / 11:29 → 2:17 / 2:07 · 文学 1:29 · 数学 1:17",
+  recordingNote: "录屏保留当时的界面与运行轨迹，不代表最新版安装流程。Windows / Mac 桌面下载、邀请试用和源码安装请查看开始使用页。",
+  downloads: "下载与安装 →",
   flowLabel: "Argus 运行流程",
   flow: ["用户目标", "Manager 路由", "Planner 拆解", "Engineer 执行", "Reviewer 裁决", "成果交付"],
   cliTitle: "从研究方向、创作要求或数学问题，到可审查的交付物。",
   cliBody: "第一条从 8B 开源模型的自信幻觉问题出发，自主提出方法并推进到论文；第二条实现 Agreement-Margin Abstention，在真实 benchmark 上经历多轮运行、打回和恢复；第三条完成《雨停之前》的文学创作与章节审校；第四条对 Erdős–Straus 猜想执行两种精确算法，审计 848,804 条解并通过 Reviewer 验收。",
-  launch: "启动",
-  cliLaunchLabel: "CLI 启动命令",
-  webLaunchLabel: "WebUI 启动命令",
+  launch: "源码 CLI",
+  cliLaunchLabel: "源码 CLI 启动命令",
+  webLaunchLabel: "源码 WebUI 启动命令",
   cliCaptionTitle: "四条真实运行，按内容选择节奏。",
   cliCaption: "两条长程研究分段压缩，保留实验、审稿、失败恢复与论文交付；文学和数学任务完整呈现章节推进、双算法执行、Reviewer 打回与最终验收。",
   cliPointsLabel: "CLI 功能",
@@ -41,7 +45,8 @@ const copy = locale === "zh" ? {
   browser: "Browser",
   install: "浏览公开研究 →",
 } : {
-  title: "Get Started · Argus",
+  title: "Real Demos · Argus",
+  eyebrow: "Real-run demos",
   description: "Watch Argus move from a research direction, creative brief, or mathematics problem through execution, Reviewer rejection, and verified delivery.",
   heroLead: "Open Argus. ",
   heroEm: "Tell it what you need.",
@@ -49,13 +54,15 @@ const copy = locale === "zh" ? {
   fullCli: "Watch all four runs →",
   web: "Watch the Web research trail ↓",
   source: "Real recordings · long-horizon 19:54 / 11:29 → 2:17 / 2:07 · literature 1:29 · math 1:17",
+  recordingNote: "Recordings preserve the interface and run history at capture time, not the latest installation flow. See Get started for Windows / Mac downloads, invitation trial, and source installation.",
+  downloads: "Downloads and installation →",
   flowLabel: "The Argus workflow",
   flow: ["Your objective", "Manager routing", "Planner decomposition", "Engineer execution", "Reviewer decision", "Deliverable"],
   cliTitle: "From a research direction, creative brief, or math problem to an auditable deliverable.",
   cliBody: "The first run develops a method for confident hallucination in 8B open-domain QA and advances it to a paper. The second implements Agreement-Margin Abstention on real benchmarks through rejection and recovery. The third writes Before the Rain Stops through chapter review. The fourth studies Erdős–Straus with two exact algorithms, audits 848,804 solutions, and clears independent review.",
-  launch: "Launch",
-  cliLaunchLabel: "CLI launch command",
-  webLaunchLabel: "WebUI launch command",
+  launch: "Source CLI",
+  cliLaunchLabel: "Source CLI launch command",
+  webLaunchLabel: "Source WebUI launch command",
   cliCaptionTitle: "Four real runs, paced for their content.",
   cliCaption: "The long-horizon runs are condensed while preserving experiments, review, recovery, and paper delivery. The literature and mathematics runs fully preserve chapter progression, dual-algorithm execution, Reviewer rejection, and final acceptance.",
   cliPointsLabel: "CLI capabilities",
@@ -81,14 +88,16 @@ const copy = locale === "zh" ? {
   description={copy.description}
 >
   <PageHero scene="signal-theater" class="product-hero" shellClass="demo-shell">
-      <p class="eyebrow">Get started</p>
+      <p class="eyebrow">{copy.eyebrow}</p>
       <h1>{copy.heroLead}<em>{copy.heroEm}</em></h1>
       <p class="lede">{copy.lede}</p>
       <div class="hero-actions">
         <a class="button primary" href="#run-picker">{copy.fullCli}</a>
         <a class="button" href="#webui">{copy.web}</a>
+        <a class="button" href={downloadHref}>{copy.downloads}</a>
       </div>
       <p class="demo-source">{copy.source}</p>
+      <p class="demo-source">{copy.recordingNote}</p>
   </PageHero>
 
   <section class="runtime-flow" aria-label={copy.flowLabel}>
