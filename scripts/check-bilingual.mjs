@@ -72,6 +72,17 @@ for (const [englishPath, chinesePath] of pairs) {
     assert(html.includes("document.startViewTransition"), `${page} lacks the shared theme reveal`);
     assert(html.includes('/get-started/#desktop-download') && html.includes("v0.1.3"),
       `${page} lacks the current cross-platform download entry`);
+    const footer = html.match(/<footer class="site-footer">[\s\S]*?<\/footer>/)?.[0] ?? "";
+    assert(footer.includes('class="footer-menu"') && footer.includes('class="footer-resource-links"'),
+      `${page} lacks grouped footer navigation`);
+    assert(footer.includes('class="footer-download"') && footer.includes("Windows / Mac"),
+      `${page} lacks the distinct footer download action`);
+    assert((footer.match(/<a\b/g) || []).length === 14, `${page} lost an existing footer destination`);
+    for (const heading of ["footer-explore-heading", "footer-resources-heading"]) {
+      assert(footer.includes(`aria-labelledby="${heading}"`) && footer.includes(`id="${heading}"`),
+        `${page} lacks an accessible footer group heading`);
+    }
+    assert(!/[📄🎬💻]/u.test(footer), `${page} still mixes emoji styles into footer navigation`);
     const scenes = Array.from(html.matchAll(/<img\b[^>]*src="(\/art\/pixel\/[^"]+)"/g), ([, src]) => src);
     assert(scenes.length > 0, `${page} lacks its pixel illustration`);
     assert((html.match(/data-inline-scene="/g) || []).length >= 2, `${page} lacks middle and lower pixel illustrations`);

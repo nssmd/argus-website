@@ -338,8 +338,10 @@ const copy = locale === "zh" ? {
       <div class="cta-band onboarding-help">
         <h2>{copy.helpTitle}</h2>
         <p>{copy.helpBody}</p>
-        <a class="button primary" href="https://github.com/lbx154/Argus/issues" target="_blank" rel="noopener noreferrer">{copy.issues}</a>
-        <a class="button" href="https://github.com/microsoft/ArgusAgent/issues" target="_blank" rel="noopener noreferrer">{copy.sourceIssues}</a>
+        <div class="hero-actions">
+          <a class="button primary" href="https://github.com/lbx154/Argus/issues" target="_blank" rel="noopener noreferrer">{copy.issues}</a>
+          <a class="button" href="https://github.com/microsoft/ArgusAgent/issues" target="_blank" rel="noopener noreferrer">{copy.sourceIssues}</a>
+        </div>
         <PixelIllustration scene="memory-garden" />
       </div>
     </div>
