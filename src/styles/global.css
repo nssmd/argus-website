@@ -2159,6 +2159,12 @@ main {
   max-width: 980px;
 }
 
+.desktop-release-note {
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
 .desktop-download-section {
   padding-top: 42px;
   padding-bottom: 42px;
@@ -2197,22 +2203,11 @@ main {
   margin-top: 12px;
 }
 
-.desktop-download-card__meta,
 .desktop-download-card__links {
   display: flex;
   gap: 8px 16px;
   margin-top: 20px;
   flex-wrap: wrap;
-}
-
-.desktop-download-card__meta span {
-  padding: 6px 9px;
-  border: 1px solid var(--line);
-  border-radius: var(--panel-radius);
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: 9px;
-  font-weight: 700;
 }
 
 .desktop-download-card__action {
@@ -2238,37 +2233,106 @@ main {
   font-weight: 700;
 }
 
-.desktop-download-card__checksum {
+.desktop-installer-grid {
   display: grid;
   grid-column: 1 / -1;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 12px;
-  align-items: center;
-  padding-top: 20px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.desktop-installer {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid var(--line);
+}
+
+.desktop-installer h3 {
+  margin: 0;
+  font-size: 19px;
+}
+
+.desktop-installer p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.desktop-installer .mono {
+  font: 10px var(--mono);
+}
+
+.desktop-installer .button {
+  margin-top: auto;
+}
+
+.installer-integrity summary {
+  padding: 8px 0;
+  color: var(--blue);
+  font: 10px var(--mono);
+  cursor: pointer;
+}
+
+.installer-integrity code {
+  display: block;
+  overflow-wrap: anywhere;
+  color: var(--ink);
+  font: 10px var(--mono);
+}
+
+.installer-integrity a {
+  display: block;
+  margin-top: 10px;
+  color: var(--blue);
+  font-size: 11px;
+}
+
+.desktop-release-notes {
+  grid-column: 1 / -1;
+  padding-top: 8px;
   border-top: 1px solid var(--line);
 }
 
-.desktop-download-card__checksum span {
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: 9px;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.desktop-download-card__checksum code {
-  min-width: 0;
-  overflow-wrap: anywhere;
-  color: var(--ink);
-  font-family: var(--mono);
-  font-size: 10px;
-}
-
-.desktop-download-card__checksum p {
-  grid-column: 1 / -1;
-  margin: 0;
+.desktop-release-notes p {
+  margin: 12px 0 0;
   color: var(--muted);
   font-size: 12px;
+}
+
+.desktop-start-title {
+  margin: 36px 0 16px;
+  font-family: var(--serif);
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 500;
+}
+
+.desktop-access-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.desktop-access-grid .platform-card h3 {
+  margin-top: 0;
+}
+
+.desktop-access-grid .platform-card p + p {
+  margin-top: 14px;
+}
+
+.source-package-links,
+.onboarding-links .plugin-channel-note {
+  margin: 24px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.source-package-links a {
+  display: inline-block;
+  margin: 0 20px 0 0;
+  color: var(--blue);
 }
 
 .agent-install-card {
@@ -4238,8 +4302,9 @@ main {
     justify-content: flex-start;
   }
 
-  .desktop-download-card__checksum {
-    grid-template-columns: 1fr;
+  .desktop-installer-grid,
+  .desktop-access-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .backend-version-note {

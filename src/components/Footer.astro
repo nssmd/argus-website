@@ -1,6 +1,7 @@
 ---
 import { localeFromPath, pathForLocale } from "../i18n";
 import ArgusLogo from "./ArgusLogo.astro";
+import { desktopRelease } from "../data/desktopRelease";
 
 const locale = localeFromPath(Astro.url.pathname);
 const copy = locale === "zh" ? {
@@ -8,12 +9,14 @@ const copy = locale === "zh" ? {
   tagline: "灯熄了，研究继续。",
   nav: "页脚导航",
   resources: "项目链接",
+  download: `Windows / Mac 下载 · v${desktopRelease.version}`,
   links: ["项目", "成绩", "研究", "原理", "场景", "演示", "联系我们", "开始使用"],
 } : {
   home: "Argus home",
   tagline: "The lights go out. The research keeps moving.",
   nav: "Footer navigation",
   resources: "Project links",
+  download: `Windows / Mac downloads · v${desktopRelease.version}`,
   links: ["Projects", "Results", "Research", "How it works", "Use cases", "Demo", "Contact", "Get started"],
 };
 const localized = (href: string) => pathForLocale(href, locale);
@@ -38,6 +41,7 @@ const localized = (href: string) => pathForLocale(href, locale);
       <a href={localized("/get-started/")}>{copy.links[7]}</a>
     </nav>
     <nav class="footer-resources" aria-label={copy.resources}>
+      <a href={`${localized("/get-started/")}#desktop-download`}>{copy.download} ↓</a>
       <a href="https://arxiv.org/abs/2608.05144" target="_blank" rel="noopener noreferrer">📄 Technical Report · arXiv:2608.05144 ↗</a>
       <a href="https://www.youtube.com/watch?v=i8Qy9HCboQE" target="_blank" rel="noopener noreferrer">🎬 YouTube Demo ↗</a>
       <a href="https://github.com/lbx154/Argus" target="_blank" rel="noopener noreferrer">💻 GitHub ↗</a>
