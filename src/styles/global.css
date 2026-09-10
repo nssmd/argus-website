@@ -3884,10 +3884,10 @@ main {
 }
 
 .cta-band {
-  padding: 48px;
+  padding: 40px;
+  border-top: 3px solid #edc96f;
   border-radius: var(--panel-radius);
-  background:
-    #112d48;
+  background: #112d48;
   color: #fff;
 }
 
@@ -3895,8 +3895,9 @@ main {
   margin: 0;
   color: #fff;
   font-family: var(--serif);
-  font-size: clamp(28px, 4vw, 42px);
+  font-size: clamp(26px, 3.3vw, 36px);
   font-weight: 500;
+  line-height: 1.25;
 }
 
 .cta-band p {
@@ -3907,12 +3908,38 @@ main {
 
 .cta-band .hero-actions {
   margin-top: 0;
+  gap: 12px;
+  align-items: stretch;
 }
 
 .cta-band .button {
-  border-color: #fff;
-  background: #fff;
-  color: #0b2e68;
+  min-height: 48px;
+  border-color: #708ba3;
+  background: transparent;
+  color: #edf4ff;
+  text-align: center;
+}
+
+.cta-band .button.primary {
+  border-color: #edc96f;
+  background: #edc96f;
+  color: #112d48;
+}
+
+.cta-band .button:hover {
+  border-color: #d8e5f7;
+  background: #25425d;
+  color: #fff;
+}
+
+.cta-band .button.primary:hover {
+  border-color: #ffe2a0;
+  background: #ffe2a0;
+  color: #112d48;
+}
+
+.cta-band .button:focus-visible {
+  outline-color: #edc96f;
 }
 
 .paper-explorer {
@@ -4085,17 +4112,18 @@ main {
 .site-footer {
   width: min(1080px, calc(100% - 40px));
   margin: 0 auto;
-  padding: 38px 0 46px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 24px;
+  padding: 44px 0 48px;
+  display: grid;
+  grid-template-columns: minmax(180px, 0.8fr) minmax(0, 2fr);
+  align-items: start;
+  gap: 48px;
   border-top: 1px solid var(--line);
 }
 
-.site-footer p {
-  margin: 9px 0 0;
-  color: var(--faint);
+.footer-identity p {
+  max-width: 240px;
+  margin: 16px 0 0;
+  color: var(--muted);
   font-family: var(--serif);
   font-size: 15px;
   font-style: italic;
@@ -4103,30 +4131,111 @@ main {
 
 .footer-navs {
   display: grid;
-  gap: 12px;
-  justify-items: end;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+  gap: 40px;
 }
 
 .site-footer nav {
+  min-width: 0;
+}
+
+.footer-heading {
   display: flex;
-  gap: 18px;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.footer-heading::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  flex: 0 0 5px;
+  background: var(--gold);
+  box-shadow: 7px 0 0 color-mix(in srgb, var(--gold) 30%, transparent);
+}
+
+.footer-menu,
+.footer-resource-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 24px;
 }
 
 .site-footer nav a {
-  color: var(--muted);
-  font-size: 11px;
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink-2);
+  font-size: 13px;
   text-decoration: none;
 }
 
 .site-footer nav a:hover {
   color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 5px;
 }
 
-.site-footer .footer-resources a {
+.site-footer .footer-download {
+  justify-content: space-between;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--blue);
+  background: var(--blue-soft);
+  color: var(--blue);
+  font-weight: 700;
+}
+
+.site-footer .footer-download:hover {
+  border-color: var(--blue);
+  text-decoration: none;
+}
+
+.footer-download small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.footer-arrow {
+  flex-shrink: 0;
   color: var(--blue);
   font-family: var(--mono);
-  font-weight: 700;
+}
+
+.footer-resource-links a {
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+}
+
+@media (max-width: 900px) {
+  .site-footer {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  @media (max-width: 600px) {
+    .footer-navs {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 28px;
+    }
+  }
+
+  .footer-identity p {
+    max-width: none;
+  }
 }
 
 @media (max-width: 1080px) {
@@ -4538,13 +4647,15 @@ main {
     padding: 32px 24px;
   }
 
-  .site-footer {
-    flex-direction: column;
+  .cta-band .hero-actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
   }
 
-  .footer-navs {
-    justify-items: start;
+  .cta-band .button {
+    width: 100%;
   }
+
 }
 
 @media (hover: none), (pointer: coarse) {

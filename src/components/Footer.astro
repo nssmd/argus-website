@@ -7,45 +7,69 @@ const locale = localeFromPath(Astro.url.pathname);
 const copy = locale === "zh" ? {
   home: "Argus 首页",
   tagline: "灯熄了，研究继续。",
-  nav: "页脚导航",
-  resources: "项目链接",
-  download: `Windows / Mac 下载 · v${desktopRelease.version}`,
+  nav: "探索 Argus",
+  resources: "资料与下载",
+  download: "获取桌面版",
+  report: "技术报告",
+  demo: "视频演示",
+  code: "GitHub 仓库",
+  team: "Argus AI 团队",
   links: ["项目", "成绩", "研究", "原理", "场景", "演示", "联系我们", "开始使用"],
 } : {
   home: "Argus home",
   tagline: "The lights go out. The research keeps moving.",
-  nav: "Footer navigation",
-  resources: "Project links",
-  download: `Windows / Mac downloads · v${desktopRelease.version}`,
+  nav: "Explore Argus",
+  resources: "Resources",
+  download: "Get the desktop app",
+  report: "Technical report",
+  demo: "Video demo",
+  code: "GitHub",
+  team: "Argus AI Team",
   links: ["Projects", "Results", "Research", "How it works", "Use cases", "Demo", "Contact", "Get started"],
 };
 const localized = (href: string) => pathForLocale(href, locale);
+const resources = [
+  { label: copy.report, href: "https://arxiv.org/abs/2608.05144" },
+  { label: copy.demo, href: "https://www.youtube.com/watch?v=i8Qy9HCboQE" },
+  { label: copy.code, href: "https://github.com/lbx154/Argus" },
+  { label: copy.team, href: "https://github.com/Argus-AiTeam" },
+];
 ---
 
 <footer class="site-footer">
-  <div>
+  <div class="footer-identity">
     <a class="footer-brand" href={localized("/")} aria-label={copy.home}>
       <ArgusLogo variant="horizontal" class="argus-logo--footer" decorative />
     </a>
     <p>{copy.tagline}</p>
   </div>
   <div class="footer-navs">
-    <nav aria-label={copy.nav}>
-      <a href={localized("/projects/")}>{copy.links[0]}</a>
-      <a href={localized("/results/")}>{copy.links[1]}</a>
-      <a href={localized("/research/")}>{copy.links[2]}</a>
-      <a href={localized("/how/")}>{copy.links[3]}</a>
-      <a href={localized("/use-cases/")}>{copy.links[4]}</a>
-      <a href={localized("/start/")}>{copy.links[5]}</a>
-      <a href={localized("/contact/")}>{copy.links[6]}</a>
-      <a href={localized("/get-started/")}>{copy.links[7]}</a>
+    <nav aria-labelledby="footer-explore-heading">
+      <h2 class="footer-heading" id="footer-explore-heading">{copy.nav}</h2>
+      <div class="footer-menu">
+        <a href={localized("/projects/")}>{copy.links[0]}</a>
+        <a href={localized("/results/")}>{copy.links[1]}</a>
+        <a href={localized("/research/")}>{copy.links[2]}</a>
+        <a href={localized("/how/")}>{copy.links[3]}</a>
+        <a href={localized("/use-cases/")}>{copy.links[4]}</a>
+        <a href={localized("/start/")}>{copy.links[5]}</a>
+        <a href={localized("/contact/")}>{copy.links[6]}</a>
+        <a href={localized("/get-started/")}>{copy.links[7]}</a>
+      </div>
     </nav>
-    <nav class="footer-resources" aria-label={copy.resources}>
-      <a href={`${localized("/get-started/")}#desktop-download`}>{copy.download} ↓</a>
-      <a href="https://arxiv.org/abs/2608.05144" target="_blank" rel="noopener noreferrer">📄 Technical Report · arXiv:2608.05144 ↗</a>
-      <a href="https://www.youtube.com/watch?v=i8Qy9HCboQE" target="_blank" rel="noopener noreferrer">🎬 YouTube Demo ↗</a>
-      <a href="https://github.com/lbx154/Argus" target="_blank" rel="noopener noreferrer">💻 GitHub ↗</a>
-      <a href="https://github.com/Argus-AiTeam" target="_blank" rel="noopener noreferrer">◫ Argus AI Team ↗</a>
+    <nav class="footer-resources" aria-labelledby="footer-resources-heading">
+      <h2 class="footer-heading" id="footer-resources-heading">{copy.resources}</h2>
+      <a class="footer-download" href={`${localized("/get-started/")}#desktop-download`}>
+        <span>{copy.download}<small>Windows / Mac · v{desktopRelease.version}</small></span>
+        <span class="footer-arrow" aria-hidden="true">↓</span>
+      </a>
+      <div class="footer-resource-links">
+        {resources.map((resource) => (
+          <a href={resource.href} target="_blank" rel="noopener noreferrer">
+            <span>{resource.label}</span><span class="footer-arrow" aria-hidden="true">↗</span>
+          </a>
+        ))}
+      </div>
     </nav>
   </div>
 </footer>
