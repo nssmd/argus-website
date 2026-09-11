@@ -4186,6 +4186,18 @@ main {
   color: var(--blue);
 }
 
+@media (min-width: 1024px) {
+  .footer-meta {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: baseline;
+    column-gap: 24px;
+  }
+
+  .footer-credit {
+    justify-content: flex-end;
+  }
+}
+
 .footer-identity p {
   max-width: 240px;
   margin: 16px 0 0;
