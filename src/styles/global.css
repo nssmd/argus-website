@@ -4150,6 +4150,24 @@ main {
   border-top: 1px solid var(--line);
 }
 
+.footer-updated {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 12px;
+  margin: 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.footer-updated time {
+  font-variant-numeric: tabular-nums;
+}
+
 .footer-identity p {
   max-width: 240px;
   margin: 16px 0 0;

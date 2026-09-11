@@ -2,6 +2,7 @@
 import { localeFromPath, pathForLocale } from "../i18n";
 import ArgusLogo from "./ArgusLogo.astro";
 import { desktopRelease } from "../data/desktopRelease";
+import { siteUpdatedAt } from "../data/siteBuild";
 
 const locale = localeFromPath(Astro.url.pathname);
 const copy = locale === "zh" ? {
@@ -14,6 +15,7 @@ const copy = locale === "zh" ? {
   demo: "视频演示",
   code: "GitHub 仓库",
   team: "Argus AI 团队",
+  updated: "网站最近更新",
   links: ["项目", "成绩", "研究", "原理", "场景", "演示", "联系我们", "开始使用"],
 } : {
   home: "Argus home",
@@ -25,9 +27,16 @@ const copy = locale === "zh" ? {
   demo: "Video demo",
   code: "GitHub",
   team: "Argus AI Team",
+  updated: "Website last updated",
   links: ["Projects", "Results", "Research", "How it works", "Use cases", "Demo", "Contact", "Get started"],
 };
 const localized = (href: string) => pathForLocale(href, locale);
+const updatedLabel = new Intl.DateTimeFormat(locale === "zh" ? "zh-CN" : "en-GB", {
+  dateStyle: "medium",
+  timeStyle: "short",
+  timeZone: "Asia/Shanghai",
+  hourCycle: "h23",
+}).format(new Date(siteUpdatedAt));
 const resources = [
   { label: copy.report, href: "https://arxiv.org/abs/2608.05144" },
   { label: copy.demo, href: "https://www.youtube.com/watch?v=i8Qy9HCboQE" },
@@ -72,4 +81,8 @@ const resources = [
       </div>
     </nav>
   </div>
+  <p class="footer-updated">
+    <span>{copy.updated}</span>
+    <time datetime={siteUpdatedAt}>{updatedLabel} (UTC+8)</time>
+  </p>
 </footer>
