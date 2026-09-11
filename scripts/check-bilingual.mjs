@@ -34,6 +34,8 @@ function localTarget(href) {
   return path.join(dist, clean.replace(/^\//, ""));
 }
 
+const siteUpdateTimestamps = new Set();
+
 for (const [englishPath, chinesePath] of pairs) {
   const english = read(englishPath);
   const chinese = read(chinesePath);
@@ -78,6 +80,20 @@ for (const [englishPath, chinesePath] of pairs) {
     assert(footer.includes('class="footer-download"') && footer.includes("Windows / Mac / Linux"),
       `${page} lacks the distinct footer download action`);
     assert((footer.match(/<a\b/g) || []).length === 14, `${page} lost an existing footer destination`);
+    const update = footer.match(/<p class="footer-updated">[\s\S]*?<\/p>/)?.[0] ?? "";
+    const timestamp = update.match(/<time datetime="([^"]+)">([^<]+)<\/time>/);
+    assert(timestamp && Number.isFinite(Date.parse(timestamp[1])), `${page} lacks a valid website update time`);
+    const locale = page.startsWith("zh/") ? "zh-CN" : "en-GB";
+    const expectedDate = new Intl.DateTimeFormat(locale, {
+      dateStyle: "medium",
+      timeStyle: "short",
+      timeZone: "Asia/Shanghai",
+      hourCycle: "h23",
+    }).format(new Date(timestamp[1]));
+    assert(timestamp[2] === `${expectedDate} (UTC+8)`, `${page} has an incorrect localized update time`);
+    assert(update.includes(locale === "zh-CN" ? "网站最近更新" : "Website last updated"),
+      `${page} lacks the localized website update label`);
+    siteUpdateTimestamps.add(timestamp[1]);
     for (const heading of ["footer-explore-heading", "footer-resources-heading"]) {
       assert(footer.includes(`aria-labelledby="${heading}"`) && footer.includes(`id="${heading}"`),
         `${page} lacks an accessible footer group heading`);
@@ -96,6 +112,8 @@ for (const [englishPath, chinesePath] of pairs) {
   }
   assert(pixelScenes[0] === pixelScenes[1], `${englishPath} and ${chinesePath} show different artwork`);
 }
+
+assert(siteUpdateTimestamps.size === 1, "all pages must share one static website build timestamp");
 
 for (const page of ["index.html", "zh/index.html"]) {
   const html = read(page);
