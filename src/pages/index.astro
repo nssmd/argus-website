@@ -21,8 +21,8 @@ const copy = locale === "zh" ? {
   heroEm: "它会边工作，边学习。",
   lede: "读资料、写代码、跑实验，再让独立的 Reviewer 检查结果。Argus 以 7×24 的 Life 持续推进研究，把成功、失败与改道记录为可复用的记忆和 Skills，供下一轮任务调用。",
   releaseNotes: "查看版本说明 ↗",
-  downloadDesktop: "下载 Windows / Mac 版",
-  desktopNote: `v${desktopRelease.version} · 内部邀请 Key 试用，或沿用自己的 Agent CLI。`,
+  downloadDesktop: `下载 ${desktopRelease.platforms} 版`,
+  desktopNote: `v${desktopRelease.version} · 新增 Linux 桌面版；邀请试用默认 GPT-5.5 high，也可沿用自己的 Agent CLI。`,
   projects: "浏览团队项目 →",
   results: "查看量化成绩",
   evolutionLink: "看自进化飞轮 ↓",
@@ -34,7 +34,7 @@ const copy = locale === "zh" ? {
   resourcesTitle: "从源码开始，沿证据深入。",
   resourcesBody: "从源码、技术报告、桌面安装包和团队项目开始探索 Argus。桌面发行与持续更新的源码是不同渠道。",
   resourceLinks: [
-    ["CODE", "Argus 开发与桌面发行", "开发预览源码、Windows / Mac 安装包和桌面问题反馈集中在这里。", "打开 GitHub 仓库 ↗", "https://github.com/lbx154/Argus"],
+    ["CODE", "Argus 开发与桌面发行", `开发预览源码、${desktopRelease.platforms} 安装包和桌面问题反馈集中在这里。`, "打开 GitHub 仓库 ↗", "https://github.com/lbx154/Argus"],
     ["REPORT", "Argus 技术报告", "系统理解 Driver–Harness 模型、四角色边界与跨领域实证结果。", "阅读 arXiv:2608.05144 ↗", "https://arxiv.org/abs/2608.05144"],
     ["OFFICIAL", "官方源码仓库", "访问 Microsoft 维护的 ArgusAgent 官方源码与同步更新；桌面安装包发布在 lbx154/Argus Releases。", "打开 microsoft/ArgusAgent ↗", "https://github.com/microsoft/ArgusAgent"],
     ["TEAM", "Argus AI Team", "浏览团队公开的 Agent、芯片、模型部署与数学研究项目。", "访问团队 GitHub ↗", "https://github.com/Argus-AiTeam"],
@@ -47,8 +47,9 @@ const copy = locale === "zh" ? {
   reportPdf: "打开 PDF ↗",
   hubEyebrow: "Argus AI Team · Hub",
   hubTitle: "使用系统、浏览项目、追溯证据。",
-  hubBody: "网站将团队的 runtime、工程项目、benchmark 与研究成果连接在一起。你可以从一次安装开始，也可以直接进入已经交付的项目和证据。",
-  hubCards: [["RUN", "开始使用 Argus", "下载 Windows / Mac 桌面版，选择内部邀请试用或自带 CLI；也可使用源码安装。", "/get-started/"], ["PROJECTS", "浏览团队项目", "查看 Argus、ACE、MiniMax-H3 与数学研究项目。", "/projects/"], ["EVIDENCE", "查看成果与证据", "从 benchmark 数字进入代码、技术报告和研究材料。", "/results/"]],
+  hubBody: "网站连接 runtime、工程项目、benchmark 与研究成果，并区分已发布安装包、开发源码与经过审查的证据。",
+  hubCards: [["RUN", "开始使用 Argus", `下载 ${desktopRelease.platforms} 桌面版，选择邀请试用或自带 CLI；也可使用源码安装。`, "/get-started/"], ["PROJECTS", "浏览团队项目", "新增 Argus-Pi 源码预览与 CrystalPilot 可选工作台，也可浏览 ACE、MiniMax-H3 和数学研究。", "/projects/"], ["EVIDENCE", "查看成果与证据", "从 benchmark 数字进入代码、技术报告和研究材料。", "/results/"]],
+  progressLink: "查看带采集时间和新颖性边界的数学进展快照 →",
   overviewEyebrow: "90 秒概览",
   overviewTitle: "Argus 怎样持续做研究、验证结果并积累能力。",
   overviewBody: "从一个研究目标出发，Manager、Planner、Engineer 与 Reviewer 围绕证据持续协作；每轮结果再进入长期记忆、Skills 与评测。",
@@ -106,8 +107,8 @@ const copy = locale === "zh" ? {
   heroEm: "It learns while it works.",
   lede: "Read the literature. Build and run experiments. Have an independent reviewer check the result. Argus Life keeps research moving 24/7, preserving successes, failures, and pivots as memory and skills the next run can use.",
   releaseNotes: "Read release notes ↗",
-  downloadDesktop: "Download for Windows / Mac",
-  desktopNote: `v${desktopRelease.version} · Use a private trial invitation Key, or bring your own Agent CLI.`,
+  downloadDesktop: `Download for ${desktopRelease.platforms}`,
+  desktopNote: `v${desktopRelease.version} · Now on Linux desktop. Invitation trial defaults to GPT-5.5 high; own-CLI mode remains available.`,
   projects: "Explore team projects →",
   results: "Measured results",
   evolutionLink: "See the evolution loop ↓",
@@ -119,7 +120,7 @@ const copy = locale === "zh" ? {
   resourcesTitle: "Start with the source. Follow the evidence.",
   resourcesBody: "Explore Argus through its source, technical report, desktop installers, and team projects. Desktop releases and continuously updated source are separate channels.",
   resourceLinks: [
-    ["CODE", "Argus development and desktop releases", "Development-preview source, Windows / Mac installers, and desktop issues live here.", "Open the GitHub repository ↗", "https://github.com/lbx154/Argus"],
+    ["CODE", "Argus development and desktop releases", `Development-preview source, ${desktopRelease.platforms} installers, and desktop issues live here.`, "Open the GitHub repository ↗", "https://github.com/lbx154/Argus"],
     ["REPORT", "Argus technical report", "Understand the Driver–Harness model, four-role boundaries, and cross-domain evidence.", "Read arXiv:2608.05144 ↗", "https://arxiv.org/abs/2608.05144"],
     ["OFFICIAL", "Official source repository", "Open the Microsoft-maintained ArgusAgent source and synchronized updates. Desktop installers are published in lbx154/Argus Releases.", "Open microsoft/ArgusAgent ↗", "https://github.com/microsoft/ArgusAgent"],
     ["TEAM", "Argus AI Team", "Explore the team's public agent, chip, model-deployment, and mathematics projects.", "Visit the team on GitHub ↗", "https://github.com/Argus-AiTeam"],
@@ -132,8 +133,9 @@ const copy = locale === "zh" ? {
   reportPdf: "Open PDF ↗",
   hubEyebrow: "Argus AI Team · Hub",
   hubTitle: "Use the system. Explore the projects. Trace the evidence.",
-  hubBody: "The site connects the team's runtime, engineering projects, benchmarks, and research. Start with an installation or move directly into delivered projects and their evidence.",
-  hubCards: [["RUN", "Get started with Argus", "Download the Windows / Mac desktop app for invitation-only trial or own-CLI use, or follow source installation.", "/get-started/"], ["PROJECTS", "Explore team projects", "Open Argus, ACE, MiniMax-H3, and mathematics projects.", "/projects/"], ["EVIDENCE", "Inspect results and evidence", "Move from benchmark claims to code, technical reports, and research artifacts.", "/results/"]],
+  hubBody: "The site connects runtimes, engineering projects, benchmarks and research, distinguishing published installers, development source and reviewed evidence.",
+  hubCards: [["RUN", "Get started with Argus", `Download the ${desktopRelease.platforms} desktop app for invitation-only trial or own-CLI use, or follow source installation.`, "/get-started/"], ["PROJECTS", "Explore team projects", "New: the Argus-Pi source preview and optional CrystalPilot workbench, alongside ACE, MiniMax-H3 and mathematics.", "/projects/"], ["EVIDENCE", "Inspect results and evidence", "Move from benchmark claims to code, technical reports, and research artifacts.", "/results/"]],
+  progressLink: "See the dated mathematics progress snapshot and novelty boundaries →",
   overviewEyebrow: "90-second overview",
   overviewTitle: "How Argus sustains research, verifies results, and accumulates capability.",
   overviewBody: "Starting from one research objective, the Manager, Planner, Engineer, and Reviewer collaborate around evidence; each run then updates durable memory, skills, and evaluations.",
@@ -288,6 +290,7 @@ const copy = locale === "zh" ? {
           </a>
         ))}
       </div>
+      <p class="desktop-release-note"><a href={`${href("/projects/mathematics/")}#research-progress`}>{copy.progressLink}</a></p>
     </div>
   </section>
 

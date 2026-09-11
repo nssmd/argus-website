@@ -3,6 +3,7 @@ import ResearchVideoDemo from "../components/ResearchVideoDemo.astro";
 import SiteLayout from "../layouts/SiteLayout.astro";
 import PageHero from "../components/PageHero.astro";
 import PixelIllustration from "../components/PixelIllustration";
+import { desktopRelease } from "../data/desktopRelease";
 import { localeFromPath, pathForLocale } from "../i18n";
 
 const locale = localeFromPath(Astro.url.pathname);
@@ -18,7 +19,7 @@ const copy = locale === "zh" ? {
   fullCli: "看四条真实运行 →",
   web: "看 Web 研究轨迹 ↓",
   source: "真实录制 · 长程研究 19:54 / 11:29 → 2:17 / 2:07 · 文学 1:29 · 数学 1:17",
-  recordingNote: "录屏保留当时的界面与运行轨迹，不代表最新版安装流程。Windows / Mac 桌面下载、邀请试用和源码安装请查看开始使用页。",
+  recordingNote: `录屏保留当时的界面与运行轨迹，不代表最新版安装流程。${desktopRelease.platforms} 桌面下载、邀请试用和源码安装请查看开始使用页。`,
   downloads: "下载与安装 →",
   flowLabel: "Argus 运行流程",
   flow: ["用户目标", "Manager 路由", "Planner 拆解", "Engineer 执行", "Reviewer 裁决", "成果交付"],
@@ -54,7 +55,7 @@ const copy = locale === "zh" ? {
   fullCli: "Watch all four runs →",
   web: "Watch the Web research trail ↓",
   source: "Real recordings · long-horizon 19:54 / 11:29 → 2:17 / 2:07 · literature 1:29 · math 1:17",
-  recordingNote: "Recordings preserve the interface and run history at capture time, not the latest installation flow. See Get started for Windows / Mac downloads, invitation trial, and source installation.",
+  recordingNote: `Recordings preserve the interface and run history at capture time, not the latest installation flow. See Get started for ${desktopRelease.platforms} downloads, invitation trial, and source installation.`,
   downloads: "Downloads and installation →",
   flowLabel: "The Argus workflow",
   flow: ["Your objective", "Manager routing", "Planner decomposition", "Engineer execution", "Reviewer decision", "Deliverable"],

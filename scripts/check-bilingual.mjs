@@ -70,12 +70,12 @@ for (const [englishPath, chinesePath] of pairs) {
   const pixelScenes = [];
   for (const [page, html] of [[englishPath, english], [chinesePath, chinese]]) {
     assert(html.includes("document.startViewTransition"), `${page} lacks the shared theme reveal`);
-    assert(html.includes('/get-started/#desktop-download') && html.includes("v0.1.3"),
+    assert(html.includes('/get-started/#desktop-download') && html.includes("v0.1.5"),
       `${page} lacks the current cross-platform download entry`);
     const footer = html.match(/<footer class="site-footer">[\s\S]*?<\/footer>/)?.[0] ?? "";
     assert(footer.includes('class="footer-menu"') && footer.includes('class="footer-resource-links"'),
       `${page} lacks grouped footer navigation`);
-    assert(footer.includes('class="footer-download"') && footer.includes("Windows / Mac"),
+    assert(footer.includes('class="footer-download"') && footer.includes("Windows / Mac / Linux"),
       `${page} lacks the distinct footer download action`);
     assert((footer.match(/<a\b/g) || []).length === 14, `${page} lost an existing footer destination`);
     for (const heading of ["footer-explore-heading", "footer-resources-heading"]) {
@@ -214,8 +214,14 @@ for (const page of ["projects/mathematics/index.html", "zh/projects/mathematics/
   assert(html.includes("Seventeen mathematical result packages") || html.includes("十七个数学成果包"), `${page} lacks the current mathematics result count`);
   assert(html.includes("81 public artifacts") || html.includes("81 个公开产物"), `${page} lacks the current evidence count`);
   assert((html.match(/class="project-detail-card project-detail-card--mathematics"/g) || []).length === 2, `${page} must show both mathematics projects`);
-  assert(html.includes("published repository snapshot") || html.includes("公开仓库快照"),
+  assert(html.includes("Not a live counter") || html.includes("非实时计数"),
     `${page} must not present snapshot counts as live portal statistics`);
+  assert(html.includes('datetime="2026-09-11T09:38:06Z"'), `${page} lacks the progress capture time`);
+  for (const value of ["41", "617 / 757", "0", "4"]) {
+    assert(new RegExp(`<dd\\b[^>]*>${value}</dd>`).test(html), `${page} lacks snapshot value ${value}`);
+  }
+  assert(html.includes("not certified original breakthroughs") || html.includes("不能宣传为已认证原创突破"),
+    `${page} must distinguish pending novelty from original results`);
 }
 
 for (const page of ["projects/hardware/index.html", "zh/projects/hardware/index.html"]) {
@@ -232,23 +238,45 @@ for (const page of ["projects/runtime/index.html", "zh/projects/runtime/index.ht
     `${page} must distinguish the official source repository from desktop releases`);
   assert(!html.includes("Open official release") && !html.includes("打开官方发行仓库"),
     `${page} mislabels source as a packaged release`);
+  assert((html.match(/class="project-detail-card project-detail-card--runtime"/g) || []).length === 3,
+    `${page} must include Argus, Argus-Pi and CrystalPilot`);
+  assert(html.includes('id="argus-pi"') && html.includes("github.com/Argus-AiTeam/Argus-Pi"),
+    `${page} lacks the new source-preview project`);
+  assert(html.includes("not a tenth Argus backend") || html.includes("不是第十个 Argus 后端"),
+    `${page} must preserve the Pi backend identity`);
+  assert(html.includes("no separately published package or binary release") || html.includes("没有独立发布的软件包或二进制安装包"),
+    `${page} misrepresents the Argus-Pi source preview`);
+  assert(html.includes('id="crystalpilot"') && html.includes("crystalpilot-downloads.argusbot.cn"),
+    `${page} lacks the optional CrystalPilot distribution`);
+  assert(html.includes("Proprietary: TopoSpace") || html.includes("专有许可：TopoSpace"),
+    `${page} must preserve the CrystalPilot license boundary`);
+  assert(html.includes("not in desktop v0.1.5") || html.includes("不在桌面 v0.1.5 中"),
+    `${page} must distinguish source integration from released installers`);
 }
 
 for (const page of ["get-started/index.html", "zh/get-started/index.html"]) {
   const html = read(page);
   for (const [id, filename, size, checksum] of [
-    ["windows", "Argus-0.1.3-setup.exe", "32.2 MiB", "9f50fa4cafba88207786bfc3c68ef5559d741ca0467c285f724c45ec1f0ffbfd"],
-    ["macos-aarch64", "Argus-0.1.3-macos-aarch64.dmg", "52.6 MiB", "44ceebdd5d72da01b735f63ee2ca988f6dd917719c647f45ac83c583c719ef47"],
-    ["macos-x86_64", "Argus-0.1.3-macos-x86_64.dmg", "52.5 MiB", "2fda9c99b0731606a60d5cfeaceb80693aa7829b8dbcb75e031715a81e3c3bf2"],
+    ["windows", "Argus-0.1.5-setup.exe", "31.9 MiB", "008dfb104799163b3436c6b22b1b2210833cb009521e25936875dbc66d255d98"],
+    ["macos-aarch64", "Argus-0.1.5-macos-aarch64.dmg", "55.7 MiB", "6ed4efa31d7b891d4b9f32021ffa29a9b5a1bbaa3346cd3f7989b28e8d69b873"],
+    ["macos-x86_64", "Argus-0.1.5-macos-x86_64.dmg", "55.5 MiB", "92a0e849b9080d214be7b69ed7b55f77adf35aecd6c2c8c95477352f5c1758cc"],
+    ["linux-appimage", "Argus-0.1.5-linux-x86_64.AppImage", "140.5 MiB", "cc3c3def4eeabffa0d7dca20045b77a4ed6c4cec7f5e0f9d939f0bdab57d7a43"],
+    ["linux-deb", "Argus-0.1.5-linux-x86_64.deb", "73.2 MiB", "74b95754240e76b00aa292a869ce826c35639d6371dd245b9c007fe0ffef9856"],
   ]) {
     assert(html.includes(`data-desktop-installer="${id}"`), `${page} lacks the ${id} download control`);
-    assert(html.includes(`releases/download/v0.1.3/${filename}`), `${page} lacks the current ${id} URL`);
+    assert(html.includes(`releases/download/v0.1.5/${filename}`), `${page} lacks the current ${id} URL`);
     assert(html.includes(size) && html.includes(checksum), `${page} has stale ${id} integrity metadata`);
   }
-  assert((html.match(/data-desktop-installer=/g) || []).length === 3, `${page} must offer exactly three desktop builds`);
-  assert(html.includes("Argus-0.1.3-setup.exe.sig"), `${page} lacks the Windows updater signature`);
-  assert(!html.includes(".dmg.sig"), `${page} incorrectly offers a signature for a DMG instead of an update archive`);
-  assert(html.includes("releases/tag/v0.1.3") && html.includes("/v0.1.3/SHA256SUMS"), `${page} lacks current release notes/checksums`);
+  assert((html.match(/data-desktop-installer=/g) || []).length === 5, `${page} must offer exactly five installer choices`);
+  assert(html.includes("Argus-0.1.5-setup.exe.sig") && html.includes("Argus-0.1.5-linux-x86_64.AppImage.sig"),
+    `${page} lacks the Windows or Linux updater signature`);
+  assert(!html.includes(".dmg.sig") && !html.includes(".deb.sig"), `${page} offers an unpublished installer signature`);
+  assert(html.includes("releases/tag/v0.1.5") && html.includes("/v0.1.5/SHA256SUMS"), `${page} lacks current release notes/checksums`);
+  assert(html.includes("Ubuntu 22.04") && (html.includes("graphical desktop session") || html.includes("图形桌面会话")),
+    `${page} lacks the Linux desktop requirements`);
+  assert(html.includes("GPT-5.5") && html.includes("high"), `${page} lacks the current trial model setting`);
+  assert(html.includes("These later changes are not included in v0.1.5 installers") || html.includes("这些后续改动不在 v0.1.5 安装包中"),
+    `${page} must mark source-preview-only features`);
   assert(html.includes("macOS 13+") && html.includes("Apple Silicon") && html.includes("Intel"), `${page} lacks Mac compatibility guidance`);
   assert(html.includes("Microsoft Edge WebView2 Runtime"), `${page} lacks the desktop prerequisite`);
   assert(html.includes("not a Windows Authenticode") || html.includes("不等于 Windows Authenticode"),
@@ -263,7 +291,7 @@ for (const page of ["get-started/index.html", "zh/get-started/index.html"]) {
     `${page} must offer both invitation trial and own-account modes`);
   assert(html.includes("1,000,000") && (html.includes("私下发放") || html.includes("distributed privately")),
     `${page} lacks the invitation-only trial and lifetime allowance boundary`);
-  assert(html.includes("argus_skill-0.1.3-py3-none-any.whl") && html.includes("argus_skill-0.1.3.tar.gz"),
+  assert(html.includes("argus_skill-0.1.5-py3-none-any.whl") && html.includes("argus_skill-0.1.5.tar.gz"),
     `${page} lacks the versioned Python release assets`);
   assert(html.includes("docs/agent-install.md"), `${page} lacks the agent installation contract`);
   assert(html.includes("https://github.com/microsoft/ArgusAgent/blob/main/docs/agent-install.md"),
@@ -297,8 +325,10 @@ for (const page of ["get-started/index.html", "zh/get-started/index.html"]) {
 
 for (const page of ["index.html", "zh/index.html"]) {
   const html = read(page);
-  assert(html.includes('/get-started/#desktop-download') && html.includes("releases/tag/v0.1.3"),
-    `${page} lacks the current Windows/Mac chooser and release notes`);
+  assert(html.includes('/get-started/#desktop-download') && html.includes("releases/tag/v0.1.5"),
+    `${page} lacks the current cross-platform chooser and release notes`);
+  assert(html.includes("Argus-Pi") && html.includes("CrystalPilot") && html.includes("/projects/mathematics/#research-progress"),
+    `${page} lacks the new project and research-progress entry points`);
 }
 
 for (const page of ["contact/index.html", "zh/contact/index.html"]) {
@@ -432,8 +462,10 @@ assert(
 for (const page of fs.readdirSync(dist, { recursive: true })) {
   if (typeof page !== "string" || !page.endsWith(".html")) continue;
   const html = read(page);
-  assert(!/Argus-0\.1\.[12]-setup\.exe|Windows 0\.1\.[12]/.test(html),
+  assert(!/Argus-0\.1\.[1-4]-setup\.exe|Windows 0\.1\.[1-4]/.test(html),
     `${page} still advertises the superseded desktop release`);
+  assert(!html.includes("This release has no Linux desktop installer") && !html.includes("此 Release 不提供 Linux 桌面安装包"),
+    `${page} still denies the published Linux desktop builds`);
   assert(!html.includes("Every platform needs one authenticated Agent CLI") && !html.includes("所有平台都需要一个已登录的 Agent CLI"),
     `${page} incorrectly applies own-account requirements to invitation trial mode`);
   for (const match of html.matchAll(/<a\b[^>]*\bhref="([^"]+)"/g)) {

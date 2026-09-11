@@ -1,3 +1,5 @@
+import { sourcePreview } from "./projectUpdates";
+
 export type ProjectLink = {
   kind: "repository" | "official" | "report" | "evidence" | "demo" | "status" | "documentation" | "license";
   href: string;
@@ -53,8 +55,8 @@ export const projectDomains: ProjectDomain[] = [
       zh: "让智能工作跨越单次对话，持续规划、执行与验收。",
     },
     description: {
-      en: "This domain develops the runtime, interfaces, memory, and independent review needed for long-horizon agents to operate reliably.",
-      zh: "这一领域构建长程 Agent 所需的运行时、交互界面、记忆系统与独立验收机制。",
+      en: "Argus provides long-horizon orchestration; Argus-Pi develops its execution layer, while optional workbenches such as CrystalPilot extend it into specialist research.",
+      zh: "Argus 提供长程组织与验收，Argus-Pi 改进执行层，CrystalPilot 等可选工作台将其扩展到专业科研。",
     },
   },
   {
@@ -118,12 +120,14 @@ export const projects: Project[] = [
         "Durable project state retains tasks, checkpoints, decisions, skills, and evidence across sessions and runtime upgrades.",
         "The technical report records about 78% on SWE-Bench Pro versus 59% for Direct Copilot, with 1.41× aggregate tokens.",
         "Six paper pipelines completed 254 missions with 16 stage rollbacks recorded in the report.",
+        `Source preview reviewed ${sourcePreview.reviewedOn}: streamed Manager replies and tool-call display, task-map and activity-feed improvements, and optional workbench integration. These changes follow desktop v${sourcePreview.desktopBaseline}; they are not included in that installer or automatically synchronized to the official source repository.`,
       ],
       zh: [
         "Manager、Planner、Engineer 与 Reviewer 分别负责项目控制、任务选择、执行和基于证据的验收。",
         "持久化项目状态能够跨会话和运行时升级保留任务、检查点、决策、Skills 与证据。",
         "技术报告记录 SWE-Bench Pro 约 78%，Direct Copilot 为 59%，总 Token 使用量为 1.41 倍。",
         "报告中的六条论文流水线共完成 254 个 mission，并发生 16 次阶段回滚。",
+        `${sourcePreview.reviewedOn} 核对的开发源码新增 Manager 流式回复、工具调用展示、任务地图与活动记录改进，以及可选工作台集成；这些改动晚于桌面 v${sourcePreview.desktopBaseline}，不在该安装包中，也不代表官方源码仓库已同步。`,
       ],
     },
     outcome: {
@@ -135,6 +139,86 @@ export const projects: Project[] = [
       { kind: "repository", href: "https://github.com/lbx154/Argus" },
       { kind: "official", href: "https://github.com/microsoft/ArgusAgent" },
       { kind: "report", href: "https://arxiv.org/abs/2608.05144" },
+      { kind: "status", href: sourcePreview.changesUrl },
+    ],
+  },
+  {
+    id: "argus-pi",
+    category: "runtime",
+    status: "preview",
+    title: "Argus-Pi",
+    description: {
+      en: "The team's Pi-based inference and execution layer for Argus, available as a source preview.",
+      zh: "团队为 Argus 维护的 Pi 推理与执行层，目前提供源码预览。",
+    },
+    problem: {
+      en: "Research execution needs faithful role instructions, inspectable document reads, and failures that remain visible through pipelines and handoffs. This fork improves the Pi layer without replacing Argus orchestration.",
+      zh: "研究执行需要准确保留角色指令、按需读取文档，并在命令管道与任务交接中保留真实失败。该分支改进 Pi 执行层，不替代 Argus 的组织与验收。",
+    },
+    highlights: {
+      en: [
+        "Preserves the pi CLI, configuration and provider authentication; argus-pi is an additional executable name. It uses the existing pi backend, not a tenth Argus backend.",
+        "Reads selected PDF pages and notebook cells with source context and saved-output inventories. PDF extraction is not OCR, figure inspection or layout review; stored notebook output is not evidence of a fresh run.",
+        "Local Bash pipefail and signal-aware status handling keep failed commands observable instead of reporting a successful pipe or a missing exit code as success.",
+        "The argus branch is a source preview, with no separately published package or binary release. Upstream Pi installation and self-update do not install this fork.",
+        "Small prompt-profile trials are not evidence of general performance superiority; comparisons must retain failures and incomplete deliverables.",
+      ],
+      zh: [
+        "保留 pi CLI、配置与 Provider 登录，argus-pi 是附加可执行名称；仍使用既有 pi 后端，不是第十个 Argus 后端。",
+        "可按页读取 PDF、按单元格读取 Notebook，保留来源与已保存输出清单。PDF 文本提取不是 OCR、看图或布局审核；Notebook 旧输出也不证明刚刚运行成功。",
+        "本地 Bash 的 pipefail 与信号状态处理让命令失败保持可见，不把管道末端成功或缺少退出码误当成整段成功。",
+        "argus 分支目前是源码预览，没有独立发布的软件包或二进制安装包；安装或自更新上游 Pi 不会得到此分支。",
+        "小规模提示词试验不等于通用性能领先；比较仍需保留失败与未完成交付。",
+      ],
+    },
+    outcome: {
+      en: "A source-preview execution layer with bounded document reads and explicit failure reporting.",
+      zh: "以源码预览提供按范围读取文档与明确失败报告的执行层。",
+    },
+    technologies: ["TypeScript", "Pi", "PDF", "Notebook"],
+    links: [
+      { kind: "repository", href: "https://github.com/Argus-AiTeam/Argus-Pi" },
+      { kind: "documentation", href: "https://github.com/Argus-AiTeam/Argus-Pi/blob/argus/README.md" },
+    ],
+  },
+  {
+    id: "crystalpilot",
+    category: "runtime",
+    status: "preview",
+    title: "Argus CrystalPilot",
+    description: {
+      en: "An independently distributed, optional crystallography workbench with Chinese and English interfaces.",
+      zh: "独立分发的可选晶体学研究工作台，支持中文与英文界面。",
+    },
+    problem: {
+      en: "Diffraction processing, structure solution, refinement and 3D crystal research need a specialist scientific environment. CrystalPilot adds that workbench to compatible Argus hosts without bundling its scientific core into Argus itself.",
+      zh: "衍射数据处理、结构求解、精修与三维晶体研究需要专业科学环境。CrystalPilot 为兼容的 Argus 宿主增加工作台，不把科学核心直接打入 Argus 默认安装。",
+    },
+    highlights: {
+      en: [
+        "Version 0.4.0 is independently distributed. Its host integration is in the development source reviewed on 2026-09-11, not in desktop v0.1.5; no workbench plugin is enabled by default.",
+        "Compatible hosts install the pinned, SHA-256-checked package from the plugin center into an isolated environment. Supported backends are Codex, Copilot and Pi, including supported mixed-role configurations.",
+        "Prepares scientific dependencies automatically; optional or licensed dependencies remain explicit. SHELX requires authorization from its author. Scientific binaries, model credentials and research datasets are not bundled in the distribution.",
+        "Separate workbench conversations and project bindings preserve ownership. Updates are manual and staged; uninstalling preserves research data, conversations and reusable software.",
+        "Proprietary: TopoSpace reserves all rights and prohibits unauthorized commercial use or derivative development. Public source availability is not an open-source license; the host integration and third-party components have separate terms.",
+      ],
+      zh: [
+        "0.4.0 独立分发；宿主集成位于 2026-09-11 核对的开发源码，不在桌面 v0.1.5 中，默认不启用任何工作台插件。",
+        "兼容宿主通过插件中心安装固定版本、经过 SHA-256 核对的软件包，并使用隔离环境；支持 Codex、Copilot、Pi 及这些后端的混合角色配置。",
+        "自动准备科学依赖，缺失的可选或授权组件会明确提示；SHELX 需向原作者取得许可。发行物不包含上游科学二进制、模型凭据或研究数据。",
+        "独立工作台会话与项目绑定保留权属边界；更新需手动触发并分阶段切换，卸载保留研究数据、对话和可复用软件。",
+        "专有许可：TopoSpace 保留全部权利，未经许可禁止商用或二次开发。公开源码不等于开源授权；宿主集成与第三方组件适用各自条款。",
+      ],
+    },
+    outcome: {
+      en: "Optional CrystalPilot 0.4.0 distribution for plugin-capable development-source hosts.",
+      zh: "为具备插件能力的开发源码宿主提供可选 CrystalPilot 0.4.0。",
+    },
+    technologies: ["Crystallography", "Python", "Codex / Copilot / Pi", "Bilingual"],
+    links: [
+      { kind: "documentation", href: "https://crystalpilot-downloads.argusbot.cn/" },
+      { kind: "status", href: "https://github.com/lbx154/Argus/blob/ed13672c4d/docs/workbench-plugins.md" },
+      { kind: "license", href: "https://github.com/lbx154/Argus/blob/ed13672c4d/docs/workbench-plugins.md#crystalpilot-licensing" },
     ],
   },
   {
@@ -343,14 +427,14 @@ export const projects: Project[] = [
       en: [
         "Archives seventeen public result packages spanning low-dimensional topology and foliations, Riemannian and algebraic geometry, complex analysis and harmonic measure, geometric group theory and Kleinian groups, set theory, lattices and spherical designs, graph theory, convex geometry, beta-transformations and Salem numbers, arithmetic dynamics, and braid-group algebra.",
         "Includes nine independently replayable computational certificates, a Lean-checked logical composition, technical reports, and checksums for 81 public artifacts. The latest package answers Stephen Bigelow's zipper-algebra twist question at the representation level.",
-        "Connects completed results to Argus Open. The published repository snapshot records 757 historical problem records and 30 active research targets; these are not live portal counts.",
+        "Connects archived results to Argus Open. The dated portal snapshot below distinguishes active campaigns, processed audit records and novelty decisions from the archive's certified artifacts.",
         "Separates original constructions from literature reconstructions, historical negative results, scope corrections, active research, and claims whose novelty is not yet certified.",
         "Original archive materials are All Rights Reserved following reported authorship misuse; accurate citation remains welcome.",
       ],
       zh: [
         "归档十七个公开成果包，覆盖低维拓扑与叶状结构、黎曼与代数几何、复分析与调和测度、几何群论与 Kleinian 群、集合论、格与球面设计、图论、凸几何、β-变换与 Salem 数、算术动力系统和辫群代数。",
         "包含九个可独立重放的计算证书、一项 Lean 逻辑组合检查，以及技术报告和 81 个公开产物的校验值。最新成果包在表示层回答了 Stephen Bigelow 提出的 zipper algebra twist 问题。",
-        "将已完成成果与 Argus Open 研究体系连接；公开仓库快照记录了 757 条历史问题记录和 30 个研究目标，并非门户实时计数。",
+        "将归档成果与 Argus Open 连接；下方带时间的门户快照分别展示活跃研究、审计记录与新颖性裁决，不与档案中的已认证产物混为同一统计。",
         "明确区分原创构造、文献重建、历史负面结论、范围修正、研究中项目，以及尚未完成新颖性认证的结论。",
         "鉴于已出现公开成果材料被他人冒充署名的情况，档案原创材料现明确保留全部权利；仍欢迎规范引用。",
       ],

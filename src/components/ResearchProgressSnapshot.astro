@@ -1,0 +1,48 @@
+---
+import { mathematicsSnapshot as snapshot } from "../data/projectUpdates";
+import { localeFromPath } from "../i18n";
+
+const locale = localeFromPath(Astro.url.pathname);
+const zh = locale === "zh";
+const captured = new Intl.DateTimeFormat(zh ? "zh-CN" : "en-GB", {
+  dateStyle: "medium", timeStyle: "short", timeZone: "UTC",
+}).format(new Date(snapshot.capturedAt));
+const metrics = [
+  [snapshot.activeTargets, zh ? "活跃研究目标" : "Active research targets"],
+  [`${snapshot.processed} / ${snapshot.records}`, zh ? "已处理审计记录" : "Processed audit records"],
+  [snapshot.confirmedOriginal, zh ? "门户已确认原创" : "Portal-confirmed original results"],
+  [snapshot.pendingNovelty, zh ? "新颖性仍待审查" : "Pending novelty review"],
+];
+---
+
+<aside class="research-progress-snapshot" id="research-progress" aria-labelledby="research-progress-title">
+  <p class="eyebrow">{zh ? "Argus Open · 进展快照" : "Argus Open · Progress snapshot"}</p>
+  <h2 id="research-progress-title">{zh ? "研究在推进，结论有边界。" : "Ongoing research. Explicit claim boundaries."}</h2>
+  <p class="snapshot-date">
+    {zh ? "采集于 " : "Captured "}
+    <time datetime={snapshot.capturedAt}>{captured} UTC</time>
+    {zh ? " · 非实时计数" : " · Not a live counter"}
+  </p>
+  <dl class="snapshot-metrics">
+    {metrics.map(([value, label]) => <div><dt>{label}</dt><dd>{value}</dd></div>)}
+  </dl>
+  <p>{zh
+    ? `已处理记录中，${snapshot.independentlyReviewed} 条完成独立复核，${snapshot.provisional} 条暂定或待审。这是门户在采集时刻的状态，不是团队全部成果统计；数学正确性通过不等于新颖性通过，${snapshot.pendingNovelty} 项待审不能宣传为已认证原创突破。`
+    : `Of the processed records, ${snapshot.independentlyReviewed} were independently reviewed and ${snapshot.provisional} were provisional or awaiting review. This is the portal's captured state, not a total of all team results. Mathematical correctness does not establish novelty: the ${snapshot.pendingNovelty} pending items are not certified original breakthroughs.`}</p>
+  <a href={snapshot.sourceUrl} target="_blank" rel="noopener noreferrer">
+    {zh ? "查看实时门户与原始证据 ↗" : "Open the live portal and source evidence ↗"}
+  </a>
+</aside>
+
+<style>
+  .research-progress-snapshot { margin-top: 44px; padding-block: 28px; border-block: 1px solid var(--line); }
+  h2 { margin: 12px 0; font: 500 clamp(24px, 3vw, 32px)/1.3 var(--serif); }
+  p:not(.eyebrow) { color: var(--muted); font-size: 13px; }
+  .snapshot-date { margin-bottom: 24px; }
+  .snapshot-metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin: 24px 0; }
+  .snapshot-metrics div { display: flex; flex-direction: column; gap: 8px; border-top: 2px solid var(--gold); padding-top: 16px; }
+  dt { color: var(--muted); font-size: 12px; }
+  dd { order: -1; margin: 0; color: var(--ink); font: 500 clamp(23px, 3vw, 34px)/1.2 var(--serif); }
+  a { display: inline-block; padding-block: 12px; color: var(--blue); font-size: 13px; }
+  @media (max-width: 700px) { .snapshot-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+</style>
