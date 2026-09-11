@@ -4150,13 +4150,11 @@ main {
   border-top: 1px solid var(--line);
 }
 
-.footer-updated {
+.footer-meta {
   grid-column: 1 / -1;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 6px 12px;
-  margin: 0;
+  min-width: 0;
+  display: grid;
+  gap: 8px;
   padding-top: 20px;
   border-top: 1px solid var(--line);
   color: var(--muted);
@@ -4164,8 +4162,28 @@ main {
   line-height: 1.6;
 }
 
+.footer-updated,
+.footer-credit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 12px;
+  margin: 0;
+}
+
 .footer-updated time {
   font-variant-numeric: tabular-nums;
+}
+
+.footer-contact {
+  color: var(--ink-2);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
+.footer-contact:hover {
+  color: var(--blue);
 }
 
 .footer-identity p {
