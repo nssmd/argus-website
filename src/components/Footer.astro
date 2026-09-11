@@ -3,6 +3,7 @@ import { localeFromPath, pathForLocale } from "../i18n";
 import ArgusLogo from "./ArgusLogo.astro";
 import { desktopRelease } from "../data/desktopRelease";
 import { siteUpdatedAt } from "../data/siteBuild";
+import { websiteMaintainer } from "../data/team";
 
 const locale = localeFromPath(Astro.url.pathname);
 const copy = locale === "zh" ? {
@@ -16,6 +17,8 @@ const copy = locale === "zh" ? {
   code: "GitHub 仓库",
   team: "Argus AI 团队",
   updated: "网站最近更新",
+  creator: "网站制作：",
+  websiteContact: "网站相关问题请联系",
   links: ["项目", "成绩", "研究", "原理", "场景", "演示", "联系我们", "开始使用"],
 } : {
   home: "Argus home",
@@ -28,6 +31,8 @@ const copy = locale === "zh" ? {
   code: "GitHub",
   team: "Argus AI Team",
   updated: "Website last updated",
+  creator: "Website by",
+  websiteContact: "For website issues, contact",
   links: ["Projects", "Results", "Research", "How it works", "Use cases", "Demo", "Contact", "Get started"],
 };
 const localized = (href: string) => pathForLocale(href, locale);
@@ -81,8 +86,17 @@ const resources = [
       </div>
     </nav>
   </div>
-  <p class="footer-updated">
-    <span>{copy.updated}</span>
-    <time datetime={siteUpdatedAt}>{updatedLabel} (UTC+8)</time>
-  </p>
+  <div class="footer-meta">
+    <p class="footer-updated">
+      <span>{copy.updated}</span>
+      <time datetime={siteUpdatedAt}>{updatedLabel} (UTC+8)</time>
+    </p>
+    <p class="footer-credit">
+      <span>{copy.creator} {websiteMaintainer.name}</span>
+      <span>
+        {copy.websiteContact}
+        <a class="footer-contact" href={`mailto:${websiteMaintainer.email}`}>{websiteMaintainer.email}</a>
+      </span>
+    </p>
+  </div>
 </footer>

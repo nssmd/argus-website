@@ -5,12 +5,17 @@ export type TeamMember = {
   profile: string;
 };
 
+export const websiteMaintainer = {
+  name: "Sufeng Guo",
+  email: "sufeng_guo@smail.nju.edu.cn",
+} as const;
+
 export const teamMembers: TeamMember[] = [
   {
     login: "aHappend",
     avatar: "https://avatars.githubusercontent.com/u/228031504?v=4",
     emails: [
-      "sufeng_guo@smail.nju.edu.cn",
+      websiteMaintainer.email,
       "hapouterwall@gmail.com",
       "sufeng_guo@qq.com",
     ],

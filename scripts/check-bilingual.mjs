@@ -79,7 +79,15 @@ for (const [englishPath, chinesePath] of pairs) {
       `${page} lacks grouped footer navigation`);
     assert(footer.includes('class="footer-download"') && footer.includes("Windows / Mac / Linux"),
       `${page} lacks the distinct footer download action`);
-    assert((footer.match(/<a\b/g) || []).length === 14, `${page} lost an existing footer destination`);
+    assert((footer.match(/<a\b/g) || []).length === 15, `${page} lacks the existing footer destinations plus website email`);
+    const credit = footer.match(/<p class="footer-credit">[\s\S]*?<\/p>/)?.[0] ?? "";
+    assert(credit.includes("Sufeng Guo") && credit.includes('href="mailto:sufeng_guo@smail.nju.edu.cn"'),
+      `${page} lacks the website creator and selected contact email`);
+    assert(credit.includes(page.startsWith("zh/") ? "网站制作：" : "Website by")
+      && credit.includes(page.startsWith("zh/") ? "网站相关问题请联系" : "For website issues, contact"),
+      `${page} lacks the localized website-only support description`);
+    assert(footer.indexOf('class="footer-credit"') > footer.indexOf('class="footer-updated"'),
+      `${page} must place website credits beneath the update timestamp`);
     const update = footer.match(/<p class="footer-updated">[\s\S]*?<\/p>/)?.[0] ?? "";
     const timestamp = update.match(/<time datetime="([^"]+)">([^<]+)<\/time>/);
     assert(timestamp && Number.isFinite(Date.parse(timestamp[1])), `${page} lacks a valid website update time`);
