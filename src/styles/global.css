@@ -2236,17 +2236,22 @@ main {
 .desktop-installer-grid {
   display: grid;
   grid-column: 1 / -1;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 16px;
 }
 
 .desktop-installer {
   display: flex;
+  grid-column: span 2;
   min-width: 0;
   flex-direction: column;
   gap: 14px;
   padding: 18px;
   border: 1px solid var(--line);
+}
+
+.desktop-installer[data-os="linux"] {
+  grid-column: span 3;
 }
 
 .desktop-installer h3 {
@@ -2299,6 +2304,31 @@ main {
   margin: 12px 0 0;
   color: var(--muted);
   font-size: 12px;
+}
+
+.source-preview-note {
+  margin-top: 28px;
+  padding: 24px 0;
+  border-block: 1px solid var(--line);
+}
+
+.source-preview-note h3 {
+  margin: 0 0 12px;
+  color: var(--ink);
+  font-size: 18px;
+}
+
+.source-preview-note p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.source-preview-note a {
+  display: inline-block;
+  margin-right: 20px;
+  padding-block: 10px;
+  color: var(--blue);
+  font-size: 13px;
 }
 
 .desktop-start-title {
@@ -4414,6 +4444,11 @@ main {
   .desktop-installer-grid,
   .desktop-access-grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .desktop-installer,
+  .desktop-installer[data-os="linux"] {
+    grid-column: 1;
   }
 
   .backend-version-note {

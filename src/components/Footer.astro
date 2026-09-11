@@ -60,7 +60,7 @@ const resources = [
     <nav class="footer-resources" aria-labelledby="footer-resources-heading">
       <h2 class="footer-heading" id="footer-resources-heading">{copy.resources}</h2>
       <a class="footer-download" href={`${localized("/get-started/")}#desktop-download`}>
-        <span>{copy.download}<small>Windows / Mac · v{desktopRelease.version}</small></span>
+        <span>{copy.download}<small>{desktopRelease.platforms} · v{desktopRelease.version}</small></span>
         <span class="footer-arrow" aria-hidden="true">↓</span>
       </a>
       <div class="footer-resource-links">

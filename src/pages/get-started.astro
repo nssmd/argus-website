@@ -3,6 +3,7 @@ import SiteLayout from "../layouts/SiteLayout.astro";
 import PageHero from "../components/PageHero.astro";
 import PixelIllustration from "../components/PixelIllustration";
 import { desktopRelease } from "../data/desktopRelease";
+import { sourcePreview } from "../data/projectUpdates";
 import { localeFromPath, pathForLocale } from "../i18n";
 
 const locale = localeFromPath(Astro.url.pathname);
@@ -12,27 +13,32 @@ const backendGuide = "https://github.com/microsoft/ArgusAgent/blob/main/docs/bac
 const pluginGuide = "https://github.com/lbx154/Argus/blob/main/docs/plugin.md";
 const copy = locale === "zh" ? {
   title: "开始使用 · Argus",
-  description: `下载 Argus ${desktopRelease.version} Windows / Mac 桌面版，通过内部邀请 Key 试用或使用自己的 Agent CLI；Linux 与高级用户可选择源码安装。`,
+  description: `下载 Argus ${desktopRelease.version} ${desktopRelease.platforms} 桌面版，通过内部邀请 Key 试用或使用自己的 Agent CLI；也可选择源码安装。`,
   eyebrow: "Argus · Get Started",
   hero: "选择适合你的开始方式。",
-  lede: "Windows 与 Mac 用户可以直接安装桌面版：持有内部邀请 Key 时自动准备 Copilot 并进入工作台，也可以继续使用自己的 Agent CLI。长程工作仍由 Manager、Planner、Engineer 与独立 Reviewer 协作完成。",
-  download: "选择 Windows / Mac 下载",
-  desktopTitle: `Argus ${desktopRelease.version} · Windows 与 Mac`,
-  desktopBody: "本次桌面内部试用版新增邀请 Key 开通流程、自动准备 Copilot，以及 Apple Silicon / Intel 双架构 Mac 安装包，同时保留桌面启动、窗口和运行包完整性修复。",
+  lede: "Windows、Mac 与 Linux 桌面用户都可以直接安装：持有内部邀请 Key 时自动准备 Copilot 并进入工作台，也可以继续使用自己的 Agent CLI。长程工作仍由 Manager、Planner、Engineer 与独立 Reviewer 协作完成。",
+  download: `选择 ${desktopRelease.platforms} 下载`,
+  desktopTitle: `Argus ${desktopRelease.version} · ${desktopRelease.platforms}`,
+  desktopBody: "本次内部试用版新增 Linux AppImage / DEB，自动避让端口冲突，并改善工作台分栏、下载进度、执行错误提示与停止后的继续运行。不再因历史费用未确认而阻止新任务，但已知费用预算与 Key 额度仍有效。",
   desktopRequirements: "试用模式无需命令行、预装 Python / Node.js 或个人 Coding 账号；首次准备需联网访问 argusbot.cn 和 GitHub Releases。自带 CLI 模式仍需自行安装并登录所选 CLI。",
   desktopUpgrade: "安装或升级前，请先停止正在进行的 Argus 任务并退出桌面端。",
   desktopSignatureNote: "更新器签名不等于 Windows Authenticode 证书签名，Windows 仍可能提示未知发布者。Mac 内部试用包尚未经过 Apple Developer ID 公证；确认下载来源后，如首次启动被阻止，可在“系统设置 → 隐私与安全性 → 仍要打开”中确认。",
-  desktopRuntimeNote: "Windows 需要 Microsoft Edge WebView2 Runtime；安装器会处理缺失的运行时。Mac 最低要求 macOS 13，请按 Apple Silicon 或 Intel 选择安装包。此 Release 不提供 Linux 桌面安装包。",
-  installWindows: "运行 EXE 安装程序，然后打开 Argus。",
-  installMac: "打开 DMG，将 Argus 拖入 Applications 后启动。",
+  desktopRuntimeNote: "Windows 需要 Microsoft Edge WebView2 Runtime；安装器会处理缺失的运行时。Mac 最低要求 macOS 13。Linux 为 x86_64 桌面应用，原生安装验证使用 Ubuntu 22.04；需要图形桌面会话，不是无界面服务器安装包。",
+  installInstructions: {
+    EXE: "运行 EXE 安装程序，然后打开 Argus。",
+    DMG: "打开 DMG，将 Argus 拖入 Applications 后启动。",
+    AppImage: "在文件属性中允许作为程序执行，再打开 AppImage；需要 Linux 图形桌面。",
+    DEB: "适用于 Ubuntu 22.04+ / 兼容 Debian x86_64 桌面系统，使用系统软件安装器打开 DEB。",
+  },
   downloadFile: "下载",
   checksum: "SHA-256 校验值",
   allChecksums: "下载 SHA256SUMS",
   releaseNotes: "查看 Release Notes",
-  signature: "下载 EXE 更新器签名",
+  signature: "下载更新器签名",
   desktopStartTitle: "桌面首次启动：两条路径",
   trialTitle: "内部邀请试用",
-  trialBody: "选择“使用内部测试 Key”，在桌面应用中填写邀请 Key，再点击“开始试用”。客户端会验证余额、下载官方 Copilot、验证连接并打开内置工作台；配置会保留，重启后可继续使用。",
+  trialBody: "选择“使用内部测试 Key”，在桌面应用中填写邀请 Key，再点击“开始试用”。客户端自动准备 Copilot 并验证连接；本版本试用默认 GPT-5.5、high 推理强度。配置会保留，端口冲突会自动避让，不会停止其他服务。",
+  trialDownload: "首次下载会显示实际进度；连续 30 秒没有进展时，按提示检查网络或系统代理 / TUN。",
   trialLimit: "Key 由邀请方私下发放，每个 Key 累计 1,000,000 input + output tokens，跨设备共享余额；这不是每日额度或无限免费服务。不要在官网、公开 Issue 或聊天中提交 Key。",
   ownTitle: "使用自己的 Agent CLI",
   ownBody: "没有邀请 Key，或希望沿用自己的账号时，选择常规 CLI 配置，安装并登录所选后端。之后可通过“文件 → 设置”修改。无需因为安装了桌面版而另装一套 Argus 命令行。",
@@ -44,7 +50,7 @@ const copy = locale === "zh" ? {
   copied: "已复制",
   prompt: "阅读 https://github.com/microsoft/ArgusAgent/blob/main/docs/agent-install.md，默认安装官方源码，只有我明确要求时才改用开发预览版；升级时保持已有安装的渠道。使用当前操作系统对应的方式，优先复用当前 Agent CLI 作为 backend。完成真实 Agent-turn smoke test，然后运行 `argus doctor --deep --advisor auto`。在登录账户、使用 sudo 或修改全局配置前，说明原因并等待确认。不要要求我在对话中粘贴密码、Token 或 API Key。",
   platformsTitle: "源码安装：三种平台路径",
-  platformsBody: "Linux 与需要源码环境的高级用户可选择以下安装方式。源码路径需要 Node.js 22.12+ 和已登录的 Agent CLI；源码 main 与已发布的桌面安装包可能包含不同的更新。",
+  platformsBody: "需要源码环境或无界面部署时，可选择以下安装方式；普通 Linux 桌面用户也可以使用上方安装包。源码路径需要 Node.js 22.12+ 和已登录的 Agent CLI；源码 main 与桌面安装包可能包含不同的更新。",
   platforms: [
     ["Windows 10/11", "Python source install", "仅需源码环境时使用：Python 3.11+ 直接安装，不创建手工 venv。普通桌面用户使用上方 EXE。", "windows-1011"],
     ["macOS", "Managed uv tool", "源码 CLI 由 uv 管理独立环境，无需手工创建 venv；桌面用户使用上方对应芯片架构的 DMG。", "macos"],
@@ -76,6 +82,10 @@ const copy = locale === "zh" ? {
     ["DeepSeek Harness", "dsh", "通过 DeepSeek 的 Headless Runner 执行"],
   ],
   backendGuide: "查看后端、Provider 与模型配置",
+  sourcePreviewTitle: "源码主线进展，不等于安装包功能",
+  sourcePreviewBody: `${sourcePreview.reviewedOn} 核对的 lbx154/Argus 开发主线已增加 Manager 流式回复与工具调用展示、任务地图和活动记录改进，以及可选 CrystalPilot 工作台集成。这些后续改动不在 v${sourcePreview.desktopBaseline} 安装包中，也不代表 microsoft/ArgusAgent 已同步。`,
+  sourcePreviewLink: "查看源码预览与新项目 →",
+  sourceChanges: "查看对应源码变更 ↗",
   linksTitle: "接下来去哪里",
   report: "阅读 Argus 技术报告",
   demo: "观看四条真实运行",
@@ -89,27 +99,32 @@ const copy = locale === "zh" ? {
   issues: "桌面版问题 ↗",
 } : {
   title: "Get Started · Argus",
-  description: `Download Argus ${desktopRelease.version} for Windows / Mac: use a private trial invitation Key or your own Agent CLI. Linux and advanced users can install from source.`,
+  description: `Download Argus ${desktopRelease.version} for ${desktopRelease.platforms}: use a private trial invitation Key or your own Agent CLI, or choose source installation.`,
   eyebrow: "Argus · Get Started",
   hero: "Choose how you want to start.",
-  lede: "Install the Windows or Mac desktop app. A private trial invitation Key prepares Copilot automatically, or you can keep using your own Agent CLI. The Manager, Planner, Engineer, and independent Reviewer still coordinate long-horizon work.",
-  download: "Choose a Windows / Mac download",
-  desktopTitle: `Argus ${desktopRelease.version} · Windows and Mac`,
-  desktopBody: "This internal-trial desktop release adds invitation-Key onboarding, automatic Copilot setup, and Mac installers for Apple Silicon and Intel, while retaining desktop startup, window and runtime-integrity fixes.",
+  lede: "Install the Windows, Mac, or Linux desktop app. A private trial invitation Key prepares Copilot automatically, or you can keep using your own Agent CLI. The Manager, Planner, Engineer, and independent Reviewer still coordinate long-horizon work.",
+  download: `Choose a ${desktopRelease.platforms} download`,
+  desktopTitle: `Argus ${desktopRelease.version} · ${desktopRelease.platforms}`,
+  desktopBody: "This internal-trial release adds Linux AppImage / DEB packages, automatic port-conflict avoidance, and improvements to workbench layout, download progress, execution errors and resuming stopped work. Unconfirmed historical cost no longer blocks new tasks; known-cost budgets and Key allowances still apply.",
   desktopRequirements: "Trial mode needs no terminal, preinstalled Python / Node.js, or personal Coding account. First setup needs access to argusbot.cn and GitHub Releases. Own-account mode still requires you to install and authenticate your chosen CLI.",
   desktopUpgrade: "Before installing or upgrading, stop any running Argus tasks and exit the desktop application.",
   desktopSignatureNote: "Updater signing is not a Windows Authenticode certificate signature; Windows may still show an unknown publisher. The internal Mac build is not Apple Developer ID notarized. After confirming the download source, a blocked first launch can be approved in System Settings → Privacy & Security → Open Anyway.",
-  desktopRuntimeNote: "Windows requires Microsoft Edge WebView2 Runtime; the installer handles a missing runtime. Mac requires macOS 13 or later; choose Apple Silicon or Intel to match your Mac. This release has no Linux desktop installer.",
-  installWindows: "Run the EXE installer, then open Argus.",
-  installMac: "Open the DMG, drag Argus to Applications, then launch it.",
+  desktopRuntimeNote: "Windows requires Microsoft Edge WebView2 Runtime; the installer handles a missing runtime. Mac requires macOS 13+. Linux packages target x86_64 desktop systems, with native installation checked on Ubuntu 22.04. They require a graphical desktop session, not a headless server.",
+  installInstructions: {
+    EXE: "Run the EXE installer, then open Argus.",
+    DMG: "Open the DMG, drag Argus to Applications, then launch it.",
+    AppImage: "Allow execution in the file properties, then open the AppImage in a Linux graphical desktop session.",
+    DEB: "For Ubuntu 22.04+ / compatible Debian x86_64 desktop systems. Open the DEB with your system software installer.",
+  },
   downloadFile: "Download",
   checksum: "SHA-256 checksum",
   allChecksums: "Download SHA256SUMS",
   releaseNotes: "View release notes",
-  signature: "Download EXE updater signature",
+  signature: "Download updater signature",
   desktopStartTitle: "First desktop launch: two paths",
   trialTitle: "Invitation-only internal trial",
-  trialBody: "Choose the internal trial Key option in the desktop app, enter your invitation Key, and start the trial. Argus checks the balance, downloads official Copilot, verifies the connection and opens the bundled workbench. Configuration is retained across restarts.",
+  trialBody: "Choose the internal trial Key option in the desktop app, enter your invitation Key, and start the trial. Argus prepares Copilot and verifies the connection. This release defaults trial requests to GPT-5.5 with high reasoning. Settings persist; port conflicts are avoided without stopping other services.",
+  trialDownload: "Initial downloads show actual progress. If progress stalls for 30 seconds, follow the network or system proxy / TUN guidance.",
   trialLimit: "Keys are distributed privately by the inviting team. Each Key has a lifetime allowance of 1,000,000 input + output tokens shared across devices, not a daily quota or unlimited free service. Do not submit Keys to this website, public Issues or chat.",
   ownTitle: "Bring your own Agent CLI",
   ownBody: "Without a trial Key, or to keep using your own account, choose the regular CLI setup and install and authenticate your preferred backend. Change it later in File → Settings. Desktop installation does not require a separate Argus command-line installation.",
@@ -121,7 +136,7 @@ const copy = locale === "zh" ? {
   copied: "Copied",
   prompt: "Read https://github.com/microsoft/ArgusAgent/blob/main/docs/agent-install.md and install official source unless I explicitly request development preview. Keep an existing installation's channel when updating. Use the section for this operating system and prefer the Agent CLI running this conversation as the backend. Run setup through its real Agent-turn smoke test, then run `argus doctor --deep --advisor auto`. Before account login, sudo, or global configuration changes, explain why and wait for approval. Never ask me to paste a password, token, or API key into the conversation.",
   platformsTitle: "Source installation by platform",
-  platformsBody: "Linux and advanced users can choose these source-installation paths. They require Node.js 22.12+ and an authenticated Agent CLI. Source main and published desktop packages may contain different updates.",
+  platformsBody: "Choose these paths for a source environment or headless deployment; regular Linux desktop users can also use the packages above. Source installation requires Node.js 22.12+ and an authenticated Agent CLI. Source main and desktop packages may contain different updates.",
   platforms: [
     ["Windows 10/11", "Python source install", "For a source environment: install directly with Python 3.11+, without a manual venv. Regular desktop users can use the EXE above.", "windows-1011"],
     ["macOS", "Managed uv tool", "Use uv to manage the source CLI environment, without a manual venv. Desktop users can choose the DMG for their chip above.", "macos"],
@@ -153,6 +168,10 @@ const copy = locale === "zh" ? {
     ["DeepSeek Harness", "dsh", "Runs through DeepSeek's headless runner"],
   ],
   backendGuide: "Open backend, provider, and model setup",
+  sourcePreviewTitle: "Source-preview updates, not installer features",
+  sourcePreviewBody: `The lbx154/Argus development branch reviewed on ${sourcePreview.reviewedOn} adds streamed Manager replies and tool-call display, task-map and activity-feed improvements, and optional CrystalPilot workbench integration. These later changes are not included in v${sourcePreview.desktopBaseline} installers and do not imply synchronization to microsoft/ArgusAgent.`,
+  sourcePreviewLink: "Explore source previews and new projects →",
+  sourceChanges: "Read the corresponding source changes ↗",
   linksTitle: "Where to go next",
   report: "Read the Argus technical report",
   demo: "Watch four real runs",
@@ -197,10 +216,10 @@ const copy = locale === "zh" ? {
         </div>
         <div class="desktop-installer-grid">
           {desktopRelease.installers.map((installer) => (
-            <article class="desktop-installer" id={`${installer.id}-download`}>
+            <article class="desktop-installer" id={`${installer.id}-download`} data-os={installer.os}>
               <h3>{installer.platform}</h3>
               <p class="mono">{installer.architecture} · {installer.size}</p>
-              <p>{installer.id === "windows" ? copy.installWindows : copy.installMac}</p>
+              <p>{copy.installInstructions[installer.format]}</p>
               <a class="button primary" href={installer.downloadUrl} data-desktop-installer={installer.id}
                 aria-label={`${copy.downloadFile} Argus ${desktopRelease.version} · ${installer.platform} · ${installer.architecture}`}>
                 {copy.downloadFile} {installer.format} ↓
@@ -224,6 +243,7 @@ const copy = locale === "zh" ? {
         <article class="platform-card" data-desktop-mode="trial">
           <h3>{copy.trialTitle}</h3>
           <p>{copy.trialBody}</p>
+          <p>{copy.trialDownload}</p>
           <p>{copy.trialLimit}</p>
           <a href={desktopRelease.trialGuideUrl} target="_blank" rel="noopener noreferrer">{copy.trialGuide} ↗</a>
         </article>
@@ -319,6 +339,12 @@ const copy = locale === "zh" ? {
         <p>{copy.backendReleaseNote}</p>
         <a href={backendGuide} target="_blank" rel="noopener noreferrer">{copy.backendGuide} ↗</a>
       </div>
+      <aside class="source-preview-note" data-source-preview>
+        <h3>{copy.sourcePreviewTitle}</h3>
+        <p>{copy.sourcePreviewBody}</p>
+        <a href={href("/projects/runtime/")}>{copy.sourcePreviewLink}</a>
+        <a href={sourcePreview.changesUrl} target="_blank" rel="noopener noreferrer">{copy.sourceChanges}</a>
+      </aside>
     </div>
   </section>
 

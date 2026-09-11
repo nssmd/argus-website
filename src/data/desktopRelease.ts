@@ -1,8 +1,9 @@
-const version = "0.1.3";
+const version = "0.1.5";
 const assets = `https://github.com/lbx154/Argus/releases/download/v${version}`;
 
 export const desktopRelease = {
   version,
+  platforms: "Windows / Mac / Linux",
   releaseUrl: `https://github.com/lbx154/Argus/releases/tag/v${version}`,
   checksumsUrl: `${assets}/SHA256SUMS`,
   trialGuideUrl: `https://github.com/lbx154/Argus/blob/v${version}/docs/desktop-trial.md`,
@@ -11,31 +12,55 @@ export const desktopRelease = {
   installers: [
     {
       id: "windows",
+      os: "windows",
       platform: "Windows 10/11",
       architecture: "x64",
       format: "EXE",
-      size: "32.2 MiB",
+      size: "31.9 MiB",
       downloadUrl: `${assets}/Argus-${version}-setup.exe`,
       signatureUrl: `${assets}/Argus-${version}-setup.exe.sig`,
-      sha256: "9f50fa4cafba88207786bfc3c68ef5559d741ca0467c285f724c45ec1f0ffbfd",
+      sha256: "008dfb104799163b3436c6b22b1b2210833cb009521e25936875dbc66d255d98",
     },
     {
       id: "macos-aarch64",
+      os: "macos",
       platform: "macOS 13+",
       architecture: "Apple Silicon",
       format: "DMG",
-      size: "52.6 MiB",
+      size: "55.7 MiB",
       downloadUrl: `${assets}/Argus-${version}-macos-aarch64.dmg`,
-      sha256: "44ceebdd5d72da01b735f63ee2ca988f6dd917719c647f45ac83c583c719ef47",
+      sha256: "6ed4efa31d7b891d4b9f32021ffa29a9b5a1bbaa3346cd3f7989b28e8d69b873",
     },
     {
       id: "macos-x86_64",
+      os: "macos",
       platform: "macOS 13+",
       architecture: "Intel",
       format: "DMG",
-      size: "52.5 MiB",
+      size: "55.5 MiB",
       downloadUrl: `${assets}/Argus-${version}-macos-x86_64.dmg`,
-      sha256: "2fda9c99b0731606a60d5cfeaceb80693aa7829b8dbcb75e031715a81e3c3bf2",
+      sha256: "92a0e849b9080d214be7b69ed7b55f77adf35aecd6c2c8c95477352f5c1758cc",
+    },
+    {
+      id: "linux-appimage",
+      os: "linux",
+      platform: "Linux desktop",
+      architecture: "x86_64",
+      format: "AppImage",
+      size: "140.5 MiB",
+      downloadUrl: `${assets}/Argus-${version}-linux-x86_64.AppImage`,
+      signatureUrl: `${assets}/Argus-${version}-linux-x86_64.AppImage.sig`,
+      sha256: "cc3c3def4eeabffa0d7dca20045b77a4ed6c4cec7f5e0f9d939f0bdab57d7a43",
+    },
+    {
+      id: "linux-deb",
+      os: "linux",
+      platform: "Ubuntu / Debian",
+      architecture: "x86_64",
+      format: "DEB",
+      size: "73.2 MiB",
+      downloadUrl: `${assets}/Argus-${version}-linux-x86_64.deb`,
+      sha256: "74b95754240e76b00aa292a869ce826c35639d6371dd245b9c007fe0ffef9856",
     },
   ],
 } as const;
