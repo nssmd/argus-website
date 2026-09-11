@@ -84,6 +84,7 @@ const copy = locale === "zh" ? {
   backendGuide: "查看后端、Provider 与模型配置",
   sourcePreviewTitle: "源码主线进展，不等于安装包功能",
   sourcePreviewBody: `${sourcePreview.reviewedOn} 核对的 lbx154/Argus 开发主线已增加 Manager 流式回复与工具调用展示、任务地图和活动记录改进，以及可选 CrystalPilot 工作台集成。这些后续改动不在 v${sourcePreview.desktopBaseline} 安装包中，也不代表 microsoft/ArgusAgent 已同步。`,
+  sourceReliability: "本次源码更新还修复地图布局、较矮窗口下的取景与暂停状态显示，补充 Excel（.xlsx）交付文件识别。内置运行时新增标准输入脚本（python -）与 python -m unittest 支持，并保留测试失败的退出码；它不是完整的通用 Python 环境，不提供 pip 或 venv。",
   sourcePreviewLink: "查看源码预览与新项目 →",
   sourceChanges: "查看对应源码变更 ↗",
   linksTitle: "接下来去哪里",
@@ -170,6 +171,7 @@ const copy = locale === "zh" ? {
   backendGuide: "Open backend, provider, and model setup",
   sourcePreviewTitle: "Source-preview updates, not installer features",
   sourcePreviewBody: `The lbx154/Argus development branch reviewed on ${sourcePreview.reviewedOn} adds streamed Manager replies and tool-call display, task-map and activity-feed improvements, and optional CrystalPilot workbench integration. These later changes are not included in v${sourcePreview.desktopBaseline} installers and do not imply synchronization to microsoft/ArgusAgent.`,
+  sourceReliability: "The latest source update also fixes map layout, framing in shorter windows, and paused-state display, and recognizes Excel (.xlsx) delivery files. The bundled runtime adds stdin scripts (python -) and python -m unittest while preserving test-failure exit codes; it is not a general-purpose Python installation and provides neither pip nor venv.",
   sourcePreviewLink: "Explore source previews and new projects →",
   sourceChanges: "Read the corresponding source changes ↗",
   linksTitle: "Where to go next",
@@ -342,6 +344,7 @@ const copy = locale === "zh" ? {
       <aside class="source-preview-note" data-source-preview>
         <h3>{copy.sourcePreviewTitle}</h3>
         <p>{copy.sourcePreviewBody}</p>
+        <p>{copy.sourceReliability}</p>
         <a href={href("/projects/runtime/")}>{copy.sourcePreviewLink}</a>
         <a href={sourcePreview.changesUrl} target="_blank" rel="noopener noreferrer">{copy.sourceChanges}</a>
       </aside>

@@ -280,6 +280,24 @@ for (const page of ["projects/runtime/index.html", "zh/projects/runtime/index.ht
     `${page} must distinguish source integration from released installers`);
 }
 
+for (const page of ["get-started/index.html", "zh/get-started/index.html", "projects/runtime/index.html", "zh/projects/runtime/index.html"]) {
+  const html = read(page);
+  const sourceNotes = page.includes("get-started")
+    ? html.match(/<aside\b[^>]*data-source-preview[^>]*>[\s\S]*?<\/aside>/)?.[0] ?? ""
+    : html.match(/<article\b[^>]*id="argus"[^>]*>[\s\S]*?<\/article>/)?.[0] ?? "";
+  assert(sourceNotes.includes("https://github.com/lbx154/Argus/compare/v0.1.5...30bf1e7f88"),
+    `${page} lacks the reviewed source snapshot`);
+  for (const term of [".xlsx", "python -", "python -m unittest", "pip", "venv"]) {
+    assert(sourceNotes.includes(term), `${page} lacks source runtime detail: ${term}`);
+  }
+  assert(sourceNotes.includes("paused-state display") || sourceNotes.includes("暂停状态显示"),
+    `${page} lacks the source-only map fixes`);
+  assert(sourceNotes.includes("not a general-purpose Python installation") || sourceNotes.includes("不是完整的通用 Python 环境"),
+    `${page} must preserve the bundled runtime scope`);
+  assert(sourceNotes.includes("not included in") || sourceNotes.includes("不在"),
+    `${page} must keep source fixes separate from the published installer`);
+}
+
 for (const page of ["get-started/index.html", "zh/get-started/index.html"]) {
   const html = read(page);
   for (const [id, filename, size, checksum] of [
