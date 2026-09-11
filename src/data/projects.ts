@@ -121,6 +121,7 @@ export const projects: Project[] = [
         "The technical report records about 78% on SWE-Bench Pro versus 59% for Direct Copilot, with 1.41× aggregate tokens.",
         "Six paper pipelines completed 254 missions with 16 stage rollbacks recorded in the report.",
         `Source preview reviewed ${sourcePreview.reviewedOn}: streamed Manager replies and tool-call display, task-map and activity-feed improvements, and optional workbench integration. These changes follow desktop v${sourcePreview.desktopBaseline}; they are not included in that installer or automatically synchronized to the official source repository.`,
+        "The latest development-source fixes improve map layout, framing in shorter windows, and paused-state display, and recognize Excel (.xlsx) delivery files. The bundled runtime adds stdin scripts (python -) and python -m unittest with test-failure exit codes preserved; it is not a general-purpose Python installation and provides neither pip nor venv.",
       ],
       zh: [
         "Manager、Planner、Engineer 与 Reviewer 分别负责项目控制、任务选择、执行和基于证据的验收。",
@@ -128,6 +129,7 @@ export const projects: Project[] = [
         "技术报告记录 SWE-Bench Pro 约 78%，Direct Copilot 为 59%，总 Token 使用量为 1.41 倍。",
         "报告中的六条论文流水线共完成 254 个 mission，并发生 16 次阶段回滚。",
         `${sourcePreview.reviewedOn} 核对的开发源码新增 Manager 流式回复、工具调用展示、任务地图与活动记录改进，以及可选工作台集成；这些改动晚于桌面 v${sourcePreview.desktopBaseline}，不在该安装包中，也不代表官方源码仓库已同步。`,
+        "最新开发源码进一步修复地图布局、较矮窗口下的取景与暂停状态显示，并识别 Excel（.xlsx）交付文件。内置运行时新增标准输入脚本（python -）与 python -m unittest 支持，保留测试失败退出码；它不是完整的通用 Python 环境，不提供 pip 或 venv。",
       ],
     },
     outcome: {

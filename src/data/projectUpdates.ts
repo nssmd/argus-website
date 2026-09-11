@@ -1,8 +1,8 @@
 export const sourcePreview = {
   reviewedOn: "2026-09-11",
   desktopBaseline: "0.1.5",
-  revision: "ed13672c4d",
-  changesUrl: "https://github.com/lbx154/Argus/compare/v0.1.5...ed13672c4d",
+  revision: "30bf1e7f88",
+  changesUrl: "https://github.com/lbx154/Argus/compare/v0.1.5...30bf1e7f88",
 } as const;
 
 export const mathematicsSnapshot = {
