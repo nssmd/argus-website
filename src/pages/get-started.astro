@@ -19,7 +19,7 @@ const copy = locale === "zh" ? {
   lede: "Windows、Mac 与 Linux 桌面用户都可以直接安装：持有内部邀请 Key 时自动准备 Copilot 并进入工作台，也可以继续使用自己的 Agent CLI。长程工作仍由 Manager、Planner、Engineer 与独立 Reviewer 协作完成。",
   download: `选择 ${desktopRelease.platforms} 下载`,
   desktopTitle: `Argus ${desktopRelease.version} · ${desktopRelease.platforms}`,
-  desktopBody: "本次内部试用版新增 Linux AppImage / DEB，自动避让端口冲突，并改善工作台分栏、下载进度、执行错误提示与停止后的继续运行。不再因历史费用未确认而阻止新任务，但已知费用预算与 Key 额度仍有效。",
+  desktopBody: "本次桌面内部试用版增加更换 Key 入口和当前后端、模型、推理强度显示，改进日夜图标、任务标题与地图布局，并修复暂停和完成状态边界。Windows、Mac 与 Linux 均提供安装包；已知费用预算与 Key 额度继续有效，未确认的历史费用不会单独阻止新任务。",
   desktopRequirements: "试用模式无需命令行、预装 Python / Node.js 或个人 Coding 账号；首次准备需联网访问 argusbot.cn 和 GitHub Releases。自带 CLI 模式仍需自行安装并登录所选 CLI。",
   desktopUpgrade: "安装或升级前，请先停止正在进行的 Argus 任务并退出桌面端。",
   desktopSignatureNote: "更新器签名不等于 Windows Authenticode 证书签名，Windows 仍可能提示未知发布者。Mac 内部试用包尚未经过 Apple Developer ID 公证；确认下载来源后，如首次启动被阻止，可在“系统设置 → 隐私与安全性 → 仍要打开”中确认。",
@@ -38,12 +38,18 @@ const copy = locale === "zh" ? {
   desktopStartTitle: "桌面首次启动：两条路径",
   trialTitle: "内部邀请试用",
   trialBody: "选择“使用内部测试 Key”，在桌面应用中填写邀请 Key，再点击“开始试用”。客户端自动准备 Copilot 并验证连接；本版本试用默认 GPT-5.5、high 推理强度。配置会保留，端口冲突会自动避让，不会停止其他服务。",
+  trialAccount: "可在“设置 → 试用账号”或输入框下方选择“更换 Key”，重新验证并保存，保留项目和聊天记录。输入框下方显示当前后端、模型与推理强度；试用模式为 GPT-5.5 · high，自带账号模式跟随当前活动角色的配置。",
   trialDownload: "首次下载会显示实际进度；连续 30 秒没有进展时，按提示检查网络或系统代理 / TUN。",
   trialLimit: "Key 由邀请方私下发放，每个 Key 累计 1,000,000 input + output tokens，跨设备共享余额；这不是每日额度或无限免费服务。不要在官网、公开 Issue 或聊天中提交 Key。",
   ownTitle: "使用自己的 Agent CLI",
   ownBody: "没有邀请 Key，或希望沿用自己的账号时，选择常规 CLI 配置，安装并登录所选后端。之后可通过“文件 → 设置”修改。无需因为安装了桌面版而另装一套 Argus 命令行。",
   trialGuide: "查看此版本的试用说明",
   desktopUpdate: "桌面更新请使用应用内“检查更新”或此页的完整安装包；argus update 仅用于源码 / Python 安装，不能替换桌面 EXE / App。预览与正式渠道的数据目录分开，切换渠道前先备份，不假设项目会自动迁移。",
+  desktopFeaturesTitle: `桌面 v${desktopRelease.version} 已包含的工作台能力`,
+  desktopFeatures: "Manager 流式回复与工具调用展示、地图和活动记录改进、Excel（.xlsx）交付文件识别，以及可选 CrystalPilot 宿主集成已进入此版本。CrystalPilot 0.4.0 仍需独立安装并遵守专有许可，默认不启用任何工作台插件。",
+  desktopExecution: "额度或模型服务阻塞会保留为暂停，不因等待而自动重试；处理账户或额度问题后点击“运行”显式恢复。执行结束不等于研究目标已完成或最终交付已通过验收。",
+  desktopPython: "高级使用边界：内置运行时支持标准输入脚本（python -）与 python -m unittest，并保留测试失败退出码；它不是完整的通用 Python 环境，不提供 pip 或 venv。第三方 Python 依赖需使用独立环境。",
+  workbenchLink: "查看可选 CrystalPilot 与许可说明 →",
   assisted: "源码安装：让 Agent 帮你完成",
   assistedBody: "以下是源码安装路径，不是桌面用户必须补做的步骤。将提示词发给已有的 Code Agent，默认安装 microsoft/ArgusAgent 官方源码；只有明确要求时才使用开发预览，并保持已有安装的渠道。",
   copy: "复制提示词",
@@ -83,10 +89,11 @@ const copy = locale === "zh" ? {
   ],
   backendGuide: "查看后端、Provider 与模型配置",
   sourcePreviewTitle: "源码主线进展，不等于安装包功能",
-  sourcePreviewBody: `${sourcePreview.reviewedOn} 核对的 lbx154/Argus 开发主线已增加 Manager 流式回复与工具调用展示、任务地图和活动记录改进，以及可选 CrystalPilot 工作台集成。这些后续改动不在 v${sourcePreview.desktopBaseline} 安装包中，也不代表 microsoft/ArgusAgent 已同步。`,
-  sourceReliability: "本次源码更新还修复地图布局、较矮窗口下的取景与暂停状态显示，补充 Excel（.xlsx）交付文件识别。内置运行时新增标准输入脚本（python -）与 python -m unittest 支持，并保留测试失败的退出码；它不是完整的通用 Python 环境，不提供 pip 或 venv。",
+  sourcePreviewBody: `${sourcePreview.reviewedOn} 核对的 lbx154/Argus 后续开发源码新增托管研究试用、按项目回放与协作记录、经授权审查的训练数据导出，并继续修复执行失败报告、交付文件下载及 HTML 预览。这些后续改动不在 v${sourcePreview.desktopBaseline} 安装包中，也不代表 microsoft/ArgusAgent 已同步。`,
+  sourceBoundaries: "托管功能需要运营方独立部署和邀请授权，不是普通桌面版或 Web 安装自动开放的服务；其模型与计算额度不能套用桌面 Key 的 100 万 token 规则。回放采集需有效的用途授权，训练数据导出还需逐项审查，并重新检查撤销状态；外部分享需另行授权。不包含系统指令、私有推理或凭据，导出不会自动上传数据或启动训练。",
   sourcePreviewLink: "查看源码预览与新项目 →",
   sourceChanges: "查看对应源码变更 ↗",
+  hostedGuide: "阅读托管部署与数据边界 ↗",
   linksTitle: "接下来去哪里",
   report: "阅读 Argus 技术报告",
   demo: "观看四条真实运行",
@@ -106,7 +113,7 @@ const copy = locale === "zh" ? {
   lede: "Install the Windows, Mac, or Linux desktop app. A private trial invitation Key prepares Copilot automatically, or you can keep using your own Agent CLI. The Manager, Planner, Engineer, and independent Reviewer still coordinate long-horizon work.",
   download: `Choose a ${desktopRelease.platforms} download`,
   desktopTitle: `Argus ${desktopRelease.version} · ${desktopRelease.platforms}`,
-  desktopBody: "This internal-trial release adds Linux AppImage / DEB packages, automatic port-conflict avoidance, and improvements to workbench layout, download progress, execution errors and resuming stopped work. Unconfirmed historical cost no longer blocks new tasks; known-cost budgets and Key allowances still apply.",
+  desktopBody: "This desktop internal-trial release adds Change Key controls and a current backend, model and reasoning display, improves theme icons, task titles and map layout, and fixes pause/completion boundaries. Windows, Mac and Linux installers remain available. Known-cost budgets and Key allowances still apply; unconfirmed historical cost alone does not block new tasks.",
   desktopRequirements: "Trial mode needs no terminal, preinstalled Python / Node.js, or personal Coding account. First setup needs access to argusbot.cn and GitHub Releases. Own-account mode still requires you to install and authenticate your chosen CLI.",
   desktopUpgrade: "Before installing or upgrading, stop any running Argus tasks and exit the desktop application.",
   desktopSignatureNote: "Updater signing is not a Windows Authenticode certificate signature; Windows may still show an unknown publisher. The internal Mac build is not Apple Developer ID notarized. After confirming the download source, a blocked first launch can be approved in System Settings → Privacy & Security → Open Anyway.",
@@ -125,12 +132,18 @@ const copy = locale === "zh" ? {
   desktopStartTitle: "First desktop launch: two paths",
   trialTitle: "Invitation-only internal trial",
   trialBody: "Choose the internal trial Key option in the desktop app, enter your invitation Key, and start the trial. Argus prepares Copilot and verifies the connection. This release defaults trial requests to GPT-5.5 with high reasoning. Settings persist; port conflicts are avoided without stopping other services.",
+  trialAccount: "Use the trial-account settings or the Change Key control below the composer to verify and save a replacement Key while preserving projects and chat history. The composer also shows the current backend, model and reasoning: GPT-5.5 · high for trial mode, or the active role's configuration for own-account mode.",
   trialDownload: "Initial downloads show actual progress. If progress stalls for 30 seconds, follow the network or system proxy / TUN guidance.",
   trialLimit: "Keys are distributed privately by the inviting team. Each Key has a lifetime allowance of 1,000,000 input + output tokens shared across devices, not a daily quota or unlimited free service. Do not submit Keys to this website, public Issues or chat.",
   ownTitle: "Bring your own Agent CLI",
   ownBody: "Without a trial Key, or to keep using your own account, choose the regular CLI setup and install and authenticate your preferred backend. Change it later in File → Settings. Desktop installation does not require a separate Argus command-line installation.",
   trialGuide: "Read this release's trial guide (Chinese)",
   desktopUpdate: "Update the desktop app through Check for updates or a complete installer from this page. argus update is for source / Python installations, not desktop EXE / App replacement. Preview and regular channels have separate data directories; back up before switching and do not assume projects migrate automatically.",
+  desktopFeaturesTitle: `Workbench features included in desktop v${desktopRelease.version}`,
+  desktopFeatures: "This version includes streamed Manager replies and tool-call display, map and activity-feed improvements, Excel (.xlsx) delivery recognition, and optional CrystalPilot host integration. CrystalPilot 0.4.0 still requires separate installation under its proprietary license; no workbench plugin is enabled by default.",
+  desktopExecution: "Account or model-service fences remain paused rather than retrying just because time has passed. Resolve the account or allowance issue, then explicitly select Run to resume. Execution ending does not mean the research objective is complete or its final deliverable has passed review.",
+  desktopPython: "Advanced-use boundary: the bundled runtime supports stdin scripts (python -) and python -m unittest, preserving test-failure exit codes. It is not a general-purpose Python installation and provides neither pip nor venv; third-party Python dependencies need a separate environment.",
+  workbenchLink: "Explore optional CrystalPilot and its licensing →",
   assisted: "Source installation: let your Agent help",
   assistedBody: "This is a source-installation path, not an extra requirement for desktop users. Send the prompt to an existing Code Agent. It defaults to microsoft/ArgusAgent official source, uses development preview only when explicitly requested, and preserves an existing installation's channel.",
   copy: "Copy prompt",
@@ -170,10 +183,11 @@ const copy = locale === "zh" ? {
   ],
   backendGuide: "Open backend, provider, and model setup",
   sourcePreviewTitle: "Source-preview updates, not installer features",
-  sourcePreviewBody: `The lbx154/Argus development branch reviewed on ${sourcePreview.reviewedOn} adds streamed Manager replies and tool-call display, task-map and activity-feed improvements, and optional CrystalPilot workbench integration. These later changes are not included in v${sourcePreview.desktopBaseline} installers and do not imply synchronization to microsoft/ArgusAgent.`,
-  sourceReliability: "The latest source update also fixes map layout, framing in shorter windows, and paused-state display, and recognizes Excel (.xlsx) delivery files. The bundled runtime adds stdin scripts (python -) and python -m unittest while preserving test-failure exit codes; it is not a general-purpose Python installation and provides neither pip nor venv.",
+  sourcePreviewBody: `The later lbx154/Argus source reviewed on ${sourcePreview.reviewedOn} adds hosted research trials, project replay and collaboration records, and authorized, reviewed training-data export, alongside further fixes to failure reporting, artifact downloads and HTML previews. These later changes are not included in v${sourcePreview.desktopBaseline} installers and do not imply synchronization to microsoft/ArgusAgent.`,
+  sourceBoundaries: "Hosted features require independent operator deployment and invitation-based authorization; ordinary desktop or Web installation does not enable the service. Hosted model/compute allowances are separate from the desktop Key's one-million-token rule. Replay collection requires valid purpose-specific authorization; training-data export also needs per-event review and renewed revocation checks. External sharing needs separate authorization. System instructions, private reasoning and credentials are excluded. Export does not automatically upload data or start training.",
   sourcePreviewLink: "Explore source previews and new projects →",
   sourceChanges: "Read the corresponding source changes ↗",
+  hostedGuide: "Read hosted deployment and data boundaries ↗",
   linksTitle: "Where to go next",
   report: "Read the Argus technical report",
   demo: "Watch four real runs",
@@ -245,6 +259,7 @@ const copy = locale === "zh" ? {
         <article class="platform-card" data-desktop-mode="trial">
           <h3>{copy.trialTitle}</h3>
           <p>{copy.trialBody}</p>
+          <p>{copy.trialAccount}</p>
           <p>{copy.trialDownload}</p>
           <p>{copy.trialLimit}</p>
           <a href={desktopRelease.trialGuideUrl} target="_blank" rel="noopener noreferrer">{copy.trialGuide} ↗</a>
@@ -255,6 +270,13 @@ const copy = locale === "zh" ? {
           <a href="#own-account-backends">{copy.backendGuide} ↓</a>
         </article>
       </div>
+      <aside class="source-preview-note" data-desktop-features>
+        <h3>{copy.desktopFeaturesTitle}</h3>
+        <p>{copy.desktopFeatures}</p>
+        <p>{copy.desktopExecution}</p>
+        <p>{copy.desktopPython}</p>
+        <a href={`${href("/projects/runtime/")}#crystalpilot`}>{copy.workbenchLink}</a>
+      </aside>
     </div>
   </section>
 
@@ -344,9 +366,10 @@ const copy = locale === "zh" ? {
       <aside class="source-preview-note" data-source-preview>
         <h3>{copy.sourcePreviewTitle}</h3>
         <p>{copy.sourcePreviewBody}</p>
-        <p>{copy.sourceReliability}</p>
+        <p>{copy.sourceBoundaries}</p>
         <a href={href("/projects/runtime/")}>{copy.sourcePreviewLink}</a>
         <a href={sourcePreview.changesUrl} target="_blank" rel="noopener noreferrer">{copy.sourceChanges}</a>
+        <a href={sourcePreview.hostedGuideUrl} target="_blank" rel="noopener noreferrer">{copy.hostedGuide}</a>
       </aside>
     </div>
   </section>

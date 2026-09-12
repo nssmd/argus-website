@@ -1,4 +1,5 @@
 import { sourcePreview } from "./projectUpdates";
+import { desktopRelease } from "./desktopRelease";
 
 export type ProjectLink = {
   kind: "repository" | "official" | "report" | "evidence" | "demo" | "status" | "documentation" | "license";
@@ -120,16 +121,20 @@ export const projects: Project[] = [
         "Durable project state retains tasks, checkpoints, decisions, skills, and evidence across sessions and runtime upgrades.",
         "The technical report records about 78% on SWE-Bench Pro versus 59% for Direct Copilot, with 1.41× aggregate tokens.",
         "Six paper pipelines completed 254 missions with 16 stage rollbacks recorded in the report.",
-        `Source preview reviewed ${sourcePreview.reviewedOn}: streamed Manager replies and tool-call display, task-map and activity-feed improvements, and optional workbench integration. These changes follow desktop v${sourcePreview.desktopBaseline}; they are not included in that installer or automatically synchronized to the official source repository.`,
-        "The latest development-source fixes improve map layout, framing in shorter windows, and paused-state display, and recognize Excel (.xlsx) delivery files. The bundled runtime adds stdin scripts (python -) and python -m unittest with test-failure exit codes preserved; it is not a general-purpose Python installation and provides neither pip nor venv.",
+        `Desktop v${desktopRelease.version} adds Change Key controls that preserve projects and chat history, current backend/model/reasoning display, clearer theme icons and responsive titles. Account fences remain paused until explicit resumption; execution ending does not certify the research objective as complete.`,
+        `Desktop v${desktopRelease.version} includes streamed Manager replies and tool-call display, map and activity-feed improvements, Excel (.xlsx) delivery recognition and optional workbench host integration. The bundled runtime supports stdin scripts (python -) and python -m unittest with test-failure exit codes preserved; it is not a general-purpose Python installation and provides neither pip nor venv.`,
+        `Source preview reviewed ${sourcePreview.reviewedOn}: hosted research trials, project replay and collaboration records, reviewed training-data export, and further failure-reporting, artifact-download and HTML-preview fixes. These later changes are not included in desktop v${sourcePreview.desktopBaseline} or automatically synchronized to the official source repository.`,
+        "Hosted research needs independent operator deployment and invitation-based authorization; it is not enabled by ordinary desktop or Web installation. Model and compute accounting remain separate from desktop Key allowances. Data export requires purpose-specific authorization and review, with separate approval for external sharing. Public episodes exclude system instructions, private reasoning and credentials; export does not upload data or start training.",
       ],
       zh: [
         "Manager、Planner、Engineer 与 Reviewer 分别负责项目控制、任务选择、执行和基于证据的验收。",
         "持久化项目状态能够跨会话和运行时升级保留任务、检查点、决策、Skills 与证据。",
         "技术报告记录 SWE-Bench Pro 约 78%，Direct Copilot 为 59%，总 Token 使用量为 1.41 倍。",
         "报告中的六条论文流水线共完成 254 个 mission，并发生 16 次阶段回滚。",
-        `${sourcePreview.reviewedOn} 核对的开发源码新增 Manager 流式回复、工具调用展示、任务地图与活动记录改进，以及可选工作台集成；这些改动晚于桌面 v${sourcePreview.desktopBaseline}，不在该安装包中，也不代表官方源码仓库已同步。`,
-        "最新开发源码进一步修复地图布局、较矮窗口下的取景与暂停状态显示，并识别 Excel（.xlsx）交付文件。内置运行时新增标准输入脚本（python -）与 python -m unittest 支持，保留测试失败退出码；它不是完整的通用 Python 环境，不提供 pip 或 venv。",
+        `桌面 v${desktopRelease.version} 新增保留项目和聊天记录的更换 Key 入口、当前后端／模型／推理强度显示，以及更清晰的日夜图标和响应式标题。账户阻塞会保留为暂停，需显式恢复；执行结束不等于研究目标已通过验收。`,
+        `桌面 v${desktopRelease.version} 已包含 Manager 流式回复与工具调用展示、地图和活动记录改进、Excel（.xlsx）交付识别及可选工作台宿主集成。内置运行时支持标准输入脚本（python -）与 python -m unittest，保留测试失败退出码；它不是完整的通用 Python 环境，不提供 pip 或 venv。`,
+        `${sourcePreview.reviewedOn} 核对的后续源码新增托管研究试用、按项目回放与协作记录、经审查的训练数据导出，并进一步修复失败报告、交付文件下载和 HTML 预览。这些后续改动不在桌面 v${sourcePreview.desktopBaseline} 中，也不代表官方源码仓库已同步。`,
+        "托管研究需要运营方独立部署和邀请授权，不会随普通桌面版或 Web 安装自动启用；模型与计算计费和桌面 Key 额度分开。数据导出需要用途授权与审查，外部分享另行授权。公开轨迹不含系统指令、私有推理或凭据；导出不会上传数据或启动训练。",
       ],
     },
     outcome: {
@@ -142,6 +147,7 @@ export const projects: Project[] = [
       { kind: "official", href: "https://github.com/microsoft/ArgusAgent" },
       { kind: "report", href: "https://arxiv.org/abs/2608.05144" },
       { kind: "status", href: sourcePreview.changesUrl },
+      { kind: "documentation", href: sourcePreview.hostedGuideUrl },
     ],
   },
   {
@@ -198,14 +204,14 @@ export const projects: Project[] = [
     },
     highlights: {
       en: [
-        "Version 0.4.0 is independently distributed. Its host integration is in the development source reviewed on 2026-09-11, not in desktop v0.1.5; no workbench plugin is enabled by default.",
+        `Version 0.4.0 is independently distributed. Desktop v${desktopRelease.version} includes its host integration, but CrystalPilot still requires separate installation; no workbench plugin is enabled by default.`,
         "Compatible hosts install the pinned, SHA-256-checked package from the plugin center into an isolated environment. Supported backends are Codex, Copilot and Pi, including supported mixed-role configurations.",
         "Prepares scientific dependencies automatically; optional or licensed dependencies remain explicit. SHELX requires authorization from its author. Scientific binaries, model credentials and research datasets are not bundled in the distribution.",
         "Separate workbench conversations and project bindings preserve ownership. Updates are manual and staged; uninstalling preserves research data, conversations and reusable software.",
         "Proprietary: TopoSpace reserves all rights and prohibits unauthorized commercial use or derivative development. Public source availability is not an open-source license; the host integration and third-party components have separate terms.",
       ],
       zh: [
-        "0.4.0 独立分发；宿主集成位于 2026-09-11 核对的开发源码，不在桌面 v0.1.5 中，默认不启用任何工作台插件。",
+        `0.4.0 独立分发；桌面 v${desktopRelease.version} 已包含宿主集成，但 CrystalPilot 仍需单独安装，默认不启用任何工作台插件。`,
         "兼容宿主通过插件中心安装固定版本、经过 SHA-256 核对的软件包，并使用隔离环境；支持 Codex、Copilot、Pi 及这些后端的混合角色配置。",
         "自动准备科学依赖，缺失的可选或授权组件会明确提示；SHELX 需向原作者取得许可。发行物不包含上游科学二进制、模型凭据或研究数据。",
         "独立工作台会话与项目绑定保留权属边界；更新需手动触发并分阶段切换，卸载保留研究数据、对话和可复用软件。",
@@ -213,14 +219,14 @@ export const projects: Project[] = [
       ],
     },
     outcome: {
-      en: "Optional CrystalPilot 0.4.0 distribution for plugin-capable development-source hosts.",
-      zh: "为具备插件能力的开发源码宿主提供可选 CrystalPilot 0.4.0。",
+      en: `Optional CrystalPilot 0.4.0 for compatible Argus hosts, including desktop v${desktopRelease.version}.`,
+      zh: `为兼容的 Argus 宿主提供可选 CrystalPilot 0.4.0，包括桌面 v${desktopRelease.version}。`,
     },
     technologies: ["Crystallography", "Python", "Codex / Copilot / Pi", "Bilingual"],
     links: [
       { kind: "documentation", href: "https://crystalpilot-downloads.argusbot.cn/" },
-      { kind: "status", href: "https://github.com/lbx154/Argus/blob/ed13672c4d/docs/workbench-plugins.md" },
-      { kind: "license", href: "https://github.com/lbx154/Argus/blob/ed13672c4d/docs/workbench-plugins.md#crystalpilot-licensing" },
+      { kind: "status", href: desktopRelease.workbenchGuideUrl },
+      { kind: "license", href: `${desktopRelease.workbenchGuideUrl}#crystalpilot-licensing` },
     ],
   },
   {

@@ -1,8 +1,13 @@
+import { desktopRelease } from "./desktopRelease";
+
+const revision = "b18a5f8fa8";
+
 export const sourcePreview = {
-  reviewedOn: "2026-09-11",
-  desktopBaseline: "0.1.5",
-  revision: "30bf1e7f88",
-  changesUrl: "https://github.com/lbx154/Argus/compare/v0.1.5...30bf1e7f88",
+  reviewedOn: "2026-09-12",
+  desktopBaseline: desktopRelease.version,
+  revision,
+  changesUrl: `https://github.com/lbx154/Argus/compare/v${desktopRelease.version}...${revision}`,
+  hostedGuideUrl: `https://github.com/lbx154/Argus/blob/${revision}/docs/hosted-research-trial.md`,
 } as const;
 
 export const mathematicsSnapshot = {
