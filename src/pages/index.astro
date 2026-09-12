@@ -11,7 +11,7 @@ import { localeFromPath, pathForLocale } from "../i18n";
 
 const locale = localeFromPath(Astro.url.pathname);
 const href = (path: string) => pathForLocale(path, locale);
-const asiPaperHref = "https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/From_AGI_to_ASI.pdf";
+const asiPaperHref = "https://arxiv.org/abs/2606.12683";
 const resourceScenes = ["engineering-workshop", "research-library", "release-harbor", "research-campus"];
 const copy = locale === "zh" ? {
   title: "Argus — 自进化科研基础 Agent",
@@ -73,7 +73,7 @@ const copy = locale === "zh" ? {
   thesisTitle: "“一个无敌模型 + 一个粗糙 harness = ASI”不是系统设计，是技术童话。",
   thesisBody: "单 Agent 可以完成短任务；把它当作跨天、数百轮自主研究的终局架构，才是一种“免费午餐”假设。人类最伟大的创新也从来不只依赖一个天才大脑，而依赖团队、制度、记录、实验和同行质疑。机器智能不会神奇地免除这些组织成本。",
   sourcePrefix: "唐杰援引 Google DeepMind 2026 年的",
-  sourceTitle: "《From AGI to ASI: A Roadmap to Superintelligence》",
+  sourceTitle: "《From AGI to ASI》",
   sourceSuffix: "指出：即使单个智能体的能力保持不变，扩大智能体数量与交互时长仍可能涌现更高层级的能力。通往更高智能的关键，不只在更强的单体，也在能够持续协作的系统。",
   dataEyebrow: "Process data · 过程数据",
   dataTitle: "论文公开了答案，却几乎从不公开答案是怎样被找到的。",
@@ -159,7 +159,7 @@ const copy = locale === "zh" ? {
   thesisTitle: "“A perfect model + a primitive harness = ASI” is not systems design. It is a technological fairy tale.",
   thesisBody: "A single agent can finish short tasks. Treating it as the final architecture for multi-day research with hundreds of iterations is the free-lunch assumption. Human innovation has never depended on a lone genius alone; it depends on teams, institutions, records, experiments, and peer challenge. Machine intelligence does not get those organizational costs for free.",
   sourcePrefix: "Google DeepMind's 2026",
-  sourceTitle: "From AGI to ASI: A Roadmap to Superintelligence",
+  sourceTitle: "From AGI to ASI",
   sourceSuffix: "argues that even when individual-agent intelligence is fixed, scaling the number and duration of interactions can produce higher-order capabilities. The path to greater intelligence is not only a stronger individual model, but a system that can sustain coordination.",
   dataEyebrow: "Process data",
   dataTitle: "Papers publish the answer. They rarely publish how the answer was found.",

@@ -128,6 +128,12 @@ for (const page of ["index.html", "zh/index.html"]) {
   assert(html.includes('data-argus-logo="horizontal"'), `${page} lacks the rounded horizontal logo`);
   assert(html.includes("data-brand-universe"), `${page} lacks the kinetic BrandUniverse opening`);
   assert(html.includes('id="intro"'), `${page} lacks the BrandUniverse enter target`);
+  const asiCitation = html.match(/<p class="architecture-thesis__source">[\s\S]*?<\/p>/)?.[0] ?? "";
+  assert(asiCitation.includes('href="https://arxiv.org/abs/2606.12683"'),
+    `${page} must link the ASI discussion to the original paper's stable record`);
+  assert(asiCitation.includes("From AGI to ASI") && !asiCitation.includes("A Roadmap to Superintelligence"),
+    `${page} must use the paper's canonical title`);
+  assert(!html.includes("From_AGI_to_ASI.pdf"), `${page} still links the missing DeepMind PDF`);
   assert(!html.includes("data-home-chapter"), `${page} still renders numbered homepage chapters`);
   assert(
     html.includes(">10<") && (html.includes("Selected papers") || html.includes("精选研究论文")),
