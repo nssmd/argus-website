@@ -24,6 +24,12 @@ const copy = locale === "zh" ? {
   desktopUpgrade: "安装或升级前，请先停止正在进行的 Argus 任务并退出桌面端。",
   desktopSignatureNote: "更新器签名不等于 Windows Authenticode 证书签名，Windows 仍可能提示未知发布者。Mac 内部试用包尚未经过 Apple Developer ID 公证；确认下载来源后，如首次启动被阻止，可在“系统设置 → 隐私与安全性 → 仍要打开”中确认。",
   desktopRuntimeNote: "Windows 需要 Microsoft Edge WebView2 Runtime；安装器会处理缺失的运行时。Mac 最低要求 macOS 13。Linux 为 x86_64 桌面应用，原生安装验证使用 Ubuntu 22.04；需要图形桌面会话，不是无界面服务器安装包。",
+  macChoiceTitle: "Mac 用户：请按芯片选择安装包",
+  macChoiceBody: "打开苹果菜单 → 关于本机，查看“芯片”或“处理器”：Apple M 系列选择 Apple Silicon；Intel 处理器选择 Intel。两种安装包均要求 macOS 13 或更高版本。",
+  macChipHints: {
+    "macos-aarch64": "适用于 Apple M 系列芯片",
+    "macos-x86_64": "适用于 Intel 处理器",
+  },
   installInstructions: {
     EXE: "运行 EXE 安装程序，然后打开 Argus。",
     DMG: "打开 DMG，将 Argus 拖入 Applications 后启动。",
@@ -118,6 +124,12 @@ const copy = locale === "zh" ? {
   desktopUpgrade: "Before installing or upgrading, stop any running Argus tasks and exit the desktop application.",
   desktopSignatureNote: "Updater signing is not a Windows Authenticode certificate signature; Windows may still show an unknown publisher. The internal Mac build is not Apple Developer ID notarized. After confirming the download source, a blocked first launch can be approved in System Settings → Privacy & Security → Open Anyway.",
   desktopRuntimeNote: "Windows requires Microsoft Edge WebView2 Runtime; the installer handles a missing runtime. Mac requires macOS 13+. Linux packages target x86_64 desktop systems, with native installation checked on Ubuntu 22.04. They require a graphical desktop session, not a headless server.",
+  macChoiceTitle: "Mac users: choose the installer for your chip",
+  macChoiceBody: "Open Apple menu → About This Mac and check Chip or Processor. Choose Apple Silicon for an Apple M-series chip, or Intel for an Intel processor. Both installers require macOS 13 or later.",
+  macChipHints: {
+    "macos-aarch64": "For Apple M-series chips",
+    "macos-x86_64": "For Intel processors",
+  },
   installInstructions: {
     EXE: "Run the EXE installer, then open Argus.",
     DMG: "Open the DMG, drag Argus to Applications, then launch it.",
@@ -230,15 +242,25 @@ const copy = locale === "zh" ? {
             <a href={desktopRelease.checksumsUrl}>{copy.allChecksums} ↓</a>
           </div>
         </div>
+        <aside class="mac-installer-help" id="mac-installer-help">
+          <h3>{copy.macChoiceTitle}</h3>
+          <p>{copy.macChoiceBody}</p>
+        </aside>
         <div class="desktop-installer-grid">
           {desktopRelease.installers.map((installer) => (
-            <article class="desktop-installer" id={`${installer.id}-download`} data-os={installer.os}>
-              <h3>{installer.platform}</h3>
-              <p class="mono">{installer.architecture} · {installer.size}</p>
+            <article class="desktop-installer" id={`${installer.id}-download`} data-os={installer.os} data-architecture={installer.architecture}>
+              <h3>{installer.os === "macos"
+                ? <><span class="installer-family">Mac</span> {installer.architecture}</>
+                : installer.platform}</h3>
+              {installer.os === "macos" && <p class="installer-chip-hint">{copy.macChipHints[installer.id]}</p>}
+              <p class="mono">{installer.os === "macos" ? installer.platform : installer.architecture} · {installer.size}</p>
               <p>{copy.installInstructions[installer.format]}</p>
               <a class="button primary" href={installer.downloadUrl} data-desktop-installer={installer.id}
-                aria-label={`${copy.downloadFile} Argus ${desktopRelease.version} · ${installer.platform} · ${installer.architecture}`}>
-                {copy.downloadFile} {installer.format} ↓
+                aria-label={`${copy.downloadFile} Argus ${desktopRelease.version} · ${installer.platform} · ${installer.architecture} · ${installer.format}`}
+                aria-describedby={installer.os === "macos" ? "mac-installer-help" : undefined}>
+                {installer.os === "macos"
+                  ? <>{installer.architecture}<span class="installer-download-format">{copy.downloadFile} {installer.format} ↓</span></>
+                  : <>{copy.downloadFile} {installer.format} ↓</>}
               </a>
               <details class="installer-integrity">
                 <summary>{copy.checksum}</summary>

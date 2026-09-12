@@ -335,6 +335,19 @@ for (const page of ["get-started/index.html", "zh/get-started/index.html"]) {
     assert(html.includes(size) && html.includes(checksum), `${page} has stale ${id} integrity metadata`);
   }
   assert((html.match(/data-desktop-installer=/g) || []).length === 5, `${page} must offer exactly five installer choices`);
+  const macHelp = html.match(/<aside\b[^>]*id="mac-installer-help"[^>]*>[\s\S]*?<\/aside>/)?.[0] ?? "";
+  assert(macHelp.includes("About This Mac") || macHelp.includes("关于本机"),
+    `${page} must explain how to identify a Mac chip`);
+  for (const [id, architecture] of [["macos-aarch64", "Apple Silicon"], ["macos-x86_64", "Intel"]]) {
+    const card = html.match(new RegExp(`<article\\b[^>]*id="${id}-download"[^>]*>[\\s\\S]*?</article>`))?.[0] ?? "";
+    const heading = card.match(/<h3>([\s\S]*?)<\/h3>/)?.[1] ?? "";
+    const button = card.match(/<a\b[^>]*data-desktop-installer[^>]*>([\s\S]*?)<\/a>/)?.[1] ?? "";
+    assert(heading.includes(architecture) && button.replace(/<[^>]*>/g, "").includes(architecture),
+      `${page} must visibly identify ${architecture} in its heading and download button`);
+    assert(card.includes('aria-describedby="mac-installer-help"') && card.includes("macOS 13+"),
+      `${page} must retain Mac requirements and link chip-selection guidance`);
+    assert(card.includes('class="installer-chip-hint"'), `${page} lacks the ${architecture} chip hint`);
+  }
   assert(html.includes("Argus-0.1.6-setup.exe.sig") && html.includes("Argus-0.1.6-linux-x86_64.AppImage.sig"),
     `${page} lacks the Windows or Linux updater signature`);
   assert(!html.includes(".dmg.sig") && !html.includes(".deb.sig"), `${page} offers an unpublished installer signature`);
