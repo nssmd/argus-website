@@ -2192,6 +2192,16 @@ main {
   line-height: 1.08;
 }
 
+.desktop-download-card h2 > span {
+  display: block;
+}
+
+.desktop-download-card h2 .desktop-download-platforms {
+  margin-top: 8px;
+  font-size: clamp(17px, 2.4vw, 30px);
+  line-height: 1.2;
+}
+
 .desktop-download-card__copy > p:not(.eyebrow) {
   max-width: 650px;
   margin: 0;

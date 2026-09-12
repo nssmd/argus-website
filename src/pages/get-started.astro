@@ -18,7 +18,7 @@ const copy = locale === "zh" ? {
   hero: "选择适合你的开始方式。",
   lede: "Windows、Mac 与 Linux 桌面用户都可以直接安装：持有内部邀请 Key 时自动准备 Copilot 并进入工作台，也可以继续使用自己的 Agent CLI。长程工作仍由 Manager、Planner、Engineer 与独立 Reviewer 协作完成。",
   download: `选择 ${desktopRelease.platforms} 下载`,
-  desktopTitle: `Argus ${desktopRelease.version} · ${desktopRelease.platforms}`,
+  desktopTitle: `Argus ${desktopRelease.version}`,
   desktopBody: "本次桌面内部试用版增加更换 Key 入口和当前后端、模型、推理强度显示，改进日夜图标、任务标题与地图布局，并修复暂停和完成状态边界。Windows、Mac 与 Linux 均提供安装包；已知费用预算与 Key 额度继续有效，未确认的历史费用不会单独阻止新任务。",
   desktopRequirements: "试用模式无需命令行、预装 Python / Node.js 或个人 Coding 账号；首次准备需联网访问 argusbot.cn 和 GitHub Releases。自带 CLI 模式仍需自行安装并登录所选 CLI。",
   desktopUpgrade: "安装或升级前，请先停止正在进行的 Argus 任务并退出桌面端。",
@@ -118,7 +118,7 @@ const copy = locale === "zh" ? {
   hero: "Choose how you want to start.",
   lede: "Install the Windows, Mac, or Linux desktop app. A private trial invitation Key prepares Copilot automatically, or you can keep using your own Agent CLI. The Manager, Planner, Engineer, and independent Reviewer still coordinate long-horizon work.",
   download: `Choose a ${desktopRelease.platforms} download`,
-  desktopTitle: `Argus ${desktopRelease.version} · ${desktopRelease.platforms}`,
+  desktopTitle: `Argus ${desktopRelease.version}`,
   desktopBody: "This desktop internal-trial release adds Change Key controls and a current backend, model and reasoning display, improves theme icons, task titles and map layout, and fixes pause/completion boundaries. Windows, Mac and Linux installers remain available. Known-cost budgets and Key allowances still apply; unconfirmed historical cost alone does not block new tasks.",
   desktopRequirements: "Trial mode needs no terminal, preinstalled Python / Node.js, or personal Coding account. First setup needs access to argusbot.cn and GitHub Releases. Own-account mode still requires you to install and authenticate your chosen CLI.",
   desktopUpgrade: "Before installing or upgrading, stop any running Argus tasks and exit the desktop application.",
@@ -231,7 +231,10 @@ const copy = locale === "zh" ? {
       <div class="desktop-download-card">
         <div class="desktop-download-card__copy">
           <p class="eyebrow">01 · Desktop · v{desktopRelease.version}</p>
-          <h2>{copy.desktopTitle}</h2>
+          <h2>
+            <span>{copy.desktopTitle}</span>
+            <span class="desktop-download-platforms">{desktopRelease.platforms}</span>
+          </h2>
           <p>{copy.desktopBody}</p>
           <p>{copy.desktopRequirements}</p>
           <p><strong>{copy.desktopUpgrade}</strong></p>
