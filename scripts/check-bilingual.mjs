@@ -323,6 +323,10 @@ for (const page of ["get-started/index.html", "zh/get-started/index.html", "proj
 
 for (const page of ["get-started/index.html", "zh/get-started/index.html"]) {
   const html = read(page);
+  const downloadHeading = html.match(/<div class="desktop-download-card__copy">[\s\S]*?<h2>([\s\S]*?)<\/h2>/)?.[1] ?? "";
+  const headingLines = Array.from(downloadHeading.matchAll(/<span\b[^>]*>([^<]+)<\/span>/g), ([, text]) => text);
+  assert(headingLines.length === 2 && headingLines[0] === "Argus 0.1.6" && headingLines[1] === "Windows / Mac / Linux",
+    `${page} must split the download heading into version then platforms`);
   for (const [id, filename, size, checksum] of [
     ["windows", "Argus-0.1.6-setup.exe", "32.1 MiB", "27c5cb90cfc532fa1d59db7c7ecebe6af373e4fc571b0935d7137fa8f0b7818e"],
     ["macos-aarch64", "Argus-0.1.6-macos-aarch64.dmg", "47.0 MiB", "33328f610cb1432179777e5496c189046de5f49c5f48ae8ac01164bf0561b6f0"],
