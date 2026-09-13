@@ -278,6 +278,13 @@ for (const page of ["projects/runtime/index.html", "zh/projects/runtime/index.ht
     `${page} must preserve the Pi backend identity`);
   assert(html.includes("no separately published package or binary release") || html.includes("没有独立发布的软件包或二进制安装包"),
     `${page} misrepresents the Argus-Pi source preview`);
+  const pi = html.match(/<article\b[^>]*id="argus-pi"[^>]*>[\s\S]*?<\/article>/)?.[0] ?? "";
+  assert(pi.includes("Argus-Pi/blob/main/README.md") && !html.includes("Argus-Pi/blob/argus/"),
+    `${page} must link the current Argus-Pi downstream branch`);
+  assert(pi.includes("development now targets main") || pi.includes("下游开发现以 main 为主分支"),
+    `${page} still describes the old Argus-Pi development branch`);
+  assert(pi.includes("includeOutputs=false") && (pi.includes("queued prompts") || pi.includes("排队提示")),
+    `${page} lacks the Argus-Pi queued-prompt and read-default fixes`);
   assert(html.includes('id="crystalpilot"') && html.includes("crystalpilot-downloads.argusbot.cn"),
     `${page} lacks the optional CrystalPilot distribution`);
   assert(html.includes("Proprietary: TopoSpace") || html.includes("专有许可：TopoSpace"),
@@ -301,9 +308,9 @@ for (const page of ["get-started/index.html", "zh/get-started/index.html", "proj
   const releasedNotes = page.includes("get-started")
     ? html.match(/<aside\b[^>]*data-desktop-features[^>]*>[\s\S]*?<\/aside>/)?.[0] ?? ""
     : sourceNotes;
-  assert(sourceNotes.includes("https://github.com/lbx154/Argus/compare/v0.1.6...b18a5f8fa8"),
+  assert(sourceNotes.includes("2026-09-13") && sourceNotes.includes("https://github.com/lbx154/Argus/compare/v0.1.6...8f8d203998"),
     `${page} lacks the reviewed source snapshot`);
-  assert(sourceNotes.includes("/blob/b18a5f8fa8/docs/hosted-research-trial.md"),
+  assert(sourceNotes.includes("/blob/8f8d203998/docs/hosted-research-trial.md"),
     `${page} lacks the pinned hosted research documentation`);
   assert(sourceNotes.includes("hosted research trials") || sourceNotes.includes("托管研究试用"),
     `${page} lacks the post-release hosted research update`);
@@ -313,6 +320,28 @@ for (const page of ["get-started/index.html", "zh/get-started/index.html", "proj
     `${page} lacks the data authorization boundary`);
   assert(sourceNotes.includes("private reasoning") || sourceNotes.includes("私有推理"),
     `${page} lacks the public-episode exclusion boundary`);
+  const notes = sourceNotes.match(/<(?:p|li)\b[^>]*>[\s\S]*?<\/(?:p|li)>/g) ?? [];
+  const observations = notes.find((note) => note.includes("Raw process observations cover") || note.includes("原始过程观察覆盖")) ?? "";
+  const strictExport = notes.find((note) => note.includes("strict public/SFT") || note.includes("严格的 public/SFT")) ?? "";
+  assert(observations.includes("system/developer") &&
+    (observations.includes("retain") || observations.includes("保留应用侧")),
+    `${page} must disclose the application inputs retained in raw observations`);
+  assert(observations.includes("does not require per-sample quality approval") || observations.includes("不要求逐样本质量审批"),
+    `${page} must distinguish raw observations from quality-approved training samples`);
+  assert(observations.includes("structured hidden reasoning and signatures") || observations.includes("结构化隐藏推理与签名"),
+    `${page} must describe raw-observation filtering precisely`);
+  assert(strictExport.includes("per-event review") || strictExport.includes("逐条审查"),
+    `${page} must retain the separate strict export review requirement`);
+  assert(strictExport.includes("system inputs, private reasoning and credentials") || strictExport.includes("系统输入、私有推理和凭据"),
+    `${page} must scope the full exclusions to strict sample exports`);
+  assert(sourceNotes.includes("opt-in experimental previews") || sourceNotes.includes("需显式启用的实验预览"),
+    `${page} must not advertise optional reader previews as default features`);
+  assert(sourceNotes.includes("task/event snapshots") || sourceNotes.includes("任务／事件快照"),
+    `${page} lacks the research reader's captured evidence context`);
+  assert(sourceNotes.includes("teaching review is not scientific acceptance") || sourceNotes.includes("教学复核不等于科研结论验收"),
+    `${page} must not conflate teaching review with scientific acceptance`);
+  assert(sourceNotes.includes("paused, waiting and disconnected") || sourceNotes.includes("暂停、等待与断线"),
+    `${page} lacks the updated task-state distinctions`);
   assert(sourceNotes.includes("not included in") || sourceNotes.includes("不在"),
     `${page} must keep post-release source work separate from the published installer`);
   assert(releasedNotes.includes("v0.1.6"), `${page} lacks the released feature baseline`);
