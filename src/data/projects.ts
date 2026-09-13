@@ -46,6 +46,23 @@ export type Project = {
   links: ProjectLink[];
 };
 
+export const sourcePreviewNotes = {
+  en: [
+    `Source preview reviewed ${sourcePreview.reviewedOn}: building on hosted research trials and project replay, the later lbx154/Argus source adds research reading explanations and raw process observations. It distinguishes running, paused, waiting and disconnected states, and clarifies which task owns history and pending questions. These later changes are not included in v${sourcePreview.desktopBaseline} installers and do not imply synchronization to microsoft/ArgusAgent.`,
+    "Research reading explanations connect goals, concepts, examples and conclusion boundaries to the task/event snapshots used when generated. Problem background notes and independent reader follow-up are opt-in experimental previews; answers are saved separately without changing the source explanation or research tasks. Generation uses a model and counts toward usage; teaching review is not scientific acceptance.",
+    "Hosted features require independent operator deployment and invitation-based authorization; ordinary desktop or Web installation does not enable the service. Hosted model and compute allowances remain separate from the desktop Key's one-million-token rule.",
+    "Raw process observations cover Manager, Planner, Engineer and Reviewer records, including failed and interrupted attempts. Export checks purpose-specific authorization and revocation, but does not require per-sample quality approval or certify training readiness. Observations retain the application's system/developer inputs while excluding structured hidden reasoning and signatures; inspect and redact them before sharing.",
+    "The separate, strict public/SFT export path still requires purpose-specific authorization, per-event review and renewed revocation checks; it excludes system inputs, private reasoning and credentials. External sharing needs separate authorization. Neither export path automatically uploads data or starts training.",
+  ],
+  zh: [
+    `${sourcePreview.reviewedOn} 核对的 lbx154/Argus 后续源码在托管研究试用与项目回放基础上，新增研究阅读解释和原始过程观察，区分执行、暂停、等待与断线状态，并明确历史记录和待答问题的任务归属。这些后续改动不在 v${sourcePreview.desktopBaseline} 安装包中，也不代表 microsoft/ArgusAgent 已同步。`,
+    "研究阅读解释将工作目的、概念示例与结论边界连回生成时采用的任务／事件快照。问题基础说明与独立阅读追问是需显式启用的实验预览；回答另存，不修改原说明或研究任务。生成过程调用模型并计入用量；教学复核不等于科研结论验收。",
+    "托管功能需要运营方独立部署和邀请授权，不会随普通桌面版或 Web 安装自动开放；模型与计算额度独立于桌面 Key 的 100 万 token 规则。",
+    "原始过程观察覆盖 Manager、Planner、Engineer 与 Reviewer 的记录，包括失败和中断的尝试。导出检查用途授权与撤销状态，但不要求逐样本质量审批，也不代表已达到训练质量。观察记录会保留应用侧 system/developer 输入，排除结构化隐藏推理与签名；分享前需人工检查和脱敏。",
+    "另一条严格的 public/SFT 样本导出路径仍要求用途授权、逐条审查及撤销状态复查，排除系统输入、私有推理和凭据。外部分享需另行授权。两种导出本身都不会自动上传数据或启动训练。",
+  ],
+} as const;
+
 export const projectDomains: ProjectDomain[] = [
   {
     id: "runtime",
@@ -123,8 +140,7 @@ export const projects: Project[] = [
         "Six paper pipelines completed 254 missions with 16 stage rollbacks recorded in the report.",
         `Desktop v${desktopRelease.version} adds Change Key controls that preserve projects and chat history, current backend/model/reasoning display, clearer theme icons and responsive titles. Account fences remain paused until explicit resumption; execution ending does not certify the research objective as complete.`,
         `Desktop v${desktopRelease.version} includes streamed Manager replies and tool-call display, map and activity-feed improvements, Excel (.xlsx) delivery recognition and optional workbench host integration. The bundled runtime supports stdin scripts (python -) and python -m unittest with test-failure exit codes preserved; it is not a general-purpose Python installation and provides neither pip nor venv.`,
-        `Source preview reviewed ${sourcePreview.reviewedOn}: hosted research trials, project replay and collaboration records, reviewed training-data export, and further failure-reporting, artifact-download and HTML-preview fixes. These later changes are not included in desktop v${sourcePreview.desktopBaseline} or automatically synchronized to the official source repository.`,
-        "Hosted research needs independent operator deployment and invitation-based authorization; it is not enabled by ordinary desktop or Web installation. Model and compute accounting remain separate from desktop Key allowances. Data export requires purpose-specific authorization and review, with separate approval for external sharing. Public episodes exclude system instructions, private reasoning and credentials; export does not upload data or start training.",
+        ...sourcePreviewNotes.en,
       ],
       zh: [
         "Manager、Planner、Engineer 与 Reviewer 分别负责项目控制、任务选择、执行和基于证据的验收。",
@@ -133,8 +149,7 @@ export const projects: Project[] = [
         "报告中的六条论文流水线共完成 254 个 mission，并发生 16 次阶段回滚。",
         `桌面 v${desktopRelease.version} 新增保留项目和聊天记录的更换 Key 入口、当前后端／模型／推理强度显示，以及更清晰的日夜图标和响应式标题。账户阻塞会保留为暂停，需显式恢复；执行结束不等于研究目标已通过验收。`,
         `桌面 v${desktopRelease.version} 已包含 Manager 流式回复与工具调用展示、地图和活动记录改进、Excel（.xlsx）交付识别及可选工作台宿主集成。内置运行时支持标准输入脚本（python -）与 python -m unittest，保留测试失败退出码；它不是完整的通用 Python 环境，不提供 pip 或 venv。`,
-        `${sourcePreview.reviewedOn} 核对的后续源码新增托管研究试用、按项目回放与协作记录、经审查的训练数据导出，并进一步修复失败报告、交付文件下载和 HTML 预览。这些后续改动不在桌面 v${sourcePreview.desktopBaseline} 中，也不代表官方源码仓库已同步。`,
-        "托管研究需要运营方独立部署和邀请授权，不会随普通桌面版或 Web 安装自动启用；模型与计算计费和桌面 Key 额度分开。数据导出需要用途授权与审查，外部分享另行授权。公开轨迹不含系统指令、私有推理或凭据；导出不会上传数据或启动训练。",
+        ...sourcePreviewNotes.zh,
       ],
     },
     outcome: {
@@ -168,14 +183,16 @@ export const projects: Project[] = [
         "Preserves the pi CLI, configuration and provider authentication; argus-pi is an additional executable name. It uses the existing pi backend, not a tenth Argus backend.",
         "Reads selected PDF pages and notebook cells with source context and saved-output inventories. PDF extraction is not OCR, figure inspection or layout review; stored notebook output is not evidence of a fresh run.",
         "Local Bash pipefail and signal-aware status handling keep failed commands observable instead of reporting a successful pipe or a missing exit code as success.",
-        "The argus branch is a source preview, with no separately published package or binary release. Upstream Pi installation and self-update do not install this fork.",
+        "In Argus-mode JSON output, a failed prompt does not report terminal failure before queued prompts finish; failed-attempt diagnostics and usage remain visible. includeOutputs=false keeps the normal read default.",
+        "Downstream development now targets main. It remains a source preview, with no separately published package or binary release. Build from source with Node.js 22.19+ using the repository instructions; upstream Pi installation and self-update do not install this fork.",
         "Small prompt-profile trials are not evidence of general performance superiority; comparisons must retain failures and incomplete deliverables.",
       ],
       zh: [
         "保留 pi CLI、配置与 Provider 登录，argus-pi 是附加可执行名称；仍使用既有 pi 后端，不是第十个 Argus 后端。",
         "可按页读取 PDF、按单元格读取 Notebook，保留来源与已保存输出清单。PDF 文本提取不是 OCR、看图或布局审核；Notebook 旧输出也不证明刚刚运行成功。",
         "本地 Bash 的 pipefail 与信号状态处理让命令失败保持可见，不把管道末端成功或缺少退出码误当成整段成功。",
-        "argus 分支目前是源码预览，没有独立发布的软件包或二进制安装包；安装或自更新上游 Pi 不会得到此分支。",
+        "Argus 模式的 JSON 输出不会因前一条提示失败，就在后续排队提示处理完之前报告整次运行终止；失败尝试的诊断与用量保持可见。includeOutputs=false 沿用普通读取默认值。",
+        "下游开发现以 main 为主分支，仍是源码预览，没有独立发布的软件包或二进制安装包。使用 Node.js 22.19+，按仓库说明从源码构建；安装或自更新上游 Pi 不会得到此分支。",
         "小规模提示词试验不等于通用性能领先；比较仍需保留失败与未完成交付。",
       ],
     },
@@ -186,7 +203,7 @@ export const projects: Project[] = [
     technologies: ["TypeScript", "Pi", "PDF", "Notebook"],
     links: [
       { kind: "repository", href: "https://github.com/Argus-AiTeam/Argus-Pi" },
-      { kind: "documentation", href: "https://github.com/Argus-AiTeam/Argus-Pi/blob/argus/README.md" },
+      { kind: "documentation", href: "https://github.com/Argus-AiTeam/Argus-Pi/blob/main/README.md" },
     ],
   },
   {

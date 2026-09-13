@@ -1,9 +1,9 @@
 import { desktopRelease } from "./desktopRelease";
 
-const revision = "b18a5f8fa8";
+const revision = "8f8d203998";
 
 export const sourcePreview = {
-  reviewedOn: "2026-09-12",
+  reviewedOn: "2026-09-13",
   desktopBaseline: desktopRelease.version,
   revision,
   changesUrl: `https://github.com/lbx154/Argus/compare/v${desktopRelease.version}...${revision}`,

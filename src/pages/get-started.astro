@@ -4,6 +4,7 @@ import PageHero from "../components/PageHero.astro";
 import PixelIllustration from "../components/PixelIllustration";
 import { desktopRelease } from "../data/desktopRelease";
 import { sourcePreview } from "../data/projectUpdates";
+import { sourcePreviewNotes } from "../data/projects";
 import { localeFromPath, pathForLocale } from "../i18n";
 
 const locale = localeFromPath(Astro.url.pathname);
@@ -95,8 +96,6 @@ const copy = locale === "zh" ? {
   ],
   backendGuide: "查看后端、Provider 与模型配置",
   sourcePreviewTitle: "源码主线进展，不等于安装包功能",
-  sourcePreviewBody: `${sourcePreview.reviewedOn} 核对的 lbx154/Argus 后续开发源码新增托管研究试用、按项目回放与协作记录、经授权审查的训练数据导出，并继续修复执行失败报告、交付文件下载及 HTML 预览。这些后续改动不在 v${sourcePreview.desktopBaseline} 安装包中，也不代表 microsoft/ArgusAgent 已同步。`,
-  sourceBoundaries: "托管功能需要运营方独立部署和邀请授权，不是普通桌面版或 Web 安装自动开放的服务；其模型与计算额度不能套用桌面 Key 的 100 万 token 规则。回放采集需有效的用途授权，训练数据导出还需逐项审查，并重新检查撤销状态；外部分享需另行授权。不包含系统指令、私有推理或凭据，导出不会自动上传数据或启动训练。",
   sourcePreviewLink: "查看源码预览与新项目 →",
   sourceChanges: "查看对应源码变更 ↗",
   hostedGuide: "阅读托管部署与数据边界 ↗",
@@ -195,8 +194,6 @@ const copy = locale === "zh" ? {
   ],
   backendGuide: "Open backend, provider, and model setup",
   sourcePreviewTitle: "Source-preview updates, not installer features",
-  sourcePreviewBody: `The later lbx154/Argus source reviewed on ${sourcePreview.reviewedOn} adds hosted research trials, project replay and collaboration records, and authorized, reviewed training-data export, alongside further fixes to failure reporting, artifact downloads and HTML previews. These later changes are not included in v${sourcePreview.desktopBaseline} installers and do not imply synchronization to microsoft/ArgusAgent.`,
-  sourceBoundaries: "Hosted features require independent operator deployment and invitation-based authorization; ordinary desktop or Web installation does not enable the service. Hosted model/compute allowances are separate from the desktop Key's one-million-token rule. Replay collection requires valid purpose-specific authorization; training-data export also needs per-event review and renewed revocation checks. External sharing needs separate authorization. System instructions, private reasoning and credentials are excluded. Export does not automatically upload data or start training.",
   sourcePreviewLink: "Explore source previews and new projects →",
   sourceChanges: "Read the corresponding source changes ↗",
   hostedGuide: "Read hosted deployment and data boundaries ↗",
@@ -390,8 +387,7 @@ const copy = locale === "zh" ? {
       </div>
       <aside class="source-preview-note" data-source-preview>
         <h3>{copy.sourcePreviewTitle}</h3>
-        <p>{copy.sourcePreviewBody}</p>
-        <p>{copy.sourceBoundaries}</p>
+        {sourcePreviewNotes[locale].map((note) => <p>{note}</p>)}
         <a href={href("/projects/runtime/")}>{copy.sourcePreviewLink}</a>
         <a href={sourcePreview.changesUrl} target="_blank" rel="noopener noreferrer">{copy.sourceChanges}</a>
         <a href={sourcePreview.hostedGuideUrl} target="_blank" rel="noopener noreferrer">{copy.hostedGuide}</a>
