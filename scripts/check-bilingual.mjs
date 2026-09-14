@@ -308,9 +308,9 @@ for (const page of ["get-started/index.html", "zh/get-started/index.html", "proj
   const releasedNotes = page.includes("get-started")
     ? html.match(/<aside\b[^>]*data-desktop-features[^>]*>[\s\S]*?<\/aside>/)?.[0] ?? ""
     : sourceNotes;
-  assert(sourceNotes.includes("2026-09-13") && sourceNotes.includes("https://github.com/lbx154/Argus/compare/v0.1.6...8f8d203998"),
+  assert(sourceNotes.includes("2026-09-14") && sourceNotes.includes("https://github.com/lbx154/Argus/compare/v0.1.6...c92d0de873"),
     `${page} lacks the reviewed source snapshot`);
-  assert(sourceNotes.includes("/blob/8f8d203998/docs/hosted-research-trial.md"),
+  assert(sourceNotes.includes("/blob/c92d0de873/docs/hosted-research-trial.md"),
     `${page} lacks the pinned hosted research documentation`);
   assert(sourceNotes.includes("hosted research trials") || sourceNotes.includes("托管研究试用"),
     `${page} lacks the post-release hosted research update`);
@@ -334,8 +334,28 @@ for (const page of ["get-started/index.html", "zh/get-started/index.html", "proj
     `${page} must retain the separate strict export review requirement`);
   assert(strictExport.includes("system inputs, private reasoning and credentials") || strictExport.includes("系统输入、私有推理和凭据"),
     `${page} must scope the full exclusions to strict sample exports`);
-  assert(sourceNotes.includes("opt-in experimental previews") || sourceNotes.includes("需显式启用的实验预览"),
-    `${page} must not advertise optional reader previews as default features`);
+  assert(sourceNotes.includes("Step-specific questions are now part of ordinary research reading") || sourceNotes.includes("普通研究阅读现已接入“问这一步”"),
+    `${page} must describe the ordinary step-specific reading questions`);
+  assert(sourceNotes.includes("Problem background notes remain an opt-in experimental preview") || sourceNotes.includes("问题基础说明仍是需显式启用的实验预览"),
+    `${page} must keep problem background notes distinct from ordinary reading questions`);
+  assert(!sourceNotes.includes("Problem background notes and independent reader follow-up are opt-in") &&
+    !sourceNotes.includes("问题基础说明与独立阅读追问是需显式启用"),
+    `${page} still incorrectly gates all reader follow-up as experimental`);
+  for (const [english, chinese] of [
+    ["a valid saved source and explicit submission are required", "需有有效的已保存来源并由用户明确提交"],
+    ["read-only views do not allow new questions", "只读视图不提供新提问"],
+    ["do not count as research progress", "也不算新的研究进展"],
+    ["does not stop team tasks or undo work already dispatched", "不等于停止团队任务，也不会撤销已派发的工作"],
+    ["start-unconfirmed dispatch receipts", "尚未确认启动"],
+    ["Durable operator-input queues and acknowledgements", "持久队列与确认机制"],
+    ["does not mean more models are enabled for every user", "不代表所有用户已开放更多模型"],
+    ["Windows source fixes", "Windows 后续源码"],
+    ["or deployment to a public trial service", "或公开试用服务已部署"],
+  ]) {
+    assert(sourceNotes.includes(english) || sourceNotes.includes(chinese),
+      `${page} lacks the current source detail or boundary: ${english}`);
+  }
+  assert(sourceNotes.includes("HTTP 429"), `${page} lacks the source rate-limit guidance`);
   assert(sourceNotes.includes("task/event snapshots") || sourceNotes.includes("任务／事件快照"),
     `${page} lacks the research reader's captured evidence context`);
   assert(sourceNotes.includes("teaching review is not scientific acceptance") || sourceNotes.includes("教学复核不等于科研结论验收"),
