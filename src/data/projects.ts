@@ -46,24 +46,41 @@ export type Project = {
   links: ProjectLink[];
 };
 
+export const windowsReleaseNotes = {
+  en: [
+    `Windows v${desktopRelease.windows.version} defaults to the map when no workspace is explicitly selected or saved. Its Skill file browser covers global, vertical and project Skills with recent updates; these are reusable files, not proof of model-weight training.`,
+    "Interactive research proposals support duration, resource, dependency and deadline planning, plus version comparison. Saving a proposal does not launch experiments or change the backlog; estimates are not guaranteed deadlines.",
+    "Ordinary research reading includes “Ask this step”: a valid saved source and explicit submission are required; read-only views cannot submit. Answers use the saved explanation and its task/event snapshots, are saved separately without changing research tasks, and do not count as research progress. Problem background notes remain an opt-in experimental preview. Generation uses a model and counts toward usage; teaching review is not scientific acceptance.",
+    "Windows installation adds in-place upgrade protection and improves backend recovery for existing installations. Stopping the current Manager reply does not stop team tasks or undo work already dispatched.",
+    "Own-account cost accounting distinguishes priced and unresolved usage: the default unpriced-cost policy can stop later own-account calls. Trial users' local dollar records remain not_billed; trial token quotas are enforced server-side. This is not a universal block across modes.",
+  ],
+  zh: [
+    `Windows v${desktopRelease.windows.version} 在没有显式选择或已保存工作区时默认进入地图。Skill 文件浏览器覆盖全局、领域和项目 Skills，并展示最近更新；这些是可复用文件，不是模型权重训练的证明。`,
+    "交互式研究方案支持时长、资源、依赖和截止日期规划，以及版本比较。保存方案不会启动实验或改变 backlog；估算不等于保证按期完成。",
+    "普通研究阅读已包含“问这一步”：需有有效的已保存来源并由用户明确提交，只读视图不能提交新问题。回答依据保存的说明与任务／事件快照另存，不修改研究任务，也不算新的研究进展。问题基础说明仍是需显式启用的实验预览。生成过程调用模型并计入用量；教学复核不等于科研结论验收。",
+    "Windows 安装增加原地升级保护，并改善已有安装的后端恢复。停止当前 Manager 回复不等于停止团队任务，也不会撤销已派发的工作。",
+    "自有账户费用核算区分已定价和未解决的用量；默认的未定价费用策略可能阻止后续自有账户调用。试用用户的本地美元记录仍标记为 not_billed，token 额度由服务端执行；并非所有模式都会因此阻塞。",
+  ],
+} as const;
+
 export const sourcePreviewNotes = {
   en: [
-    `Source preview reviewed ${sourcePreview.reviewedOn}: the later lbx154/Argus source improves research reading, hosted research trials and execution controls. It distinguishes running, paused, waiting and disconnected states, with task-specific history and pending questions. These later changes are not included in v${sourcePreview.desktopBaseline} installers and do not imply synchronization to microsoft/ArgusAgent or deployment to a public trial service.`,
-    "Research reading explanations connect goals, concepts, examples and conclusion boundaries to the task/event snapshots used when generated. Step-specific questions are now part of ordinary research reading: a valid saved source and explicit submission are required; read-only views do not allow new questions. Answers are saved separately without changing the source explanation or research tasks and do not count as research progress. Problem background notes remain an opt-in experimental preview. Generation uses a model and counts toward usage; teaching review is not scientific acceptance.",
-    "Execution controls distinguish saved, queued, claimed and start-unconfirmed dispatch receipts; a ready worker or claimed task does not prove model execution. Durable operator-input queues and acknowledgements improve recovery. Stopping the current Manager reply does not stop team tasks or undo work already dispatched.",
-    "Trial operators can explicitly configure an allowed model catalog; this does not mean more models are enabled for every user or change the advertised desktop trial default. Upstream rate limits retain HTTP 429 and retry guidance. Windows source fixes also improve bundled-Skill newline detection and runtime output encoding.",
+    `Post-release source preview reviewed ${sourcePreview.reviewedOn} at ${sourcePreview.revision}: lbx154/Argus main now separates 7 built-in verticals from 17 preexisting community domain packs. Windows v${sourcePreview.windowsBaseline} predates this split and retains 24 built-in verticals; Mac / Linux remain at v${sourcePreview.macLinuxBaseline}. These source changes do not imply synchronization to microsoft/ArgusAgent.`,
+    `The source-only Vertical Store adds CLI, API and UI access to individual community packs; it is not included in Windows v${sourcePreview.windowsBaseline}. Packs install without pip, and dependency listings do not automatically install scientific Python dependencies. Hosted installation and other shared changes remain operator-controlled, while personal enable/disable choices stay separate. A project whose persisted vertical is missing is held rather than silently switched to research.`,
+    "For source developers, the Python package migrates from argus_skill to argus, with compatibility aliases for one release. Existing state locations and environment-variable spellings stay unchanged. This source migration does not require desktop users to reinstall.",
     "Hosted features require independent operator deployment and invitation-based authorization; ordinary desktop or Web installation does not enable the service. Hosted model and compute allowances remain separate from the desktop Key's one-million-token rule.",
     "Raw process observations cover Manager, Planner, Engineer and Reviewer records, including failed and interrupted attempts. Export checks purpose-specific authorization and revocation, but does not require per-sample quality approval or certify training readiness. Observations retain the application's system/developer inputs while excluding structured hidden reasoning and signatures; inspect and redact them before sharing.",
     "The separate, strict public/SFT export path still requires purpose-specific authorization, per-event review and renewed revocation checks; it excludes system inputs, private reasoning and credentials. External sharing needs separate authorization. Neither export path automatically uploads data or starts training.",
+    "Community or plugin Skills are not automatically approved assets for strict public/SFT export; their availability or license does not replace authorization, review or filtering.",
   ],
   zh: [
-    `${sourcePreview.reviewedOn} 核对的 lbx154/Argus 后续源码继续改进研究阅读、托管研究试用与执行控制，区分执行、暂停、等待与断线状态，并保留历史记录和待答问题的任务归属。这些后续改动不在 v${sourcePreview.desktopBaseline} 安装包中，也不代表 microsoft/ArgusAgent 已同步或公开试用服务已部署。`,
-    "研究阅读解释将工作目的、概念示例与结论边界连回生成时采用的任务／事件快照。普通研究阅读现已接入“问这一步”，需有有效的已保存来源并由用户明确提交；只读视图不提供新提问。回答另存，不修改原说明或研究任务，也不算新的研究进展。问题基础说明仍是需显式启用的实验预览。生成过程调用模型并计入用量；教学复核不等于科研结论验收。",
-    "执行控制更准确地区分“已保存、排队、已接手、尚未确认启动”的任务回执；后台就绪或任务领取不代表模型已经执行。操作者输入采用持久队列与确认机制，改善中断恢复。停止当前 Manager 回复不等于停止团队任务，也不会撤销已派发的工作。",
-    "试用运营方可显式配置允许使用的模型目录，不代表所有用户已开放更多模型，也不改变官网标示的桌面试用默认模型。上游限流保留 HTTP 429 与重试提示。Windows 后续源码还修复了内置 Skill 换行格式识别与运行时输出编码。",
+    `${sourcePreview.reviewedOn} 核对的发布后源码预览（${sourcePreview.revision}）：lbx154/Argus main 现将 7 个内置领域与 17 个既有社区领域包分开。Windows v${sourcePreview.windowsBaseline} 早于此次拆分，仍内置 24 个领域；Mac / Linux 仍为 v${sourcePreview.macLinuxBaseline}。这些源码改动不代表 microsoft/ArgusAgent 已同步。`,
+    `仅后续源码提供的 Vertical Store 支持通过 CLI、API 和 UI 按领域获取社区包，Windows v${sourcePreview.windowsBaseline} 不包含 Store。领域包安装无需 pip，依赖清单也不会自动安装科学 Python 依赖。托管环境的安装及其他共享变更由运营方控制，个人启用／停用选择与之分开。若项目持久化记录的领域缺失，会暂缓执行，而不是静默切回 research 领域。`,
+    "面向源码开发者，Python 包从 argus_skill 迁移至 argus，旧名称兼容别名保留一个版本。既有状态位置和环境变量拼写不变；这次源码迁移不要求桌面用户重新安装。",
     "托管功能需要运营方独立部署和邀请授权，不会随普通桌面版或 Web 安装自动开放；模型与计算额度独立于桌面 Key 的 100 万 token 规则。",
     "原始过程观察覆盖 Manager、Planner、Engineer 与 Reviewer 的记录，包括失败和中断的尝试。导出检查用途授权与撤销状态，但不要求逐样本质量审批，也不代表已达到训练质量。观察记录会保留应用侧 system/developer 输入，排除结构化隐藏推理与签名；分享前需人工检查和脱敏。",
     "另一条严格的 public/SFT 样本导出路径仍要求用途授权、逐条审查及撤销状态复查，排除系统输入、私有推理和凭据。外部分享需另行授权。两种导出本身都不会自动上传数据或启动训练。",
+    "社区或插件 Skills 不会自动成为严格 public/SFT 导出的获批素材；可用性或许可证不能替代用途授权、审查与过滤。",
   ],
 } as const;
 
@@ -77,8 +94,8 @@ export const projectDomains: ProjectDomain[] = [
       zh: "让智能工作跨越单次对话，持续规划、执行与验收。",
     },
     description: {
-      en: "Argus provides long-horizon orchestration; Argus-Pi develops its execution layer, while optional workbenches such as CrystalPilot extend it into specialist research.",
-      zh: "Argus 提供长程组织与验收，Argus-Pi 改进执行层，CrystalPilot 等可选工作台将其扩展到专业科研。",
+      en: "Argus provides long-horizon orchestration; Argus-Pi develops its execution layer. Argus Verticals distributes MIT community domain packs, separate from optional specialist workbenches such as CrystalPilot.",
+      zh: "Argus 提供长程组织与验收，Argus-Pi 改进执行层。Argus Verticals 分发 MIT 社区领域包，与 CrystalPilot 等可选专业工作台相互独立。",
     },
   },
   {
@@ -142,8 +159,9 @@ export const projects: Project[] = [
         "Durable project state retains tasks, checkpoints, decisions, skills, and evidence across sessions and runtime upgrades.",
         "The technical report records about 78% on SWE-Bench Pro versus 59% for Direct Copilot, with 1.41× aggregate tokens.",
         "Six paper pipelines completed 254 missions with 16 stage rollbacks recorded in the report.",
-        `Desktop v${desktopRelease.version} adds Change Key controls that preserve projects and chat history, current backend/model/reasoning display, clearer theme icons and responsive titles. Account fences remain paused until explicit resumption; execution ending does not certify the research objective as complete.`,
-        `Desktop v${desktopRelease.version} includes streamed Manager replies and tool-call display, map and activity-feed improvements, Excel (.xlsx) delivery recognition and optional workbench host integration. The bundled runtime supports stdin scripts (python -) and python -m unittest with test-failure exit codes preserved; it is not a general-purpose Python installation and provides neither pip nor venv.`,
+        `Since v${desktopRelease.macLinux.version}, desktop releases include Change Key controls that preserve projects and chat history, current backend/model/reasoning display, clearer theme icons and responsive titles. Account fences remain paused until explicit resumption; execution ending does not certify the research objective as complete.`,
+        `Since v${desktopRelease.macLinux.version}, desktop releases include streamed Manager replies and tool-call display, map and activity-feed improvements, Excel (.xlsx) delivery recognition and optional workbench host integration. The bundled runtime supports stdin scripts (python -) and python -m unittest with test-failure exit codes preserved; it is not a general-purpose Python installation and provides neither pip nor venv.`,
+        ...windowsReleaseNotes.en,
         ...sourcePreviewNotes.en,
       ],
       zh: [
@@ -151,8 +169,9 @@ export const projects: Project[] = [
         "持久化项目状态能够跨会话和运行时升级保留任务、检查点、决策、Skills 与证据。",
         "技术报告记录 SWE-Bench Pro 约 78%，Direct Copilot 为 59%，总 Token 使用量为 1.41 倍。",
         "报告中的六条论文流水线共完成 254 个 mission，并发生 16 次阶段回滚。",
-        `桌面 v${desktopRelease.version} 新增保留项目和聊天记录的更换 Key 入口、当前后端／模型／推理强度显示，以及更清晰的日夜图标和响应式标题。账户阻塞会保留为暂停，需显式恢复；执行结束不等于研究目标已通过验收。`,
-        `桌面 v${desktopRelease.version} 已包含 Manager 流式回复与工具调用展示、地图和活动记录改进、Excel（.xlsx）交付识别及可选工作台宿主集成。内置运行时支持标准输入脚本（python -）与 python -m unittest，保留测试失败退出码；它不是完整的通用 Python 环境，不提供 pip 或 venv。`,
+        `自 v${desktopRelease.macLinux.version} 起，桌面版已包含保留项目和聊天记录的更换 Key 入口、当前后端／模型／推理强度显示，以及更清晰的日夜图标和响应式标题。账户阻塞会保留为暂停，需显式恢复；执行结束不等于研究目标已通过验收。`,
+        `自 v${desktopRelease.macLinux.version} 起，桌面版已包含 Manager 流式回复与工具调用展示、地图和活动记录改进、Excel（.xlsx）交付识别及可选工作台宿主集成。内置运行时支持标准输入脚本（python -）与 python -m unittest，保留测试失败退出码；它不是完整的通用 Python 环境，不提供 pip 或 venv。`,
+        ...windowsReleaseNotes.zh,
         ...sourcePreviewNotes.zh,
       ],
     },
@@ -225,14 +244,14 @@ export const projects: Project[] = [
     },
     highlights: {
       en: [
-        `Version 0.4.0 is independently distributed. Desktop v${desktopRelease.version} includes its host integration, but CrystalPilot still requires separate installation; no workbench plugin is enabled by default.`,
+        `Version 0.4.0 is independently distributed. Desktop releases since v${desktopRelease.macLinux.version} include its host integration, but CrystalPilot still requires separate installation; no workbench plugin is enabled by default.`,
         "Compatible hosts install the pinned, SHA-256-checked package from the plugin center into an isolated environment. Supported backends are Codex, Copilot and Pi, including supported mixed-role configurations.",
         "Prepares scientific dependencies automatically; optional or licensed dependencies remain explicit. SHELX requires authorization from its author. Scientific binaries, model credentials and research datasets are not bundled in the distribution.",
         "Separate workbench conversations and project bindings preserve ownership. Updates are manual and staged; uninstalling preserves research data, conversations and reusable software.",
         "Proprietary: TopoSpace reserves all rights and prohibits unauthorized commercial use or derivative development. Public source availability is not an open-source license; the host integration and third-party components have separate terms.",
       ],
       zh: [
-        `0.4.0 独立分发；桌面 v${desktopRelease.version} 已包含宿主集成，但 CrystalPilot 仍需单独安装，默认不启用任何工作台插件。`,
+        `0.4.0 独立分发；桌面版自 v${desktopRelease.macLinux.version} 起已包含宿主集成，但 CrystalPilot 仍需单独安装，默认不启用任何工作台插件。`,
         "兼容宿主通过插件中心安装固定版本、经过 SHA-256 核对的软件包，并使用隔离环境；支持 Codex、Copilot、Pi 及这些后端的混合角色配置。",
         "自动准备科学依赖，缺失的可选或授权组件会明确提示；SHELX 需向原作者取得许可。发行物不包含上游科学二进制、模型凭据或研究数据。",
         "独立工作台会话与项目绑定保留权属边界；更新需手动触发并分阶段切换，卸载保留研究数据、对话和可复用软件。",
@@ -240,14 +259,56 @@ export const projects: Project[] = [
       ],
     },
     outcome: {
-      en: `Optional CrystalPilot 0.4.0 for compatible Argus hosts, including desktop v${desktopRelease.version}.`,
-      zh: `为兼容的 Argus 宿主提供可选 CrystalPilot 0.4.0，包括桌面 v${desktopRelease.version}。`,
+      en: `Optional CrystalPilot 0.4.0 for compatible Argus hosts, including ${desktopRelease.platformVersionLabel}.`,
+      zh: `为兼容的 Argus 宿主提供可选 CrystalPilot 0.4.0，包括 Windows v${desktopRelease.windows.version} 与 Mac / Linux v${desktopRelease.macLinux.version}。`,
     },
     technologies: ["Crystallography", "Python", "Codex / Copilot / Pi", "Bilingual"],
     links: [
       { kind: "documentation", href: "https://crystalpilot-downloads.argusbot.cn/" },
-      { kind: "status", href: desktopRelease.workbenchGuideUrl },
-      { kind: "license", href: `${desktopRelease.workbenchGuideUrl}#crystalpilot-licensing` },
+      { kind: "status", href: desktopRelease.macLinux.workbenchGuideUrl },
+      { kind: "license", href: `${desktopRelease.macLinux.workbenchGuideUrl}#crystalpilot-licensing` },
+    ],
+  },
+  {
+    id: "argus-verticals",
+    category: "runtime",
+    status: "active",
+    title: "Argus Verticals",
+    description: {
+      en: "Published MIT community domain packs for compatible post-release Argus source, not a desktop Store release.",
+      zh: "已发布的 MIT 社区领域包，面向兼容的 Argus 发布后源码，不是桌面 Store 发行版。",
+    },
+    problem: {
+      en: "Specialist Skills should be available per domain without bundling every field into the runtime. Argus Verticals separates reusable community packs from core built-ins and independently licensed workbenches.",
+      zh: "专业 Skills 应能按领域获取，而不必全部打入运行时。Argus Verticals 将可复用社区包与核心内置领域、独立授权工作台分开。",
+    },
+    highlights: {
+      en: [
+        "Published 2026-09-14: MIT v0.1.0 provides 17 per-domain ZIP assets plus catalog.json and SHA256SUMS.",
+        "These are 17 preexisting domains split out from Argus, spanning chips, circuits, materials, biomedical evidence, physics, quantitative research, literary research and benchmarks—not 17 new research results.",
+        `Requires compatible Argus source after the September 14 split and package rename. That source keeps 7 built-in verticals; Windows v${desktopRelease.windows.version} predates the split, keeps 24 built-in verticals and does not include the Vertical Store.`,
+        "The source Vertical Store installs individual domain packs without pip. It lists dependencies but does not automatically install scientific Python dependencies; hosted shared changes remain operator-controlled and personal enable/disable choices remain separate.",
+        "MIT community Skills are separate from proprietary CrystalPilot and do not bundle its scientific environment. Installing a pack does not approve its contents for strict public/SFT export or establish scientific results.",
+      ],
+      zh: [
+        "2026-09-14 已发布：MIT 许可的 v0.1.0 提供 17 个按领域分发的 ZIP 资产，以及 catalog.json 和 SHA256SUMS。",
+        "这是从 Argus 拆出的 17 个既有领域，涵盖芯片、电路、材料、生物医学证据、物理、量化研究、文学研究和基准测试，不是 17 项新的科研成果。",
+        `需要兼容 9 月 14 日领域拆分及包重命名之后的 Argus 源码。该源码保留 7 个内置领域；Windows v${desktopRelease.windows.version} 早于拆分，仍内置 24 个领域，且不包含 Vertical Store。`,
+        "源码 Vertical Store 按领域安装社区包，无需 pip；它列出依赖，但不会自动安装科学 Python 依赖。托管共享变更仍由运营方控制，个人启用／停用选择与之分开。",
+        "MIT 社区 Skills 与专有 CrystalPilot 相互独立，不包含其科学环境。安装领域包不等于内容已获严格 public/SFT 导出批准，也不证明科研结论。",
+      ],
+    },
+    outcome: {
+      en: "Seventeen published community packs, with explicit source compatibility and MIT licensing.",
+      zh: "十七个已发布社区领域包，明确标示源码兼容条件与 MIT 许可。",
+    },
+    technologies: ["Skills", "Domain packs", "MIT", "Vertical Store"],
+    links: [
+      { kind: "repository", href: "https://github.com/Argus-AiTeam/argus-verticals" },
+      { kind: "official", href: "https://github.com/Argus-AiTeam/argus-verticals/releases/tag/v0.1.0" },
+      { kind: "documentation", href: "https://github.com/Argus-AiTeam/argus-verticals/blob/33a5c1acf3cf145604e2f1c442bedf59c141f69a/README.md" },
+      { kind: "license", href: "https://github.com/Argus-AiTeam/argus-verticals/blob/33a5c1acf3cf145604e2f1c442bedf59c141f69a/LICENSE" },
+      { kind: "status", href: sourcePreview.verticalStoreGuideUrl },
     ],
   },
   {

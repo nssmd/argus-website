@@ -2213,6 +2213,20 @@ main {
   margin-top: 12px;
 }
 
+.desktop-version-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.desktop-version-summary span {
+  padding: 5px 9px;
+  background: var(--blue-soft);
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 700;
+}
+
 .desktop-download-card__links {
   display: flex;
   gap: 8px 16px;
@@ -2226,6 +2240,7 @@ main {
   align-items: flex-end;
   justify-content: center;
   flex-direction: column;
+  gap: 12px;
 }
 
 .desktop-download-card__action .button {
@@ -2321,6 +2336,12 @@ main {
 .desktop-installer .installer-chip-hint {
   color: var(--ink-2);
   font-weight: 600;
+}
+
+.desktop-installer .installer-version {
+  color: var(--blue);
+  font-family: var(--mono);
+  font-weight: 700;
 }
 
 .desktop-installer .button {
