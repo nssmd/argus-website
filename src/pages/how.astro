@@ -7,7 +7,7 @@ import { localeFromPath } from "../i18n";
 
 const locale = localeFromPath(Astro.url.pathname);
 const stages = ["idea", "experiment", "paper", "review"];
-const stageSource = `https://github.com/lbx154/Argus/blob/v${desktopRelease.version}/argus_skill/verticals/research/stages.py`;
+const stageSource = `https://github.com/lbx154/Argus/blob/v${desktopRelease.windows.version}/argus_skill/verticals/research/stages.py`;
 const trajectoryChart = locale === "zh"
   ? "/assets/nanochat-b200-trajectory.svg"
   : "/assets/nanochat-b200-trajectory.en.svg";
@@ -21,7 +21,7 @@ const copy = locale === "zh" ? {
   roles: [["Manager", "入口、vertical 与 stage 权威。"], ["Planner", "提出下一批值得做的工作。"], ["Engineer", "写代码、跑实验、产出 artifact。"], ["Reviewer", "验收、返工、记录 checkpoint。"]],
   pipeline: "从一个目标到一篇 PDF。",
   pipelineBody: "当前研究主线使用四个规范阶段，更细的研究与实验步骤在阶段内组织。",
-  pipelineSource: "查看当前版本的阶段定义 ↗",
+  pipelineSource: `查看 Windows v${desktopRelease.windows.version} 的阶段定义 ↗`,
   run: "B200 上的 426 次自治搜索。",
   runBody: "每个点是一轮真实尝试，floor 从 1.0587 推到 0.9636。",
   alt: "B200 nanochat 进化曲线",
@@ -36,7 +36,7 @@ const copy = locale === "zh" ? {
   roles: [["Manager", "Owns the front door, domain selection, and stage authority."], ["Planner", "Chooses the next batch of work worth doing."], ["Engineer", "Writes code, runs experiments, and produces inspectable artifacts."], ["Reviewer", "Accepts, rejects, or sends work back, and maintains the working checkpoint."]],
   pipeline: "From one objective to a reviewable PDF.",
   pipelineBody: "The current research workflow uses four canonical stages, with detailed research and experiment steps organized within them.",
-  pipelineSource: "Read the current release's stage definitions ↗",
+  pipelineSource: `Read the Windows v${desktopRelease.windows.version} stage definitions ↗`,
   run: "426 autonomous searches on a B200.",
   runBody: "Every point is a real attempt. The floor moved from 1.0587 to 0.9636.",
   alt: "The B200 nanochat optimization trajectory",
