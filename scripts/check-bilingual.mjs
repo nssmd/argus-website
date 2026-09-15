@@ -388,6 +388,18 @@ for (const page of ["get-started/index.html", "zh/get-started/index.html"]) {
     `${page} must split the download heading into version then platforms`);
   assert(html.includes('data-platform-versions') && html.includes("Windows · v0.1.7") && html.includes("Mac / Linux · v0.1.6"),
     `${page} must display both platform versions next to the download heading`);
+  const releaseActions = html.match(/<div class="desktop-download-card__action">([\s\S]*?)<\/div>/)?.[1] ?? "";
+  const releaseLinks = [...releaseActions.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/g)];
+  assert(releaseLinks.length === 2, `${page} must retain both platform release-page links`);
+  for (const [, attributes, content] of releaseLinks) {
+    assert(content.includes(page.startsWith("zh/") ? "在 GitHub 查看发布说明" : "View release notes on GitHub"),
+      `${page} must visibly distinguish GitHub release pages from installer downloads`);
+    assert(attributes.includes('target="_blank"') && attributes.includes('aria-describedby="desktop-release-links-help"') &&
+      !attributes.includes("primary") && attributes.includes("/releases/tag/"),
+      `${page} must present release pages as secondary external links with download guidance`);
+  }
+  assert(releaseActions.includes(page.startsWith("zh/") ? "直接下载请使用下方蓝色按钮" : "use the blue buttons below"),
+    `${page} must direct installer downloads to the separate blue buttons`);
   for (const [id, filename, size, checksum] of [
     ["windows", "Argus-0.1.7-setup.exe", "33.6 MiB", "c9a4ab74a3ca2f2c14643e2b228c16be011efc3c77f4c2147a8b77749fb8707c"],
     ["macos-aarch64", "Argus-0.1.6-macos-aarch64.dmg", "47.0 MiB", "33328f610cb1432179777e5496c189046de5f49c5f48ae8ac01164bf0561b6f0"],
@@ -496,6 +508,9 @@ for (const page of ["index.html", "zh/index.html"]) {
   assert(html.includes('/get-started/#desktop-download') && html.includes("releases/tag/v0.1.7") &&
     html.includes("Windows v0.1.7 · Mac / Linux v0.1.6"),
     `${page} lacks the current cross-platform chooser and release notes`);
+  const releaseLink = html.match(/<a\b[^>]*href="https:\/\/github.com\/lbx154\/Argus\/releases\/tag\/v0\.1\.7"[^>]*>([\s\S]*?)<\/a>/)?.[1] ?? "";
+  assert(releaseLink.includes("GitHub") && (releaseLink.includes("发布说明") || releaseLink.includes("release notes")),
+    `${page} must visibly identify the homepage release link as GitHub documentation`);
   assert(html.includes("Argus-Pi") && html.includes("CrystalPilot") && html.includes("/projects/mathematics/#research-progress"),
     `${page} lacks the new project and research-progress entry points`);
 }

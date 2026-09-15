@@ -45,7 +45,8 @@ const copy = locale === "zh" ? {
   downloadFile: "下载",
   checksum: "SHA-256 校验值",
   allChecksums: "下载 SHA256SUMS",
-  releaseNotes: "查看 Release Notes",
+  releaseNotes: "在 GitHub 查看发布说明",
+  releaseLinksHelp: "这里打开 GitHub 发布页；直接下载请使用下方蓝色按钮，安装包同样托管于 GitHub。",
   signature: "下载更新器签名",
   desktopStartTitle: "桌面首次启动：两条路径",
   trialTitle: "内部邀请试用",
@@ -147,7 +148,8 @@ const copy = locale === "zh" ? {
   downloadFile: "Download",
   checksum: "SHA-256 checksum",
   allChecksums: "Download SHA256SUMS",
-  releaseNotes: "View release notes",
+  releaseNotes: "View release notes on GitHub",
+  releaseLinksHelp: "These links open GitHub release pages. For direct downloads from GitHub, use the blue buttons below.",
   signature: "Download updater signature",
   desktopStartTitle: "First desktop launch: two paths",
   trialTitle: "Invitation-only internal trial",
@@ -254,10 +256,13 @@ const copy = locale === "zh" ? {
         <div class="desktop-download-card__action">
           {releaseChoices.map((release) => (
             <a class="button" href={release.releaseUrl} target="_blank" rel="noopener noreferrer"
-              aria-label={`${release.label} v${release.version} · ${copy.releaseNotes}`}>
-              {release.label} · v{release.version} ↗
+              aria-label={`${release.label} v${release.version} · ${copy.releaseNotes}`}
+              aria-describedby="desktop-release-links-help">
+              <span>{release.label} · v{release.version}</span>
+              <span class="desktop-release-destination">{copy.releaseNotes} ↗</span>
             </a>
           ))}
+          <p id="desktop-release-links-help">{copy.releaseLinksHelp}</p>
         </div>
         <aside class="mac-installer-help" id="mac-installer-help">
           <h3>{copy.macChoiceTitle}</h3>
