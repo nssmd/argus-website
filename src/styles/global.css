@@ -2245,6 +2245,20 @@ main {
 
 .desktop-download-card__action .button {
   min-width: 250px;
+  flex-direction: column;
+  gap: 4px;
+  text-align: center;
+}
+
+.desktop-release-destination {
+  font-size: 11px;
+}
+
+.desktop-download-card__action > p {
+  max-width: 250px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
 }
 
 .desktop-download-card__links {
