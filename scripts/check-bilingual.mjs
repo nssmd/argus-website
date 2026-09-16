@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { createHash } from "node:crypto";
 
 const dist = path.resolve("dist");
 const pairs = [
@@ -515,6 +516,11 @@ for (const page of ["index.html", "zh/index.html"]) {
     `${page} lacks the new project and research-progress entry points`);
 }
 
+const communityQrFile = path.join(dist, "assets/argus-wechat-group-2.jpg");
+assert(fs.existsSync(communityQrFile), "missing WeChat community QR code");
+const communityQrHash = createHash("sha256").update(fs.readFileSync(communityQrFile)).digest("hex").slice(0, 8);
+const communityQrUrl = `/assets/argus-wechat-group-2.jpg?v=${communityQrHash}`;
+
 for (const page of ["contact/index.html", "zh/contact/index.html"]) {
   const html = read(page);
   assert((html.match(/class="team-member-card"/g) || []).length === 5, `${page} must show five members with public email`);
@@ -535,10 +541,10 @@ for (const page of ["contact/index.html", "zh/contact/index.html"]) {
   assert(html.includes("mailto:fanyj28@mail2.sysu.edu.cn"), `${page} lacks waltstephen's public README email`);
   assert(!html.includes("team-member-card__bio"), `${page} still exposes member bios`);
   assert(!html.includes("team-member-card__stats"), `${page} still exposes profile statistics`);
-  assert(html.includes("/assets/argus-wechat-group-2.jpg"), `${page} lacks the WeChat community QR code`);
+  const communityQr = html.match(/<a\b[^>]*class="wechat-community__qr"[^>]*>[\s\S]*?<\/a>/)?.[0] ?? "";
+  assert(communityQr.includes(`href="${communityQrUrl}"`) && communityQr.includes(`src="${communityQrUrl}"`),
+    `${page} must use the current QR image hash for both preview and full-size link`);
 }
-
-assert(fs.existsSync(path.join(dist, "assets/argus-wechat-group-2.jpg")), "missing WeChat community QR code");
 
 for (const page of ["start/index.html", "zh/start/index.html"]) {
   const html = read(page);
