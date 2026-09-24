@@ -10,15 +10,17 @@ function releaseMetadata(version: string) {
   };
 }
 
-const windows = releaseMetadata("0.1.7");
-const macLinux = releaseMetadata("0.1.6");
-const { version, assetsUrl: assets } = macLinux;
+const windows = releaseMetadata("0.1.8");
+const mac = releaseMetadata("0.1.9");
+const linux = releaseMetadata("0.1.6");
+const { version, assetsUrl: assets } = linux;
 
 export const desktopRelease = {
   windows,
-  macLinux,
+  mac,
+  linux,
   platforms: "Windows / Mac / Linux",
-  platformVersionLabel: `Windows v${windows.version} · Mac / Linux v${macLinux.version}`,
+  platformVersionLabel: `Windows v${windows.version} · Mac v${mac.version} · Linux v${linux.version}`,
   python: {
     version,
     wheelUrl: `${assets}/argus_skill-${version}-py3-none-any.whl`,
@@ -32,35 +34,35 @@ export const desktopRelease = {
       platform: "Windows 10/11",
       architecture: "x64",
       format: "EXE",
-      size: "33.6 MiB",
+      size: "49.3 MiB",
       downloadUrl: `${windows.assetsUrl}/Argus-${windows.version}-setup.exe`,
       signatureUrl: `${windows.assetsUrl}/Argus-${windows.version}-setup.exe.sig`,
-      sha256: "c9a4ab74a3ca2f2c14643e2b228c16be011efc3c77f4c2147a8b77749fb8707c",
+      sha256: "5ceeddb2a919db5bead9702e1535cc749e90a822c693746e25e9629c0e97d2ec",
     },
     {
-      ...macLinux,
+      ...mac,
       id: "macos-aarch64",
       os: "macos",
       platform: "macOS 13+",
       architecture: "Apple Silicon",
       format: "DMG",
-      size: "47.0 MiB",
-      downloadUrl: `${assets}/Argus-${version}-macos-aarch64.dmg`,
-      sha256: "33328f610cb1432179777e5496c189046de5f49c5f48ae8ac01164bf0561b6f0",
+      size: "101.7 MiB",
+      downloadUrl: `${mac.assetsUrl}/Argus-${mac.version}-macos-aarch64.dmg`,
+      sha256: "92facd784de1bb2381bfa7f3fb4f611b60c52f8646c90694bc9b181e085baded",
     },
     {
-      ...macLinux,
+      ...mac,
       id: "macos-x86_64",
       os: "macos",
       platform: "macOS 13+",
       architecture: "Intel",
       format: "DMG",
-      size: "46.9 MiB",
-      downloadUrl: `${assets}/Argus-${version}-macos-x86_64.dmg`,
-      sha256: "2f4fb1d05e743bc7e14cd8436b574d0ea407daac9abc975efd8296c6762a741e",
+      size: "101.6 MiB",
+      downloadUrl: `${mac.assetsUrl}/Argus-${mac.version}-macos-x86_64.dmg`,
+      sha256: "cdac0fb2c21e7341dc61d9741cebdb33398a72c8c2b5686f8fbbf234acaab618",
     },
     {
-      ...macLinux,
+      ...linux,
       id: "linux-appimage",
       os: "linux",
       platform: "Linux desktop",
@@ -72,7 +74,7 @@ export const desktopRelease = {
       sha256: "021fbc0f559b70b613e793e3c193f9a6766a57ab8f9115cca55e6e1375147286",
     },
     {
-      ...macLinux,
+      ...linux,
       id: "linux-deb",
       os: "linux",
       platform: "Ubuntu / Debian",

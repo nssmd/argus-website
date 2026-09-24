@@ -73,12 +73,12 @@ for (const [englishPath, chinesePath] of pairs) {
   const pixelScenes = [];
   for (const [page, html] of [[englishPath, english], [chinesePath, chinese]]) {
     assert(html.includes("document.startViewTransition"), `${page} lacks the shared theme reveal`);
-    assert(html.includes('/get-started/#desktop-download') && html.includes("Windows v0.1.7") && html.includes("Mac / Linux v0.1.6"),
+    assert(html.includes('/get-started/#desktop-download') && html.includes("Windows v0.1.8 · Mac v0.1.9 · Linux v0.1.6"),
       `${page} lacks the current cross-platform download entry`);
     const footer = html.match(/<footer class="site-footer">[\s\S]*?<\/footer>/)?.[0] ?? "";
     assert(footer.includes('class="footer-menu"') && footer.includes('class="footer-resource-links"'),
       `${page} lacks grouped footer navigation`);
-    assert(footer.includes('class="footer-download"') && footer.includes("Windows v0.1.7 · Mac / Linux v0.1.6"),
+    assert(footer.includes('class="footer-download"') && footer.includes("Windows v0.1.8 · Mac v0.1.9 · Linux v0.1.6"),
       `${page} lacks the distinct footer download action`);
     assert((footer.match(/<a\b/g) || []).length === 15, `${page} lacks the existing footer destinations plus website email`);
     const credit = footer.match(/<p class="footer-credit">[\s\S]*?<\/p>/)?.[0] ?? "";
@@ -185,7 +185,7 @@ for (const page of pairs.flat()) {
   const html = read(page);
   assert(!html.includes("/release.html"), `${page} still links to a release page`);
   assert(!/href="\/(?!chipbench-dashboard\.html|process-dashboard\.html|razavi-dashboard\.html)[^"]*\.html(?:[#?"][^>]*)/.test(html), `${page} still contains a public .html route`);
-  assert(!/\bnpm\b|npmjs|@argusevolve\/argus/i.test(html), `${page} still exposes npm content`);
+  assert(!/npmjs|@argusevolve\/argus/i.test(html), `${page} still advertises the retired Argus npm distribution`);
   assert(html.includes("https://arxiv.org/abs/2608.05144"), `${page} lacks the Argus paper link`);
   assert(html.includes("https://www.youtube.com/watch?v=i8Qy9HCboQE"), `${page} lacks the YouTube demo link`);
   assert(html.includes("https://github.com/lbx154/Argus"), `${page} lacks the Argus code link`);
@@ -316,12 +316,23 @@ for (const page of ["get-started/index.html", "zh/get-started/index.html", "proj
   const windowsNotes = page.includes("get-started")
     ? html.match(/<aside\b[^>]*data-windows-features[^>]*>[\s\S]*?<\/aside>/)?.[0] ?? ""
     : sourceNotes;
-  assert(sourceNotes.includes("2026-09-15") && sourceNotes.includes("https://github.com/lbx154/Argus/compare/v0.1.7...ba1dd5f924"),
+  const macNotes = page.includes("get-started")
+    ? html.match(/<aside\b[^>]*data-mac-features[^>]*>[\s\S]*?<\/aside>/)?.[0] ?? ""
+    : sourceNotes;
+  assert(sourceNotes.includes("2026-09-24") && sourceNotes.includes("https://github.com/lbx154/Argus/compare/v0.1.8...2d51186ad4"),
     `${page} lacks the reviewed source snapshot`);
-  assert(sourceNotes.includes("/blob/ba1dd5f924/docs/hosted-research-trial.md"),
+  assert(sourceNotes.includes("/blob/2d51186ad4/docs/hosted-research-trial.md"),
     `${page} lacks the pinned hosted research documentation`);
-  assert(sourceNotes.includes("Vertical Store") && sourceNotes.includes("24") && sourceNotes.includes("17"),
-    `${page} must distinguish the post-release Store from the pre-split Windows package`);
+  assert(sourceNotes.includes("Vertical Store") && sourceNotes.includes("7") && sourceNotes.includes("17") &&
+    sourceNotes.includes("Windows v0.1.8") && sourceNotes.includes("Mac v0.1.9") && sourceNotes.includes("Linux v0.1.6"),
+    `${page} must identify the current Store-capable releases and older Linux package`);
+  assert(sourceNotes.includes("/blob/2d51186ad4/docs/typescript-migration.md") &&
+    (sourceNotes.includes("Python still owns production task state") || sourceNotes.includes("仍由 Python 管理")),
+    `${page} must describe TypeScript as an initial migration, not a replacement production runtime`);
+  assert(sourceNotes.includes("originating project") || sourceNotes.includes("来源项目"),
+    `${page} lacks the knowledge-feed source attribution update`);
+  assert(sourceNotes.includes("/blob/2d51186ad4/docs/research-map.md"),
+    `${page} lacks pinned map documentation`);
   assert(sourceNotes.includes("independent operator deployment") || sourceNotes.includes("运营方独立部署"),
     `${page} must not advertise hosted research as a default desktop service`);
   assert(sourceNotes.includes("purpose-specific authorization") || sourceNotes.includes("用途授权"),
@@ -361,14 +372,21 @@ for (const page of ["get-started/index.html", "zh/get-started/index.html", "proj
     assert(windowsNotes.includes(english) || windowsNotes.includes(chinese),
       `${page} lacks the Windows release detail or boundary: ${english}`);
   }
-  assert(windowsNotes.includes("not_billed") && windowsNotes.includes("Windows v0.1.7"),
+  assert(windowsNotes.includes("not_billed") && windowsNotes.includes("Windows v0.1.8"),
     `${page} must scope new accounting and UI changes to Windows`);
   assert(windowsNotes.includes("task/event snapshots") || windowsNotes.includes("任务／事件快照"),
     `${page} lacks the research reader's captured evidence context`);
   assert(windowsNotes.includes("teaching review is not scientific acceptance") || windowsNotes.includes("教学复核不等于科研结论验收"),
     `${page} must not conflate teaching review with scientific acceptance`);
-  assert(sourceNotes.includes("not included in Windows v0.1.7") || sourceNotes.includes("Windows v0.1.7 不包含 Store"),
-    `${page} must keep post-release source work separate from the published installer`);
+  assert(windowsNotes.includes("211") && windowsNotes.includes("CRLF") &&
+    (windowsNotes.includes("does not preserve drafts across a page refresh") || windowsNotes.includes("不保证刷新页面后仍保留草稿")),
+    `${page} lacks Windows 0.1.8 features and the in-memory-only draft boundary`);
+  assert(windowsNotes.includes("does not include the later main-branch") || windowsNotes.includes("不包含随后 main 合入"),
+    `${page} must not attribute newer main runtime recovery to Windows 0.1.8`);
+  assert(macNotes.includes("Mac v0.1.9") && macNotes.includes("Finder") && macNotes.includes("Homebrew") &&
+    macNotes.includes("Gatekeeper") && macNotes.includes("Latest") &&
+    (macNotes.includes("manually") || macNotes.includes("手动下载")),
+    `${page} lacks the Mac release fixes, manual update guidance or safety boundary`);
   assert(releasedNotes.includes("v0.1.6"), `${page} lacks the released feature baseline`);
   for (const term of [".xlsx", "python -", "python -m unittest", "pip", "venv"]) {
     assert(releasedNotes.includes(term), `${page} lacks released runtime detail: ${term}`);
@@ -385,13 +403,13 @@ for (const page of ["get-started/index.html", "zh/get-started/index.html"]) {
   const html = read(page);
   const downloadHeading = html.match(/<div class="desktop-download-card__copy">[\s\S]*?<h2>([\s\S]*?)<\/h2>/)?.[1] ?? "";
   const headingLines = Array.from(downloadHeading.matchAll(/<span\b[^>]*>([^<]+)<\/span>/g), ([, text]) => text);
-  assert(headingLines.length === 2 && headingLines[0] === "Argus 0.1.7" && headingLines[1] === "Windows / Mac / Linux",
+  assert(headingLines.length === 2 && headingLines[0] === "Argus 0.1.9" && headingLines[1] === "Windows / Mac / Linux",
     `${page} must split the download heading into version then platforms`);
-  assert(html.includes('data-platform-versions') && html.includes("Windows · v0.1.7") && html.includes("Mac / Linux · v0.1.6"),
-    `${page} must display both platform versions next to the download heading`);
+  assert(html.includes('data-platform-versions') && ["Windows · v0.1.8", "Mac · v0.1.9", "Linux · v0.1.6"].every((label) => html.includes(label)),
+    `${page} must display all three platform versions next to the download heading`);
   const releaseActions = html.match(/<div class="desktop-download-card__action">([\s\S]*?)<\/div>/)?.[1] ?? "";
   const releaseLinks = [...releaseActions.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/g)];
-  assert(releaseLinks.length === 2, `${page} must retain both platform release-page links`);
+  assert(releaseLinks.length === 3, `${page} must include all three platform release-page links`);
   for (const [, attributes, content] of releaseLinks) {
     assert(content.includes(page.startsWith("zh/") ? "在 GitHub 查看发布说明" : "View release notes on GitHub"),
       `${page} must visibly distinguish GitHub release pages from installer downloads`);
@@ -402,13 +420,13 @@ for (const page of ["get-started/index.html", "zh/get-started/index.html"]) {
   assert(releaseActions.includes(page.startsWith("zh/") ? "直接下载请使用下方蓝色按钮" : "use the blue buttons below"),
     `${page} must direct installer downloads to the separate blue buttons`);
   for (const [id, filename, size, checksum] of [
-    ["windows", "Argus-0.1.7-setup.exe", "33.6 MiB", "c9a4ab74a3ca2f2c14643e2b228c16be011efc3c77f4c2147a8b77749fb8707c"],
-    ["macos-aarch64", "Argus-0.1.6-macos-aarch64.dmg", "47.0 MiB", "33328f610cb1432179777e5496c189046de5f49c5f48ae8ac01164bf0561b6f0"],
-    ["macos-x86_64", "Argus-0.1.6-macos-x86_64.dmg", "46.9 MiB", "2f4fb1d05e743bc7e14cd8436b574d0ea407daac9abc975efd8296c6762a741e"],
+    ["windows", "Argus-0.1.8-setup.exe", "49.3 MiB", "5ceeddb2a919db5bead9702e1535cc749e90a822c693746e25e9629c0e97d2ec"],
+    ["macos-aarch64", "Argus-0.1.9-macos-aarch64.dmg", "101.7 MiB", "92facd784de1bb2381bfa7f3fb4f611b60c52f8646c90694bc9b181e085baded"],
+    ["macos-x86_64", "Argus-0.1.9-macos-x86_64.dmg", "101.6 MiB", "cdac0fb2c21e7341dc61d9741cebdb33398a72c8c2b5686f8fbbf234acaab618"],
     ["linux-appimage", "Argus-0.1.6-linux-x86_64.AppImage", "132.4 MiB", "021fbc0f559b70b613e793e3c193f9a6766a57ab8f9115cca55e6e1375147286"],
     ["linux-deb", "Argus-0.1.6-linux-x86_64.deb", "64.6 MiB", "a1d366050b38a7c218a99d9c6343386bc858147340d3dc7bf0d7bf52d1e76db0"],
   ]) {
-    const version = id === "windows" ? "0.1.7" : "0.1.6";
+    const version = id === "windows" ? "0.1.8" : id.startsWith("macos") ? "0.1.9" : "0.1.6";
     const card = html.match(new RegExp(`<article\\b[^>]*id="${id}-download"[^>]*>[\\s\\S]*?</article>`))?.[0] ?? "";
     assert(card.includes(`data-desktop-installer="${id}"`) && card.includes(`data-version="${version}"`) &&
       card.includes(`Argus v${version}`), `${page} lacks the visible ${id} version`);
@@ -431,26 +449,31 @@ for (const page of ["get-started/index.html", "zh/get-started/index.html"]) {
       `${page} must retain Mac requirements and link chip-selection guidance`);
     assert(card.includes('class="installer-chip-hint"'), `${page} lacks the ${architecture} chip hint`);
   }
-  assert(html.includes("Argus-0.1.7-setup.exe.sig") && html.includes("Argus-0.1.6-linux-x86_64.AppImage.sig"),
+  assert(html.includes("Argus-0.1.8-setup.exe.sig") && html.includes("Argus-0.1.6-linux-x86_64.AppImage.sig"),
     `${page} lacks the Windows or Linux updater signature`);
   assert(!html.includes(".dmg.sig") && !html.includes(".deb.sig"), `${page} offers an unpublished installer signature`);
   assert(html.includes("releases/tag/v0.1.6") && html.includes("/v0.1.6/SHA256SUMS"), `${page} lacks current release notes/checksums`);
-  assert(html.includes("releases/tag/v0.1.7") && html.includes("/v0.1.7/SHA256SUMS"),
-    `${page} lacks the new Windows release notes/checksums`);
-  for (const version of ["0.1.6", "0.1.7"]) {
+  for (const version of ["0.1.6", "0.1.8", "0.1.9"]) {
+    assert(releaseActions.includes(`releases/tag/v${version}`) && html.includes(`/v${version}/SHA256SUMS`),
+      `${page} lacks the v${version} release notes/checksums`);
     assert(html.includes(`/blob/v${version}/docs/desktop-trial.md`), `${page} lacks the v${version} trial guide`);
   }
-  const windowsAssets = [...html.matchAll(/href="https:\/\/github.com\/lbx154\/Argus\/releases\/download\/v0\.1\.7\/([^"]+)"/g)]
-    .map((match) => match[1]);
-  assert(windowsAssets.every((name) => ["Argus-0.1.7-setup.exe", "Argus-0.1.7-setup.exe.sig", "SHA256SUMS"].includes(name)),
-    `${page} invents a non-Windows v0.1.7 artifact`);
-  assert(!html.includes("Argus-0.1.6-setup.exe") && !html.includes("unconfirmed historical cost alone does not block") &&
+  for (const [version, allowed] of [
+    ["0.1.8", ["Argus-0.1.8-setup.exe", "Argus-0.1.8-setup.exe.sig", "SHA256SUMS"]],
+    ["0.1.9", ["Argus-0.1.9-macos-aarch64.dmg", "Argus-0.1.9-macos-x86_64.dmg", "SHA256SUMS"]],
+  ]) {
+    const assetNames = [...html.matchAll(/href="https:\/\/github.com\/lbx154\/Argus\/releases\/download\/([^/]+)\/([^"]+)"/g)]
+      .filter((match) => match[1] === `v${version}`).map((match) => match[2]);
+    assert(assetNames.every((name) => allowed.includes(name)), `${page} invents a v${version} release asset`);
+  }
+  assert(!html.includes("Argus-0.1.7-setup.exe") && !html.includes("Argus-0.1.6-macos-") &&
+    !html.includes("Argus-0.1.6-setup.exe") && !html.includes("unconfirmed historical cost alone does not block") &&
     !html.includes("未确认的历史费用不会单独阻止"), `${page} retains stale Windows downloads or cost promises`);
   assert(html.includes("Ubuntu 22.04") && (html.includes("graphical desktop session") || html.includes("图形桌面会话")),
     `${page} lacks the Linux desktop requirements`);
   assert(html.includes("GPT-5.5") && html.includes("high"), `${page} lacks the current trial model setting`);
-  assert(html.includes("not included in Windows v0.1.7") || html.includes("Windows v0.1.7 不包含 Store"),
-    `${page} must mark source-preview-only features`);
+  assert(html.includes("not a replacement argus command") || html.includes("不是 argus 命令"),
+    `${page} must mark the TypeScript source experiment's scope`);
   assert(html.includes("Change Key") || html.includes("更换 Key"), `${page} lacks the new trial-account control`);
   assert(html.includes("preserving projects and chat history") || html.includes("保留项目和聊天记录"),
     `${page} lacks the non-destructive Key-change explanation`);
@@ -462,7 +485,7 @@ for (const page of ["get-started/index.html", "zh/get-started/index.html"]) {
   assert(html.includes("Microsoft Edge WebView2 Runtime"), `${page} lacks the desktop prerequisite`);
   assert(html.includes("not a Windows Authenticode") || html.includes("不等于 Windows Authenticode"),
     `${page} must distinguish updater signatures from Windows certificate signing`);
-  assert(html.includes("尚未经过 Apple Developer ID 公证") || html.includes("not Apple Developer ID notarized"),
+  assert(html.includes("未经过 Apple Developer ID 签名和公证") || html.includes("not Apple Developer ID signed or notarized"),
     `${page} lacks the Mac internal-build trust warning`);
   assert(html.includes("stop any running Argus tasks") || html.includes("先停止正在进行的 Argus 任务"),
     `${page} lacks the safe-upgrade reminder`);
@@ -506,12 +529,14 @@ for (const page of ["get-started/index.html", "zh/get-started/index.html"]) {
 
 for (const page of ["index.html", "zh/index.html"]) {
   const html = read(page);
-  assert(html.includes('/get-started/#desktop-download') && html.includes("releases/tag/v0.1.7") &&
-    html.includes("Windows v0.1.7 · Mac / Linux v0.1.6"),
+  assert(html.includes('/get-started/#desktop-download') && html.includes("releases/tag/v0.1.8") &&
+    html.includes("Windows v0.1.8 · Mac v0.1.9 · Linux v0.1.6"),
     `${page} lacks the current cross-platform chooser and release notes`);
-  const releaseLink = html.match(/<a\b[^>]*href="https:\/\/github.com\/lbx154\/Argus\/releases\/tag\/v0\.1\.7"[^>]*>([\s\S]*?)<\/a>/)?.[1] ?? "";
-  assert(releaseLink.includes("GitHub") && (releaseLink.includes("发布说明") || releaseLink.includes("release notes")),
-    `${page} must visibly identify the homepage release link as GitHub documentation`);
+  for (const version of ["0.1.8", "0.1.9"]) {
+    const releaseLink = html.match(new RegExp(`<a\\b[^>]*href="https://github.com/lbx154/Argus/releases/tag/v${version.replaceAll(".", "\\.")}"[^>]*>([\\s\\S]*?)</a>`))?.[1] ?? "";
+    assert(releaseLink.includes("GitHub") && (releaseLink.includes("发布说明") || releaseLink.includes("release notes")),
+      `${page} must visibly identify the v${version} homepage release link as GitHub documentation`);
+  }
   assert(html.includes("Argus-Pi") && html.includes("CrystalPilot") && html.includes("/projects/mathematics/#research-progress"),
     `${page} lacks the new project and research-progress entry points`);
 }

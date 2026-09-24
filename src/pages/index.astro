@@ -21,8 +21,9 @@ const copy = locale === "zh" ? {
   heroEm: "它会边工作，边学习。",
   lede: "读资料、写代码、跑实验，再让独立的 Reviewer 检查结果。Argus 以 7×24 的 Life 持续推进研究，把成功、失败与改道记录为可复用的记忆和 Skills，供下一轮任务调用。",
   releaseNotes: "Windows 发布说明 · GitHub ↗",
+  macReleaseNotes: "Mac 发布说明 · GitHub ↗",
   downloadDesktop: `下载 ${desktopRelease.platforms} 版`,
-  desktopNote: `${desktopRelease.platformVersionLabel}。Windows 新版包含默认地图、分层技能库与研究排期；邀请试用默认 GPT-5.5 high。`,
+  desktopNote: `${desktopRelease.platformVersionLabel}。Windows 改进会话草稿与资源入口；Mac 修复 Finder 启动时的 CLI 查找，请手动下载升级。邀请试用默认 GPT-5.5 high。`,
   projects: "浏览团队项目 →",
   results: "查看量化成绩",
   evolutionLink: "看自进化飞轮 ↓",
@@ -107,8 +108,9 @@ const copy = locale === "zh" ? {
   heroEm: "It learns while it works.",
   lede: "Read the literature. Build and run experiments. Have an independent reviewer check the result. Argus Life keeps research moving 24/7, preserving successes, failures, and pivots as memory and skills the next run can use.",
   releaseNotes: "Windows release notes · GitHub ↗",
+  macReleaseNotes: "Mac release notes · GitHub ↗",
   downloadDesktop: `Download for ${desktopRelease.platforms}`,
-  desktopNote: `${desktopRelease.platformVersionLabel}. The Windows update includes the default map, layered Skill library and research planning. Invitation trial defaults to GPT-5.5 high.`,
+  desktopNote: `${desktopRelease.platformVersionLabel}. Windows improves session drafts and resource access; Mac fixes Finder-launched CLI discovery and requires a manual download. Invitation trial defaults to GPT-5.5 high.`,
   projects: "Explore team projects →",
   results: "Measured results",
   evolutionLink: "See the evolution loop ↓",
@@ -204,6 +206,7 @@ const copy = locale === "zh" ? {
         <div class="hero-actions">
           <a class="button primary" href={`${href("/get-started/")}#desktop-download`}>{copy.downloadDesktop} ↓</a>
           <a class="button" href={desktopRelease.windows.releaseUrl} target="_blank" rel="noopener noreferrer">{copy.releaseNotes}</a>
+          <a class="button" href={desktopRelease.mac.releaseUrl} target="_blank" rel="noopener noreferrer">{copy.macReleaseNotes}</a>
           <a class="button" href={href("/projects/")}>{copy.projects}</a>
         </div>
         <p class="desktop-release-note">{copy.desktopNote}</p>
