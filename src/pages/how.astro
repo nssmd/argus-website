@@ -7,7 +7,7 @@ import { localeFromPath } from "../i18n";
 
 const locale = localeFromPath(Astro.url.pathname);
 const stages = ["idea", "experiment", "paper", "review"];
-const stageSource = `https://github.com/lbx154/Argus/blob/v${desktopRelease.windows.version}/argus_skill/verticals/research/stages.py`;
+const stageSource = `https://github.com/lbx154/Argus/blob/v${desktopRelease.windows.version}/argus/verticals/research/stages.py`;
 const trajectoryChart = locale === "zh"
   ? "/assets/nanochat-b200-trajectory.svg"
   : "/assets/nanochat-b200-trajectory.en.svg";

@@ -1,15 +1,15 @@
 import { desktopRelease } from "./desktopRelease";
 
-const revision = "ba1dd5f924";
+const revision = "2d51186ad4";
 
 export const sourcePreview = {
-  reviewedOn: "2026-09-15",
-  windowsBaseline: desktopRelease.windows.version,
-  macLinuxBaseline: desktopRelease.macLinux.version,
+  reviewedOn: "2026-09-24",
   revision,
   changesUrl: `https://github.com/lbx154/Argus/compare/v${desktopRelease.windows.version}...${revision}`,
   hostedGuideUrl: `https://github.com/lbx154/Argus/blob/${revision}/docs/hosted-research-trial.md`,
   verticalStoreGuideUrl: `https://github.com/lbx154/Argus/blob/${revision}/docs/vertical-store.md`,
+  mapGuideUrl: `https://github.com/lbx154/Argus/blob/${revision}/docs/research-map.md`,
+  typescriptGuideUrl: `https://github.com/lbx154/Argus/blob/${revision}/docs/typescript-migration.md`,
 } as const;
 
 export const mathematicsSnapshot = {

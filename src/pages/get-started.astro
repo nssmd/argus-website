@@ -4,7 +4,7 @@ import PageHero from "../components/PageHero.astro";
 import PixelIllustration from "../components/PixelIllustration";
 import { desktopRelease } from "../data/desktopRelease";
 import { sourcePreview } from "../data/projectUpdates";
-import { sourcePreviewNotes, windowsReleaseNotes } from "../data/projects";
+import { macReleaseNotes, sourcePreviewNotes, windowsReleaseNotes } from "../data/projects";
 import { localeFromPath, pathForLocale } from "../i18n";
 
 const locale = localeFromPath(Astro.url.pathname);
@@ -14,7 +14,8 @@ const backendGuide = "https://github.com/microsoft/ArgusAgent/blob/main/docs/bac
 const pluginGuide = "https://github.com/lbx154/Argus/blob/main/docs/plugin.md";
 const releaseChoices = [
   { ...desktopRelease.windows, label: "Windows" },
-  { ...desktopRelease.macLinux, label: "Mac / Linux" },
+  { ...desktopRelease.mac, label: "Mac" },
+  { ...desktopRelease.linux, label: "Linux" },
 ];
 const copy = locale === "zh" ? {
   title: "开始使用 · Argus",
@@ -23,12 +24,12 @@ const copy = locale === "zh" ? {
   hero: "选择适合你的开始方式。",
   lede: "Windows、Mac 与 Linux 桌面用户都可以直接安装：持有内部邀请 Key 时自动准备 Copilot 并进入工作台，也可以继续使用自己的 Agent CLI。长程工作仍由 Manager、Planner、Engineer 与独立 Reviewer 协作完成。",
   download: `选择 ${desktopRelease.platforms} 下载`,
-  desktopTitle: `Argus ${desktopRelease.windows.version}`,
-  desktopReleaseLabel: "Windows 最新发行",
-  desktopBody: `本次 v${desktopRelease.windows.version} 仅发布 Windows x64 安装包，新增默认地图、分层技能库与交互式研究排期，并加强升级保护、后端恢复和费用核算。Mac（Apple Silicon / Intel）与 Linux 继续提供 v${desktopRelease.macLinux.version}，不包含这次 Windows 新增功能。`,
+  desktopTitle: `Argus ${desktopRelease.mac.version}`,
+  desktopReleaseLabel: "Mac 最新发行 · 按平台选版本",
+  desktopBody: `Windows v${desktopRelease.windows.version} 改进会话草稿、通知定位及技能库／知识库入口；Mac v${desktopRelease.mac.version} 为 Apple Silicon 和 Intel 修复 Finder 启动时的 CLI／Node 查找。Linux 仍为 v${desktopRelease.linux.version}；各平台版本独立，不代表已获得其他平台的全部更新。`,
   desktopRequirements: "试用模式无需命令行、预装 Python / Node.js 或个人 Coding 账号；首次准备需联网访问 argusbot.cn 和 GitHub Releases。自带 CLI 模式仍需自行安装并登录所选 CLI。",
   desktopUpgrade: "安装或升级前，请先停止正在进行的 Argus 任务并退出桌面端。Windows 新版就地升级；若目标后端仍运行或无法核实进程路径，会阻止替换，请先“停止本地后端并退出”。",
-  desktopSignatureNote: "更新器签名不等于 Windows Authenticode 证书签名，Windows 仍可能提示未知发布者。Mac 内部试用包尚未经过 Apple Developer ID 公证；确认下载来源后，如首次启动被阻止，可在“系统设置 → 隐私与安全性 → 仍要打开”中确认。",
+  desktopSignatureNote: "更新器签名不等于 Windows Authenticode 证书签名，Windows 仍可能提示未知发布者。Mac 安装包未经过 Apple Developer ID 签名和公证；确认下载来源后，如首次启动被阻止，可在“系统设置 → 隐私与安全性 → 仍要打开”中确认，不要关闭 Gatekeeper。",
   desktopRuntimeNote: "Windows 需要 Microsoft Edge WebView2 Runtime；安装器会处理缺失的运行时。Mac 最低要求 macOS 13。Linux 为 x86_64 桌面应用，原生安装验证使用 Ubuntu 22.04；需要图形桌面会话，不是无界面服务器安装包。",
   macChoiceTitle: "Mac 用户：请按芯片选择安装包",
   macChoiceBody: "打开苹果菜单 → 关于本机，查看“芯片”或“处理器”：Apple M 系列选择 Apple Silicon；Intel 处理器选择 Intel。两种安装包均要求 macOS 13 或更高版本。",
@@ -38,7 +39,7 @@ const copy = locale === "zh" ? {
   },
   installInstructions: {
     EXE: "运行 EXE 安装程序，然后打开 Argus。",
-    DMG: "打开 DMG，将 Argus 拖入 Applications 后启动。",
+    DMG: "打开 DMG，将 Argus 拖入 Applications，弹出安装磁盘后从“应用程序”启动。",
     AppImage: "在文件属性中允许作为程序执行，再打开 AppImage；需要 Linux 图形桌面。",
     DEB: "适用于 Ubuntu 22.04+ / 兼容 Debian x86_64 桌面系统，使用系统软件安装器打开 DEB。",
   },
@@ -57,12 +58,13 @@ const copy = locale === "zh" ? {
   trialAccounting: "内部 Key 试用的本地美元账本标为 not_billed；服务端仍单独执行 token 配额。这不等于不限量，也不代表所有模型已开放。",
   ownTitle: "使用自己的 Agent CLI",
   ownBody: "没有邀请 Key，或希望沿用自己的账号时，选择常规 CLI 配置，安装并登录所选后端。之后可通过“文件 → 设置”修改。无需因为安装了桌面版而另装一套 Argus 命令行。",
-  ownAccounting: `Windows v${desktopRelease.windows.version} 默认采用严格费用策略：自带账号出现未定价或待对账费用时，可能阻止后续调用；未知费用不按零处理。操作员风险确认不等于供应商已结算，也不保证不会超额。Mac / Linux v${desktopRelease.macLinux.version} 仍沿用原版本策略，不将此项新版变化套用到旧包。`,
+  ownAccounting: `Windows v${desktopRelease.windows.version} 与 Mac v${desktopRelease.mac.version} 默认采用严格费用策略：自带账号出现未定价或待对账费用时，可能阻止后续调用；未知费用不按零处理。操作员风险确认不等于供应商已结算，也不保证不会超额。Linux v${desktopRelease.linux.version} 仍沿用原版本策略，不将新版变化套用到旧包。`,
   trialGuide: "试用说明",
-  desktopUpdate: "桌面更新请使用应用内“检查更新”或此页的完整安装包；argus update 仅用于源码 / Python 安装，不能替换桌面 EXE / App。预览与正式渠道的数据目录分开，切换渠道前先备份，不假设项目会自动迁移。",
-  desktopFeaturesTitle: `自 v${desktopRelease.macLinux.version} 起的共同工作台能力`,
-  windowsFeaturesTitle: `Windows v${desktopRelease.windows.version} 新增与改进`,
-  desktopFeatures: `Windows v${desktopRelease.windows.version} 和 Mac / Linux v${desktopRelease.macLinux.version} 均保留 Manager 流式回复与工具调用展示、地图和活动记录、Excel（.xlsx）交付识别及可选 CrystalPilot 宿主集成。CrystalPilot 0.4.0 仍需独立安装并遵守专有许可，默认不启用任何工作台插件。`,
+  desktopUpdate: `Mac v${desktopRelease.mac.version} 请从本页手动下载安装包升级，GitHub 的 Latest 标记仍留给 Windows。Windows 可使用应用内“检查更新”或完整安装包；更新提示不等于自动安装。argus update 仅用于源码 / Python 安装，不能替换桌面 EXE / App。切换预览与正式渠道前先备份，不假设项目会自动迁移。`,
+  desktopFeaturesTitle: `自 v${desktopRelease.linux.version} 起的共同工作台能力`,
+  windowsFeaturesTitle: `Windows v${desktopRelease.windows.version} 更新与使用边界`,
+  macFeaturesTitle: `Mac v${desktopRelease.mac.version} 更新与安装说明`,
+  desktopFeatures: `${desktopRelease.platformVersionLabel} 均保留 Manager 流式回复与工具调用展示、地图和活动记录、Excel（.xlsx）交付识别及可选 CrystalPilot 宿主集成。CrystalPilot 0.4.0 仍需独立安装并遵守专有许可，默认不启用任何工作台插件。`,
   desktopExecution: "额度或模型服务阻塞会保留为暂停，不因等待而自动重试；处理账户或额度问题后点击“运行”显式恢复。执行结束不等于研究目标已完成或最终交付已通过验收。",
   desktopPython: "高级使用边界：内置运行时支持标准输入脚本（python -）与 python -m unittest，并保留测试失败退出码；它不是完整的通用 Python 环境，不提供 pip 或 venv。第三方 Python 依赖需使用独立环境。",
   workbenchLink: "查看可选 CrystalPilot 与许可说明 →",
@@ -78,7 +80,7 @@ const copy = locale === "zh" ? {
     ["macOS", "Managed uv tool", "源码 CLI 由 uv 管理独立环境，无需手工创建 venv；桌面用户使用上方对应芯片架构的 DMG。", "macos"],
     ["Linux", "Isolated source venv", "使用 Python 3.11+、Git 和明确的 venv，保持依赖与长期进程的可复现所有权。", "linux"],
   ],
-  pythonPackages: `固定版本的 Python wheel 和源码压缩包仍来自 v${desktopRelease.python.version} Release。Windows v${desktopRelease.windows.version} 没有发布这些 Python 包；这不等于已发布到 PyPI。`,
+  pythonPackages: `固定版本的 Python wheel 和源码压缩包仍来自 v${desktopRelease.python.version} Release。Windows v${desktopRelease.windows.version} 与 Mac v${desktopRelease.mac.version} 均未发布新的 Python 包；这不等于已发布到 PyPI。`,
   openGuide: "打开对应安装步骤 ↗",
   firstTitle: "源码 CLI 的第一次运行",
   firstBody: "以下命令仅用于源码 / Python 安装，请使用安装指南确认的 Argus 可执行文件。doctor --advisor auto 会调用模型并授权 Argus 范围内的环境修复；仅需只读诊断时运行 argus doctor。",
@@ -104,10 +106,12 @@ const copy = locale === "zh" ? {
     ["DeepSeek Harness", "dsh", "通过 DeepSeek 的 Headless Runner 执行"],
   ],
   backendGuide: "查看后端、Provider 与模型配置",
-  sourcePreviewTitle: "源码主线进展，不等于安装包功能",
+  sourcePreviewTitle: "源码快照与各版本的功能边界",
   sourcePreviewLink: "查看源码预览与新项目 →",
   sourceChanges: "查看对应源码变更 ↗",
   hostedGuide: "阅读托管部署与数据边界 ↗",
+  mapGuide: "阅读研究地图说明 ↗",
+  typescriptGuide: "了解 TypeScript 迁移范围 ↗",
   linksTitle: "接下来去哪里",
   report: "阅读 Argus 技术报告",
   demo: "观看四条真实运行",
@@ -126,12 +130,12 @@ const copy = locale === "zh" ? {
   hero: "Choose how you want to start.",
   lede: "Install the Windows, Mac, or Linux desktop app. A private trial invitation Key prepares Copilot automatically, or you can keep using your own Agent CLI. The Manager, Planner, Engineer, and independent Reviewer still coordinate long-horizon work.",
   download: `Choose a ${desktopRelease.platforms} download`,
-  desktopTitle: `Argus ${desktopRelease.windows.version}`,
-  desktopReleaseLabel: "Latest Windows release",
-  desktopBody: `Version ${desktopRelease.windows.version} is a Windows x64-only release, adding the default map, layered Skill library and interactive research planning, with stronger upgrade protection, backend recovery and accounting. Mac (Apple Silicon / Intel) and Linux remain on v${desktopRelease.macLinux.version}, without these Windows additions.`,
+  desktopTitle: `Argus ${desktopRelease.mac.version}`,
+  desktopReleaseLabel: "Latest Mac release · Choose by platform",
+  desktopBody: `Windows v${desktopRelease.windows.version} improves session drafts, notification targeting and Skill / Knowledge access. Mac v${desktopRelease.mac.version} fixes Finder-launched CLI / Node discovery on Apple Silicon and Intel. Linux remains on v${desktopRelease.linux.version}; platform releases are independent and do not inherit every other platform's update.`,
   desktopRequirements: "Trial mode needs no terminal, preinstalled Python / Node.js, or personal Coding account. First setup needs access to argusbot.cn and GitHub Releases. Own-account mode still requires you to install and authenticate your chosen CLI.",
   desktopUpgrade: "Before installing or upgrading, stop any running Argus tasks and exit the desktop application. The new Windows installer upgrades in place; a running target backend or unverifiable process path blocks replacement. Stop the local backend and exit first.",
-  desktopSignatureNote: "Updater signing is not a Windows Authenticode certificate signature; Windows may still show an unknown publisher. The internal Mac build is not Apple Developer ID notarized. After confirming the download source, a blocked first launch can be approved in System Settings → Privacy & Security → Open Anyway.",
+  desktopSignatureNote: "Updater signing is not a Windows Authenticode certificate signature; Windows may still show an unknown publisher. The Mac app is not Apple Developer ID signed or notarized. After confirming the download source, a blocked first launch can be approved in System Settings → Privacy & Security → Open Anyway, without disabling Gatekeeper.",
   desktopRuntimeNote: "Windows requires Microsoft Edge WebView2 Runtime; the installer handles a missing runtime. Mac requires macOS 13+. Linux packages target x86_64 desktop systems, with native installation checked on Ubuntu 22.04. They require a graphical desktop session, not a headless server.",
   macChoiceTitle: "Mac users: choose the installer for your chip",
   macChoiceBody: "Open Apple menu → About This Mac and check Chip or Processor. Choose Apple Silicon for an Apple M-series chip, or Intel for an Intel processor. Both installers require macOS 13 or later.",
@@ -141,7 +145,7 @@ const copy = locale === "zh" ? {
   },
   installInstructions: {
     EXE: "Run the EXE installer, then open Argus.",
-    DMG: "Open the DMG, drag Argus to Applications, then launch it.",
+    DMG: "Open the DMG, drag Argus to Applications, eject the disk, then launch from Applications.",
     AppImage: "Allow execution in the file properties, then open the AppImage in a Linux graphical desktop session.",
     DEB: "For Ubuntu 22.04+ / compatible Debian x86_64 desktop systems. Open the DEB with your system software installer.",
   },
@@ -160,12 +164,13 @@ const copy = locale === "zh" ? {
   trialAccounting: "Internal-Key trial usage is marked not_billed in the local dollar ledger; the server separately enforces token allowances. This is not unlimited usage or access to every model.",
   ownTitle: "Bring your own Agent CLI",
   ownBody: "Without a trial Key, or to keep using your own account, choose the regular CLI setup and install and authenticate your preferred backend. Change it later in File → Settings. Desktop installation does not require a separate Argus command-line installation.",
-  ownAccounting: `Windows v${desktopRelease.windows.version} defaults to strict accounting: unpriced or unreconciled own-account usage can block later calls, rather than count as zero. Operator risk acknowledgement is not provider settlement or a guarantee against overspend. Mac / Linux v${desktopRelease.macLinux.version} retain their existing policy; this new behavior is not attributed to those older packages.`,
+  ownAccounting: `Windows v${desktopRelease.windows.version} and Mac v${desktopRelease.mac.version} default to strict accounting: unpriced or unreconciled own-account usage can block later calls, rather than count as zero. Operator risk acknowledgement is not provider settlement or a guarantee against overspend. Linux v${desktopRelease.linux.version} retains its existing policy; newer behavior is not attributed to that older package.`,
   trialGuide: "Trial guide (Chinese)",
-  desktopUpdate: "Update the desktop app through Check for updates or a complete installer from this page. argus update is for source / Python installations, not desktop EXE / App replacement. Preview and regular channels have separate data directories; back up before switching and do not assume projects migrate automatically.",
-  desktopFeaturesTitle: `Shared workbench features since v${desktopRelease.macLinux.version}`,
-  windowsFeaturesTitle: `New and improved in Windows v${desktopRelease.windows.version}`,
-  desktopFeatures: `Windows v${desktopRelease.windows.version} and Mac / Linux v${desktopRelease.macLinux.version} retain streamed Manager replies and tool-call display, map and activity history, Excel (.xlsx) delivery recognition and optional CrystalPilot host integration. CrystalPilot 0.4.0 still requires separate installation under its proprietary license; no workbench plugin is enabled by default.`,
+  desktopUpdate: `Download Mac v${desktopRelease.mac.version} manually from this page; GitHub's Latest marker remains on Windows. Windows can use Check for updates or the full installer; an update prompt does not install automatically. argus update is for source / Python installations, not desktop EXE / App replacement. Back up before switching preview and regular channels; do not assume projects migrate automatically.`,
+  desktopFeaturesTitle: `Shared workbench features since v${desktopRelease.linux.version}`,
+  windowsFeaturesTitle: `Windows v${desktopRelease.windows.version}: updates and usage boundaries`,
+  macFeaturesTitle: `Mac v${desktopRelease.mac.version}: updates and installation`,
+  desktopFeatures: `${desktopRelease.platformVersionLabel} retain streamed Manager replies and tool-call display, map and activity history, Excel (.xlsx) delivery recognition and optional CrystalPilot host integration. CrystalPilot 0.4.0 still requires separate installation under its proprietary license; no workbench plugin is enabled by default.`,
   desktopExecution: "Account or model-service fences remain paused rather than retrying just because time has passed. Resolve the account or allowance issue, then explicitly select Run to resume. Execution ending does not mean the research objective is complete or its final deliverable has passed review.",
   desktopPython: "Advanced-use boundary: the bundled runtime supports stdin scripts (python -) and python -m unittest, preserving test-failure exit codes. It is not a general-purpose Python installation and provides neither pip nor venv; third-party Python dependencies need a separate environment.",
   workbenchLink: "Explore optional CrystalPilot and its licensing →",
@@ -181,7 +186,7 @@ const copy = locale === "zh" ? {
     ["macOS", "Managed uv tool", "Use uv to manage the source CLI environment, without a manual venv. Desktop users can choose the DMG for their chip above.", "macos"],
     ["Linux", "Isolated source venv", "Use Python 3.11+, Git and an explicit venv to keep dependencies and long-running process ownership reproducible.", "linux"],
   ],
-  pythonPackages: `Versioned Python wheels and source archives still come from the v${desktopRelease.python.version} Release. Windows v${desktopRelease.windows.version} does not publish these Python packages; this does not imply a PyPI publication.`,
+  pythonPackages: `Versioned Python wheels and source archives still come from the v${desktopRelease.python.version} Release. Neither Windows v${desktopRelease.windows.version} nor Mac v${desktopRelease.mac.version} publishes new Python packages; this does not imply a PyPI publication.`,
   openGuide: "Open the platform instructions ↗",
   firstTitle: "First run for the source CLI",
   firstBody: "These commands are only for source / Python installations. Use the Argus executable confirmed by the installation guide. doctor --advisor auto calls a model and authorizes Argus-scoped repairs; use argus doctor for read-only diagnosis.",
@@ -207,10 +212,12 @@ const copy = locale === "zh" ? {
     ["DeepSeek Harness", "dsh", "Runs through DeepSeek's headless runner"],
   ],
   backendGuide: "Open backend, provider, and model setup",
-  sourcePreviewTitle: "Source-preview updates, not installer features",
+  sourcePreviewTitle: "Source snapshot and per-version feature boundaries",
   sourcePreviewLink: "Explore source previews and new projects →",
   sourceChanges: "Read the corresponding source changes ↗",
   hostedGuide: "Read hosted deployment and data boundaries ↗",
+  mapGuide: "Read the research-map guide ↗",
+  typescriptGuide: "Understand the TypeScript migration scope ↗",
   linksTitle: "Where to go next",
   report: "Read the Argus technical report",
   demo: "Watch four real runs",
@@ -336,6 +343,13 @@ const copy = locale === "zh" ? {
           Windows v{desktopRelease.windows.version} · {copy.releaseNotes} ↗
         </a>
       </aside>
+      <aside class="source-preview-note" data-mac-features>
+        <h3>{copy.macFeaturesTitle}</h3>
+        {macReleaseNotes[locale].map((note) => <p>{note}</p>)}
+        <a href={desktopRelease.mac.releaseUrl} target="_blank" rel="noopener noreferrer">
+          Mac v{desktopRelease.mac.version} · {copy.releaseNotes} ↗
+        </a>
+      </aside>
     </div>
   </section>
 
@@ -429,6 +443,8 @@ const copy = locale === "zh" ? {
         <a href={sourcePreview.changesUrl} target="_blank" rel="noopener noreferrer">{copy.sourceChanges}</a>
         <a href={sourcePreview.hostedGuideUrl} target="_blank" rel="noopener noreferrer">{copy.hostedGuide}</a>
         <a href={sourcePreview.verticalStoreGuideUrl} target="_blank" rel="noopener noreferrer">Vertical Store ↗</a>
+        <a href={sourcePreview.mapGuideUrl} target="_blank" rel="noopener noreferrer">{copy.mapGuide}</a>
+        <a href={sourcePreview.typescriptGuideUrl} target="_blank" rel="noopener noreferrer">{copy.typescriptGuide}</a>
       </aside>
     </div>
   </section>
