@@ -115,6 +115,7 @@ const copy = locale === "zh" ? {
   linksTitle: "接下来去哪里",
   report: "阅读 Argus 技术报告",
   demo: "观看四条真实运行",
+  tutorial: "一步一步的上手教程",
   plugin: "Code Agent 插件（开发渠道）",
   pluginNote: "插件安装脚本目前默认使用 lbx154/Argus 开发预览源；它不是桌面安装包，也不是官方源码安装的同一路径。安装前核对现有渠道，避免意外替换。",
   code: "查看 Preview 仓库",
@@ -221,6 +222,7 @@ const copy = locale === "zh" ? {
   linksTitle: "Where to go next",
   report: "Read the Argus technical report",
   demo: "Watch four real runs",
+  tutorial: "Step-by-step tutorial (Chinese)",
   plugin: "Coding-agent plugin (Chinese guide)",
   pluginNote: "The plugin installer currently defaults to lbx154/Argus development-preview source. It is a separate path from the desktop package and official-source installation. Check your existing channel before installing to avoid an unintended replacement.",
   code: "Open the preview repository",
@@ -241,6 +243,7 @@ const copy = locale === "zh" ? {
         <a class="button primary" href="#desktop-download">{copy.download} ↓</a>
         <a class="button" href="#agent-install">{copy.assisted}</a>
         <a class="button" href={href("/start/")}>{copy.demo}</a>
+        <a class="button" href="/docs/">{copy.tutorial} →</a>
       </div>
   </PageHero>
 
